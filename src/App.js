@@ -6,6 +6,7 @@ import RecoverPassword from './components/Form/account/RecoverPassword';
 import EditPassUser from './components/Form/account/editpassword/EditPassUser';
 import Administrator from './layout/admin/Administrator';
 import './App.css';
+import ProductPage from "./layout/productPage/ProductPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header/>
       <Routes>        
       <Route path='/' element={<Home />}/>
+      <Route path='/ProductPage' element={<ProductPage />}/>
         <Route path='/RecoverPassword' element={<RecoverPassword />}/>
         <Route path='/EditPassword' element={< EditPassUser/>}/>       
         <Route path='/Admin' element={<Administrator />}/>
