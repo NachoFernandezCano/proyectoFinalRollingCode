@@ -82,6 +82,11 @@
 
 .Header_container > div:nth-child(2) > div:nth-child(3) > div {
     margin-left: 1rem;
+
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(3)  {
+    margin-left: 25rem
 }
 
 .needHoover:hover {
@@ -95,6 +100,7 @@
     color: white!important;
     margin-right: 5rem;    
 }
+
 .userMenu{
     color: white;
     margin-right: 1rem;
@@ -108,6 +114,7 @@
     background-size: 50px auto;
     background-position-x: 0rem;
 }
+
 .img-avatar {
     border-radius: 50em; 
 }
@@ -132,7 +139,6 @@ span{
     background-size: 50px auto;   
     white-space: nowwrap;
 }
-
 
 @media (max-width: 576px) {
     .Header_container{

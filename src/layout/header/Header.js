@@ -136,9 +136,9 @@ const Header = () => {
               </div>  
             </div>    
             <div>
-              <FaInstagramSquare size={30} style={{fill: "white"}}/>
-              <FaTwitterSquare size={30} style={{fill: "white"}}/>
-              <FaFacebookSquare size={30} style={{fill: "white"}}/>
+              <FaInstagramSquare size={40} style={{fill: "white"}}/>
+              <FaTwitterSquare size={40} style={{fill: "white"}}/>
+              <FaFacebookSquare size={40} style={{fill: "white"}}/>
             </div>
             <div>              
               {loginUser ?(   
@@ -171,7 +171,7 @@ const Header = () => {
         </div>      
         <div>
           <div className="needHoover">
-            <FaHome/>
+            <FaHome size={30} style={{fill: "white"}}/>
           </div>
           <div>
             <div className="needHoover">
@@ -193,14 +193,14 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="needHoover">
-            <FaShoppingCart/>
+          <div className="needHoover" >
+            <FaShoppingCart size={25} style={{fill: "white"}}/>
             <div>
               0
             </div>
           </div>
           <div className="needHoover">
-            <FaRegQuestionCircle/>
+            <FaRegQuestionCircle size={25} style={{fill: "white"}}/>
           </div>
         </div>                 
       </div>    
