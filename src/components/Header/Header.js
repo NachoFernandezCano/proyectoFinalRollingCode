@@ -1,7 +1,7 @@
 import {
-  FaInstagramSquare,
-  FaTwitterSquare,
-  FaFacebookSquare,
+  FaInstagram,
+  FaTwitter,
+  FaFacebookF,
   FaSearch,
   FaHome,
   FaRegStar,
@@ -21,6 +21,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ModalLogin from "../Form/Modal/ModalLogin";
+import logo from "../../Assets/images/logo.jpg"
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -125,8 +126,8 @@ const Header = () => {
     <>
       <div className='Header_container'>
         <div>
-          <div>
-            <h1>MARCA</h1>
+          <div className="logoContainer">
+            {logo}
             <div>
               <input placeholder="Buscar producto" />
               <div>
@@ -134,9 +135,9 @@ const Header = () => {
               </div>
             </div>
             <div>
-              <FaInstagramSquare size={40} style={{ fill: "white" }} />
-              <FaTwitterSquare size={40} style={{ fill: "white" }} />
-              <FaFacebookSquare size={40} style={{ fill: "white" }} />
+              <FaInstagram className="socialIcons" />
+              <FaTwitter className="socialIcons" />
+              <FaFacebookF className="socialIcons" />
             </div>
             <div>
               {loginUser ? (
