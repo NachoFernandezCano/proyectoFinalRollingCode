@@ -7,7 +7,6 @@ import Footer from "../../Components/Footer/Footer"
 const Homepage = () => {
   return ( 
     <>
-    <Header/>
     <Slider/>
     <Home/>
     <Footer/>

@@ -57,299 +57,9 @@ const Home = () => {
                 <>Loading...</>
               )
             }
-          </Row>
 
-          {/* <div class="row">
-            <div class="center col-12 col-md-10 col-lg-10 p-0">
-              <div class="px-3">
-                <div
-                  class="d-flex flex-wrap-reverse align-items-center justify-content-between"
-                >
-                  <h2 class="my-2">
-                    DESTACADOS
-                  </h2>
-                </div>
-                <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5">
-                  <div class="col p-0">
-                    <Card>
-                      <FaRegStar className="hot-item" />
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <FaRegStar className="hot-item" />
-                      <Card.Img className="product-image" variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <FaRegStar className="hot-item" />
-                      <Card.Img className="product-image" variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <FaRegStar className="hot-item" />
-                      <Card.Img className="product-image" variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <FaRegStar className="hot-item" />
-                      <Card.Img className="product-image" variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                </div>
-                <h2 class="my-4">PRODUCTOS</h2>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
-                  <div class="col p-0">
-                    <Card>
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                  <div class="col p-0">
-                    <Card>
-                      <Card.Img variant="top"
-                        src={productPicture} />
-                      <Card.Body>
-                        <Card.Title>Notebook</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>$$$$</ListGroup.Item>
-                      </ListGroup>
-                      <Card.Body className="card-body">
-                        <Card.Link href="#">
-                          <FaHeart className="fav-icon" />
-                        </Card.Link>
-                        <Card.Link href="#">
-                          <FaShoppingCart className="cart-icon fav-icon" />
-                        </Card.Link>
-                      </Card.Body>
-                      <Link className="cards-btn" to="/"> Ver más </Link>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-              <div className="pagination">
-                <div className="pagination_button">
-                  <Button
-                    onClick={() => setPage(page - 1)} 
-                    disabled={page === 1}
-                  >
-                    {'<'}
-                  </Button>
-                  <b className="text-white fs-4">{page}</b>
-                  <Button
-                    onClick={() => setPage(page + 1)} 
-                    disabled={page === pagesCount}
-                  >
-                    {'>'}
-                  </Button>
-                </div>
-              </div>
-            </div>
             <div
-              class="advertisement d-none d-md-flex align-items-center flex-column col-md-2 col-lg-2 text-light p-0"
+              class="advertisement d-none d-md-flex align-items-center flex-column col-md-2 col-lg-2 p-0"
             >
               <img
                 class="publicity my-3"
@@ -367,7 +77,24 @@ const Home = () => {
                 src={adPicture3}
               />
             </div>
-          </div> */}
+            {/* <div className="pagination">
+                <div className="pagination_button">
+                  <Button
+                    onClick={() => setPage(page - 1)} 
+                    disabled={page === 1}
+                  >
+                    {'<'}
+                  </Button>
+                  <b className="text-white fs-4">{page}</b>
+                  <Button
+                    onClick={() => setPage(page + 1)} 
+                    disabled={page === pagesCount}
+                  >
+                    {'>'}
+                  </Button>
+                </div>
+              </div> */}
+          </Row>
         </div>
       </section>
     </>

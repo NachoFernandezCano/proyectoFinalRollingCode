@@ -1,7 +1,7 @@
 import Header from "./Components/Header/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from "./Components/Home/Home";
+import Homepage from "./Pages/Home-page/Home-page";
 import RecoverPassword from './Components/Form/account/RecoverPassword';
 import EditPassUser from './Components/Form/account/editpassword/EditPassUser';
 import Administrator from './Components/Admin/Administrator';
@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Homepage />} />
           <Route path='/ProductPage' element={<ProductPage />} />
           <Route path='/RecoverPassword' element={<RecoverPassword />} />
           <Route path='/EditPassword' element={< EditPassUser />} />
