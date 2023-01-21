@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button, Form, Image} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Loader from '../../util/loader/Loader';
+import Loader from '../../Util/loader/Loader';
 import './recoveri.css';
 
 const RecoverPassword = () => {
