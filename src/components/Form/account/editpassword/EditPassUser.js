@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button, Container, Form, Image } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Loader from '../../../util/loader/Loader'
+import Loader from '../editpassword/EditPassUser'
 import './editpassword.css';
 
 

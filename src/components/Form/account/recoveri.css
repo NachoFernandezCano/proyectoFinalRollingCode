@@ -1,45 +1,35 @@
-:root {
-    --WHITE-bs-:#eaeaea;
-    --DEEPBLUE-bs-: #0F1A37;
-    --HOTPINK-bs-: #E31474;
-    --CYAN-bs-: #00C9EE;
-    }
-
-body{
-    background-color: var(--DEEPBLUE-bs-) !important;
-}
-.container-form{
-    direction: flex;    
-    justify-content: center;
-    align-content: center;    
+.container-form {
+  direction: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-.titulo{
-    font-size: 25px;
-    color: coral;
-    font-weight: 100px;
+.titulo {
+  font-size: 25px;
+  color: coral;
+  font-weight: 100px;
 }
-.formRecupero{        
-    border-radius: 2rem;    
-    padding: 2rem;    
-    font-family: Arial, sans-serif;
-    color: coral;
-    margin-left: 25%;
-    margin-right: 25%; 
+.formRecupero {
+  border-radius: 2rem;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: coral;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 @media (max-width: 500px) {
-    .formRecupero {        
-        background-color: red;
-    }
+  .formRecupero {
+    background-color: red;
+  }
 
-    .btn-conteiner{        
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 1rem;
-        background-color: red;
-        width: 100%;
-    }
+  .btn-conteiner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    background-color: red;
+    width: 100%;
+  }
 }
