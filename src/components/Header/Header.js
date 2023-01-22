@@ -55,8 +55,8 @@ const Header = () => {
     } catch (error) {
       if (error.code == "ERR_NETWORK") {
         return Swal.fire({
-          title: '<strong>Error de Conexion Leer Atte.</strong>',
-          html: '<i>No se puede conectar con el Servidor de Datos, Favor de Comunicar al Administrador del Sistema!!!</i>',
+          title: '<strong>Error de Conexión</strong>',
+          html: '<i>No se puede conectar con el Servidor de Datos. Por favor intente de nuevo más tarde.</i>',
           icon: "error"
         })
       }
@@ -75,7 +75,7 @@ const Header = () => {
       text: "Deseas Cerrar Sesion?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#e31474',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Cerrar'
     }).then((result) => {
@@ -126,26 +126,26 @@ const Header = () => {
     <>
       <div className='Header_container'>
         <div>
-          <div className="logoContainer">
+          <div className='logoContainer'>
             {logo}
             <div>
               <input placeholder="Buscar producto" />
-              <div>
-                <FaSearch />
+              <div id="schIconContainer">
+                <FaSearch className='searchIcon'/>
               </div>
             </div>
             <div>
-              <FaInstagram className="socialIcons" />
-              <FaTwitter className="socialIcons" />
-              <FaFacebookF className="socialIcons" />
+              <FaInstagram className='socialIcons' />
+              <FaTwitter className='socialIcons' />
+              <FaFacebookF className='socialIcons' />
             </div>
             <div>
               {loginUser ? (
                 <>
                   <Nav.Link href="#action1" className='btnCard'>
-                    <FaShoppingCart />
+                    <FaShoppingCart className='headerIcons'/>
                   </Nav.Link>
-                  <NavDropdown title={userName} id="navbarUsuario" className='userMenu' bg='light'>
+                  <NavDropdown title={userName} id='navbarUsuario' className='userMenu' bg='light'>
                     <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
                     <NavDropdown.Item href="#action4">
                       Another action
@@ -157,45 +157,45 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Register</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Registrarse</Nav.Link>
               )}
             </div>
           </div>
         </div>
         <div>
           <div>
-            <FaHome className="mainIcons needHoover" />
+            <FaHome className='mainIcons needHoover' />
           </div>
           <div>
-            <div className="needHoover">
+            <div className='needHoover'>
               DESTACADOS
-              <FaRegStar className="headerIcons" />
+              <FaRegStar className='headerIcons' />
             </div>
-            <div className="needHoover">
+            <div className='needHoover'>
               FAVORITOS
-              <FaRegHeart className="headerIcons" />
+              <FaRegHeart className='headerIcons' />
             </div>
-            <div className="needHoover">
+            <div className='needHoover'>
               CONTACTANOS
-              <FaPhone className="headerIcons" />
+              <FaPhone className='headerIcons' />
             </div>
           </div>
           <div>
-            <FaShoppingCart className="mainIcons needHoover" />
+            <FaShoppingCart className='mainIcons needHoover' />
             0
           </div>
-          <div className="needHoover">
-            <FaRegQuestionCircle className="mainIcons needHoover" />
+          <div className='needHoover'>
+            <FaRegQuestionCircle className='mainIcons needHoover' />
           </div>
         </div>
       </div>
 
-      <div className="navbarMobile">
+      <div className='navbarMobile'>
         <Navbar variant="dark" expand="lg" >
-          <Container className="navbarMobile">
+          <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='me-auto'>
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">Destacados</Nav.Link>
                 <Nav.Link href="#link">Contactanos</Nav.Link>
@@ -210,9 +210,9 @@ const Header = () => {
               {loginUser ? (
                 <>
                   <Nav.Link href="#action1" className='btnCard'>
-                    <FaShoppingCart className="cart-icon fav-icon" />
+                    <FaShoppingCart className='cart-icon fav-icon' />
                   </Nav.Link>
-                  <NavDropdown title={userName} id="navbarUsuario" className='userMenu' bg='light'>
+                  <NavDropdown title={userName} id='navbarUsuario' className='userMenu' bg='light'>
                     <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
                     <NavDropdown.Item href="#action4">
                       Another action

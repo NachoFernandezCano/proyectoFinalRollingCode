@@ -1,85 +1,128 @@
 :root {
-    --clr-primary: #5930ff;
-    --clr-primary-hover: #29e6a7;
-    --clr-primary-dark: #039d69;
-    --clr-gray100: #f9fbff;
-    --clr-gray150: #f4f6fb;
-    --clr-gray200: #eef1f6;
-    --clr-gray300: #c7ccdb;
-    --clr-gray400: #767b91;
-    --clr-gray500: #4f546c;
-    --clr-success: #00c853;
-    --clr-error: #ff1744;
-    --radius: 0.2rem;
-    }
+  --radius: 0.2rem;
+}
+
+.ModalTitle {
+  color: var(--DEEPBLUE-bs-);
+}
 
 .form {
-    font-family: Montserrat, sans-serif;    
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;    
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.form__group{
-    display: flex;
-    flex-direction: column;
-    position: relative;    
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
+
 .form__label {
-    position: absolute;
-    top: -0.5rem;
-    left: 0.5rem;
-    background-color: white;
-    padding: 0 0.5rem;
-    font-size: 0.8rem;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  background-color: white;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
 }
+
 .form__input {
-    padding: 1rem;
-    font-family: inherit;
-    color: inherit;
-    outline: none;
-    border: 2px solid var(--clr-gray300);
-    border-radius: var(--radius); 
+  padding: 1rem;
+  font-family: inherit;
+  color: var(--DEEPBLUE-bs-);
+  outline: none;
+  border: 2px solid var(--CYAN-bs-);
+  border-radius: var(--radius);
 }
+
 .form__message {
-    font-size: 0.8rem;
-    margin-top: 0.2rem;
-    color:var(--clr-error);
-    display: none;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  color: var(--HOTPINK-bs-);
+  display: none;
 }
+
 .form__success input {
-    border: 1px solid var(--clr-success);
+  border: 1px solid var(--CYAN-bs-);
 }
+
 .form__error input {
-    border: 1px solid var(--clr-error);
+  border: 1px solid var(--HOTPINK-bs-);
 }
 
 .form__successicon,
 .form__erroricon {
-    position: absolute;
-    right: 1.5rem;
-    top: 0.6rem;
-    width: 1rem;    
-    display: none;
+  position: absolute;
+  right: 1.5rem;
+  top: 0.6rem;
+  width: 1rem;
+  display: none;
 }
 
 .form__success div.form__successicon {
-    display: block;
+  display: block;
 }
-
 
 .form__error div.form__erroricon {
-    display: block;
+  display: block;
 }
 
-.form__error p.form__message
-{
-    display: block;
+.form__error p.form__message {
+  display: block;
 }
 
-.form__successicon { 
-    fill: var(--clr-error);
+.form__successicon {
+  fill: var(--CYAN-bs-);
 }
 
-.form__erroricon {    
-    stroke:var(--clr-error);
+.form__erroricon {
+  stroke: var(--HOTPINK-bs-);
+}
+
+#btnLogo {
+  width: 1.6rem;
+  height: 1.5rem;
+  color: var(--CYAN-bs-);
+}
+
+#btnLogin {
+  background-color: white;
+  border: 1px solid var(--CYAN-bs-);
+  color: var(--DEEPBLUE-bs-);
+  margin-top: 0.8rem;
+}
+
+#btnLogin:hover {
+  cursor: pointer;
+  transform: scale(95%);
+  transition: 0.2s;
+}
+
+.fgtPass {
+  text-decoration: none;
+  color: var(--DEEPBLUE-bs-);
+}
+
+.fgtPass:hover {
+  color: var(--CYAN-bs-);
+}
+
+.checkBx:focus {
+  color: var(--CYAN-bs-);
+}
+
+.alertIcon {
+  height: 2.2rem;
+  width: 2.2rem;
+  padding-right: 0.3rem;
+  color: var(--HOTPINK-bs-);
+}
+
+.successIcon {
+  height: 2.2rem;
+  width: 2.2rem;
+  padding-right: 0.3rem;
+  color: var(--CYAN-bs-);
 }

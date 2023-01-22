@@ -10,6 +10,7 @@ input {
 }
 .search-bar {
 	display: flex;
+	border-radius: 0 0.375em 0.375em 0;
 }
 .search-bar input,
 .search-btn, 
@@ -105,7 +106,7 @@ input {
 /* Active state */
 .search-bar input:focus + .search-btn,
 .search-bar input:valid + .search-btn {
-	background: #2762f3;
+	background: var(--DEEPBLUE-bs-);
 	border-radius: 0 0.375em 0.375em 0;
 	transform: scale(1);
 }
@@ -118,7 +119,7 @@ input {
 .search-bar input:focus + .search-btn:hover,
 .search-bar input:valid + .search-btn:hover,
 .search-bar input:valid:not(:focus) + .search-btn:focus {
-	background: #0c48db;
+	background: var(--DEEPBLUE-bs-);
 }
 .search-bar input:focus + .search-btn:active,
 .search-bar input:valid + .search-btn:active {
