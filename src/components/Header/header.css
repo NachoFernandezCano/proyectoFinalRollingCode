@@ -81,6 +81,25 @@
   margin-left: 25rem;
 }
 
+.searchIcon{
+  color: white;
+}
+
+#schIconContainer{
+  background-color: var(--CYAN-bs-);
+}
+
+#schIconContainer:hover{
+  transform: scale(105%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#schIconContainer:active{
+  transform: scale(100%);
+}
+
+
 .socialIcons{
   height: 1.8rem;
   width: 1.8rem;
@@ -126,14 +145,20 @@
   color: white;
   margin-right: 1rem;
   display: inline-block;
-  width: 180px;
-  height: 50px;
+  width: 1.5rem;
+  height: 1.8rem;
   padding: 1.1rem 3.1rem;
   background-image: url(../../Assets/images/user_icon.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;
   background-position-x: 0rem;
+}
+
+#userLogin:hover{
+  color: var(--HOTPINK-bs-)!important;
+  transform: scale(110%);
+  transition: 0.3s;
 }
 
 .img-avatar {
@@ -162,6 +187,18 @@ span {
 }
 
 @media (max-width: 576px) {
+  .Header_container {
+    display: none;
+  }
+
+  .navbarMobile {
+    display: block;
+    background-color: var(--DEEPBLUE-bs-);
+    color: white;
+  }
+
+}
+@media (max-width: 1040px) {
   .Header_container {
     display: none;
   }
