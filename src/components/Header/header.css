@@ -81,6 +81,15 @@
   margin-left: 25rem;
 }
 
+.logo {
+  height: 4rem;
+  width: 10rem;
+  background-image: url(../../Assets//images/logo.jpg);
+  background-size:90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .searchIcon{
   color: white;
 }
@@ -98,7 +107,6 @@
 #schIconContainer:active{
   transform: scale(100%);
 }
-
 
 .socialIcons{
   height: 1.8rem;

@@ -4,23 +4,48 @@
   align-content: center;
 }
 
-.titulo {
+#titleRP {
   font-size: 25px;
-  color: coral;
+  color: var(--DEEPBLUE-bs-);
   font-weight: 100px;
 }
+
 .formRecupero {
   border-radius: 2rem;
   padding: 2rem;
   font-family: Arial, sans-serif;
-  color: coral;
+  color: var(--DEEPBLUE-bs-);
   margin-left: 25%;
   margin-right: 25%;
 }
 
+.btnRP {
+  background-color: transparent;
+  border-color: var(--CYAN-bs-);
+  width: 10rem;
+  height: 4rem;
+  color: var(--DEEPBLUE-bs-);
+}
+
+.btnRP:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--DEEPBLUE-bs-);
+  box-shadow: inset 1px 1px 1px 1px var(--CYAN-bs-);
+  transform: scale(95%);
+  transition: 0.3s;
+}
+
+.btnIcon {
+  height: 2rem;
+  width: 2rem;
+  color: var(--CYAN-bs-);
+}
+
 @media (max-width: 500px) {
   .formRecupero {
-    background-color: red;
+    background-color: var(--DEEPBLUE-bs-);
+    margin-top: 2.5rem;
   }
 
   .btn-conteiner {
@@ -29,7 +54,17 @@
     justify-content: center;
     text-align: center;
     gap: 1rem;
-    background-color: red;
     width: 100%;
+  }
+
+  .btnRP {
+    width: 8rem;
+    height: 4rem;
+    color: var(--CYAN-bs-);
+  }
+
+  #titleRP,
+  .textRP {
+    color: white;
   }
 }

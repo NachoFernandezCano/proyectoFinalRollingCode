@@ -15,6 +15,7 @@
   cursor:pointer;
   transform: scale(95%);
   transition: 0.2s;
+  box-shadow: inset 1px 1px 1px 1px var(--HOTPINK-bs-);
 }
 
 .labelStyles{

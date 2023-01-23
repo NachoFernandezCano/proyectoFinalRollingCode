@@ -16,7 +16,7 @@ const ModalLogin = ({ show, setShow, handleLogin, handleRegister, setloaderUser,
                         <Tabs
                             defaultActiveKey="Login"
                             id="uncontrolled-tab-example"
-                            className="mb-3 logo"
+                            className="mb-3"
                             justify
                         >
                             <Tab eventKey="Login" title="Login">

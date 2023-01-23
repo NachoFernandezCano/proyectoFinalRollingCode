@@ -4,7 +4,7 @@ import { Navigation } from "swiper";
 import "swiper/css"
 import "swiper/css/navigation"
 import "./Slider.css"
-import { SliderProducts } from "../../Data/SliderData";
+import { SliderProducts} from "../../Data/SliderData";
 
 const Slider = () => {
   return (
@@ -12,11 +12,11 @@ const Slider = () => {
       <Swiper modules={[Navigation]} className="mySwiper"
       navigation={true}
       loopFillGroupWithBlank={true}
-      slidesPerView={1} spaceBetween={40}
+      slidesPerView={2} spaceBetween={40}
       slidesPerGroup={1} loop={true}>
         {SliderProducts.map((slide,i)=>(
       <SwiperSlide>
-        <img src={slide.img} alt="product" className='img-p' ></img>
+        <img src={slide.image} alt="product" className='img-p' ></img>
       </SwiperSlide>
         ))}
       </Swiper>
