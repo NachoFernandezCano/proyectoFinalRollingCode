@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Components/Header/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Homepage from "./Pages/Home-page/Home-page";
+import RecoverPassword from './Components/Form/account/RecoverPassword';
+import EditPassUser from './Components/Form/account/editpassword/EditPassUser';
+import Administrator from './Components/Admin/Administrator';
+import ProductPage from "./Components/ProductPage/ProductPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/ProductPage' element={<ProductPage />} />
+          <Route path='/RecoverPassword' element={<RecoverPassword />} />
+          <Route path='/EditPassword' element={< EditPassUser />} />
+          <Route path='/Admin' element={<Administrator />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
