@@ -22,7 +22,7 @@
     border-left-color: transparent;
     width: 80px;
     height: 80px;
-    border-left-color: rgb(198, 20, 252);    
+    border-left-color: var(--CYAN-bs-);    
     animation: spin 1s linear infinite;
 }
 @keyframes spin {
