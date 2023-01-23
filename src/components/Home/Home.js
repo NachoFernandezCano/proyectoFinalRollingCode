@@ -39,7 +39,7 @@ const Home = () => {
     <>
       <section id="main">
         <div class="container-fluid">
-          <Row xs={1} sm={3} md={3} lg={5} className="g-0">
+          <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between">
             {
               !isLoading ? (
                 product.length !== 0 ? (
@@ -57,7 +57,6 @@ const Home = () => {
                 <>Loading...</>
               )
             }
-
             <div
               class="advertisement d-none d-md-flex align-items-center flex-column col-md-2 col-lg-2 p-0"
             >
