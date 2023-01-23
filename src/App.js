@@ -1,11 +1,12 @@
-import Header from "./Components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Home-page/Home-page";
-import RecoverPassword from './Components/Form/account/RecoverPassword';
-import EditPassUser from './Components/Form/account/editpassword/EditPassUser';
-import Administrator from './Components/Admin/Administrator';
-import ProductPage from "./Components/ProductPage/ProductPage";
+import RecoverPassword from './components/Form/account/RecoverPassword';
+import EditPassUser from './components/Form/account/editpassword/EditPassUser';
+import Administrator from './components/Admin/Administrator';
+import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/Admin' element={<Administrator />} />
         </Routes>
       </BrowserRouter>
+      <Footer/>
     </>
   );
 }

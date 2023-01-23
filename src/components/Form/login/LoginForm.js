@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Loader from '../../Util/loader/Loader'
+import Loader from '../../util/loader/Loader'
 import './login.css';
 import { FiLogIn, FiAlertCircle } from "react-icons/fi";
 import {BsHandThumbsUp} from "react-icons/bs"
