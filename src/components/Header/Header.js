@@ -21,7 +21,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ModalLogin from "../Form/Modal/ModalLogin";
-import logo from "../../Assets/images/logo.jpg"
+// import logo from "../../Assets/images/logo.jpg"
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -126,8 +126,8 @@ const Header = () => {
     <>
       <div className='Header_container'>
         <div>
-          <div className='logoContainer'>
-            {logo}
+          <div>
+            <div className="logo"></div>
             <div>
               <input placeholder="Buscar producto" />
               <div id="schIconContainer">
