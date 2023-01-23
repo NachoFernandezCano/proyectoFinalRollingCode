@@ -5,6 +5,10 @@
   font-family: "Barlow Condensed", sans-serif;
 }
 
+#main {
+  height: 100vh;
+}
+
 body {
   font-family: "Barlow Condensed", sans-serif;
 }

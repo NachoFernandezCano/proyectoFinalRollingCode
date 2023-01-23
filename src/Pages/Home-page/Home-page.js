@@ -1,7 +1,7 @@
-import Slider from "../../Components/Slider/Slider";
-import Home from "../../Components/Home/Home";
-import Categories from "../../Components/Categories/Categories"
-import Footer from "../../Components/Footer/Footer"
+import Slider from "../../components/Slider/Slider";
+import Home from "../../components/Home/Home";
+import Categories from "../../components/Categories/Categories"
+import Footer from "../../components/Footer/Footer"
 
 
 const Homepage = () => {
@@ -10,9 +10,8 @@ const Homepage = () => {
     <Slider/>
     <Home/>
     <Categories/>
-    <Footer/>
     </>
-   );
+  );
 }
- 
+
 export default Homepage;
