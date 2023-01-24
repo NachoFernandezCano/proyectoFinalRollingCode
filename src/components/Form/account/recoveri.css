@@ -30,7 +30,7 @@
 .btnRP:hover {
   background-color: transparent;
   border-color: transparent;
-  color: var(--DEEPBLUE-bs-);
+  color: white;
   box-shadow: inset 1px 1px 1px 1px var(--CYAN-bs-);
   transform: scale(95%);
   transition: 0.3s;

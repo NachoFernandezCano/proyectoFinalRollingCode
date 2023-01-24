@@ -11,17 +11,16 @@ import "./home.css"
 const Home = () => {
 
   const [isLoading, setIsLoading] = useState(false);
-  const [charToShow, setCharToShow] = useState({});
+  const [productToShow, setProductToShow] = useState({});
 
   // const [page, setPage] = useState(1);
   // const [pagesCount, setPagesCount] = useState(1);
   // const [searchFilter, setSearchFilter] = useState('');
 
   //   useEffect(() => {
-  //     handleGetCharacters();
+  //     handleGetProducts();
   //   }, [page, searchFilter]);
 
-  // {product.hotItem === "true"? <hotItemCard/>}
   const [product, setProduct] = useState([]);
   const getProducts = async () => {
     try {
@@ -58,7 +57,7 @@ const Home = () => {
               )
             }
             <div
-              class="advertisement d-none d-md-flex align-items-center flex-column col-md-2 col-lg-2 p-0"
+              class="advertisement d-none d-lg-flex align-items-center flex-column col-md-2 col-lg-2 p-0"
             >
               <img
                 class="publicity my-3"
@@ -77,22 +76,22 @@ const Home = () => {
               />
             </div>
             {/* <div className="pagination">
-                <div className="pagination_button">
-                  <Button
-                    onClick={() => setPage(page - 1)} 
-                    disabled={page === 1}
-                  >
-                    {'<'}
-                  </Button>
-                  <b className="text-white fs-4">{page}</b>
-                  <Button
-                    onClick={() => setPage(page + 1)} 
-                    disabled={page === pagesCount}
-                  >
-                    {'>'}
-                  </Button>
-                </div>
-              </div> */}
+              <div className="pagination_button">
+                <Button
+                  onClick={() => setPage(page - 1)}
+                  disabled={page === 1}
+                >
+                  {'<'}
+                </Button>
+                <b className="text-white fs-4">{page}</b>
+                <Button
+                  onClick={() => setPage(page + 1)}
+                  disabled={page === pagesCount}
+                >
+                  {'>'}
+                </Button>
+              </div>
+            </div> */}
           </Row>
         </div>
       </section>
