@@ -5,12 +5,10 @@
   font-family: "Barlow Condensed", sans-serif;
 }
 
-#main {
-  height: 100vh;
-}
-
 body {
   font-family: "Barlow Condensed", sans-serif;
+  height: 50vh;
+  max-height: 50vh;
 }
 
 .center {
@@ -21,6 +19,8 @@ body {
 .advertisement {
   background-color: var(--DEEPBLUE-bs-);
   border-top: 1px solid var(--DEEPBLUE-bs-);
+  max-height: 90vw;
+  height: 90%;
 }
 
 h2 {
@@ -52,7 +52,7 @@ h2 {
 
 .publicity {
   margin-top: 4rem;
-  height: 54vh;
+  height: 54%;
   width: 15vw;
   box-shadow: white 0px 1px 8px 0px;
 }
