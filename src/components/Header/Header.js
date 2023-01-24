@@ -129,7 +129,7 @@ const Header = () => {
           <div>
             <div className="logo"></div>
             <div>
-              <input placeholder="Buscar producto" />
+              <input placeholder="Buscar producto" className="ps-3" />
               <div id="schIconContainer">
                 <FaSearch className='searchIcon'/>
               </div>
@@ -201,7 +201,7 @@ const Header = () => {
                 <Nav.Link href="#link">Contactanos</Nav.Link>
                 <Nav.Item>
                   <div>
-                    <input placeholder="Buscar producto" />
+                    <input placeholder="Buscar producto" className="ps-1"/>
                   </div>
                 </Nav.Item>
               </Nav>
