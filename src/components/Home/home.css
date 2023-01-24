@@ -6,25 +6,26 @@
 }
 
 body {
-  font-family: "Barlow Condensed", sans-serif;
   height: 50vh;
   max-height: 50vh;
+  border-top: 2px solid var(--DEEPBLUE-bs-);
+}
+
+.rowContainer {
+  border-top: 2px solid var(--DEEPBLUE-bs-);
 }
 
 .center {
   background-color: white;
-  border-top: 1px solid var(--DEEPBLUE-bs-);
 }
 
 .advertisement {
   background-color: var(--DEEPBLUE-bs-);
-  border-top: 1px solid var(--DEEPBLUE-bs-);
   max-height: 90vw;
   height: 90%;
 }
 
 h2 {
-  font-family: victorBoldItalic;
   color: var(--CYAN-bs-);
 }
 
@@ -54,5 +55,6 @@ h2 {
   margin-top: 4rem;
   height: 54%;
   width: 15vw;
-  box-shadow: white 0px 1px 8px 0px;
+  box-shadow: rgb(6, 6, 158) 0px 1px 8px 0px;
+  /* box-shadow: white 0px 1px 8px 0px; */
 }

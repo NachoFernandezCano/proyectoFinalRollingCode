@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Card, Button, Col, Row } from "react-bootstrap";
 import Cards from "../Cards/Cards"
-import adPicture from "../../Assets/images/Advertisement/Advertisement2.png"
-import adPicture2 from "../../Assets/images/Advertisement/Advertisement3.png"
-import adPicture3 from "../../Assets/images/Advertisement/Advertisement1.png"
+import adPicture from "../../assets/images/advertisement/Advertisement2.png"
+import adPicture2 from "../../assets/images/advertisement/Advertisement3.png"
+import adPicture3 from "../../assets/images/advertisement/Advertisement1.png"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./home.css"
@@ -37,8 +37,8 @@ const Home = () => {
   return (
     <>
       <section id="main">
-        <div class="container-fluid">
-          <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between">
+        <div class="container-fluid p-0">
+          <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between rowContainer">
             {
               !isLoading ? (
                 product.length !== 0 ? (
