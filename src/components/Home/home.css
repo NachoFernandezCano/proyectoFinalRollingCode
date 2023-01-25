@@ -35,20 +35,35 @@ h2 {
   align-items: center;
 }
 
-.pagination .active a {
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.pagination_button {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.pagination_button button {
+  background-color: var(--DEEPBLUE-bs-);
+  border: none;
+}
+
+.pagination_button button:hover {
   background-color: var(--HOTPINK-bs-);
-  border: none;
-  border-radius: 30px;
 }
 
-.pagination > .active a:first-child,
-.active a:last-child {
-  border-radius: 30px;
+.pagination_button button:active {
+  background-color: var(--HOTPINK-bs-);
 }
 
-.pagination .active a:hover {
-  background-color: var(--CYAN-bs-);
-  border: none;
+.pagination_button button:disabled {
+  background-color: rgb(75, 7, 43);
 }
 
 .publicity {
