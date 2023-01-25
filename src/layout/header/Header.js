@@ -12,7 +12,6 @@ import {
 } from "react-icons/fa"
 import "./header.css"
 import { React, useState} from 'react'
-import { Button, Form } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -21,16 +20,21 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ModalLogin from "../../components/Form/Modal/ModalLogin";
+import Menu from './../../components/util/menu/Menu'
+
 
 const Header = () => {
     const [modalLogin, setmodalLogin] = useState(false);
     const [loginUser, setloginUser] = useState(false);
+
     const [loaderUser, setloaderUser] = useState(false);
     const [loaderRegister, setloaderRegister] = useState(false);
     const [userName, setuserName] = useState('');
+    const [userType, setuserType] = useState(false)       
     
-    let navitage = useNavigate();
-  
+    let navitage = useNavigate();    
+    
+
     const handleIngresar = async (e) =>{
         e.preventDefault();       
         try {
@@ -40,20 +44,21 @@ const Header = () => {
                     paylaod[target.name] = target.value;                    
                 }
             }                     
-            const {data} = await axios.post('http://localhost:4000/api/user/auth', paylaod);                  
-            setuserName(data.dataUser.name);
-            alert(data.dataUser.type);
-            if(data.dataUser.type==='admin')
-            {
-                navitage("/Admin");
+            const {data} = await axios.post('http://localhost:4000/api/user/auth', paylaod);  
+            console.log(data);
+            setuserName(data.dataUser.nombre);            
+            localStorage.setItem("user",data.token);
+            if(data.dataUser.type==='admin'){
+              setuserType(true);
             }else{
+              setuserType(false);
             }
             setloaderUser(true);
             setloginUser(true);        
             setmodalLogin(false);    
             
         } catch (error) {     
-            if(error.code=="ERR_NETWORK"){
+            if(error.code==="ERR_NETWORK"){
                 return  Swal.fire({
                     title: '<strong>Error de Conexion Leer Atte.</strong>',
                     html: '<i>No se puede conectar con el Servidor de Datos, Favor de Comunicar al Administrador del Sistema!!!</i>',
@@ -84,6 +89,9 @@ const Header = () => {
             setloaderUser(false);
             setloaderRegister(false);
             setmodalLogin(false);
+            setuserType(false);
+            localStorage.clear("user");
+            navitage("/");
             console.log(loginUser);
         }
     })
@@ -100,7 +108,7 @@ const Header = () => {
                 //target.value='';
             }
         }         
-        paylaod["type"] = "user";
+        paylaod["type"] = "user";      
         const {data} = await axios.post('http://localhost:4000/api/user/register', paylaod);        
         Swal.fire({
             title: '<strong>Resgistro de Usuarios</strong>',
@@ -122,7 +130,9 @@ const Header = () => {
     }
     setloaderRegister(false);
   }
-  
+  const handlePerfil = () =>{
+    navitage("/Perfil");
+  }
   return (
     <>
       <div className='Header_container'>
@@ -131,7 +141,7 @@ const Header = () => {
             <h1>MARCA</h1>           
             <div>
               <input placeholder="Buscar producto"/>
-              <div>
+              <div className="buscar">
                 <FaSearch/>
               </div>  
             </div>    
@@ -140,33 +150,22 @@ const Header = () => {
               <FaTwitterSquare size={40} style={{fill: "white"}}/>
               <FaFacebookSquare size={40} style={{fill: "white"}}/>
             </div>
-            <div>              
-              {loginUser ?(   
-                            <>
-                                <Nav.Link href="#action1" className='btnCard'>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <circle cx="6" cy="19" r="2" />
-                                    <circle cx="17" cy="19" r="2" />
-                                    <path d="M17 17h-11v-14h-2" />
-                                    <path d="M6 5l14 1l-1 7h-13" />
-                                </svg>                                
-                                </Nav.Link>
-                                <NavDropdown title={userName} id="navbarUsuario" className='userMenu' bg='light'>                                
-                                    <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">
-                                        Another action
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#" onClick={()=> handleLogout()}>
-                                        Cerrar Sesion
-                                    </NavDropdown.Item>
-                                </NavDropdown>                                                    
-                            </>                                                                                 
-                        ):(
-                            <Nav.Link  className='userName'  id='userLogin' onClick={()=>setmodalLogin(true)}>Login/Register</Nav.Link>
-                        )}          
-            </div>          
+            
+            {loginUser ?
+              (   
+                <div className="userMenu">                               
+                  <NavDropdown title={userName} id="navbarUsuario"  bg='light'>                                
+                      <NavDropdown.Item href="#" onClick={()=>(handlePerfil())}>Perfil</NavDropdown.Item>                                       
+                      <NavDropdown.Item href="#" onClick={()=> handleLogout()}>
+                          Cerrar Sesion
+                      </NavDropdown.Item>
+                  </NavDropdown>                                                    
+                </div>                                                                                 
+              ):(
+                <Nav.Link  className='userName'  id='userLogin' onClick={()=>setmodalLogin(true)}>Login/Register</Nav.Link>
+              )
+            }          
+            
           </div>          
         </div>      
         <div>
@@ -223,27 +222,18 @@ const Header = () => {
             </Navbar.Collapse>
             <Nav>
             {loginUser ?(   
-                            <>
-                                <Nav.Link href="#action1" className='btnCard'>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <circle cx="6" cy="19" r="2" />
-                                    <circle cx="17" cy="19" r="2" />
-                                    <path d="M17 17h-11v-14h-2" />
-                                    <path d="M6 5l14 1l-1 7h-13" />
-                                </svg>                                
-                                </Nav.Link>
-                                <NavDropdown title={userName} id="navbarUsuario" className='userMenu' bg='light'>                                
-                                    <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">
-                                        Another action
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#" onClick={()=> handleLogout()}>
-                                        Cerrar Sesion
-                                    </NavDropdown.Item>
-                                </NavDropdown>                                                    
-                            </>                                                                                 
+                          <>                                
+                            <NavDropdown title={userName} id="navbarUsuario" className='userMenu' bg='light'>                                
+                                <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">
+                                    Another action
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#" onClick={()=> handleLogout()}>
+                                    Cerrar Sesion
+                                </NavDropdown.Item>
+                            </NavDropdown>                                                    
+                          </>                                                                                 
                         ):(
                             <Nav.Link  className='userName'  id='userLogin' onClick={()=>setmodalLogin(true)}>Login/Register</Nav.Link>
                         )}                        
@@ -251,6 +241,11 @@ const Header = () => {
           </Container>
         </Navbar>
       </div>
+      {
+        userType?(
+            <Menu />
+        ):(<></>)
+      }
 
       <ModalLogin            
         show={modalLogin}

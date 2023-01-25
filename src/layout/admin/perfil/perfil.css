@@ -1,0 +1,14 @@
+.container-titulo{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tituloimg{    
+    width: 64px;
+    height: 64px;        
+}
+.titulo{
+    color: coral;
+    margin-top: 15px;
+    margin-left: 5px;
+}

@@ -11,7 +11,7 @@
 
 
 .Header_container {
-    height: 8rem;
+    height: 9rem;
     background-color:var(--DEEPBLUE-bs-) ; 
     overflow-x: hidden;
 }
@@ -41,7 +41,7 @@
     width: 25rem;
 }
 
-.Header_container > div > div:first-child > div > div {
+.buscar{
     background-color: white;
     width: 3rem;
     height: 2.5rem;
@@ -102,7 +102,7 @@
 }
 
 .userMenu{
-    color: white;
+    color: white;    
     margin-right: 1rem;
     display: inline-block;
     width: 180px;
@@ -113,6 +113,9 @@
     background-position: center center;
     background-size: 50px auto;
     background-position-x: 0rem;
+}
+#navbarUsuario{
+    background-color: transparent !important;
 }
 
 .img-avatar {
