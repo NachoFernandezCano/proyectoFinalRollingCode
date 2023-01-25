@@ -24,7 +24,8 @@ const Home = () => {
   const [product, setProduct] = useState([]);
   const getProducts = async () => {
     try {
-      const info = await axios.get("http://localhost:4000/layout");
+      const info = await axios.get("http://localhost:4000/test/products");
+      console.log(info);
       setProduct(info.data)
     } catch (error) {
       alert('Los productos no pudieron cargarse correctamente. Intente de nuevo más tarde')
