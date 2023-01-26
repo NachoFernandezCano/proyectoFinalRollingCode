@@ -1,48 +1,50 @@
-import React from "react"
 import { Link } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
-import ListGroup from "react-bootstrap/ListGroup"
-import { FaHeart, FaRegStar, FaShoppingCart, FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
+import { Card, Button, Col, Row } from "react-bootstrap";
+import { FaHeart, FaRegStar, FaShoppingCart } from 'react-icons/fa';
+import React, { useEffect } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import "./cards.css"
 
 const Cards = () => {
   const [product, setProduct] = useState([]);
-  const getProducts = async () => {
+  const getProduct = async () => {
     try {
-      const info = await axios.get("http://localhost:4000/layout");
+      const info = await axios.get("http://localhost:4000/products/products");
+      console.log(info);
       setProduct(info.data)
     } catch (error) {
       alert('Los productos no pudieron cargarse correctamente. Intente de nuevo más tarde')
     }
   };
   useEffect(() => {
-    getProducts();
+    getProduct()
   }, []);
-
   return (
-    <Card>
-      <FaRegStar className="hot-item" />
-      <Card.Img variant="top"
-        src={product.img} />
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>{product.price}</ListGroup.Item>
-      </ListGroup>
-      <Card.Body className="card-body">
-        <Card.Link href="#">
-          <FaHeart className="fav-icon" />
-        </Card.Link>
-        <Card.Link href="#">
-          <FaShoppingCart className="cart-icon fav-icon" />
-        </Card.Link>
-      </Card.Body>
-      <Link className="cards-btn" to="/"> Ver más </Link>
-    </Card>
-  );
-}
+    <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between rowContainer" key={product._id}> {product.map((product) =>
+      <Col>
+        <Card className="card">
+          {/* <FaRegStar className="hotItem" /> */}
+          <Card.Img variant="top"
+            src={product.image} />
+          <Card.Title className="cardTitle">{product.brand}</Card.Title>
+          <Card.Text className="cardTitle text-bolder">{product.name}</Card.Text>
+          {/* <Card.Text className="p-2 text-justify">{product.description}</Card.Text> */}
+          <Card.Body className="cardBody">
+            <Card.Text>${product.price}</Card.Text>
+            <Card.Link href="#">
+              <FaHeart className="favIcon" />
+            </Card.Link>
+            <Card.Link href="#">
+              <FaShoppingCart className="cartIcon favIcon" />
+            </Card.Link>
+          </Card.Body>
+          <Link className="cardsBtn" to="/"> Ver más </Link>
+        </Card>
+      </Col>
+    )}
+    </Row>
+  )
+};
 
 export default Cards;
