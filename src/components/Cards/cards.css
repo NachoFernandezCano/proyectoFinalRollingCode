@@ -1,53 +1,70 @@
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .row{
+  border-top: 1px solid var(--DEEPBLUE-bs-);
+} */
+
 .card {
-  width: 90%;
-  height: 100%;
-  margin: 10px;
+  width: 18rem;
+  margin: 25px 10px;
   transition: all 300ms;
   background: 0;
-  border: 0;
+  border: 1;
 }
 
 .card:hover {
-  width: 90%;
-  height: 100%;
   box-shadow: var(--CYAN-bs-) 0px 1px 4px 1px;
 }
 
-.hot-item{
+.hotItem{
   margin: 0.5rem;
   height: auto;
   width: 1.6rem;
   color: #ffe100;
 }
 
-.card-body {
+.cardBody {
   text-align: end;
+  font-size: large;
+  font-weight: bolder;
+  color: var(--HOTPINK-bs-);
 }
 
-.fav-icon {
+.cardTitle{
+  color: var(--DEEPBLUE-bs-);
+  text-align: end;
+  padding: 0.5rem;
+  font-size: medium;
+}
+
+.favIcon {
   height: auto;
   width: 1.6rem;
   color: pink;
 }
 
-.fav-icon:hover {
+.favIcon:hover {
   transform: scale(110%);
   color: var(--HOTPINK-bs-);
 }
 
-.fav-icon:active, .cart-icon:active {
+.favIcon:active, .cartIcon:active {
   transform: scale(105%);
 }
 
-.cart-icon{
+.cartIcon{
   color: lightblue;
 }
 
-.cart-icon:hover {
+.cartIcon:hover {
   color: var(--CYAN-bs-);
 }
 
-.cards-btn{
+.cardsBtn{
   text-align: center;
   font-size: 1.3rem;
   width: 50%;
@@ -62,12 +79,12 @@
   margin-bottom: 0.5rem;
 }
 
-.cards-btn:hover{
+.cardsBtn:hover{
   background-color: var(--HOTPINK-bs-);
   color: white;
 }
 
-.cards-btn:active{
+.cardsBtn:active{
   background-color: var(--HOTPINK-bs-);
   color: white;
   transform: scale(95%);

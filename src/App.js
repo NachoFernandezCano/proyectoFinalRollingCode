@@ -1,7 +1,7 @@
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 import Homepage from './pages/homePage/homePage';
 import RecoverPassword from './components/Form/account/RecoverPassword';
 import EditPassUser from './components/Form/account/editpassword/EditPassUser';
