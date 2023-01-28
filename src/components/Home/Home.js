@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card, Button, Col, Row } from "react-bootstrap";
-import Cards from "../Cards/Cards"
+import Cards from "../cards/Cards"
 import adPicture from "../../Assets/images/Advertisement/Advertisement2.png"
 import adPicture2 from "../../Assets/images/Advertisement/Advertisement3.png"
 import adPicture3 from "../../Assets/images/Advertisement/Advertisement1.png"

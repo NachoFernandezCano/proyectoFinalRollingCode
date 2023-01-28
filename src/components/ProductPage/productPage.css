@@ -1,59 +1,220 @@
-.Envios_mantenimiento {
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
+:root {
+    --WHITE-bs-:#eaeaea;
+    --DEEPBLUE-bs-: #0F1A37;
+    --HOTPINK-bs-: #E31474;
+    --CYAN-bs-: #00C9EE;
 }
 
-.Info_card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
+    .productPageContainer{
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: auto;
+    }
 
-.Botones_card_utiles {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  background-color: var(--DEEPBLUE-bs-);
-  width: auto;
-  height: 10rem;
-  align-content: center;
-  align-items: center;
-}
+    .productInfo{
+        display: flex;
+        flex-direction: column;
+        width: 20em;
+        height: 38.5em;
+        padding-left: 4em;
+        padding-top: 4em;
+    }
 
-.btn-verMasVendedor {
-  cursor: pointer;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 80%;
-  height: 4rem;
-  color: var(--CYAN-bs-);
-  background-color: var(--DEEPBLUE-bs-);
-  border-radius: 10px;
-}
+    .btn-comprasCarrito{
+        padding-top: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 20em;
+    }
 
-.btn-verMasVendedor:hover {
-  color: var(--DEEPBLUE-bs-);
-  background-color: var(--CYAN-bs-);
-}
+    .containerBtnComprarYa{
+        
+    }
 
-.btn-masCaracteristicas {
-  color: white;
-  background-color: var(--DEEPBLUE-bs-);
-  border: none;
-}
+    .btn-comprarYa{
+        width: 12em;
+        height: 3em;
+        color: var(--CYAN-bs-);
+        background-color: var(--DEEPBLUE-bs-);
+        border-radius: 10px;
+        transition: .7s;
+    }
 
-.btn-masCaracteristicas:hover {
-  background-color: var(--DEEPBLUE-bs-);
-  color: var(--CYAN-bs-);
-}
+    .btn-comprarYa:hover{
+        color: var(--DEEPBLUE-bs-);
+        background-color: var(--CYAN-bs-);
+    }
 
-.infoGarantiaDevoluciones {
-  height: 2rem;
-}
+    .containerBtnAgregarAlcarrito{
+        padding-top: 1em;
+        cursor: pointer;
+    }
+
+
+    .btn-agregarAlCarrito{
+        width: 12em;
+        height: 3em;
+        color: var(--CYAN-bs-);
+        background-color: var(--DEEPBLUE-bs-);
+        border-radius: 10px;
+        transition: .7s;
+    }
+
+    .btn-agregarAlCarrito:hover{
+        color: var(--DEEPBLUE-bs-);
+        background-color: var(--CYAN-bs-);
+    }
+
+    .containerCardProduct{
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 3em;
+        padding-top: 3.5em;
+        padding-bottom: 3.5em;
+    }
+
+    .containerImgProduct{
+        display: flex;
+        flex-direction: row;
+        padding-top: 4em;
+    }
+
+    .imagenPrincipalProduct{
+        width: 35em;
+        height: 35em;
+    }
+
+    .miniaturasProductContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .miniaturaProducto{
+        border:solid;
+        border-color: var(--DEEPBLUE-bs-);
+        border-width: 2px;
+        margin: 11px;
+        border-radius: 4px;
+        
+    }
+
+    .miniaturaProducto:hover{
+        transition: .4s;
+        cursor: pointer;
+        border-color:var(--CYAN-bs-) ;
+    }
+
+    .thumbnail{
+        width: 70px;
+        height: 70px;
+    }
+
+    .Envios_mantenimiento{
+        height: 2.5em;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+    }
+
+    .Info_card{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .infoStockCompra{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .selectorDeCantidadCompra{
+        padding-top: 2em;
+    }
+
+    .Botones_card_utiles{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: auto;
+        height: 12em;
+        align-content: center;
+        align-items: center;
+    }
+
+    .btn-verMasVendedor{
+        cursor: pointer;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 80%;
+        height: 4rem;
+        color: var(--CYAN-bs-);
+        background-color: var(--DEEPBLUE-bs-);
+        border-radius: 10px;
+        transition: .7s;
+    }
+
+    .btn-reembolso{
+        cursor: pointer;
+        width: 80%;
+        height: 4rem;
+        color: var(--CYAN-bs-);
+        background-color: var(--DEEPBLUE-bs-);
+        border-radius: 10px;
+        transition: .7s;
+    }
+
+    .btn-reembolso:hover{
+        color: var(--DEEPBLUE-bs-);
+        background-color: var(--CYAN-bs-);
+    }
+
+    .btn-verMasVendedor:hover{
+        color: var(--DEEPBLUE-bs-);
+        background-color: var(--CYAN-bs-);
+    }
+
+    .containerMasCaracteristicas{
+        height: 100%;
+        width: 100%;
+        padding-bottom: 7em;
+    }
+    
+    .masCaracteristicasCard{
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    .masCaracteristicasText{
+        background-color:var(--DEEPBLUE-bs-);
+        color:var(--CYAN-bs-);
+        border-radius: 5px;
+    }
+
+    .btn-masCaracteristicas{
+        color: white;
+        background-color: var(--DEEPBLUE-bs-);
+        border: none;
+    }
+
+    .btn-masCaracteristicas:hover{
+        background-color: var(--DEEPBLUE-bs-);
+        color: var(--CYAN-bs-);
+    }
+
+    .infoGarantiaDevoluciones{
+        height: 8em;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
