@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { BiMailSend } from 'react-icons/bi'
 import { BsBackspace } from 'react-icons/bs'
 import Swal from 'sweetalert2';
-import Loader from '../../Util/loader/Loader';
+import Loader from '../../util/loader/Loader';
 import './recoveri.css';
-import image from "../../../assets/images/user_icon.png"
+import image from "../../../Assets/images/user_icon.png"
 
 const RecoverPassword = () => {
     const [loader, setloader] = useState(false);

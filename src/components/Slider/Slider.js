@@ -3,8 +3,8 @@ import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css"
 import "swiper/css/navigation"
-import "./slider.css"
-import { SliderProducts} from "../../data/SliderData";
+import "./Slider.css"
+import { SliderProducts} from "../../Data/SliderData";
 
 const Slider = () => {
   return (
