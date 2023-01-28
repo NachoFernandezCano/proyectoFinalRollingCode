@@ -37,8 +37,8 @@ const Home = () => {
   return (
     <>
       <section id="main">
-        <div class="container-fluid">
-          <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between">
+        <div class="container-fluid p-0">
+          <Row xs={1} sm={3} md={3} lg={5} className="g-0 justify-content-between rowContainer">
             {
               !isLoading ? (
                 product.length !== 0 ? (
