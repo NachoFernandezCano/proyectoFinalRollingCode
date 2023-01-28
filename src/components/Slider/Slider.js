@@ -8,7 +8,7 @@ import { SliderProducts} from "../../Data/SliderData";
 
 const Slider = () => {
   return (
-    <div className='s-container'>
+    <div className='sContainer'>
       <Swiper modules={[Navigation]} className="mySwiper"
       navigation={true}
       loopFillGroupWithBlank={true}

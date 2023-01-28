@@ -1,15 +1,15 @@
-.s-container{
+.sContainer{
   position: relative;
   margin-bottom: 2rem;
 }
 
-.s-container .swiper{
+.sContainer .swiper{
   width: 70%;
   height: 20rem;
   position: unset;
 }
 
-.s-container .swiper-slide{
+.sContainer .swiper-slide{
   background: white;
   display: flex;
   border-radius:10px;
@@ -19,14 +19,8 @@
   position: relative;
 }
 
-.s-container .swiper-button-prev{
-left: 6rem;
-}
-.s-container .swiper-button-next{
-  right: 6rem;
-}
-.s-container .swiper-button-prev, .s-container .swiper-button-next{
-  color: black;
+.sContainer .swiper-button-prev, .sContainer .swiper-button-next{
+  color: var(--CYAN-bs-);
 }
 
 .img-p{

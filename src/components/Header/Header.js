@@ -162,7 +162,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="stiky-top">
           <div>
             <FaHome className='mainIcons needHoover' />
           </div>
