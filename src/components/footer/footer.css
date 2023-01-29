@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+.footerContainer > .footerMobile {
+  display: none;
+}
+
+.footerLg > div {
+  background-color: #0f1a37;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(---WHITE-bs-);
+  height: 8rem;
+  font-family: "Oswald", sans-serif;
+  font-size: large;
+}
+
+.footerLg > div > div > img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.footerLg > div:nth-child(2) {
+  border-top: gray 1px solid;
+  height: 20%;
+}
+
+.footerLg > div:nth-child(2) > p {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.footerLg > div:first-child > div:first-child > img {
+  width: 8rem;
+}
+
+.footerLg > div > div a {
+  text-decoration: none;
+  color: white;
+}
+
+.footerLg > div > div a:hover {
+  color: var(--CYAN-bs-);
+}
+
+.fotterIcon {
+  color: var(--HOTPINK-bs-);
+  padding-right: 0.3rem;
+}
+
+@media (max-width: 576px) {
+  .footerLg {
+    display: none;
+  }
+
+  .footerContainer > .footerMobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #eaeaea;
+    height: 10rem;
+    background-color: var(--DEEPBLUE-bs-);
+  }
+
+  .footerMobile > div:first-child {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+  }
+
+  .footerMobile > div:nth-child(2) > img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .footerMobile > div:nth-child(2) > img {
+    width: 8rem;
+  }
+}
