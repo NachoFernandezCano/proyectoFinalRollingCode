@@ -1,0 +1,37 @@
+.btnLogo{
+  width: 1.6rem;
+  height: 1.5rem;
+  color: var(--HOTPINK-bs-)
+}
+
+#btnRegister{
+  background-color: white;
+  border: 1px solid var(--HOTPINK-bs-);
+  color: var(--DEEPBLUE-bs-);
+  margin-top: 0.8rem;
+}
+
+#btnRegister:hover{
+  cursor:pointer;
+  transform: scale(95%);
+  transition: 0.2s;
+  box-shadow: inset 1px 1px 1px 1px var(--HOTPINK-bs-);
+}
+
+.labelStyles{
+  color: var(--DEEPBLUE-bs-);
+}
+
+.inputStyles{
+  border: 1px solid var(--HOTPINK-bs-)!important;
+}
+
+.inputStyles:active{
+  border-color: var(--HOTPINK-bs-)!important;
+  box-shadow: none;
+}
+
+.inputStyles:focus{
+  border-color: var(--HOTPINK-bs-)!important;
+  box-shadow: none!important;
+}
