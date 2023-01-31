@@ -1,0 +1,10 @@
+.errorContainer{
+  width: 100%;
+  height: 80vh;
+  background-color: var(--DEEPBLUE-bs-);
+}
+
+.eTitle{
+  color: var(--CYAN-bs-);
+  font-size: 8rem;
+}
