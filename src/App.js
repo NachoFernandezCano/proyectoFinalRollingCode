@@ -1,13 +1,14 @@
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Homepage from './Pages/homePage/homePage';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Homepage from './pages/homePage/homePage';
 import RecoverPassword from './components/Form/account/RecoverPassword';
 import EditPassUser from './components/Form/account/editpassword/EditPassUser';
 import Administrator from './components/Admin/Administrator';
-import ProductPage from './components/productPage/ProductPage';
+import ProductPage from './components/ProductPage/ProductPage';
 import Table from './components/Table/Table'
+
 
 function App() {
   return (

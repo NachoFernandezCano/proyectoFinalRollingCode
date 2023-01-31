@@ -4,15 +4,15 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import { FaCcVisa, FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
-import testProductPage from "../../Assets/images/products/appleWatchNike.jpg";
-import testProductPageMiniatura from "../../Assets/images/products/appleWatchNike.jpg";
-import testProductPage2Miniatura from "../../Assets/images/products/appleWatchNike1.jpg";
-import testProductPage3Miniatura from "../../Assets/images/products/appleWatchNike2.jpg";
-import Cards from '../cards/Cards';
-import Amex from '../../Assets/images/mediosDePago/Amex.svg'
-import MasterCard from '../../Assets/images/mediosDePago/MasterCard.svg'
-import Naranja from '../../Assets/images/mediosDePago/Naranja.svg'
-import Visa from '../../Assets/images/mediosDePago/visa.svg'
+import testProductPage from "../../assets/images/products/appleWatchNike.jpg";
+import testProductPageMiniatura from "../../assets/images/products/appleWatchNike.jpg";
+import testProductPage2Miniatura from "../../assets/images/products/appleWatchNike1.jpg";
+import testProductPage3Miniatura from "../../assets/images/products/appleWatchNike2.jpg";
+import Cards from '../Cards/Cards';
+import Amex from '../../assets/images/mediosDePago/Amex.svg'
+import MasterCard from '../../assets/images/mediosDePago/MasterCard.svg'
+import Naranja from '../../assets/images/mediosDePago/Naranja.svg'
+import Visa from '../../assets/images/mediosDePago/visa.svg'
 
 const ProductPage = () =>{
     const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(testProductPage)

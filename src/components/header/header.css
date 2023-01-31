@@ -84,7 +84,7 @@
 .logo {
   height: 4rem;
   width: 10rem;
-  background-image: url(../../Assets//images/logo.jpg);
+  background-image: url(../../assets//images/logo.jpg);
   background-size:90%;
   background-position: center;
   background-repeat: no-repeat;
@@ -142,6 +142,7 @@
   height: 1.6rem;
   width: 1.8rem;
   padding-right: 0.2rem;
+  color: white;
 }
 
 .userName {
@@ -156,7 +157,7 @@
   width: 1.5rem;
   height: 1.8rem;
   padding: 1.1rem 3.1rem;
-  background-image: url(../../Assets/images/user_icon.png);
+  background-image: url(../../assets/images/user_icon.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;
@@ -187,7 +188,7 @@ span {
   height: 50px;
   padding: 0.1rem 0.1rem;
   margin-right: 0;
-  background-image: url("../../Assets/images/user_icon.png");
+  background-image: url("../../assets/images/user_icon.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;

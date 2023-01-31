@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
-import Loader from '../../util/loader/Loader'
-import registerForm from './registerForm.css'
+import Loader from '../../Util/loader/Loader'
+import './registerForm.css'
 import {BsFillPersonPlusFill} from 'react-icons/bs'
 
 const RegisterForm = ({ setloaderRegister, handleRegister }) => {
