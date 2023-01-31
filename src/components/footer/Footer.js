@@ -5,8 +5,8 @@ import {
   FaTwitter,
   FaFacebookF
 } from "react-icons/fa"
-import Logo from "../../Assets/images/logo.jpg"
-import qrCode from "../../Assets/images/qrcode.png"
+import Logo from "../../assets/images/logo.jpg"
+import qrCode from "../../assets/images/qrcode.png"
 
 const Footer = () => {
   return (

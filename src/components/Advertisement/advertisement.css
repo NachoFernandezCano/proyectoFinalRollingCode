@@ -1,0 +1,12 @@
+.advertisement {
+  background-color: var(--DEEPBLUE-bs-);
+  max-height: 90vw;
+  height: 90%;
+}
+
+.publicity {
+  margin-top: 4rem;
+  height: 54%;
+  width: 15vw;
+  box-shadow: white 0px 1px 8px 0px;
+}
