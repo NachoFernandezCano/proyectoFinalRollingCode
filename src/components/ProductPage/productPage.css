@@ -21,9 +21,6 @@
   height: 20em;
 }
 
-/* .containerBtnComprarYa {
-} */
-
 .btn-comprarYa {
   width: 12em;
   height: 3em;
@@ -245,4 +242,371 @@
   width: 100%;
   height: 100%;
   justify-content: space-around;
+}
+
+@media (max-width:320px){
+  .productPageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:320px){
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:320px){
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+  }
+}
+
+@media (max-width:320px){
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width:320px){
+  .productInfo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width:320px){
+  .precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:320px){
+  .btn-comprasCarrito{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width:320px){
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+}
+
+@media (max-width:320px){
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+}
+
+@media (max-width:320px){
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width:320px){
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+}
+@media (max-width:320px){
+  .containerCardProduct{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-top: 0;
+    padding-bottom: 3em;
+  }
+}
+
+@media (max-width:320px){
+  .cardProductPage{
+    height: 34rem;
+  }
+}
+
+@media (max-width:320px){
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+}
+
+@media (max-width:320px){
+  .btn-seleccionarCantidad{
+    width: 13em;
+    padding-right: 2px;
+  }
+}
+
+@media (max-width:375px){
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:375px){
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:375px){
+  .containerImagenPrincipal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width:375px){
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+
+  }
+}
+
+@media (max-width:375px){
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width:375px){
+  .productInfo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width:375px){
+  .precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:375px){
+  .btn-comprasCarrito{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width:375px){
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+}
+
+@media (max-width:375px){
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+}
+
+@media (max-width:375px){
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width:375px){
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+}
+@media (max-width:375px){
+  .containerCardProduct{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 50px;
+    padding-top: 0;
+    padding-bottom: 3em;
+  }
+}
+
+@media (max-width:375px){
+  .cardProductPage{
+    height: 34rem;
+  }
+}
+
+@media (max-width:375px){
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+}
+
+@media (max-width:375px){
+  .btn-seleccionarCantidad{
+    width: 13em;
+    padding-right: 2px;
+  }
+}
+
+@media (max-width:425px){
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:425px){
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:425px){
+  .containerImagenPrincipal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width:425px){
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+
+  }
+}
+
+@media (max-width:425px){
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width:425px){
+  .productInfo{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-right: 3em;
+  }
+}
+
+@media (max-width:425px){
+  .precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:425px){
+  .btn-comprasCarrito{
+    width: auto;
+  }
+}
+
+@media (max-width:425px){
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+}
+
+@media (max-width:425px){
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+}
+
+@media (max-width:425px){
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width:425px){
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+}
+@media (max-width:425px){
+  .containerCardProduct{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 4.5em;
+    padding-top: 0;
+    padding-bottom: 3em;
+  }
+}
+
+@media (max-width:425px){
+  .cardProductPage{
+    height: 34rem;
+  }
+}
+
+@media (max-width:425px){
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+}
+
+
+@media (max-width:768px){
+  .miniaturasProductContainer{
+    padding-top: 8em;
+  }
+}
+
+@media (max-width:768px){
+  .productInfo{
+    display: flex;
+    align-items: center;
+  }
 }
