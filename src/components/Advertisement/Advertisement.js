@@ -1,8 +1,8 @@
 import React from "react";
 import "./advertisement.css";
-import adPicture from "../../assets/images/Advertisement/Advertisement2.png"
-import adPicture2 from "../../assets/images/Advertisement/Advertisement3.png"
-import adPicture3 from "../../assets/images/Advertisement/Advertisement1.png"
+import adPicture from "../../assets/images/advertisement/Advertisement2.png"
+import adPicture2 from "../../assets/images/advertisement/Advertisement3.png"
+import adPicture3 from "../../assets/images/advertisement/Advertisement1.png"
 
 const Advertisement = () => {
   return ( 
