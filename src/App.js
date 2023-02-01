@@ -10,8 +10,10 @@ import ProductPage from './components/ProductPage/ProductPage';
 import Table from './components/Table/Table'
 import HotItems from './pages/hotItemsPage/hotItemsPage';
 import Error404 from './components/Error/Error404';
+import CartPage from './components/CartPage/CartPage';
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/ProductPage' element={<ProductPage />} />
+          <Route path='/CartPage' element={<CartPage/>}/>
           <Route path='/RecoverPassword' element={<RecoverPassword />} />
           <Route path='/EditPassword' element={<EditPassUser />} />
           <Route path='/Admin' element={<Administrator />} />

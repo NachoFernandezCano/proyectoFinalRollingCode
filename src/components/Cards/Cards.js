@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
@@ -31,6 +31,10 @@ const Cards = () => {
       setIsLoading(false);
     }
   };
+
+  const handleGetOneProduct = (id) => {
+    Navigate(`/productPage/${id}`)
+  }
 
   return (
     <>

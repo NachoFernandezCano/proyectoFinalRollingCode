@@ -1,74 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Dropdown, Form, FormCheck, InputGroup, Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
+import { FaCcVisa, FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
+import testProductPage from "../../assets/images/products/appleWatchNike.jpg";
+import testProductPageMiniatura from "../../assets/images/products/appleWatchNike.jpg";
+import testProductPage2Miniatura from "../../assets/images/products/appleWatchNike1.jpg";
+import testProductPage3Miniatura from "../../assets/images/products/appleWatchNike2.jpg";
 import Cards from '../Cards/Cards';
 import Amex from '../../assets/images/mediosDePago/Amex.svg'
 import MasterCard from '../../assets/images/mediosDePago/MasterCard.svg'
 import Naranja from '../../assets/images/mediosDePago/Naranja.svg'
 import Visa from '../../assets/images/mediosDePago/visa.svg'
-import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const ProductPage = () =>{
-    /* const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(product.image.img1) */
+    const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(testProductPage)
+    const [showInput, setShowInput] = useState(false)
     const [show, setShow] = useState(false);
-    const [product, setProduct] = useState([]);
-
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    /* const imageHandle = (image) =>{
+    const handleInput = () =>{
+        setShowInput(true)
+    }
+
+    const imageHandle = (image) =>{
         setImagenPrincipalProduct(image)
-    } */
+    }
 
-    const getProduct = async (id) => {
-        try {
-            const info = await axios.get(`http://localhost:4000/products/${id}`);
-            setProduct(info.data);
-        } catch (error) {
-            alert('Algo salió mal, intente más tarde');
-        }
-    };
 
-    useEffect(() => {
-        getProduct()
-    }, [])
-    
 
         return (
-            <div className='productPageContainer'>
-                <div></div>
+            <div className='productPageContainer' style={{ background: 'white' }}>
                 <div className='containerImgProduct'>
                     <div className='containerImagenPrincipal'>
-                        <img className='imagenPrincipalProduct' /* src={product.image.img1} */></img>
+                        <img className='imagenPrincipalProduct' src={imagenPrincipalProduct}></img>
                     </div>
                     <div className='miniaturasProductContainer'>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail' /* onClick={() => imageHandle(product.image.img1)} src={product.image.img1} */></img>
+                            <img className='thumbnail' onClick={() => imageHandle(testProductPageMiniatura)} src={testProductPageMiniatura}></img>
                         </div>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail'/*  onClick={() => imageHandle(product.image.img2)} src={product.image.img2} */></img>
+                            <img className='thumbnail' onClick={() => imageHandle(testProductPage2Miniatura)} src={testProductPage2Miniatura}></img>
                         </div>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail' /* onClick={() => imageHandle(product.image.img3)} src={product.image.img3} */></img>
+                            <img className='thumbnail' onClick={() => imageHandle(testProductPage3Miniatura)} src={testProductPage3Miniatura}></img>
                         </div>
                     </div>
                 </div>
                 <div className='productInfo'>
-                    <h5> 
-                        <div>
-                            {product.brand} 
-                        </div> 
-                        <div>
-                            {product.name}
-                        </div>
-                    </h5>
+                    <h5>Apple Watch Nike Series</h5>
                     <div className='precioMediosDePago'>
                         <div className='precioProductPage'>
-                            <h2>{/* {product.price} */}</h2>
+                            <h2>$176.399</h2>
                         </div>
                         <div>
                             <Button onClick={handleShow} className='btn-verMediosDePago'>Ver los medios de pago</Button>
@@ -103,19 +89,23 @@ const ProductPage = () =>{
                     <div className='btn-comprasCarrito'>
                         <div className='containerBtnComprarYa'>
                             <Button className='btn-comprarYa'>
-                                Comprar
+                            <Link to='/Error404' className='text-decoration-none'>
+                                    Comprar
+                                </Link>
                             </Button>
                         </div>
                         <div className='containerBtnAgregarAlcarrito'>
                             <Button className='btn-agregarAlCarrito'>
-                                Agregar al carrito
+                                <Link to='/Error404' className='text-decoration-none'>
+                                    Agregar al carrito
+                                </Link>
                             </Button>
                         </div>
                     </div>
                     <div className='containerMasCaracteristicas'>
                         <Card classname='masCaracteristicasCard'>
                             <Card.Text className='masCaracteristicasText'>
-                            {/* {product.description} */}
+                            Resistente al agua, Sistema Operativo watchOs 8, Wifi, Cálculo de consumo de calorías, Registro de sueño, Alertas de ritmo, Control musical, Sumergible 50 metros, Gps, Bluetooth, Memoria 32Gb, Resolución 324 x 394
                             </Card.Text>
                         </Card>
                 </div>
@@ -131,7 +121,7 @@ const ProductPage = () =>{
                         <Card.Body className='Info_card'>
                                 <div className='infoStockCompra'>
                                     <h5>Stock disponible</h5> 
-                                    <div className='text-muted'>({/* {product.stock} */})</div>
+                                    <div className='text-muted'>(110 unidades disponibles)</div>
                                     <div className='selectorDeCantidadCompra'>
                                     <Dropdown>
                                         <Dropdown.Toggle className='btn-seleccionarCantidad' id="dropdown-basic">
@@ -157,13 +147,16 @@ const ProductPage = () =>{
                                             <Dropdown.Item href="#/action-6">
                                                 6 unidades
                                             </Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handleInput()}>
+                                                Más de 6 
+                                            </Dropdown.Item>
                                         </Dropdown.Menu>
                                         </Dropdown>
                                     </div>
                                 </div>
                         </Card.Body> 
                         <Card.Body className='Botones_card_utiles'>
-                            <Button className='btn-reembolso'>Solicitá una devolución</Button>
+                            <Button className='btn-reembolso'><Link to='/Error404' className='text-decoration-none'>Solicitá una devolución</Link></Button>
                         </Card.Body>
                         <Card.Body className='infoGarantiaDevoluciones'>
                             <Card.Subtitle className="mt-1 text-muted">
@@ -186,5 +179,3 @@ const ProductPage = () =>{
 }
 
 export default ProductPage;
-
-    
