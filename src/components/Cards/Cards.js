@@ -10,7 +10,6 @@ const Cards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     getProduct();
