@@ -40,8 +40,8 @@ const Featured = () => {
               hot?.map((product) => (
                 <Col>
                   <Card className='cardProduct'>
-                    <Card.Img variant='top'
-                      src={product.image} />
+                    <Card.Img variant='top' className='fCardImg'
+                      src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
                     <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
