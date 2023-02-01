@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
@@ -42,9 +42,9 @@ const Cards = () => {
                 <Col>
                   <Card className='cardProduct'>
                     <Card.Img variant='top'
-                      src={product.image} />
+                      src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
-                    <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
+                    <Card.Text className='cardTitle text-bolder'><Link to={`/productPage/${product.id}`}>{product.name}</Link></Card.Text>
                     <Card.Body className='cardBody'>
                       <Card.Text>${product.price}</Card.Text>
                       <Card.Link href='#'>

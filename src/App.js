@@ -11,7 +11,6 @@ import Table from './components/Table/Table'
 import HotItems from './Pages/hotItemsPage/hotItemsPage';
 import Error404 from './components/Error/Error404';
 
-
 function App() {
   return (
     <>
