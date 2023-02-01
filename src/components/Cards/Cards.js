@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
@@ -32,6 +32,10 @@ const Cards = () => {
     }
   };
 
+  const handleGetOneProduct = (id) => {
+    Navigate(`/productPage/${id}`)
+  }
+
   return (
     <>
       <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={product._id}>
@@ -44,7 +48,7 @@ const Cards = () => {
                       <Card.Img variant='top' className='pCardImg'
                         src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
-                    <Card.Text className='cardTitle text-bolder'><Link to={`/productPage/${product.id}`}>{product.name}</Link></Card.Text>
+                    <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
                       <Card.Text>${product.price}</Card.Text>
                       <Card.Link href='#'>
@@ -54,7 +58,7 @@ const Cards = () => {
                         <FaShoppingCart className='cartIcon favIcon' />
                       </Card.Link>
                     </Card.Body>
-                    <Link className='cardsBtn' to='/ProductPage'> Ver más </Link>
+                    <Link className='cardsBtn' onClick={() => handleGetOneProduct(product._id)} to='/ProductPage'> Ver más </Link>
                   </Card>
                 </Col>
               ))

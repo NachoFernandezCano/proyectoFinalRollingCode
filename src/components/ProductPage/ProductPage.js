@@ -30,6 +30,7 @@ const ProductPage = () =>{
             setProduct(info.data);
         } catch (error) {
             alert('Algo salió mal, intente más tarde');
+            console.log(error)
         }
     };
 
