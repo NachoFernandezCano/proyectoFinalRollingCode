@@ -44,7 +44,7 @@ const Cards = () => {
                       <Card.Img variant='top' className='pCardImg'
                         src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
-                    <Card.Text className='cardTitle text-bolder'><Link to={`/productPage/${product.id}`}>{product.name}</Link></Card.Text>
+                    <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
                       <Card.Text>${product.price}</Card.Text>
                       <Card.Link href='#'>
@@ -54,7 +54,7 @@ const Cards = () => {
                         <FaShoppingCart className='cartIcon favIcon' />
                       </Card.Link>
                     </Card.Body>
-                    <Link className='cardsBtn' to='/ProductPage'> Ver más </Link>
+                    <Link className='cardsBtn' to={`/productPage/${product.id}`}> Ver más </Link>
                   </Card>
                 </Col>
               ))

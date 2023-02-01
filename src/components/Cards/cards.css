@@ -35,8 +35,9 @@
 .cardTitle{
   color: var(--DEEPBLUE-bs-);
   text-align: end;
-  padding: 0.5rem;
+  padding: 0.3rem;
   font-size: medium;
+  text-decoration: none;
 }
 
 .favIcon {

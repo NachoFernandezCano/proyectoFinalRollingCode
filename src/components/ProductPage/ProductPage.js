@@ -5,10 +5,10 @@ import axios from 'axios';
 import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
 import Cards from '../Cards/Cards';
-import Amex from '../../Assets/images/mediosDePago/Amex.svg'
-import MasterCard from '../../Assets/images/mediosDePago/MasterCard.svg'
-import Naranja from '../../Assets/images/mediosDePago/Naranja.svg'
-import Visa from '../../Assets/images/mediosDePago/visa.svg'
+import Amex from '../../assets/images/mediosDePago/Amex.svg'
+import MasterCard from '../../assets/images/mediosDePago/MasterCard.svg'
+import Naranja from '../../assets/images/mediosDePago/Naranja.svg'
+import Visa from '../../assets/images/mediosDePago/visa.svg'
 import { useParams } from 'react-router';
 
 const ProductPage = () =>{
@@ -129,7 +129,6 @@ const ProductPage = () =>{
                             </Card.Subtitle>
                         </Card.Header>
                         <Card.Body className='Info_card'>
-                                <h6 className='Info_Vendedor'>Vendido por Apple</h6>
                                 <div className='infoStockCompra'>
                                     <h5>Stock disponible</h5> 
                                     <div className='text-muted'>({/* {product.stock} */})</div>
