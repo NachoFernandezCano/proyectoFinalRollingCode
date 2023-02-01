@@ -59,7 +59,7 @@ const Cards = () => {
                         <FaShoppingCart className='cartIcon favIcon' />
                       </Card.Link>
                     </Card.Body>
-                    <Link className='cardsBtn' onClick={() => handleGetOneProduct(product._id)} to='/ProductPage'> Ver más </Link>
+                    <Link className='cardsBtn' to={`/productPage/${product.id}`}> Ver más </Link>
                   </Card>
                 </Col>
               ))

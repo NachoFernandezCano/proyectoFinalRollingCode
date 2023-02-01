@@ -130,7 +130,6 @@ const ProductPage = () =>{
                             </Card.Subtitle>
                         </Card.Header>
                         <Card.Body className='Info_card'>
-                                <h6 className='Info_Vendedor'>Vendido por Apple</h6>
                                 <div className='infoStockCompra'>
                                     <h5>Stock disponible</h5> 
                                     <div className='text-muted'>({/* {product.stock} */})</div>

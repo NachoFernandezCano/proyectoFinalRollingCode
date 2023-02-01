@@ -1,7 +1,8 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -9,6 +10,25 @@ import './Slider.css';
 import { EffectCoverflow, Pagination } from 'swiper';
 
 const Slider = () => {
+
+  const [sHotItem, setsHotItem] = useState([]);
+
+  useEffect(() => {
+    getSliderItem();
+  }, []);
+
+  const getSliderItem = async () => {
+    try {
+      const hotItem = await axios.get('http://localhost:4000/products/hotItem');
+      setsHotItem(hotItem.data.hotItem)
+    } catch (error) {
+      if (error?.response?.data?.error === 'There is nothing here') {
+        setsHotItem([]);
+      } else {
+        alert('Algo salio mal intente mas tarde');
+      }
+    }
+  };
   return (
     <>
       <h2 className='dTitle'>
@@ -30,23 +50,31 @@ const Slider = () => {
         modules={[EffectCoverflow, Pagination]}
         className='sContainer'
       >
-        {SliderProducts.map((slide, i) => (
-          <SwiperSlide>
-            <Card className='cardP'>
-              <div className='sImgContainer'>
-                <Card.Img variant='top'
-                  src={slide.image} alt='producto' className='imgP' />
-              </div>
-              <Card.Body className='sCardContainer'>
-                <span className='sCardContainer'>{slide.name}</span>
-                <br />
-                <span className='sCardContainer'>{slide.brand}</span>
-                <Card.Text className='m-0 p-2'><b>{slide.price}</b></Card.Text>
-                <Link className='cardsSBtn' to='/ProductPage'> Ver más </Link>
-              </Card.Body>
-            </Card>
-          </SwiperSlide>
-        ))}
+        {
+          (
+            sHotItem.length !== 0 ? (
+              sHotItem?.map((product) => (
+                <SwiperSlide>
+                  <Card className='cardP'>
+                    <div className='sImgContainer'>
+                      <Card.Img variant='top'
+                        src={product.image.img1} alt='producto' className='imgP' />
+                    </div>
+                    <Card.Body className='sCardContainer'>
+                      <span className='sCardContainer'>{product.name}</span>
+                      <br />
+                      <span className='sCardContainer'>{product.brand}</span>
+                      <Card.Text className='m-0 p-2'><b>{product.price}</b></Card.Text>
+                      <Link className='cardsSBtn' to='/Error404'> Ver más </Link>
+                    </Card.Body>
+                  </Card>
+                </SwiperSlide>
+              ))
+            ) : (
+              <>no hay productos para tu busqueda</>
+            )
+          )
+        }
       </Swiper>
     </>
   )
