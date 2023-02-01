@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Homepage from './pages/homePage/HomePage';
 import RecoverPassword from './components/Form/account/RecoverPassword';
 import EditPassUser from './components/Form/account/editpassword/EditPassUser';
-import Administrator from './components/Admin/Administrator';
+import Perfil from './components/Admin/perfil/Perfiluser';
 import ProductPage from './components/ProductPage/ProductPage';
 import Table from './components/Table/Table'
 import HotItems from './pages/hotItemsPage/hotItemsPage';
@@ -22,7 +22,7 @@ function App() {
           <Route path='/ProductPage' element={<ProductPage />} />
           <Route path='/RecoverPassword' element={<RecoverPassword />} />
           <Route path='/EditPassword' element={<EditPassUser />} />
-          <Route path='/Admin' element={<Administrator />} />
+          <Route path='/Perfil' element={<Perfil />} />
           <Route path='/Table' element={<Table />} />
           <Route path='/HotItems' element={<HotItems />} />
           <Route path='/Error404' element={<Error404 />} />
