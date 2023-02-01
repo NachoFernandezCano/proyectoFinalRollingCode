@@ -57,6 +57,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  align-content: center;
   width: 30rem;
 }
 
@@ -132,7 +133,7 @@
 .headerIcons{
   padding-left: 0.5rem;
   height: 1.4rem;
-  width: 1.6rem;
+  width: 1.8rem;
   color: var(--HOTPINK-bs-);
 }
 
