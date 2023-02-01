@@ -7,6 +7,8 @@ import { BsLaptop } from 'react-icons/bs';
 import "./categories.css";
 
 function Categories() {
+  
+
   return (
     <>
       <div className='categoriesContainer'>
