@@ -64,7 +64,7 @@ const Slider = () => {
                       <span className='sCardContainer'>{product.name}</span>
                       <br />
                       <span className='sCardContainer'>{product.brand}</span>
-                      <Card.Text className='m-0 p-2'><b>{product.price}</b></Card.Text>
+                      <Card.Text className='m-0 p-2'><b>${product.price}</b></Card.Text>
                       <Link className='cardsSBtn' to='/Error404'> Ver más </Link>
                     </Card.Body>
                   </Card>
