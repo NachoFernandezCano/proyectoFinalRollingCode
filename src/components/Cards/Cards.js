@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
@@ -54,7 +54,7 @@ const Cards = () => {
                         <FaShoppingCart className='cartIcon favIcon' />
                       </Card.Link>
                     </Card.Body>
-                    <Link className='cardsBtn' to='/ProductPage'> Ver más </Link>
+                    <Link className='cardsBtn' to={`/productPage/${product.id}`}> Ver más </Link>
                   </Card>
                 </Col>
               ))
