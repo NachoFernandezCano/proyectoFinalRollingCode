@@ -8,16 +8,21 @@
 }
 
 .cardProduct {
-  width: 18rem;
-  height: 20rem;
+  height: 30rem;
+  width: 30rem;
   margin: 10px 10px;
   transition: all 300ms;
   background: 0;
   border: 1;
 }
-
 .cardProduct:hover {
   box-shadow: var(--CYAN-bs-) 0px 1px 4px 1px;
+}
+
+.pCardImg{
+  height: 50%;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .cardBody {

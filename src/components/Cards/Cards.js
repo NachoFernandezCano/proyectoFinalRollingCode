@@ -18,7 +18,7 @@ const Cards = () => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page} });
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
       setPagesCount(info.data.totalPages);
       setProduct(info.data.docs)
       setIsLoading(false);
@@ -41,8 +41,8 @@ const Cards = () => {
               product?.map((product) => (
                 <Col>
                   <Card className='cardProduct'>
-                    <Card.Img variant='top'
-                      src={product.image.img1} />
+                      <Card.Img variant='top' className='pCardImg'
+                        src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
                     <Card.Text className='cardTitle text-bolder'><Link to={`/productPage/${product.id}`}>{product.name}</Link></Card.Text>
                     <Card.Body className='cardBody'>
@@ -66,22 +66,22 @@ const Cards = () => {
           )
         }
         <div className="pagination">
-        <div className="paginationButton">
-          <Button
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            {'<'}
-          </Button>
-          <b className="fs-4">{page}</b>
-          <Button
-            onClick={() => setPage(page + 1)}
-            disabled={page === pagesCount}
-          >
-            {'>'}
-          </Button>
+          <div className="paginationButton">
+            <Button
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              {'<'}
+            </Button>
+            <b className="fs-4">{page}</b>
+            <Button
+              onClick={() => setPage(page + 1)}
+              disabled={page === pagesCount}
+            >
+              {'>'}
+            </Button>
+          </div>
         </div>
-      </div>
       </Row>
     </>
   )
