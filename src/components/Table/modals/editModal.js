@@ -14,7 +14,7 @@ const editModal = (props) => {
   } = props;
 
   return (
-    <Modal id="editModal" show={editModalShow} onHide={() => setEditModalShow(false)} >
+    <Modal id="editModal" show={editModalShow} onHide={() => setEditModalShow(false)} size="lg">
       <Modal.Header closeButton>
         <Modal.Title>Editar producto</Modal.Title>
       </Modal.Header>

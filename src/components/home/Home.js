@@ -1,4 +1,4 @@
-import Cards from "../Cards/Cards";
+import Cards from "../cards/Cards";
 import Advertisement from "../Advertisement/Advertisement";
 import "./home.css"
 

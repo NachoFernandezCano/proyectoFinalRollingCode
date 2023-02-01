@@ -66,7 +66,8 @@ const Header = () => {
           localStorage.clear("user");
           setloginUser(false);
           navigate("/");           
-          setloginUser(false);      
+          setloginUser(false);    
+          setproductCount(0);  
         }
       })
     }

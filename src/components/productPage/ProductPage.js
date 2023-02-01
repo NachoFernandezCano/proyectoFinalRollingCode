@@ -8,7 +8,7 @@ import testProductPage from "../../Assets/images/products/appleWatchNike.jpg";
 import testProductPageMiniatura from "../../Assets/images/products/appleWatchNike.jpg";
 import testProductPage2Miniatura from "../../Assets/images/products/appleWatchNike1.jpg";
 import testProductPage3Miniatura from "../../Assets/images/products/appleWatchNike2.jpg";
-import Cards from '../Cards/Cards';
+import Cards from '../cards/Cards';
 import Amex from '../../Assets/images/mediosDePago/Amex.svg'
 import MasterCard from '../../Assets/images/mediosDePago/MasterCard.svg'
 import Naranja from '../../Assets/images/mediosDePago/Naranja.svg'

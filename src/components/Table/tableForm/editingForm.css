@@ -1,13 +1,20 @@
 .formContainer > div {
-  background-color: rgb(176, 176, 176);
+  /*background-color: rgb(176, 176, 176);*/
   color: var(--DEEPBLUE-bs-);
+  
 }
 
-.formContainer > div > form > div {
+.formContainer > div > form {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      450px,
+      1fr
+    )   
+  );
+  gap: 1px;
 }
 
 .formContainer > form > div > div:last-child {
@@ -58,4 +65,14 @@
   width: 100%;
   height: auto;
   padding: 3px 3px 3px 8px;
+}
+
+#output {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border-radius:50%;
+  border:1px solid black;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }

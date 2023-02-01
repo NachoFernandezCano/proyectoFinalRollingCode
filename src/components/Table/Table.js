@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import CreateModal from "./modals/createModal";
 import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
 import "./table.css";
+import axios from "axios";
 
 const Table = () => {
   const [products, setProducts] = useState([]);
@@ -14,6 +15,31 @@ const Table = () => {
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pagesCount, setPagesCount] = useState(1);
+
+  useEffect(() => {
+    getProduct();
+  }, [page]);
+
+  const getProduct = async () => {
+    try {
+      setIsLoading(true);
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page} });
+      setPagesCount(info.data.totalPages);
+      setProducts(info.data.docs)
+      setIsLoading(false);
+    } catch (error) {
+      if (error?.response?.data?.error === 'There is nothing here') {
+        setProducts([]);
+      } else {
+        alert('Algo salio mal intente mas tarde');
+      }
+      setIsLoading(false);
+    }
+  };
 
   const generateId = function () {
     return "_" + Math.random().toString(36).substr(2, 9);
@@ -68,7 +94,8 @@ const Table = () => {
   };
 
   return (
-    <div className="homeContainer">
+    <div className="homeContainer col-10 ms-auto me-auto mb-3 mt-2">
+      <h4 className="mt-1">Listado de productos</h4>
       <div className="tableContainer">
         <TableBody
           data={products}
@@ -78,7 +105,23 @@ const Table = () => {
           editTrigger={editTrigger}
         />
       </div>
-
+      <div className="pagination">
+        <div className="paginationButton">
+          <Button
+            onClick={() => setPage(page - 1)}
+            disabled={page === 1}
+          >
+            {'<'}
+          </Button>
+          <b className="fs-4">{page}</b>
+          <Button
+            onClick={() => setPage(page + 1)}
+            disabled={page === pagesCount}
+          >
+            {'>'}
+          </Button>
+        </div>
+      </div>
       <Button
         id="createBtn"
         variant="success"

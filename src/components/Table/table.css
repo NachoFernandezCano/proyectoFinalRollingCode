@@ -1,5 +1,5 @@
 .homeContainer {
-  height: calc(100vh - 8rem);
+  height: calc(100vh - 10rem);
   background: white;
   background: linear-gradient(
     90deg,
@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid black;    
 }
 
 .homeContainer > Button {
@@ -59,4 +59,40 @@
 #createBtn:focus {
   box-shadow: 0 4px 3px 1px #fcfcfc, 0 6px 8px #d6d7d9, 0 -4px 4px #cecfd1,
     0 -6px 4px #fefefe, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.pagination b {
+  color: var(--DEEPBLUE-bs-);
+}
+
+.paginationButton {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.paginationButton button {
+  background-color: var(--HOTPINK-bs-);
+  border: none;
+}
+
+.paginationButton button:hover {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:active {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:disabled {
+  background-color: rgb(75, 7, 43);
 }

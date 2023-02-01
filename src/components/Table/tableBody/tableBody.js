@@ -20,8 +20,7 @@ const TableBody = (props) => {
     <BootstrapTable id="mainTable">
       <thead>
         <tr>
-          <th>CATEGORÍA</th>
-          <th>IMAGEN</th>
+          <th>CATEGORÍA</th>          
           <th>NOMBRE</th>
           <th>MARCA</th>
           <th>DESCRIPCIÓN</th>
@@ -34,8 +33,7 @@ const TableBody = (props) => {
         {
           dataForTable?.map((product) => (
             <tr key={product.id}>
-              <td>{product.category}</td>
-              <td>{product.image}</td>
+              <td>{product.category}</td>              
               <td>{product.name}</td>
               <td>{product.brand}</td>
               <td>{product.description}</td>
