@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <h2>Productos</h2>
       <section id="main" className="d-flex flex-row">
-        <Cards />
+        <Cards/>
         <Advertisement />
       </section>
     </>

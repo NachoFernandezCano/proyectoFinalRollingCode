@@ -1,0 +1,19 @@
+.container-titulo{
+    display: flex;
+    justify-content: flex-start;
+}
+.container-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+}
+.tituloimg{    
+    width: 64px;
+    height: 64px;        
+}
+.titulo{
+    color: coral;
+    margin-top: 15px;
+    margin-left: 5px;
+}

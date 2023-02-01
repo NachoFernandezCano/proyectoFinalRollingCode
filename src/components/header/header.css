@@ -3,7 +3,7 @@
 }
 
 .Header_container {
-  height: 8rem;
+  height: 8.8rem;
   background-color: var(--DEEPBLUE-bs-);
   overflow-x: hidden;
 }
@@ -33,17 +33,9 @@
   width: 25rem;
 }
 
-.Header_container > div > div:first-child > div > div {
-  background-color: white;
-  width: 3rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .Header_container > div:nth-child(2) {
   height: 3rem;
+  margin-top: 0.7rem;
   background-color: #142248;
 }
 
@@ -84,7 +76,7 @@
 .logo {
   height: 4rem;
   width: 10rem;
-  background-image: url(../../assets//images/logo.jpg);
+  background-image: url(../../Assets//images/logo.jpg);
   background-size:90%;
   background-position: center;
   background-repeat: no-repeat;
@@ -96,7 +88,13 @@
 
 #schIconContainer{
   background-color: var(--CYAN-bs-);
+  width: 3rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 #schIconContainer:hover{
   transform: scale(105%);
@@ -144,6 +142,20 @@
   padding-right: 0.2rem;
   color: white;
 }
+.productsNumber {
+  height: 20px;
+  width: 20px;
+  border-radius: 999px;
+  position: absolute;  
+  
+  background-color: #fb3939;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .userName {
   color: white !important;
@@ -155,13 +167,13 @@
   margin-right: 1rem;
   display: inline-block;
   width: 1.5rem;
-  height: 1.8rem;
-  padding: 1.1rem 3.1rem;
-  background-image: url(../../assets/images/user_icon.png);
+  height: 3.8rem;
+  padding: 1.1rem 5.9rem;
+  background-image: url(../../Assets/images/user_icon.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;
-  background-position-x: 0rem;
+  background-position-x: 2.9rem;
 }
 
 #userLogin:hover{
@@ -188,7 +200,7 @@ span {
   height: 50px;
   padding: 0.1rem 0.1rem;
   margin-right: 0;
-  background-image: url("../../assets/images/user_icon.png");
+  background-image: url("../../Assets/images/user_icon.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;

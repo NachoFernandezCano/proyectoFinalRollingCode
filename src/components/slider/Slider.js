@@ -6,10 +6,11 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './Slider.css';
-import { SliderProducts } from '../../data/SliderData';
+import { SliderProducts } from '../../Data/SliderData';
 import { EffectCoverflow, Pagination } from 'swiper';
 
 const Slider = () => {
+  
   return (
     <>
       <h2 className='dTitle'>

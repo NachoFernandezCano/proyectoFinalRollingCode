@@ -5,22 +5,23 @@ import Header from './components/Header/Header';
 import Homepage from './pages/homePage/homePage';
 import RecoverPassword from './components/Form/account/RecoverPassword';
 import EditPassUser from './components/Form/account/editpassword/EditPassUser';
-import Administrator from './components/Admin/Administrator';
+import Perfil from './components/Admin/perfil/Perfiluser';
 import ProductPage from './components/ProductPage/ProductPage';
 import Table from './components/Table/Table'
 
 
 function App() {
+  
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header/>
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/ProductPage' element={<ProductPage />} />
           <Route path='/RecoverPassword' element={<RecoverPassword />} />
           <Route path='/EditPassword' element={< EditPassUser />} />
-          <Route path='/Admin' element={<Administrator />} />
+          <Route path='/Perfil' element={<Perfil />} />
           <Route path='/Table' element={<Table />} />
         </Routes>
         <Footer />

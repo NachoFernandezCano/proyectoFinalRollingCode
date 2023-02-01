@@ -55,6 +55,7 @@
 
 .cartIcon:hover {
   color: var(--CYAN-bs-);
+  cursor: pointer;
 }
 
 .cardsBtn{
