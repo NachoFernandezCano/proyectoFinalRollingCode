@@ -1,0 +1,130 @@
+.rowContainer {
+  width: 100%;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+}
+
+.cardProduct {
+  width: 18rem;
+  height: 20rem;
+  margin: 10px 10px;
+  transition: all 300ms;
+  background: 0;
+  border: 1;
+}
+
+.cardProduct:hover {
+  box-shadow: var(--CYAN-bs-) 0px 1px 4px 1px;
+}
+
+.cardBody {
+  text-align: end;
+  font-size: large;
+  font-weight: bolder;
+  color: var(--HOTPINK-bs-);
+}
+
+.cardTitle{
+  color: var(--DEEPBLUE-bs-);
+  text-align: end;
+  padding: 0.5rem;
+  font-size: medium;
+}
+
+.favIcon {
+  height: auto;
+  width: 1.6rem;
+  color: pink;
+}
+
+.favIcon:hover {
+  transform: scale(110%);
+  color: var(--HOTPINK-bs-);
+}
+
+.favIcon:active, .cartIcon:active {
+  transform: scale(105%);
+}
+
+.cartIcon{
+  color: lightblue;
+}
+
+.cartIcon:hover {
+  color: var(--CYAN-bs-);
+}
+
+.cardsBtn{
+  text-align: center;
+  font-size: 1.1rem;
+  width: 50%;
+  height: 2rem;
+  font-weight: bolder;
+  background-color: transparent;
+  color: var(--HOTPINK-bs-);
+  border: 2px solid var(--HOTPINK-bs-);
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 25%;
+  margin-bottom: 0.5rem;
+}
+
+.cardsBtn:hover{
+  background-color: var(--HOTPINK-bs-);
+  color: white;
+}
+
+.cardsBtn:active{
+  background-color: var(--HOTPINK-bs-);
+  color: white;
+  transform: scale(95%);
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.pagination b {
+  color: var(--DEEPBLUE-bs-);
+}
+
+.paginationButton {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.paginationButton button {
+  background-color: var(--HOTPINK-bs-);
+  border: none;
+}
+
+.paginationButton button:hover {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:active {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:disabled {
+  background-color: rgb(75, 7, 43);
+}
+
+@media (max-width: 576px) {
+  .cardsBtn{
+    text-align: center;
+    font-size: 0.9rem;
+    width: 55%;
+    height: 2rem;
+    padding-top: 0.2rem;
+  }
+}

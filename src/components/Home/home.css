@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+body {
+  height: 50vh;
+  max-height: 50vh;
+}
+
+.tPContainer h2{
+  color: var(--DEEPBLUE-bs-);
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--DEEPBLUE-bs-);
+  padding-left: 0.8rem;
+}
