@@ -1,30 +1,28 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import './cards.css';
+import '../Cards/cards.css';
+import './featured.css';
 
-const Cards = () => {
-  const [product, setProduct] = useState([]);
+const Featured = () => {
+  const [hot, setHot] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
-    getProduct();
-  }, [page]);
+    getHotItem();
+  }, []);
 
-  const getProduct = async () => {
+  const getHotItem = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
-      setPagesCount(info.data.totalPages);
-      setProduct(info.data.docs)
+      const hotItem = await axios.get('http://localhost:4000/products/hotItem');
+      setHot(hotItem.data.hotItem)
       setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'There is nothing here') {
-        setProduct([]);
+        setHot([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
@@ -32,21 +30,18 @@ const Cards = () => {
     }
   };
 
-  const handleGetOneProduct = (id) => {
-    Navigate(`/productPage/${id}`)
-  }
-
   return (
     <>
-      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={product._id}>
+      <h2 className='fTitle'>Los más destacados</h2>
+      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={hot._id}>
         {
           !isLoading ? (
-            product.length !== 0 ? (
-              product?.map((product) => (
+            hot.length !== 0 ? (
+              hot?.map((product) => (
                 <Col>
                   <Card className='cardProduct'>
-                      <Card.Img variant='top' className='pCardImg'
-                        src={product.image.img1} />
+                    <Card.Img variant='top' className='fCardImg'
+                      src={product.image.img1} />
                     <Card.Title className='cardTitle'>{product.brand}</Card.Title>
                     <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
@@ -58,7 +53,7 @@ const Cards = () => {
                         <FaShoppingCart className='cartIcon favIcon' />
                       </Card.Link>
                     </Card.Body>
-                    <Link className='cardsBtn' to={`/productPage/${product.id}`}> Ver más </Link>
+                    <Link className='cardsBtn' to='{/ProductPage/${}}'> Ver más </Link>
                   </Card>
                 </Col>
               ))
@@ -69,26 +64,9 @@ const Cards = () => {
             <>Loading...</>
           )
         }
-        <div className="pagination">
-          <div className="paginationButton">
-            <Button
-              onClick={() => setPage(page - 1)}
-              disabled={page === 1}
-            >
-              {'<'}
-            </Button>
-            <b className="fs-4">{page}</b>
-            <Button
-              onClick={() => setPage(page + 1)}
-              disabled={page === pagesCount}
-            >
-              {'>'}
-            </Button>
-          </div>
-        </div>
       </Row>
     </>
   )
 };
 
-export default Cards;
+export default Featured;

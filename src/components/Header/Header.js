@@ -12,16 +12,14 @@ import {
 } from "react-icons/fa"
 import "./header.css"
 import { React, useState } from 'react'
-import { Button, Form } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from "../Form/Modal/ModalLogin";
-// import logo from "../../Assets/images/logo.jpg"
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -129,9 +127,9 @@ const Header = () => {
           <div>
             <div className="logo"></div>
             <div>
-              <input placeholder="Buscar producto" />
+              <input placeholder="Buscar producto" className="ps-3" />
               <div id="schIconContainer">
-                <FaSearch className='searchIcon'/>
+                <FaSearch className='searchIcon' />
               </div>
             </div>
             <div>
@@ -143,7 +141,7 @@ const Header = () => {
               {loginUser ? (
                 <>
                   <Nav.Link href="#action1" className='btnCard'>
-                    <FaShoppingCart className='headerIcons'/>
+                    <FaShoppingCart className='headerIcons' />
                   </Nav.Link>
                   <NavDropdown title={userName} id='navbarUsuario' className='userMenu' bg='light'>
                     <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
@@ -164,12 +162,14 @@ const Header = () => {
         </div>
         <div>
           <div>
-            <FaHome className='mainIcons needHoover' />
+            <Link to='/'><FaHome className='mainIcons needHoover' /></Link>
           </div>
           <div>
             <div className='needHoover'>
-              DESTACADOS
-              <FaRegStar className='headerIcons' />
+              <Link to='/hotItems'>
+                DESTACADOS
+                <FaRegStar className='headerIcons' />
+              </Link>
             </div>
             <div className='needHoover'>
               FAVORITOS
@@ -201,7 +201,7 @@ const Header = () => {
                 <Nav.Link href="#link">Contactanos</Nav.Link>
                 <Nav.Item>
                   <div>
-                    <input placeholder="Buscar producto" />
+                    <input placeholder="Buscar producto" className="ps-1" />
                   </div>
                 </Nav.Item>
               </Nav>
