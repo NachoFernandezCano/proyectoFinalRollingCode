@@ -10,61 +10,12 @@ body {
   max-height: 50vh;
 }
 
-/* .main{
-  border-top: 1px solid var(--DEEPBLUE-bs-);
-} */
-
 .tPContainer h2{
   color: var(--DEEPBLUE-bs-);
   font-weight: bold;
 }
 
-.advertisement {
-  background-color: var(--DEEPBLUE-bs-);
-  max-height: 90vw;
-  height: 90%;
-}
-
 h2 {
   color: var(--DEEPBLUE-bs-);
   padding-left: 0.8rem;
-}
-
-.pagination {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.paginationButton {
-  width: 25%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.paginationButton button {
-  background-color: var(--DEEPBLUE-bs-);
-  border: none;
-}
-
-.paginationButton button:hover {
-  background-color: var(--HOTPINK-bs-);
-}
-
-.paginationButton button:active {
-  background-color: var(--HOTPINK-bs-);
-}
-
-.paginationButton button:disabled {
-  background-color: rgb(75, 7, 43);
-}
-
-.publicity {
-  margin-top: 4rem;
-  height: 54%;
-  width: 15vw;
-  box-shadow: rgb(6, 6, 158) 0px 1px 8px 0px;
-  /* box-shadow: white 0px 1px 8px 0px; */
 }

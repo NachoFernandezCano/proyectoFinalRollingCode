@@ -1,11 +1,24 @@
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 20rem;
+  height: 20rem;
+}
+
 .sContainer{
-  position: relative;
   margin-bottom: 2rem;
+  height: 100%;
 }
 
 .sContainer .swiper{
   width: 70%;
-  height: 20rem;
+  height: 100%;
   position: unset;
 }
 
@@ -23,10 +36,63 @@
   color: var(--CYAN-bs-);
 }
 
-.img-p{
-position: absolute;
-right: 0;
+.sCardContainer{
+  margin: 0;
+  padding-bottom: 1.5rem;
+  text-align: end;
+  font-size: 1rem;
+  color: var(--DEEPBLUE-bs-);
+}
+
+.sImgContainer{
+text-align: -webkit-center;
+height: 50%;
 width: 100%;
-height: 100%;
-object-fit: contain;
+}
+
+.cardP {
+  width: 100%;
+  max-height: 100%;
+  transition: all 300ms;
+  background: 0;
+  border: 1;
+}
+
+.cardsSBtn{
+  text-align: center;
+  padding: 0.2rem;
+  width: 50%;
+  height: 10%;
+  font-weight: bolder;
+  background-color: transparent;
+  color: var(--HOTPINK-bs-);
+  border: 2px solid var(--HOTPINK-bs-);
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 25%;
+  margin: 0.5rem;
+}
+
+.cardsSBtn:hover{
+  background-color: var(--HOTPINK-bs-);
+  color: white;
+}
+
+.cardsSBtn:active{
+  background-color: var(--HOTPINK-bs-);
+  color: white;
+  transform: scale(95%);
+}
+
+.imgP{
+width: 80%;
+height: 90%;
+display:block;
+}
+
+.dTitle{
+  color: var(--DEEPBLUE-bs-);
+  text-align: center;
+  padding-top: 1.5rem;
+  margin: 0;
 }

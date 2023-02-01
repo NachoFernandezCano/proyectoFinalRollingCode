@@ -1,9 +1,9 @@
 import { Button, ButtonGroup } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { FaHeadset } from 'react-icons/fa'
-import { FiMonitor, FiWatch, FiMoreHorizontal } from 'react-icons/fi'
-import { GiSmartphone } from 'react-icons/gi'
-import { BsLaptop } from 'react-icons/bs'
+import { FaHeadset } from 'react-icons/fa';
+import { FiMonitor, FiWatch, FiMoreHorizontal } from 'react-icons/fi';
+import { GiSmartphone } from 'react-icons/gi';
+import { BsLaptop } from 'react-icons/bs';
 import "./categories.css";
 
 function Categories() {
@@ -12,8 +12,8 @@ function Categories() {
       <div className='categoriesContainer'>
         <div className='btnGroupContainer'>
           <ButtonGroup className='btnGroup d-flex justify-content-center'>
-            <Button className="categoriesBtn" active>
-              <BsLaptop className='cIcon' />
+              <Button className="categoriesBtn" to='/Error404' active>
+                <BsLaptop className='cIcon' />
               Notebooks
             </Button>
             <Button className="categoriesBtn" active>

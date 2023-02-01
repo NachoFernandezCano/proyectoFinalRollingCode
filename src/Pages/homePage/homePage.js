@@ -1,6 +1,6 @@
-import Slider from "../../components/slider/Slider";
-import Home from "../../components/home/Home";
-import Categories from "../../components/categories/Categories"
+import Slider from "../../components/Slider/Slider";
+import Home from "../../components/Home/Home";
+import Categories from "../../components/Categories/Categories"
 
 
 const Homepage = () => {
