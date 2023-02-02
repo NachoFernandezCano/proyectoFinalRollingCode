@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BootstrapTable from 'react-bootstrap/Table';
+import Table from 'react-bootstrap/Table';
 import { Button } from "react-bootstrap";
 import './tableBody.css';
 
@@ -17,7 +17,7 @@ const TableBody = (props) => {
   }, [data])
 
   return (
-    <BootstrapTable id="mainTable">
+    <Table responsive id="mainTable">
       <thead>
         <tr>
           <th>CATEGORÍA</th>
@@ -53,7 +53,7 @@ const TableBody = (props) => {
           ))
         }
       </tbody>
-    </BootstrapTable>
+    </Table>
   );
 };
 

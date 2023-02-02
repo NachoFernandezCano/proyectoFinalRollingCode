@@ -6,7 +6,7 @@ td {
 #mainTable {
   text-align: center;
   background-color: #e8e8e8;
-  border: 3px solid var(--DEEPBLUE-bs-);
+  border: 3px solid var(--CYAN-bs-);
   color: var(--DEEPBLUE-bs-);
 }
 

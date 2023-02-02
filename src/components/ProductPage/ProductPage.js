@@ -1,60 +1,75 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Dropdown, Form, FormCheck, InputGroup, Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { FaCcVisa, FaShieldAlt, FaShippingFast } from "react-icons/fa";
+import axios from 'axios';
+import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
-import testProductPage from "../../assets/images/products/appleWatchNike.jpg";
-import testProductPageMiniatura from "../../assets/images/products/appleWatchNike.jpg";
-import testProductPage2Miniatura from "../../assets/images/products/appleWatchNike1.jpg";
-import testProductPage3Miniatura from "../../assets/images/products/appleWatchNike2.jpg";
-import Cards from '../Cards/Cards';
+import Slider from '../Slider/Slider'
 import Amex from '../../assets/images/mediosDePago/Amex.svg'
 import MasterCard from '../../assets/images/mediosDePago/MasterCard.svg'
 import Naranja from '../../assets/images/mediosDePago/Naranja.svg'
 import Visa from '../../assets/images/mediosDePago/visa.svg'
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const ProductPage = () =>{
-    const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(testProductPage)
-    const [showInput, setShowInput] = useState(false)
+    /* const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(product.image.img1) */
     const [show, setShow] = useState(false);
+    const [product, setProduct] = useState([]);
+    const params = useParams ();
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleInput = () =>{
-        setShowInput(true)
-    }
-
-    const imageHandle = (image) =>{
+    /* const imageHandle = (image) =>{
         setImagenPrincipalProduct(image)
-    }
+    } */
 
+    const getProduct = async (id) => {
+        try {
+            const info = await axios.get(`http://localhost:4000/products/${id}`);
+            setProduct(info.data);
+        } catch (error) {
+            alert('Algo salió mal, intente más tarde');
+        }
+    };
 
+    useEffect(() => {
+        getProduct()
+    }, [])
+    
 
         return (
-            <div className='productPageContainer' style={{ background: 'white' }}>
+            <div className='productPageContainer'>
+                <div></div>
                 <div className='containerImgProduct'>
                     <div className='containerImagenPrincipal'>
-                        <img className='imagenPrincipalProduct' src={imagenPrincipalProduct}></img>
+                        <img className='imagenPrincipalProduct' /* src={product.image.img1} */></img>
                     </div>
                     <div className='miniaturasProductContainer'>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail' onClick={() => imageHandle(testProductPageMiniatura)} src={testProductPageMiniatura}></img>
+                            <img className='thumbnail' /* onClick={() => imageHandle(product.image.img1)} src={product.image.img1} */></img>
                         </div>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail' onClick={() => imageHandle(testProductPage2Miniatura)} src={testProductPage2Miniatura}></img>
+                            <img className='thumbnail'/*  onClick={() => imageHandle(product.image.img2)} src={product.image.img2} */></img>
                         </div>
                         <div className='miniaturaProducto'>
-                            <img className='thumbnail' onClick={() => imageHandle(testProductPage3Miniatura)} src={testProductPage3Miniatura}></img>
+                            <img className='thumbnail' /* onClick={() => imageHandle(product.image.img3)} src={product.image.img3} */></img>
                         </div>
                     </div>
                 </div>
                 <div className='productInfo'>
-                    <h5>Apple Watch Nike Series</h5>
+                    <h5> 
+                        <div>
+                            {product.brand} 
+                        </div> 
+                        <div>
+                            {product.name}
+                        </div>
+                    </h5>
                     <div className='precioMediosDePago'>
                         <div className='precioProductPage'>
-                            <h2>$176.399</h2>
+                            <h2>{/* {product.price} */}</h2>
                         </div>
                         <div>
                             <Button onClick={handleShow} className='btn-verMediosDePago'>Ver los medios de pago</Button>
@@ -89,23 +104,19 @@ const ProductPage = () =>{
                     <div className='btn-comprasCarrito'>
                         <div className='containerBtnComprarYa'>
                             <Button className='btn-comprarYa'>
-                            <Link to='/Error404' className='text-decoration-none'>
-                                    Comprar
-                                </Link>
+                                Comprar
                             </Button>
                         </div>
                         <div className='containerBtnAgregarAlcarrito'>
                             <Button className='btn-agregarAlCarrito'>
-                                <Link to='/Error404' className='text-decoration-none'>
-                                    Agregar al carrito
-                                </Link>
+                                Agregar al carrito
                             </Button>
                         </div>
                     </div>
                     <div className='containerMasCaracteristicas'>
                         <Card classname='masCaracteristicasCard'>
                             <Card.Text className='masCaracteristicasText'>
-                            Resistente al agua, Sistema Operativo watchOs 8, Wifi, Cálculo de consumo de calorías, Registro de sueño, Alertas de ritmo, Control musical, Sumergible 50 metros, Gps, Bluetooth, Memoria 32Gb, Resolución 324 x 394
+                            {/* {product.description} */}
                             </Card.Text>
                         </Card>
                 </div>
@@ -119,9 +130,10 @@ const ProductPage = () =>{
                             </Card.Subtitle>
                         </Card.Header>
                         <Card.Body className='Info_card'>
+                                <h6 className='Info_Vendedor'>Vendido por Apple</h6>
                                 <div className='infoStockCompra'>
                                     <h5>Stock disponible</h5> 
-                                    <div className='text-muted'>(110 unidades disponibles)</div>
+                                    <div className='text-muted'>({/* {product.stock} */})</div>
                                     <div className='selectorDeCantidadCompra'>
                                     <Dropdown>
                                         <Dropdown.Toggle className='btn-seleccionarCantidad' id="dropdown-basic">
@@ -147,16 +159,13 @@ const ProductPage = () =>{
                                             <Dropdown.Item href="#/action-6">
                                                 6 unidades
                                             </Dropdown.Item>
-                                            <Dropdown.Item onClick={() => handleInput()}>
-                                                Más de 6 
-                                            </Dropdown.Item>
                                         </Dropdown.Menu>
                                         </Dropdown>
                                     </div>
                                 </div>
                         </Card.Body> 
                         <Card.Body className='Botones_card_utiles'>
-                            <Button className='btn-reembolso'><Link to='/Error404' className='text-decoration-none'>Solicitá una devolución</Link></Button>
+                            <Button className='btn-reembolso'>Solicitá una devolución</Button>
                         </Card.Body>
                         <Card.Body className='infoGarantiaDevoluciones'>
                             <Card.Subtitle className="mt-1 text-muted">
@@ -171,7 +180,7 @@ const ProductPage = () =>{
                 <h6>Productos que podrían interesarte</h6>
                 <div className='containerProductosInteresantes'>
                     <div>
-                        <Cards/>
+                        <Slider/>
                     </div>
                 </div>
             </div>    
@@ -179,3 +188,5 @@ const ProductPage = () =>{
 }
 
 export default ProductPage;
+
+    

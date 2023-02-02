@@ -8,7 +8,7 @@
 }
 
 .cardProduct {
-  height: 30rem;
+  height: 22rem;
   width: 30rem;
   margin: 10px 10px;
   transition: all 300ms;
@@ -19,10 +19,10 @@
   box-shadow: var(--CYAN-bs-) 0px 1px 4px 1px;
 }
 
-.pCardImg{
-  height: 50%;
-  width: 100%;
-  padding: 0.5rem;
+.pCardImg {
+  height: 40%;
+  width: 80%;
+  margin: inherit;
 }
 
 .cardBody {
@@ -30,20 +30,27 @@
   font-size: large;
   font-weight: bolder;
   color: var(--HOTPINK-bs-);
+  margin-block: -2.1rem;
 }
 
-.cardTitle{
+.mCardT{
   color: var(--DEEPBLUE-bs-);
   text-align: end;
-  padding: 0.3rem;
-  font-size: medium;
+  font-size: 1rem;
+  padding-inline: 0.5rem;;
   text-decoration: none;
+}
+
+.mCardPrice{
+  padding-top: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .favIcon {
   height: auto;
-  width: 1.6rem;
+  width: 1.4rem;
   color: pink;
+  margin-top: -1.2rem;
 }
 
 .favIcon:hover {
@@ -51,11 +58,12 @@
   color: var(--HOTPINK-bs-);
 }
 
-.favIcon:active, .cartIcon:active {
+.favIcon:active,
+.cartIcon:active {
   transform: scale(105%);
 }
 
-.cartIcon{
+.cartIcon {
   color: lightblue;
 }
 
@@ -63,27 +71,27 @@
   color: var(--CYAN-bs-);
 }
 
-.cardsBtn{
+.cardsBtn {
   text-align: center;
-  font-size: 1.1rem;
-  width: 50%;
-  height: 2rem;
+  font-size: 1rem;
+  width: 45%;
+  height: 1.6rem;
   font-weight: bolder;
   background-color: transparent;
   color: var(--HOTPINK-bs-);
   border: 2px solid var(--HOTPINK-bs-);
   border-radius: 10px;
   text-decoration: none;
-  margin-left: 25%;
+  margin-left: 30%;
   margin-bottom: 0.5rem;
 }
 
-.cardsBtn:hover{
+.cardsBtn:hover {
   background-color: var(--HOTPINK-bs-);
   color: white;
 }
 
-.cardsBtn:active{
+.cardsBtn:active {
   background-color: var(--HOTPINK-bs-);
   color: white;
   transform: scale(95%);
@@ -126,11 +134,11 @@
 }
 
 @media (max-width: 576px) {
-  .cardsBtn{
+  .cardsBtn {
     text-align: center;
     font-size: 0.9rem;
     width: 55%;
-    height: 2rem;
+    height: 1.6rem;
     padding-top: 0.2rem;
   }
 }

@@ -23,10 +23,10 @@ const Cards = () => {
       setProduct(info.data.docs)
       setIsLoading(false);
     } catch (error) {
-      if (error?.response?.data?.error === 'There is nothing here') {
+      if (error?.response?.data?.error === 'Sin productos') {
         setProduct([]);
       } else {
-        alert('Algo salio mal intente mas tarde');
+        console.log('Algo salio mal intente mas tarde');
       }
       setIsLoading(false);
     }
@@ -45,12 +45,12 @@ const Cards = () => {
               product?.map((product) => (
                 <Col>
                   <Card className='cardProduct'>
-                      <Card.Img variant='top' className='pCardImg'
-                        src={product.image.img1} />
-                    <Card.Title className='cardTitle'>{product.brand}</Card.Title>
-                    <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
+                    <Card.Img variant='top' className='pCardImg'
+                      src={product.image.img1} />
+                    <Card.Title className='mCardT'>{product.brand}</Card.Title>
+                    <Card.Text className='mCardT'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
-                      <Card.Text>${product.price}</Card.Text>
+                      <Card.Text className='mCardPrice'>${product.price}</Card.Text>
                       <Card.Link href='#'>
                         <FaHeart className='favIcon' />
                       </Card.Link>

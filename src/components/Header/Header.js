@@ -4,13 +4,13 @@ import {
   FaFacebookF,
   FaSearch,
   FaHome,
-  FaFireAlt,
   FaRegHeart,
   FaShoppingCart,
   FaRegQuestionCircle
 } from "react-icons/fa";
-import {FiPhone} from "react-icons/fi";
-import "./header.css";
+import {AiOutlineFire} from 'react-icons/ai'
+import {FiPhone} from 'react-icons/fi';
+import './header.css';
 import { React, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -168,7 +168,7 @@ const Header = () => {
             <div className='needHoover'>
               <Link to='/hotItems'>
                 DESTACADOS
-                <FaFireAlt className='headerIcons' />
+                <AiOutlineFire className='headerIcons' />
               </Link>
             </div>
             <div className='needHoover'>
