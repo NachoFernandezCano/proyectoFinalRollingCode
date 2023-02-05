@@ -5,8 +5,8 @@ import {
   FaTwitter,
   FaFacebookF
 } from "react-icons/fa"
-import Logo from "../../assets/images/logo.jpg"
-import qrCode from "../../assets/images/qrcode.png"
+import Logo from "../../Assets/images/logo.jpg"
+import qrCode from "../../Assets/images/qrcode.png"
 
 const Footer = () => {
   return (
@@ -27,6 +27,12 @@ const Footer = () => {
             <div><a href=''>- Términos y condiciones</a></div>
             <div><a href=''>- Políticas de privacidad</a></div>
             <div><a href=''>- Políticas de envío</a></div>
+          </div>
+          <div>
+            <div>Contacto</div>
+            <div><a href=''>- Trabaja con nosotros</a></div>
+            <div><a href=''>- Envianos un mensaje</a></div>
+            <div><a href=''>- Reporta un bug</a></div>
           </div>
           <div>
             <img src={qrCode} />

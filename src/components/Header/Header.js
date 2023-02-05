@@ -20,6 +20,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from "../Form/Modal/ModalLogin";
+import Logo from "../../Assets/images/logo.jpg"
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -155,7 +156,7 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Registrarse</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
             </div>
           </div>
@@ -191,7 +192,7 @@ const Header = () => {
       </div>
 
       <div className='navbarMobile'>
-        <Navbar variant="dark" expand="lg" >
+        <Navbar variant="dark" expand="lg">
           <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id='basic-navbar-nav'>
@@ -206,6 +207,7 @@ const Header = () => {
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
+            <img src={Logo} className="logoMobile"/>
             <Nav>
               {loginUser ? (
                 <>
@@ -224,7 +226,7 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Register</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
             </Nav>
           </Container>

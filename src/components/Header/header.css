@@ -81,11 +81,12 @@
 .logo {
   height: 4rem;
   width: 10rem;
-  background-image: url(../../assets//images/logo.jpg);
+  background-image: url(../../Assets//images/logo.jpg);
   background-size:90%;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 .searchIcon{
   color: white;
@@ -149,7 +150,6 @@
 
 .userName {
   color: white !important;
-  margin-right: 5rem;
 }
 
 .userMenu {
@@ -159,7 +159,7 @@
   width: 1.5rem;
   height: 1.8rem;
   padding: 1.1rem 3.1rem;
-  background-image: url(../../assets/images/user_icon.png);
+  background-image: url(../../Assets/images/user_icon.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;
@@ -190,7 +190,7 @@ span {
   height: 50px;
   padding: 0.1rem 0.1rem;
   margin-right: 0;
-  background-image: url("../../assets/images/user_icon.png");
+  background-image: url("../../Assets/images/user_icon.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50px auto;
@@ -206,6 +206,15 @@ span {
     display: block;
     background-color: var(--DEEPBLUE-bs-);
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .logoMobile {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 2.5rem;
   }
 
 }
@@ -218,5 +227,14 @@ span {
     display: block;
     background-color: var(--DEEPBLUE-bs-);
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+    .logoMobile {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 2.5rem;
   }
 }
