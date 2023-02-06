@@ -1,16 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
 import Homepage from './pages/homePage/homePage';
-import RecoverPassword from './components/Form/account/RecoverPassword';
-import EditPassUser from './components/Form/account/editpassword/EditPassUser';
-import Administrator from './components/Admin/Administrator';
-import ProductPage from './components/ProductPage/ProductPage';
-import Table from './components/Table/Table'
+import RecoverPassword from './components/form/account/RecoverPassword';
+import EditPassUser from './components/form/account/editpassword/EditPassUser';
+import Administrator from './components/admin/Administrator';
+import ProductPage from './components/productPage/ProductPage';
+import Table from './components/table/Table'
 import HotItems from './pages/hotItemsPage/hotItemsPage';
-import Error404 from './components/Error/Error404';
-import CartPage from './components/CartPage/CartPage';
+import Error404 from './components/error/Error404';
+import CartPage from './components/cartPage/CartPage';
 
 function App() {
 
