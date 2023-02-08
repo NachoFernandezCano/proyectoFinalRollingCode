@@ -20,7 +20,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Homepage />} />
-          <Route path='/ProductPage' element={<ProductPage />} />
+          <Route path='/ProductPage/:id' element={<ProductPage />} />
           <Route path='/CartPage' element={<CartPage/>}/>
           <Route path='/RecoverPassword' element={<RecoverPassword />} />
           <Route path='/EditPassword' element={<EditPassUser />} />
