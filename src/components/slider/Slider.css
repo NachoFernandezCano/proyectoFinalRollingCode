@@ -11,32 +11,33 @@
   height: 20rem;
 }
 
-.sContainer{
+.sContainer {
   margin-bottom: 2rem;
   height: 100%;
 }
 
-.sContainer .swiper{
+.sContainer .swiper {
   width: 70%;
   height: 100%;
   position: unset;
 }
 
-.sContainer .swiper-slide{
+.sContainer .swiper-slide {
   background: white;
   display: flex;
-  border-radius:10px;
+  border-radius: 10px;
   padding: 0.5rem;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
 }
 
-.sContainer .swiper-button-prev, .sContainer .swiper-button-next{
+.sContainer .swiper-button-prev,
+.sContainer .swiper-button-next {
   color: var(--CYAN-bs-);
 }
 
-.sCardContainer{
+.sCardContainer {
   margin: 0;
   padding-bottom: 1.5rem;
   text-align: end;
@@ -44,10 +45,10 @@
   color: var(--DEEPBLUE-bs-);
 }
 
-.sImgContainer{
-text-align: -webkit-center;
-height: 50%;
-width: 100%;
+.sImgContainer {
+  text-align: -webkit-center;
+  height: 50%;
+  width: 100%;
 }
 
 .cardP {
@@ -58,19 +59,19 @@ width: 100%;
   border: 1;
 }
 
-.cardsSBtn{
+.cardsSBtn {
+  display: flex;
+  align-items: center;
   text-align: center;
-  padding: 0.2rem;
   width: 50%;
-  height: 10%;
+  height: 25%;
   font-weight: bolder;
   background-color: transparent;
   color: var(--HOTPINK-bs-);
   border: 2px solid var(--HOTPINK-bs-);
   border-radius: 10px;
+  margin-inline: auto;
   text-decoration: none;
-  margin-left: 25%;
-  margin: 0.5rem;
 }
 
 .cardsSBtn:hover{
@@ -80,19 +81,40 @@ width: 100%;
 
 .cardsSBtn:active{
   background-color: var(--HOTPINK-bs-);
-  color: white;
   transform: scale(95%);
 }
 
-.imgP{
-width: 80%;
-height: 90%;
-display:block;
+.imgP {
+  width: 70%;
+  height: 85%;
+  display: block;
+  padding-top: 0.4rem;
 }
 
-.dTitle{
+.dTitle {
   color: var(--DEEPBLUE-bs-);
   text-align: center;
   padding-top: 1.5rem;
   margin: 0;
+}
+
+@media (max-width: 576px) {
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .sCardContainer {
+    padding-bottom: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .cardsSBtn {
+    padding: 0.3rem;
+    width: 40%;
+    height: 25%;
+    font-weight: bolder;
+  }
 }

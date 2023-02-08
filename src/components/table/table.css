@@ -1,12 +1,9 @@
 .homeContainer {
   height: calc(100vh - 8rem);
-  background: white;
-  background: linear-gradient(
-    90deg,
-    rgb(218, 218, 218) 16%,
-    rgb(255, 255, 255) 50%,
-    rgb(229, 229, 229) 89%
-  );
+  background-image: url(../../assets/images/extras/tableBackground.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,28 +32,28 @@
   cursor: pointer;
   width: auto;
   height: 50px;
-  background-image: linear-gradient(to top, #d8d9db 0%, #fff 80%, #fdfdfd 100%);
+  background-image: linear-gradient(to top, #a5bff3 0%, #fcfdff 80%, #fcfcfc 100%);
   border-radius: 30px;
-  border: 2px solid #8f9092;
+  border: 2px solid #666769;
   transition: all 0.2s ease;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: var(--DEEPBLUE-bs-);
-  text-shadow: 0 1px #fff;
+  text-shadow: 0 1px rgb(133, 139, 216);
 }
 
 #createBtn:hover {
-  box-shadow: 0 4px 3px 1px #fcfcfc, 0 6px 8px #d6d7d9, 0 -4px 4px #cecfd1,
-    0 -6px 4px #fefefe, inset 0 0 3px 3px #cecfd1;
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
 }
 
 #createBtn:active {
-  box-shadow: 0 4px 3px 1px #fcfcfc, 0 6px 8px #d6d7d9, 0 -4px 4px #cecfd1,
-    0 -6px 4px #fefefe, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
 }
 
 #createBtn:focus {
-  box-shadow: 0 4px 3px 1px #fcfcfc, 0 6px 8px #d6d7d9, 0 -4px 4px #cecfd1,
-    0 -6px 4px #fefefe, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
 }
