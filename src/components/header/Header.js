@@ -4,13 +4,13 @@ import {
   FaFacebookF,
   FaSearch,
   FaHome,
-  FaFireAlt,
+  FaRegStar,
   FaRegHeart,
+  FaPhone,
   FaShoppingCart,
   FaRegQuestionCircle
-} from "react-icons/fa";
-import {FiPhone} from "react-icons/fi";
-import "./header.css";
+} from "react-icons/fa"
+import "./header.css"
 import { React, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -20,6 +20,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from "../form/Modal/ModalLogin";
+import Logo from "../../assets/images/logo.jpg"
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -155,7 +156,7 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Registrarse</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
             </div>
           </div>
@@ -168,7 +169,7 @@ const Header = () => {
             <div className='needHoover'>
               <Link to='/hotItems'>
                 DESTACADOS
-                <FaFireAlt className='headerIcons' />
+                <FaRegStar className='headerIcons' />
               </Link>
             </div>
             <div className='needHoover'>
@@ -176,10 +177,8 @@ const Header = () => {
               <FaRegHeart className='headerIcons' />
             </div>
             <div className='needHoover'>
-              <Link to='/Error404'>
-                CONTACTANOS
-                <FiPhone className='headerIcons' />
-              </Link>
+              CONTACTANOS
+              <FaPhone className='headerIcons' />
             </div>
           </div>
           <div>
@@ -193,7 +192,7 @@ const Header = () => {
       </div>
 
       <div className='navbarMobile'>
-        <Navbar variant="dark" expand="lg" >
+        <Navbar variant="dark" expand="lg">
           <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id='basic-navbar-nav'>
@@ -208,6 +207,7 @@ const Header = () => {
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
+            <img src={Logo} className="logoMobile"/>
             <Nav>
               {loginUser ? (
                 <>
@@ -226,7 +226,7 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Register</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
             </Nav>
           </Container>

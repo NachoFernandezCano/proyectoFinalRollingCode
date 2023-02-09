@@ -29,6 +29,12 @@ const Footer = () => {
             <div><a href=''>- Políticas de envío</a></div>
           </div>
           <div>
+            <div>Contacto</div>
+            <div><a href=''>- Trabaja con nosotros</a></div>
+            <div><a href=''>- Envianos un mensaje</a></div>
+            <div><a href=''>- Reporta un bug</a></div>
+          </div>
+          <div>
             <img src={qrCode} />
           </div>
         </div>
