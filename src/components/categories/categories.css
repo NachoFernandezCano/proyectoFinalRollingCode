@@ -1,73 +1,74 @@
 .categoriesContainer {
-  height: auto;
-  width: auto;
-}
-
-.btnGroupContainer {
-  width: auto;
-  height: auto;
-}
-
-.dropdownContainer {
-  display: none;
-}
-
-.btnGroup {
-  max-width: 99%;
-  margin: 0.5rem;
-}
-
-.btnGroup > .categoriesBtn {
-  background-color: transparent;
-  border-color: var(--CYAN-bs-);
-  color: var(--DEEPBLUE-bs-);
-  height: 6rem;
-}
-
-.btnGroup > .categoriesBtn:hover {
-  box-shadow: 1px 1px 2px 2px var(--CYAN-bs-);
-  color: var(--DEEPBLUE-bs-);
-}
-
-.cIcon {
-  height: 1.8rem;
-  width: 2rem;
-  color: aqua;
-  margin-right: 0.3rem;
-}
-
-.dropdown-item {
-  color: var(--DEEPBLUE-bs-);
-}
-
-.dropdown-item:hover {
-  color: var(--HOTPINK-bs-);
-}
-
-.dropdown-item:active {
-  background-color: transparent;
-}
-
-@media (max-width: 576px) {
+    height: auto;
+    width: auto;
+  }
+  
   .btnGroupContainer {
+    width: auto;
+    height: auto;
+  }
+  
+  .dropdownContainer {
     display: none;
   }
-
-  .dropdownContainer {
-    display: block;
-    display: flex;
-    justify-content: center;
-    margin-block: 0.5rem;
+  
+  .btnGroup {
+    max-width: 99%;
+    margin: 0.5rem;
   }
-  #dropdown-basic {
+  
+  .btnGroup > .categoriesBtn {
     background-color: transparent;
     border-color: var(--CYAN-bs-);
     color: var(--DEEPBLUE-bs-);
-    height: 5rem;
-    width: 10rem;
+    height: 6rem;
   }
-  #dropdown-basic:hover {
+  
+  .btnGroup > .categoriesBtn:hover {
     box-shadow: 1px 1px 2px 2px var(--CYAN-bs-);
     color: var(--DEEPBLUE-bs-);
   }
-}
+  
+  .cIcon {
+    height: 1.8rem;
+    width: 2rem;
+    color: aqua;
+    margin-right: 0.3rem;
+  }
+  
+  .dropdown-item {
+    color: var(--DEEPBLUE-bs-);
+  }
+  
+  .dropdown-item:hover {
+    color: var(--HOTPINK-bs-);
+  }
+  
+  .dropdown-item:active {
+    background-color: transparent;
+  }
+  
+  @media (max-width: 576px) {
+    .btnGroupContainer {
+      display: none;
+    }
+  
+    .dropdownContainer {
+      display: block;
+      display: flex;
+      justify-content: center;
+      margin-block: 0.5rem;
+    }
+    #dropdown-basic {
+      background-color: transparent;
+      border-color: var(--CYAN-bs-);
+      color: var(--DEEPBLUE-bs-);
+      height: 5rem;
+      width: 10rem;
+    }
+    #dropdown-basic:hover {
+      box-shadow: 1px 1px 2px 2px var(--CYAN-bs-);
+      color: var(--DEEPBLUE-bs-);
+    }
+  }
+  

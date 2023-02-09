@@ -19,7 +19,7 @@ const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [show, setShow] = useState(false);
-  // const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState(product.image.img1)
+  const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,47 +37,46 @@ const ProductPage = () => {
 
   useEffect(() => {
     getProduct();
+    setImagenPrincipalProduct(product.image?.img1);
   }, []);
 
-  // const imageHandle = (image) => {
-  //   setImagenPrincipalProduct(image)
-  // }
+  const imageHandle = (image) => {
+  setImagenPrincipalProduct(image)
+  }
 
   return (
     <div className="productPageContainer">
-      <div></div>
       <div className="containerImgProduct">
         <div className="containerImagenPrincipal">
           <img
-            className="imagenPrincipalProduct" src={product.image?.img1}
+            className="imagenPrincipalProduct" src={imagenPrincipalProduct}
           ></img>
         </div>
         <div className="miniaturasProductContainer">
           <div className="miniaturaProducto">
             <img
-              className="thumbnail" /*onClick={() => imageHandle(product.image?.img1)}*/ src={product.image?.img1}
+              className="thumbnail" onClick={() => imageHandle(product.image?.img1)} src={product.image?.img1}
             ></img>
           </div>
           <div className="miniaturaProducto">
             <img
-              className="thumbnail" /*onClick={() => imageHandle(product.image?.img2)}*/ src={product.image?.img2}
+              className="thumbnail" onClick={() => imageHandle(product.image?.img2)} src={product.image?.img2}
             ></img>
           </div>
           <div className="miniaturaProducto">
             <img
-              className="thumbnail" /*onClick={() => imageHandle(product.image?.img3)}*/ src={product.image?.img3}
+              className="thumbnail" onClick={() => imageHandle(product.image?.img3)} src={product.image?.img3}
             ></img>
           </div>
         </div>
       </div>
       <div className="productInfo">
-        <h5>
-          <div>{product.brand}</div>
-          <div>{product.name}</div>
+        <h5 className="productName">
+          <div> {product.brand} {product.name}</div>
         </h5>
         <div className="precioMediosDePago">
           <div className="precioProductPage">
-            <h2>{product.price}</h2>
+            <h2>${product.price}</h2>
           </div>
           <div>
             <Button onClick={handleShow} className="btn-verMediosDePago">
@@ -139,10 +138,10 @@ const ProductPage = () => {
             </Card.Subtitle>
           </Card.Header>
           <Card.Body className="Info_card">
-            <h6 className="Info_Vendedor">Vendido por Apple</h6>
+            <h6 className="Info_Vendedor">Marca {product.brand}</h6>
             <div className="infoStockCompra">
               <h5>Stock disponible</h5>
-              <div className="text-muted">({product.stock})</div>
+              <div className="text-muted">({product.stock} Unidad/es)</div>
               <div className="selectorDeCantidadCompra">
                 <Dropdown>
                   <Dropdown.Toggle
@@ -172,7 +171,7 @@ const ProductPage = () => {
               <div>
                 <p>
                   <FaShieldAlt /> Recibí el producto que esperabas o te
-                  devolvemos tu dinero.{" "}
+                  devolvemos tu dinero.
                 </p>
                 <p>3 meses de garantía de fábrica.</p>
               </div>
@@ -182,9 +181,9 @@ const ProductPage = () => {
       </div>
       <h6>Productos que podrían interesarte</h6>
       <div className="containerProductosInteresantes">
-        <div>
+        {/* <div>
           <Slider />
-        </div>
+        </div> */}
       </div>
     </div>
   );
