@@ -203,7 +203,7 @@ span {
   }
 
   .navbarMobile {
-    display: block;
+    display: flex;
     background-color: var(--DEEPBLUE-bs-);
     color: white;
     position: sticky;
@@ -215,6 +215,10 @@ span {
     width: 4rem;
     height: 3rem;
     margin-left: 2.5rem;
+  }
+
+  .navbarContainer {
+    display: flex;
   }
 
 }

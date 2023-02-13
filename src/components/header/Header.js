@@ -192,24 +192,10 @@ const Header = () => {
       </div>
 
       <div className='navbarMobile'>
-        <Navbar variant="dark" expand="lg">
+        <Navbar variant="dark" expand="lg" className="navbarContainer">
           <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='me-auto'>
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Destacados</Nav.Link>
-                <Nav.Link href="#link">Contactanos</Nav.Link>
-                <Nav.Item>
-                  <div>
-                    <input placeholder="Buscar producto" className="ps-1" />
-                  </div>
-                </Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
-            <div>
-              <img src={Logo} className="logoMobile"/>
-            </div>
+            <img src={Logo} className="logoMobile"/>
             <Nav>
               {loginUser ? (
                 <>
@@ -230,7 +216,19 @@ const Header = () => {
               ) : (
                 <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
-            </Nav>
+            </Nav>      
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='me-auto'>
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#link">Destacados</Nav.Link>
+                <Nav.Link href="#link">Contactanos</Nav.Link>
+                <Nav.Item>
+                  <div>
+                    <input placeholder="Buscar producto" className="ps-1" />
+                  </div>
+                </Nav.Item>
+              </Nav>
+            </Navbar.Collapse>     
           </Container>
         </Navbar>
       </div>
