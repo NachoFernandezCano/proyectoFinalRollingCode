@@ -343,10 +343,8 @@
   .containerCardProduct{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    padding-left: 20px;
-    padding-top: 0;
-    padding-bottom: 3em;
+    align-items: center;
+    justify-content: center;
   }
 }
 

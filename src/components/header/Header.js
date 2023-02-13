@@ -207,7 +207,9 @@ const Header = () => {
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
-            <img src={Logo} className="logoMobile"/>
+            <div>
+              <img src={Logo} className="logoMobile"/>
+            </div>
             <Nav>
               {loginUser ? (
                 <>

@@ -30,14 +30,14 @@ const ProductPage = () => {
         `http://localhost:4000/products/getProduct/` + id
       );
       setProduct(info.data.product);
+      setImagenPrincipalProduct(info.data.product.image?.img1);
     } catch (error) {
       alert("Algo salió mal, intente más tarde");
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
     getProduct();
-    setImagenPrincipalProduct(product.image?.img1);
   }, []);
 
   const imageHandle = (image) => {
@@ -49,8 +49,8 @@ const ProductPage = () => {
       <div className="containerImgProduct">
         <div className="containerImagenPrincipal">
           <img
-            className="imagenPrincipalProduct" src={imagenPrincipalProduct}
-          ></img>
+            className="imagenPrincipalProduct" src={imagenPrincipalProduct}>
+          </img>
         </div>
         <div className="miniaturasProductContainer">
           <div className="miniaturaProducto">
