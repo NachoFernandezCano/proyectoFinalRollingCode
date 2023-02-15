@@ -13,6 +13,17 @@
   padding-top: 4em;
 }
 
+.productName{
+  display: flex;
+  justify-content: center;
+}
+
+.precioMediosDePago{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .btn-comprasCarrito {
   padding-top: 2em;
   display: flex;
@@ -171,13 +182,13 @@
 }
 
 .containerMasCaracteristicas {
-  height: 100%;
+  height: auto;
   width: 100%;
   padding-bottom: 7em;
 }
 
 .masCaracteristicasCard {
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 
@@ -332,10 +343,8 @@
   .containerCardProduct{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    padding-left: 20px;
-    padding-top: 0;
-    padding-bottom: 3em;
+    align-items: center;
+    justify-content: center;
   }
 }
 
