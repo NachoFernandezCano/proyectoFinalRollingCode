@@ -8,10 +8,12 @@ import {
   FaRegHeart,
   FaPhone,
   FaShoppingCart,
-  FaRegQuestionCircle
+  FaRegQuestionCircle,  
 } from "react-icons/fa"
 import "./header.css"
-import { React, useState } from 'react'
+import {FiPhone} from "react-icons/fi";
+import { React, useEffect, useState } from 'react'
+import { useCartContext } from "../../context/cartContext";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -20,7 +22,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from "../form/Modal/ModalLogin";
-import Logo from "../../assets/images/logo.jpg"
+import Menu from "../util/menu/Menu";
 
 const Header = () => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -28,8 +30,57 @@ const Header = () => {
   const [loaderUser, setloaderUser] = useState(false);
   const [loaderRegister, setloaderRegister] = useState(false);
   const [userName, setuserName] = useState('');
+  const [userType, setuserType] = useState(false);
+  const [productCount, setproductCount] = useState(10);
 
-  let navitage = useNavigate();
+const { cartCount ,getCartCount} = useCartContext();
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+    if (token) {
+      handleVerifyJwt(token);      
+    } else {
+      //navigate("/");
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    setproductCount(cartCount);
+  }, [cartCount]);
+
+
+
+  const handleVerifyJwt = async(token)=>{
+    try {
+      const {data} = await axios.get("http://localhost:4000/user", {headers:{Authorization: token}});       
+      autoLogin(data.user);
+    } catch (error) {
+      
+      Swal.fire({
+        title: 'Leer. Atte.',
+        text: error.response.data.message,
+        icon: error.response.data.icon,
+        showCancelButton: false,
+        confirmButtonColor: '#e31474',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setloaderUser(false);
+          setloaderRegister(false);
+          setmodalLogin(false);
+          setuserType(false);          
+          localStorage.clear("user");
+          setloginUser(false);
+          navigate("/");           
+          setloginUser(false);    
+          setproductCount(0);  
+        }
+      })
+    }
+  }
 
   const handleIngresar = async (e) => {
     e.preventDefault();
@@ -40,18 +91,21 @@ const Header = () => {
           paylaod[target.name] = target.value;
         }
       }
-      const { data } = await axios.post('http://localhost:4000/api/user/auth', paylaod);
-      setuserName(data.dataUser.name);
-      alert(data.dataUser.type);
+      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);      
+      setuserName(data.dataUser.nombre);
+      localStorage.setItem("user",data.token);
+      handleLoadCart();
       if (data.dataUser.type === 'admin') {
-        navitage("/Admin");
+        setuserType(true);
       } else {
+        setuserType(false);
       }
       setloaderUser(true);
       setloginUser(true);
       setmodalLogin(false);
 
-    } catch (error) {
+    } catch (error) { 
+      console.log(error)     ;
       if (error.code == "ERR_NETWORK") {
         return Swal.fire({
           title: '<strong>Error de Conexión</strong>',
@@ -68,7 +122,7 @@ const Header = () => {
   }
 
   const handleLogout = () => {
-    setloginUser(false);
+    
     Swal.fire({
       title: 'Administracion Usuario',
       text: "Deseas Cerrar Sesion?",
@@ -82,8 +136,12 @@ const Header = () => {
 
         setloaderUser(false);
         setloaderRegister(false);
-        setmodalLogin(false);
-        console.log(loginUser);
+        localStorage.clear("user");
+        setloginUser(false);
+        setuserType(false);
+        navigate("/");      
+        setloginUser(false); 
+        setproductCount(0);
       }
     })
   }
@@ -99,7 +157,8 @@ const Header = () => {
         }
       }
       paylaod["type"] = "user";
-      const { data } = await axios.post('http://localhost:4000/api/user/register', paylaod);
+      console.log(paylaod);
+      const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',
@@ -120,6 +179,29 @@ const Header = () => {
     }
     setloaderRegister(false);
   }
+  const handlePerfil = () =>{
+    navigate("Perfil");
+  }
+
+  const handleLoadCart=  () => {
+    getCartCount();    
+  }
+
+  const autoLogin = (user)=>{
+    setuserName(user.nombre);
+    handleLoadCart();
+    if (user.type === 'admin') {
+      setuserType(true);
+    } else {
+      setuserType(false);
+    }
+    setloaderUser(true);
+    setloginUser(true);
+    setmodalLogin(false);
+  }
+const handleComprar = () =>{
+  navigate("Comprar");
+}
 
   return (
     <>
@@ -140,21 +222,27 @@ const Header = () => {
             </div>
             <div>
               {loginUser ? (
-                <>
-                  <Nav.Link href="#action1" className='btnCard'>
-                    <FaShoppingCart className='headerIcons' />
-                  </Nav.Link>
-                  <NavDropdown title={userName} id='navbarUsuario' className='userMenu' bg='light'>
-                    <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>
-                      Cerrar Sesion
-                    </NavDropdown.Item>
+                userType ? (
+                  <>                  
+                  <div className="userMenu">                 
+                  <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Crud Articulos</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesion</NavDropdown.Item>
                   </NavDropdown>
+                </div>
                 </>
+                ):(
+                  <>                  
+                  <div className="userMenu">                 
+                  <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesion</NavDropdown.Item>
+                  </NavDropdown>
+                </div>
+                </>
+                )
+                
               ) : (
                 <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
@@ -181,9 +269,12 @@ const Header = () => {
               <FaPhone className='headerIcons' />
             </div>
           </div>
-          <div>
-            <FaShoppingCart className='mainIcons needHoover' />
-            0
+          <div onClick={() => handleComprar()} className='mainIcons needHoover'>
+            <FaShoppingCart  />
+            { productCount !== 0 ? (<div className="productsNumber">{productCount}</div> )
+            :(
+              (<></>)
+              ) }
           </div>
           <div className='needHoover'>
             <FaRegQuestionCircle className='mainIcons needHoover' />
@@ -195,26 +286,43 @@ const Header = () => {
         <Navbar variant="dark" expand="lg" className="navbarContainer">
           <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <img src={Logo} className="logoMobile"/>
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='me-auto'>
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#link">Destacados</Nav.Link>
+                <Nav.Link href="#link">Contactanos</Nav.Link>
+                <Nav.Item>
+                  <div>
+                    <input placeholder="Buscar producto" className="ps-1" />
+                  </div>
+                </Nav.Item>
+              </Nav>
+            </Navbar.Collapse>
             <Nav>
-              {loginUser ? (
-                <>
-                  <Nav.Link href="#action1" className='btnCard'>
-                    <FaShoppingCart className='cart-icon fav-icon' />
-                  </Nav.Link>
-                  <NavDropdown title={userName} id='navbarUsuario' className='userMenu' bg='light'>
-                    <NavDropdown.Item href="#action3">Perfil</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>
-                      Cerrar Sesion
-                    </NavDropdown.Item>
+            {loginUser ? (
+                userType ? (
+                  <>                  
+                  <div className="userMenu">                 
+                  <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Crud Articulos</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesion</NavDropdown.Item>
                   </NavDropdown>
+                </div>
                 </>
+                ):(
+                  <>                  
+                  <div className="userMenu">                 
+                  <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                    <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
+                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesion</NavDropdown.Item>
+                  </NavDropdown>
+                </div>
+                </>
+                )
+                
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Registrarse</Nav.Link>
               )}
             </Nav>      
             <Navbar.Collapse id='basic-navbar-nav'>
@@ -231,7 +339,7 @@ const Header = () => {
             </Navbar.Collapse>     
           </Container>
         </Navbar>
-      </div>
+      </div>     
 
       <ModalLogin
         show={modalLogin}

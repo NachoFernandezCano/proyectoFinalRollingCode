@@ -4,12 +4,16 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './cards.css';
+import Swal from 'sweetalert2';
+import { useCartContext } from "../../context/cartContext";
 
 const Cards = () => {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
+
+  const { addCartItem} = useCartContext();
 
   useEffect(() => {
     getProduct();
@@ -36,6 +40,65 @@ const Cards = () => {
     Navigate(`/productPage/${id}`)
   }
 
+  const handleAddproduct = async (id) =>{
+    try {
+      const token = localStorage.getItem('user');      
+      if (token) {                    
+        const {data} = await axios.get("http://localhost:4000/user", {headers:{Authorization: token}});  
+        console.log(data);
+        const addItem={                    
+          "userid": data.user._id,
+          "product":id,
+          "quantity":1
+        }        
+        console.log(addItem);
+        const cart = await axios.post("http://localhost:4000/cart/createCart", addItem);
+        addCartItem();
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Procduto Agregado al Carrito'
+        })  
+        
+      }else{
+        return Swal.fire({
+          title: '<strong>Error Leer Ate.</strong>',
+          html: '<i>Debes Logearte/Resgistrarte para poder ralizar una compra!!!</i>',
+          icon: "error"
+        })  
+      }      
+    } catch (error) {   
+      console.log(error);
+      if (error.response.data.tipoerror == "tokenno") {
+        return Swal.fire({
+          title: '<strong>Error Leer Ate.</strong>',
+          html: '<i>'+error.response.data.message+'</i>',
+          icon: "error"
+        })
+      }
+      if (error.response.data.tipoerror == "tokenepx") {
+        return Swal.fire({
+          title: '<strong>Error Leer Ate.</strong>',
+          html: '<i>'+error.response.data.message+'</i>',
+          icon: "error"
+        })
+      }
+      console.log(error);
+    }
+    
+  }  
+
   return (
     <>
       <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={product._id}>
@@ -54,8 +117,8 @@ const Cards = () => {
                       <Card.Link href='#'>
                         <FaHeart className='favIcon' />
                       </Card.Link>
-                      <Card.Link href='#'>
-                        <FaShoppingCart className='cartIcon favIcon' />
+                      <Card.Link >
+                        <FaShoppingCart className='cartIcon favIcon' onClick={()=> handleAddproduct(product._id) }/>
                       </Card.Link>
                     </Card.Body>
                     <Link className='cardsBtn' to={`/productPage/${product._id}`}> Ver más </Link>

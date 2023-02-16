@@ -67,6 +67,7 @@
 
 .cartIcon {
   color: lightblue;
+  cursor: pointer;
 }
 
 .cartIcon:hover {
