@@ -3,7 +3,7 @@
 }
 
 .Header_container {
-  height: 8rem;
+  height: 8.8rem;
   background-color: var(--DEEPBLUE-bs-);
   overflow-x: hidden;
 }
@@ -33,18 +33,13 @@
   width: 25rem;
 }
 
-.Header_container > div > div:first-child > div > div {
-  background-color: white;
-  width: 3rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.Header_container > div:nth-child(2) {
+  height: 3rem;
+  margin-top: 0.7rem;
+  background-color: #142248;
 }
 
 .Header_container > div:nth-child(2) {
-  height: 3rem;
-  background-color: #142248;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -94,7 +89,13 @@
 
 #schIconContainer{
   background-color: var(--CYAN-bs-);
+  width: 3rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 #schIconContainer:hover{
   transform: scale(105%);
@@ -117,11 +118,6 @@
 .socialIcons:hover{
   color: var(--HOTPINK-bs-);
   transform: scale(110%);
-}
-
-.needHoover a{
-  color: white;
-  text-decoration: none;
 }
 
 .needHoover:hover {
@@ -147,6 +143,20 @@
   padding-right: 0.2rem;
   color: white;
 }
+.productsNumber {
+  height: 20px;
+  width: 20px;
+  border-radius: 999px;
+  position: absolute;  
+  
+  background-color: #fb3939;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .userName {
   color: white !important;
@@ -155,16 +165,16 @@
 
 .userMenu {
   color: white;
-  margin-right: 1rem;
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.8rem;
-  padding: 1.1rem 3.1rem;
-  background-image: url(../../assets/images/user_icon.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 50px auto;
-  background-position-x: 0rem;
+    position: absolute;
+    display: inline-block;    
+    top: 1rem;
+    right: 1rem;    
+    padding: 1.1rem 4.9rem;
+    background-image: url('../../assets/images/user_icon.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50px auto;
+    background-position-x: 2rem;
 }
 
 #userLogin:hover{

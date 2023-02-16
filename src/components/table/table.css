@@ -57,3 +57,39 @@
   box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
     0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
 }
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.pagination b {
+  color: var(--DEEPBLUE-bs-);
+}
+
+.paginationButton {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.paginationButton button {
+  background-color: var(--HOTPINK-bs-);
+  border: none;
+}
+
+.paginationButton button:hover {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:active {
+  background-color: var(--HOTPINK-bs-);
+}
+
+.paginationButton button:disabled {
+  background-color: rgb(75, 7, 43);
+}

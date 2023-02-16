@@ -1,16 +1,21 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Table } from 'react-bootstrap'
 
 const CartPage = () => {
 
-  const [cart, setCart] = useState({})
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  const [cart, setCart] = useState([]);
 
     const getCart = async() =>{
-      const { info } = await axios.get('http://localhost:4000/cart/getCart');
-      cart = (info.data)
-      console.log(info)
+      const token = localStorage.getItem('user');
+      const {data} = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
+      console.log(data);
+      setCart(data.cart);      
     }
 
   return (
@@ -28,13 +33,25 @@ const CartPage = () => {
             <th>Cantidad</th>
           </thead>
           <tbody>
-            <tr>
-              <td>a</td>
-              <td>a</td>
-              <td>a</td>
-              <td>a</td>
-              <td>a</td>
-            </tr>
+            {
+              cart.length !==0 ? (
+                cart?.map((product) => (
+                  <>
+                    <tr>
+                      <td>{product.product}</td>
+                      <td>{product.quantity}</td>
+                      <td>{product.userid}</td>
+                      <td>0</td>
+                      <td>{product.quantity}</td>
+                    </tr>
+                  </>
+                ))                
+              ):(
+                <>
+                </>
+              )
+            }
+            
           </tbody>
         </Table>
       </div>
