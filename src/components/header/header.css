@@ -1,11 +1,21 @@
+:root {
+---WHITE-bs-:#eaeaea;
+--DEEPBLUE-bs-: #0F1A37;
+--HOTPINK-bs-: #E31474;
+--CYAN-bs-: #00C9EE;
+}
+
 .navbarMobile {
   display: none;
 }
 
 .Header_container {
-  height: 8.8rem;
+  height: 8rem;
   background-color: var(--DEEPBLUE-bs-);
   overflow-x: hidden;
+  position: sticky; 
+  top: 0;
+  z-index: 2;
 }
 
 .Header_container > div:first-child {
@@ -35,11 +45,7 @@
 
 .Header_container > div:nth-child(2) {
   height: 3rem;
-  margin-top: 0.7rem;
   background-color: #142248;
-}
-
-.Header_container > div:nth-child(2) {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -89,13 +95,11 @@
 
 #schIconContainer{
   background-color: var(--CYAN-bs-);
-  width: 3rem;
-  height: 2.5rem;
+  width: 2.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
-
 
 #schIconContainer:hover{
   transform: scale(105%);
@@ -118,6 +122,11 @@
 .socialIcons:hover{
   color: var(--HOTPINK-bs-);
   transform: scale(110%);
+}
+
+.needHoover a{
+  color: white;
+  text-decoration: none;
 }
 
 .needHoover:hover {
@@ -143,20 +152,6 @@
   padding-right: 0.2rem;
   color: white;
 }
-.productsNumber {
-  height: 20px;
-  width: 20px;
-  border-radius: 999px;
-  position: absolute;  
-  
-  background-color: #fb3939;
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .userName {
   color: white !important;
@@ -164,16 +159,17 @@
 
 .userMenu {
   color: white;
-    position: absolute;
-    display: inline-block;    
-    top: 1rem;
-    right: 1rem;    
-    padding: 1.1rem 4.9rem;
-    background-image: url('../../assets/images/user_icon.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50px auto;
-    background-position-x: 2rem;
+  background-color: var(--DEEPBLUE-bs-);
+  margin-right: 1.5rem;
+  display: flex;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.8rem;
+  padding: 1.1rem 3.1rem;
+  background-image: url(../../assets/images/user_icon.png);
+  background-repeat: no-repeat;
+  background-size: 50px auto;
+  background-position-x: 0rem;
 }
 
 #userLogin:hover{
@@ -213,7 +209,7 @@ span {
   }
 
   .navbarMobile {
-    display: flex;
+    display: block;
     background-color: var(--DEEPBLUE-bs-);
     color: white;
     position: sticky;
@@ -226,11 +222,6 @@ span {
     height: 3rem;
     margin-left: 2.5rem;
   }
-
-  .navbarContainer {
-    display: flex;
-  }
-
 }
 @media (max-width: 1040px) {
   .Header_container {

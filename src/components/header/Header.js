@@ -22,6 +22,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from "../form/Modal/ModalLogin";
+import Logo from "../../assets/images/logo.jpg"
 import Menu from "../util/menu/Menu";
 
 const Header = () => {
@@ -104,7 +105,7 @@ const { cartCount ,getCartCount} = useCartContext();
       setloginUser(true);
       setmodalLogin(false);
 
-    } catch (error) { 
+    } catch (error) {
       console.log(error)     ;
       if (error.code == "ERR_NETWORK") {
         return Swal.fire({
@@ -208,7 +209,7 @@ const handleComprar = () =>{
       <div className='Header_container'>
         <div>
           <div>
-            <div className="logo"></div>
+            <Link to="/"><div className="logo"></div></Link>
             <div>
               <input placeholder="Buscar producto" className="ps-3" />
               <div id="schIconContainer">
@@ -223,7 +224,7 @@ const handleComprar = () =>{
             <div>
               {loginUser ? (
                 userType ? (
-                  <>                  
+                <>
                   <div className="userMenu">                 
                   <NavDropdown title={userName} id='navbarUsuario' bg='light'>
                     <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
@@ -269,8 +270,8 @@ const handleComprar = () =>{
               <FaPhone className='headerIcons' />
             </div>
           </div>
-          <div onClick={() => handleComprar()} className='mainIcons needHoover'>
-            <FaShoppingCart  />
+          <div onClick={() => handleComprar()} className='needHoover'>
+            <FaShoppingCart className='headerIcons'/>
             { productCount !== 0 ? (<div className="productsNumber">{productCount}</div> )
             :(
               (<></>)
@@ -286,22 +287,10 @@ const handleComprar = () =>{
         <Navbar variant="dark" expand="lg" className="navbarContainer">
           <Container className='navbarMobile'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='me-auto'>
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Destacados</Nav.Link>
-                <Nav.Link href="#link">Contactanos</Nav.Link>
-                <Nav.Item>
-                  <div>
-                    <input placeholder="Buscar producto" className="ps-1" />
-                  </div>
-                </Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
             <Nav>
-            {loginUser ? (
+              {loginUser ? (
                 userType ? (
-                  <>                  
+                <>
                   <div className="userMenu">                 
                   <NavDropdown title={userName} id='navbarUsuario' bg='light'>
                     <NavDropdown.Item href="#" onClick={ () => handlePerfil() }>Perfil</NavDropdown.Item>    
@@ -319,10 +308,9 @@ const handleComprar = () =>{
                   </NavDropdown>
                 </div>
                 </>
-                )
-                
+                )          
               ) : (
-                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Login/Registrarse</Nav.Link>
+                <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
             </Nav>      
             <Navbar.Collapse id='basic-navbar-nav'>
@@ -336,10 +324,10 @@ const handleComprar = () =>{
                   </div>
                 </Nav.Item>
               </Nav>
-            </Navbar.Collapse>     
+            </Navbar.Collapse>            
           </Container>
         </Navbar>
-      </div>     
+      </div>
 
       <ModalLogin
         show={modalLogin}
