@@ -33,7 +33,7 @@ const Table = () => {
       setProducts(info.data.docs)
       setIsLoading(false);
     } catch (error) {
-      if (error?.response?.data?.error === 'There is nothing here') {
+      if (error?.response?.data?.error === 'No se encontraron productos') {
         setProducts([]);
       } else {
         alert('Algo salio mal intente mas tarde');
@@ -107,7 +107,7 @@ const Table = () => {
       </div>
 
       <div className="pagination">
-        <div className="paginationButton">
+        <div className="paginationBtn">
           <Button
             onClick={() => setPage(page - 1)}
             disabled={page === 1}

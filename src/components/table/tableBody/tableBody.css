@@ -1,11 +1,12 @@
 td {
-  text-align: center;
-  border: none;
+  text-align: justify;
+  border: 1px solid var(--CYAN-bs-);
 }
 
 #mainTable {
   text-align: center;
-  background-color: #e8e8e8;
+  background-color: rgb(245, 252, 253);
+  /* background-color: #e8e8e8; */
   border: 3px solid var(--CYAN-bs-);
   color: var(--DEEPBLUE-bs-);
 }

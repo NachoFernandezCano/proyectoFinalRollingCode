@@ -1,10 +1,13 @@
 .advertisement {
-  background-color: var(--DEEPBLUE-bs-);
+  background-color: rgb(8, 8, 93);
+  border: 6px solid var(--DEEPBLUE-bs-);
+  border-bottom: none;
+  width: 15%;
 }
 
 .publicity {
   margin-top: 4rem;
   height: 54%;
-  width: 15vw;
+  width: 13vw;
   box-shadow: white 0px 1px 8px 0px;
 }
