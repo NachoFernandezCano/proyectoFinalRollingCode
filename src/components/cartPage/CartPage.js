@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
+import "./cartPage.css"
 
 const CartPage = () => {
 
@@ -10,12 +11,10 @@ const CartPage = () => {
   }, []);
 
   const [cart, setCart] = useState([]);
-  /* const [products, setProducts] = useState([]) */
 
     const getCart = async() =>{
       const token = localStorage.getItem('user');
       const {data} = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
-      console.log(data);
       setCart(data.cart);      
     }
 
