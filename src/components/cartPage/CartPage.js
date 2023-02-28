@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 
 const CartPage = () => {
 
@@ -10,6 +10,7 @@ const CartPage = () => {
   }, []);
 
   const [cart, setCart] = useState([]);
+  /* const [products, setProducts] = useState([]) */
 
     const getCart = async() =>{
       const token = localStorage.getItem('user');
@@ -26,7 +27,6 @@ const CartPage = () => {
       <div>
         <Table>
           <thead>
-            <th>Producto</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
@@ -37,11 +37,10 @@ const CartPage = () => {
               cart.length !==0 ? (
                 cart?.map((product) => (
                   <>
-                    <tr>
-                      <td>{product.product}</td>
-                      <td>{product.quantity}</td>
-                      <td>{product.userid}</td>
-                      <td>0</td>
+                    <tr key={product._id}>
+                      <td>{product.product?.name}</td>
+                      <td>{product.product?.description}</td>
+                      <td>${product.product?.price * product.quantity}</td>
                       <td>{product.quantity}</td>
                     </tr>
                   </>
