@@ -113,7 +113,7 @@ const CategoriesPage = () => {
       <div className='categoriesContainer'>
         <div className='btnGroupContainer'>
           <ButtonGroup className='btnGroup d-flex justify-content-center'
-          onClick={() => setFilter(data)}
+          onClick={() => setfilterProducts(data)}
           >
             <Link className='categoriesBtn' onClick={(e) => filterProducts('Notebooks')}>
               <BsLaptop className='cIcon' />
