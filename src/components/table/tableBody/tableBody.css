@@ -5,8 +5,8 @@ td {
 
 #mainTable {
   text-align: center;
-  background-color: rgb(245, 252, 253);
-  /* background-color: #e8e8e8; */
+  font-size: 1rem;
+  background-color: rgb(247, 252, 253);
   border: 3px solid var(--CYAN-bs-);
   color: var(--DEEPBLUE-bs-);
 }
@@ -51,4 +51,17 @@ td {
 
 #editBtn {
   color: var(--CYAN-bs-);
+}
+
+@media (max-width: 576px) {
+  #mainTable {
+    font-size: 0.7rem;
+  }
+
+  #deleteBtn,
+  #editBtn {
+    width: 60px;
+    border-radius: 15px;
+    font-size: 10px;
+  }
 }

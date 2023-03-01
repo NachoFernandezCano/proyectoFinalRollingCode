@@ -18,21 +18,21 @@ const Footer = () => {
           </div>
           <div>
             <div>Nuestras redes sociales</div>
-            <div><FaInstagram size={25} className="fotterIcon" /><a href='https://www.instagram.com/'>Instagram</a></div>
-            <div><FaTwitter size={25} className="fotterIcon" /><a href='https://twitter.com/'>Twitter</a></div>
-            <div><FaFacebookF size={25} className="fotterIcon" /><a href='https://www.facebook.com/'>Facebook</a></div>
+            <div><FaInstagram  className="fotterIcon" /><a href='https://www.instagram.com/'>Instagram</a></div>
+            <div><FaTwitter className="fotterIcon" /><a href='https://twitter.com/'>Twitter</a></div>
+            <div><FaFacebookF className="fotterIcon" /><a href='https://www.facebook.com/'>Facebook</a></div>
           </div>
           <div>
             <div>Políticas</div>
-            <div><a href=''>- Términos y condiciones</a></div>
-            <div><a href=''>- Políticas de privacidad</a></div>
-            <div><a href=''>- Políticas de envío</a></div>
+            <div><a href='./Error404'>- Términos y condiciones</a></div>
+            <div><a href='./Error404'>- Políticas de privacidad</a></div>
+            <div><a href='./Error404'>- Políticas de envío</a></div>
           </div>
           <div>
             <div>Contacto</div>
-            <div><a href=''>- Trabaja con nosotros</a></div>
-            <div><a href=''>- Envianos un mensaje</a></div>
-            <div><a href=''>- Reporta un bug</a></div>
+            <div><a href='./Error404'>- Trabaja con nosotros</a></div>
+            <div><a href='./Error404'>- Envianos un mensaje</a></div>
+            <div><a href='./Error404'>- Reporta un bug</a></div>
           </div>
           <div>
             <img src={qrCode} />
