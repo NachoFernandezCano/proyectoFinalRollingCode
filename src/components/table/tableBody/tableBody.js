@@ -39,7 +39,7 @@ const TableBody = (props) => {
               <td>{product.description}</td>
               <td>{product.price}</td>
               <td>{product.stock}</td>
-              <td className="d-flex justify-content-evenly align-items-center border-0">
+              <td className="d-flex flex-row align-items-center justify-content-center border-0">
                 <Button id="deleteBtn" onClick={() => handleDelete(product)}>
                   Borrar
                 </Button>

@@ -7,13 +7,11 @@ import { BsLaptop } from 'react-icons/bs';
 import { Card, Col, Row, Button, ButtonGroup } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
-import Categories from '../categories/Categories';
 import Loader from '../util/loader/Loader';
 import './categoriesPage.css';
 
-const CategoriesPage = () => {
+const CategoriesPage = (categoryItem) => {
   const [data, setData] = useState([]);
-  const [filterProducts, setfilterProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,10 +22,6 @@ const CategoriesPage = () => {
       const allProducts = await axios.get('http://localhost:4000/products/filteredProducts');
       setPagesCount(allProducts.data.totalPages);
       setData(allProducts.data);
-      
-
-      console.log(allProducts.data.docs);
-
       setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'There is nothing here') {
@@ -38,19 +32,14 @@ const CategoriesPage = () => {
     }
   };
 
-  const category = data.filter(product =>(product.category === "Monitores"));
+  const [filterProduct, setFilterProduct] = useState(data);
 
-  // const category = data.filter((product) =>{
-  // if (product.category === "Notebooks") {
-  //   return product.category === "Notebooks";
-  // } else if (product === "Smartwatch") {
-  //   return product.category === "Smartwatch";
-  // } else if (product === "Otors") {
-  //   return product.category === "Otros";
-  // } else if (product === "Celulares") {
-  //   return product.category === "Celulares";
-  // }}
-  // )
+  const category = (categoryItem) => {
+    const result = data.filter((currentCategory) => {
+      return currentCategory.category === categoryItem;
+    });
+    setFilterProduct(result);
+  }
 
   useEffect(() => {
     products();
@@ -62,8 +51,8 @@ const CategoriesPage = () => {
       <Row xs={2} sm={3} md={3} lg={5} className='g-0 rowContainer'>
         {
           !isLoading ? (
-            category !== 0 ? (
-              category.map(filteredProduct => (
+            filterProduct !== 0 ? (
+              filterProduct.map(filteredProduct => (
                 <>
                   <Col key={category}>
                     <Card className='cardProduct'>
@@ -89,7 +78,7 @@ const CategoriesPage = () => {
               <>no hay productos para tu busqueda</>
             )
           ) : (
-            <Loader/>
+            <Loader />
           )
         }
         <div className="pagination">
@@ -112,30 +101,28 @@ const CategoriesPage = () => {
       </Row>
       <div className='categoriesContainer'>
         <div className='btnGroupContainer'>
-          <ButtonGroup className='btnGroup d-flex justify-content-center'
-          onClick={() => setfilterProducts(data)}
-          >
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Notebooks')}>
+          <ButtonGroup className='btnGroup d-flex justify-content-center'>
+            <Link className='categoriesBtn'onClick={() => category("Notebooks")}>
               <BsLaptop className='cIcon' />
               Notebooks
             </Link>
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Celulares')}>
+            <Link className='categoriesBtn' onClick={() => category("Celulares")}>
               <GiSmartphone className='cIcon' />
               Celulares
             </Link>
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Monitores')}>
+            <Link className='categoriesBtn' onClick={() => category("Monitores")}>
               <FiMonitor className='cIcon' />
               Monitores
             </Link>
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Auriculares')}>
+            <Link className='categoriesBtn' onClick={() => category("Auriculares")}>
               <FaHeadset className='cIcon' />
               Auriculares
             </Link>
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Smartwatch')}>
+            <Link className='categoriesBtn' onClick={() => category("Smartwatch")}>
               <FiWatch className='cIcon' />
               Smartwatch
             </Link>
-            <Link className='categoriesBtn' onClick={(e) => filterProducts('Otros')}>
+            <Link className='categoriesBtn' onClick={() => category("Otros")}>
               <FiMoreHorizontal className='cIcon' />
               Otros
             </Link>

@@ -27,7 +27,7 @@ const Table = () => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page} });
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
       console.log(info);
       setPagesCount(info.data.totalPages);
       setProducts(info.data.docs)
@@ -105,16 +105,24 @@ const Table = () => {
           editTrigger={editTrigger}
         />
       </div>
-
-      <div className="pagination">
-        <div className="paginationBtn">
+      <div className="createBtnContainer d-flex justify-content-end align-items-center">
+        <Button
+          id="createBtn"
+          variant="success"
+          onClick={() => setCreateModalShow(true)}
+        >
+          Crear producto
+        </Button>
+      </div>
+      <div className="tablePagination">
+        <div className="tablePaginationBtn">
           <Button
             onClick={() => setPage(page - 1)}
             disabled={page === 1}
           >
             {'<'}
           </Button>
-          <b className="fs-4">{page}</b>
+          <b>Página {page}</b>
           <Button
             onClick={() => setPage(page + 1)}
             disabled={page === pagesCount}
@@ -123,15 +131,6 @@ const Table = () => {
           </Button>
         </div>
       </div>
-
-      <Button
-        id="createBtn"
-        variant="success"
-        onClick={() => setCreateModalShow(true)}
-        className="d-flex justify-content-center align-items-center"
-      >
-        Crear producto
-      </Button>
 
       <CreateModal
         createModalShow={createModalShow}

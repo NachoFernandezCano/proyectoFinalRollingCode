@@ -1,80 +1,41 @@
 import { ButtonGroup } from 'react-bootstrap';
-import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FaHeadset } from 'react-icons/fa';
 import { FiMonitor, FiWatch, FiMoreHorizontal } from 'react-icons/fi';
 import { GiSmartphone } from 'react-icons/gi';
 import { BsLaptop } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import "./categories.css";
+import CategoriesPage from '../categoriesPage/categoriesPage';
 
 function Categories() {
-
-  const [MenuProducts, setMenuProducts] = useState([]);
-  const [AllProducts, setAllProducts] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:4000/products/products')
-      .then(res => {
-        setMenuProducts(res.data)
-        setAllProducts(res.data)
-      });
-  }, [])
-
-
-  const filter = (category) => {
-    setMenuProducts(
-      AllProducts.filter((product) => {
-        if (category === 'Notebook') {
-          return product.category = 'Notebook';
-        } else if (category === 'Celulares') {
-          return product.category = 'Celulares';
-        } else if (category === 'Monitores') {
-          return product.category = 'Monitores';
-        }
-        else if (category === 'Auriculares') {
-          return product.category = 'Auriculares';
-        }
-        else if (category === 'Smartwatch') {
-          return product.category = 'Smartwatch';
-        }
-        else if (category === 'Otros') {
-          return product.category = 'Otros';
-        }
-        // else if (category === 'Todas las categorías') {
-        //   return product.category > 'Todas las categorías';
-        // }
-      })
-    );
-  };
 
   return (
     <>
       <div className='categoriesContainer'>
         <div className='btnGroupContainer'>
           <ButtonGroup className='btnGroup d-flex justify-content-center'>
-            <Link className='categoriesBtn' onClick={() => filter('Notebooks')}>
+            <Link className='categoriesBtn' to={"/Categories"}>
               <BsLaptop className='cIcon' />
               Notebooks
             </Link>
-            <Link className='categoriesBtn' onClick={() => filter('Celulares')}>
+            <Link className='categoriesBtn'>
               <GiSmartphone className='cIcon' />
               Celulares
             </Link>
-            <Link className='categoriesBtn' onClick={() => filter('Monitores')}>
+            <Link className='categoriesBtn'>
               <FiMonitor className='cIcon' />
               Monitores
             </Link>
-            <Link className='categoriesBtn' onClick={() => filter('Auriculares')}>
+            <Link className='categoriesBtn'>
               <FaHeadset className='cIcon' />
               Auriculares
             </Link>
-            <Link className='categoriesBtn' onClick={() => filter('Smartwatch')}>
+            <Link className='categoriesBtn'>
               <FiWatch className='cIcon' />
               Smartwatch
             </Link>
-            <Link className='categoriesBtn' onClick={() => filter('Otros')}>
+            <Link className='categoriesBtn'>
               <FiMoreHorizontal className='cIcon' />
               Otros
             </Link>

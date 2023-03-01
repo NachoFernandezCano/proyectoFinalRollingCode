@@ -1,5 +1,5 @@
 .homeContainer {
-  height: calc(100vh - 8rem);
+  height: 80vh;
   background-image: url(../../assets/images/extras/tableBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,6 +26,10 @@
   color: var(--DEEPBLUE-bs-);
 }
 
+.createBtnContainer{
+  width: 90%;
+}
+
 #createBtn {
   margin: 0.5rem;
   outline: none;
@@ -40,7 +44,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--DEEPBLUE-bs-);
-  text-shadow: 0 1px rgb(133, 139, 216);
+  text-shadow: 0 1px rgb(99, 103, 164);
 }
 
 #createBtn:hover {
@@ -58,38 +62,44 @@
     0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
 }
 
-.paginationBtn {
+.tablePagination {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: end;
-  margin: 1.5rem;
+  margin-block: 1rem;
 }
 
-.paginationBtn b {
+.tablePagination b {
   color: var(--CYAN-bs-);
+  font-size: 1rem;
+  padding: 0.5rem;
 }
 
-.paginationBtn {
-  width: 25%;
+.tablePaginationBtn {
+  width: auto;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
 }
 
-.paginationBtn button {
+.tablePaginationBtn button {
   background-color: var(--CYAN-bs-);
   border: none;
 }
 
-.paginationBtn button:hover {
+.tablePaginationBtn  button:hover {
   background-color: var(--CYAN-bs-);
 }
 
-.paginationBtn button:active {
+.tablePaginationBtn  button:active {
   background-color: var(--CYAN-bs-);
 }
 
-.paginationBtn button:disabled {
-  background-color: rgb(14, 76, 110);
+.tablePaginationBtn  button:disabled {
+  background-color: rgba(12, 77, 95, 0.885);
+}
+
+@media (max-width: 576px) {
+  .tablePagination b {
+    font-size: 0.8rem;
+  }
 }
