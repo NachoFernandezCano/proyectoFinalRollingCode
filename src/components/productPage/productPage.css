@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
 .productPageContainer {
   display: flex;
   flex-wrap: wrap;
@@ -7,9 +9,10 @@
 .productInfo {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 20em;
   height: 38.5em;
-  padding-left: 4em;
   padding-top: 4em;
 }
 
@@ -30,15 +33,19 @@
   flex-direction: column;
   align-items: center;
   height: 20em;
+  
 }
 
 .btn-comprarYa {
-  width: 12em;
-  height: 3em;
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
   color: var(--CYAN-bs-);
   background-color: var(--DEEPBLUE-bs-);
   border-radius: 10px;
   transition: 0.7s;
+  font-family: 'Merriweather', serif;
 }
 
 .btn-comprarYa:hover {
@@ -47,17 +54,20 @@
 }
 
 .containerBtnAgregarAlcarrito {
-  padding-top: 1em;
+  padding-top: 2em;
   cursor: pointer;
 }
 
 .btn-agregarAlCarrito {
-  width: 12em;
-  height: 3em;
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
   color: var(--CYAN-bs-);
   background-color: var(--DEEPBLUE-bs-);
   border-radius: 10px;
   transition: 0.7s;
+  font-family: 'Merriweather', serif;
 }
 
 .btn-agregarAlCarrito:hover {
@@ -169,10 +179,25 @@
   background-color: var(--DEEPBLUE-bs-);
   border-radius: 10px;
   transition: 0.7s;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-reembolso > a {
+  text-decoration: none;
+  color: var(--CYAN-bs-);
+  font-family: 'Merriweather', serif;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+}
+
+.btn-reembolso > a:hover {
+    color: var(--DEEPBLUE-bs-);
 }
 
 .btn-reembolso:hover {
-  color: var(--DEEPBLUE-bs-);
   background-color: var(--CYAN-bs-);
 }
 
@@ -182,20 +207,32 @@
 }
 
 .containerMasCaracteristicas {
-  height: auto;
-  width: 100%;
-  padding-bottom: 7em;
+  width: 18rem;
+  height: 10rem;
+  min-width: 18rem;
+  min-height: 10rem;
+
 }
 
 .masCaracteristicasCard {
-  height: auto;
-  width: 100%;
+  width: 18rem;
+  height: 100%;
+  min-width: 18rem;
+  min-height: 100%;
+
 }
 
 .masCaracteristicasText {
   background-color: var(--DEEPBLUE-bs-);
   color: var(--CYAN-bs-);
   border-radius: 5px;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-family: 'Merriweather', serif;
 }
 
 .infoGarantiaDevoluciones {
@@ -218,6 +255,11 @@
   background-color: var(--DEEPBLUE-bs-);
   border-radius: 10px;
   transition: 0.7s;
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
+  font-family: 'Merriweather', serif;
 }
 
 .btn-verMediosDePago:hover {
@@ -235,6 +277,7 @@
   background-color: var(--DEEPBLUE-bs-);
   border-radius: 10px;
   transition: 0.7s;
+  font-family: 'Merriweather', serif;
 }
 
 .btn-seleccionarCantidad:hover {
@@ -247,12 +290,17 @@
   background-color: var(--CYAN-bs-);
 }
 
+.containerBtnMediosDePago {
+  padding-top: 2rem;
+}
+
 .containerMedioDePagos {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 100%;
   justify-content: space-around;
+  padding: 2rem;
 }
 
 @media (max-width:320px){
