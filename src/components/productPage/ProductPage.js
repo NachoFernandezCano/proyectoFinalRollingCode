@@ -147,7 +147,7 @@ useEffect(() => {
               <div className="selectorDeCantidadCompra">
                 <div>
                   <div>
-                      <input type="number" placeholder="Cantidad" onChange={askStock}/>
+                      <input type="number" placeholder="Cantidad"/>
                   </div>
                 </div>
               </div>
