@@ -24,7 +24,7 @@ const Cards = () => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
+      const info = await axios.get('http://localhost:4000/products/getProducts', { params: { page } });
       setPagesCount(info.data.totalPages);
       setProduct(info.data.docs)
       setIsLoading(false);

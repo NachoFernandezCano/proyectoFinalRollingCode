@@ -14,6 +14,7 @@ import MasterCard from "../../assets/images/mediosDePago/MasterCard.svg";
 import Naranja from "../../assets/images/mediosDePago/Naranja.svg";
 import Visa from "../../assets/images/mediosDePago/visa.svg";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -43,6 +44,7 @@ useEffect(() => {
   const imageHandle = (image) => {
   setImagenPrincipalProduct(image)
   }
+
 
   return (
     <div className="productPageContainer">
@@ -78,7 +80,7 @@ useEffect(() => {
           <div className="precioProductPage">
             <h2>${product.price}</h2>
           </div>
-          <div>
+          <div className="containerBtnMediosDePago">
             <Button onClick={handleShow} className="btn-verMediosDePago">
               Ver los medios de pago
             </Button>
@@ -143,28 +145,16 @@ useEffect(() => {
               <h5>Stock disponible</h5>
               <div className="text-muted">({product.stock} Unidad/es)</div>
               <div className="selectorDeCantidadCompra">
-                <Dropdown>
-                  <Dropdown.Toggle
-                    className="btn-seleccionarCantidad"
-                    id="dropdown-basic"
-                  >
-                    Seleccionar cantidad
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">1 unidad</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">2 unidades</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">3 unidades</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">4 unidades</Dropdown.Item>
-                    <Dropdown.Item href="#/action-5">5 unidades</Dropdown.Item>
-                    <Dropdown.Item href="#/action-6">6 unidades</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <div>
+                  <div>
+                      <input type="number" placeholder="Cantidad" onChange={askStock}/>
+                  </div>
+                </div>
               </div>
             </div>
           </Card.Body>
           <Card.Body className="Botones_card_utiles">
-            <Button className="btn-reembolso">Solicitá una devolución</Button>
+            <Button className="btn-reembolso"><Link to='/Error404'>Solicitá una devolución</Link></Button>
           </Card.Body>
           <Card.Body className="infoGarantiaDevoluciones">
             <Card.Subtitle className="mt-1 text-muted">
