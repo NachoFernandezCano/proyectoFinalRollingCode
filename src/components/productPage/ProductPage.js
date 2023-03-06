@@ -2,25 +2,28 @@ import React, { useState, useEffect } from "react";
 import {
   Card,
   Dropdown,
+  DropdownButton,
+  Form,
   Modal,
 } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
-import Slider from "../slider/Slider";
 import Amex from "../../assets/images/mediosDePago/Amex.svg";
 import MasterCard from "../../assets/images/mediosDePago/MasterCard.svg";
 import Naranja from "../../assets/images/mediosDePago/Naranja.svg";
 import Visa from "../../assets/images/mediosDePago/visa.svg";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [show, setShow] = useState(false);
   const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState([])
+  const [quantity, setQuantity] = useState(1);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,6 +47,19 @@ useEffect(() => {
   const imageHandle = (image) => {
   setImagenPrincipalProduct(image)
   }
+
+  const handleQuantityChange = (event) => {
+    const value = event.target.value;
+    if (value <= product.stock) {
+      setQuantity(value);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Cantidad no disponible',
+        text: `Solo quedan ${product.stock} unidades disponibles.`,
+      });
+    }
+  };
 
 
   return (
@@ -147,7 +163,7 @@ useEffect(() => {
               <div className="selectorDeCantidadCompra">
                 <div>
                   <div>
-                      <input type="number" placeholder="Cantidad"/>
+                    <input type="number" value={quantity} onChange={handleQuantityChange} />
                   </div>
                 </div>
               </div>
@@ -171,9 +187,6 @@ useEffect(() => {
       </div>
       <h6>Productos que podrían interesarte</h6>
       <div className="containerProductosInteresantes">
-        {/* <div>
-          <Slider />
-        </div> */}
       </div>
     </div>
   );
