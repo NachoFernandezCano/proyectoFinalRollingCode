@@ -295,7 +295,7 @@
   padding: 2rem;
 }
 
-@media (max-width:320px){
+@media (max-width:768px){
   .productPageContainer {
     display: flex;
     flex-wrap: wrap;
