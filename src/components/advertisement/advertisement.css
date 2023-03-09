@@ -3,11 +3,11 @@
   border: 6px solid var(--DEEPBLUE-bs-);
   border-bottom: none;
   width: 15%;
+  height: 100%;
 }
 
 .publicity {
-  margin-top: 4rem;
-  height: 54%;
-  width: 13vw;
+  height: 27rem;
+  width: 90%;
   box-shadow: white 0px 1px 8px 0px;
 }

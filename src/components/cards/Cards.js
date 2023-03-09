@@ -53,7 +53,6 @@ const Cards = () => {
           "product": id,
           "quantity": 1
         }
-        console.log(addItem);
         const cart = await axios.post("http://localhost:4000/cart/createCart", addItem);
         addCartItem();
         const Toast = Swal.mixin({
