@@ -15,7 +15,6 @@ import { CartProvider } from './context/cartContext';
 import CategoriesPage from './components/categoriesPage/categoriesPage';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>

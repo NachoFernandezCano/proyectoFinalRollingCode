@@ -9,8 +9,24 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
     <>
       <Form onSubmit={handleRegister}>
         <Form.Group className="mb-1" controlId="formBasicNombre">
-          <Form.Label className='labelStyles'>Nombre y Apellido</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="text" name='name' placeholder="Nombre y Apellido" required />
+          <Form.Label className='labelStyles'>Nombre</Form.Label>
+          <Form.Control className='inputStyles' size='lg' type="text" name='nombre' placeholder="Nombre" required />
+        </Form.Group>
+
+        <Form.Group className="mb-1" controlId="formBasicNombre">
+          <Form.Label className='labelStyles'>Apellido</Form.Label>
+          <Form.Control className='inputStyles' size='lg' type="text" name='apellido' placeholder="Apellido" required />
+        </Form.Group>
+
+        <Form.Group className="mb-1" controlId="formBasicNombre">
+          <Form.Label className='labelStyles'>Dirección</Form.Label>
+            <Form.Control name='direccion[calle]' className='inputStyles' placeholder="Calle" />
+            <Form.Control name='direccion[nro]' className='inputStyles' placeholder="Número" />
+            <Form.Control name='direccion[dpto]' className='inputStyles' placeholder="Departamento" />
+            <Form.Control name='direccion[provincia]' className='inputStyles' placeholder="Provincia" />
+            <Form.Control name='direccion[localidad]' className='inputStyles' placeholder="Localidad" />
+            <Form.Control name='direccion[codigopostal]' className='inputStyles' placeholder="Código postal" />
+          <Form.Label/>
         </Form.Group>
 
         <Form.Group className="mb-1" controlId="formBasicEmail">
@@ -24,7 +40,7 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
         </Form.Group>
         <Form.Group className="mb-1" controlId="formBasicRepetirPassword">
           <Form.Label className='labelStyles'>Repetir Contraseña</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="password" name='repipassword' placeholder="Repetir Contraseña" required />
+          <Form.Control className='inputStyles' size='lg' type="password" name='repPassword' placeholder="Repetir Contraseña" required />
         </Form.Group>
         {setloaderRegister ? (
           <Loader />
@@ -33,7 +49,7 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
         )
         }
         <Form.Group className="mb-3 d-flex justify-content-around" controlId="formBasicButton">
-          <Button type="submit" id='btnRegister'>
+          <Button onClick={console.log(handleRegister)} type="submit" id='btnRegister'>
             <BsFillPersonPlusFill className='btnLogo'/>
             {' '}Registrarse
           </Button>
@@ -42,5 +58,6 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
     </>
   )
 }
+
 
 export default RegisterForm

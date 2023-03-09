@@ -106,7 +106,6 @@ const { cartCount ,getCartCount} = useCartContext();
       setmodalLogin(false);
 
     } catch (error) {
-      console.log(error)     ;
       if (error.code == "ERR_NETWORK") {
         return Swal.fire({
           title: '<strong>Error de Conexión</strong>',
@@ -146,40 +145,51 @@ const { cartCount ,getCartCount} = useCartContext();
       }
     })
   }
-
   const handleRegister = async (e) => {
     e.preventDefault();
-    setloaderRegister(true)
+    setloaderRegister(true);
+  
     try {
       const paylaod = {};
+      const direccion = {
+        calle: e.target["direccion[calle]"].value,
+        nro: e.target["direccion[nro]"].value,
+        dpto: e.target["direccion[dpto]"].value,
+        provincia: e.target["direccion[provincia]"].value,
+        localidad: e.target["direccion[localidad]"].value,
+        codigopostal: e.target["direccion[codigopostal]"].value,
+      };
+      paylaod["direccion"] = direccion;
+  
       for (const target of e.target) {
         if (target.type !== 'submit') {
           paylaod[target.name] = target.value;
         }
       }
       paylaod["type"] = "user";
-      console.log(paylaod);
       const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',
         icon: data.tipoerror
-      })
+      });
+  
       for (const target of e.target) {
         if (target.type !== 'submit') {
           target.value = '';
         }
       }
     } catch (error) {
-      console.log(error.response.data);
       Swal.fire({
         title: '<strong>Error Resgistro de Usuarios</strong>',
         html: '<i>' + error.response.data.message + '</i>',
         icon: error.response.data.tipoerror
-      })
+      });
     }
+  
     setloaderRegister(false);
-  }
+  };
+  
   const handlePerfil = () =>{
     navigate("Perfil");
   }
