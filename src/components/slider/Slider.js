@@ -35,6 +35,7 @@ const Slider = () => {
         Destacados
       </h2>
       <Swiper
+        className='sContainer'
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
@@ -48,7 +49,6 @@ const Slider = () => {
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
-        className='sContainer'
       >
         {
           (

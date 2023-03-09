@@ -1,7 +1,7 @@
 import {
-    FaIdCardAlt, 
+    FaIdCardAlt,
     FaSave,
-    FaArrowAltCircleLeft     
+    FaArrowAltCircleLeft
 } from "react-icons/fa"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -15,136 +15,133 @@ const Perfiluser = () => {
     const [perfilData, setperfilData] = useState([]);
     const [loder, setloder] = useState(false);
 
-    let navitage = useNavigate();    
+    let navitage = useNavigate();
 
     useEffect(() => {
-        const token= localStorage.getItem("user");
+        const token = localStorage.getItem("user");
         handleGetUserData(token);
-    }, [])    
+    }, [])
 
-    const handleGetUserData = async(token) =>{  
+    const handleGetUserData = async (token) => {
         setloder(true);
         try {
-            const {data} = await axios.get("http://localhost:4000/user", {headers:{Authorization: token}});            
+            const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
             setperfilData(data.user);
             setloder(false);
-        } catch (error) {     
-            if(error.response.data.tipoerror==='tokenexp')      
-            {
+        } catch (error) {
+            if (error.response.data.tipoerror === 'tokenexp') {
 
             }
             console.log(error);
         }
     }
-    const handleGrabar = async(e) =>{
+    const handleGrabar = async (e) => {
         e.preventDefault();
-        const token= localStorage.getItem("user");        
+        const token = localStorage.getItem("user");
         try {
-            const paylaod={};
+            const paylaod = {};
             for (const target of e.target) {
-                if(target.type!== 'submit'){
+                if (target.type !== 'submit') {
                     paylaod[target.name] = target.value;
                     //target.value='';
                 }
-            }            
-            const {data} = await axios.patch("http://localhost:4000/user/update", paylaod, {headers:{Authorization: token}});
+            }
+            const { data } = await axios.patch("http://localhost:4000/user/update", paylaod, { headers: { Authorization: token } });
             Swal.fire({
                 title: '<strong>Leer Atte.</strong>',
-                html: '<i>'+data.message+'</i>',
+                html: '<i>' + data.message + '</i>',
                 icon: "success"
             })
         } catch (error) {
             Swal.fire({
                 title: '<strong>Error Leer Atte.</strong>',
-                html: '<i>'+error.response.data.message+'</i>',
+                html: '<i>' + error.response.data.message + '</i>',
                 icon: "error"
             })
         }
     }
-    const handleVolver = () =>{
+    const handleVolver = () => {
         navitage("/");
     }
 
     return (
-        <>        
-            <div className='container-fluid col-8 mt-4 mb-4'>
+        <>
+            <div className='upContainer container-fluid col-8 mt-4 mb-4'>
                 {
-                    loder?(
-                        <div className="container-loader">
-                            <Loader/>
-                        </div>
-                    ):(
+                    loder ? (
+                        <Loader />
+                    ) : (
                         <Card>
-                            <Card.Header>
-                                <div className='container-titulo'>                            
-                                    <FaIdCardAlt className="tituloimg"/>
+                            <Card.Header className="perfilCardH">
+                                <div className='container-titulo'>
+                                    <FaIdCardAlt className="tituloimg" />
                                     <h3 className='titulo'>Perfil de Usuario</h3>
                                 </div>
-                                </Card.Header>
+                            </Card.Header>
                             <Card.Body>
-                            <Form onSubmit={handleGrabar}>
-                                <Row className="mb-3">
-                                    <Form.Group as={Col} controlId="formGridNombre">
-                                        <Form.Label>Nombre</Form.Label>
-                                        <Form.Control type="text" name='nombre' placeholder="Nombre" defaultValue={perfilData?.nombre}/> 
+                                <Form onSubmit={handleGrabar}>
+                                    <Row className="perfilForm">
+                                        <Form.Group as={Col} controlId="formGridNombre">
+                                            <Form.Label className="pe-2">Nombre</Form.Label>
+                                            <Form.Control type="text" name='nombre' placeholder="Nombre" defaultValue={perfilData?.nombre} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridApellido">
+                                            <Form.Label className="pe-2">Apellido</Form.Label>
+                                            <Form.Control type="text" placeholder="Apellido" name='apellido' defaultValue={perfilData?.apellido} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridEmail">
+                                            <Form.Label className="pe-2">Email</Form.Label>
+                                            <Form.Control type="email" placeholder="Email" name='txtemail' value={perfilData?.email} />
+                                        </Form.Group>
+                                    </Row>
+                                    <Form.Group className="mb-3" controlId="formGridAddress1">
+                                        <Form.Label>Calle</Form.Label>
+                                        <Form.Control type='' placeholder="Ej: San Martin" name='calle' defaultValue={perfilData.direccion?.calle} />
                                     </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridApellido">
-                                        <Form.Label>Apellido</Form.Label>
-                                        <Form.Control type="text" placeholder="apellido"  name='apellido' defaultValue={perfilData?.apellido}/>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridEmail">
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" placeholder="email" name='txtemail' value={perfilData?.email} />
-                                    </Form.Group>
-                                </Row>                        
-                                <Form.Group className="mb-3" controlId="formGridAddress1">
-                                    <Form.Label>Calle</Form.Label>
-                                    <Form.Control  type='' placeholder="San Martin" name='calle' defaultValue={perfilData.direccion?.calle}/>
-                                </Form.Group>
-                                <Row className='mb-3'>
-                                    <Form.Group as={Col} controlId="formGridAddress2">
-                                        <Form.Label>Nro.</Form.Label>
-                                        <Form.Control  type='number' placeholder="320" name='nro' defaultValue={perfilData.direccion?.nro}/>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridAddress2">
-                                        <Form.Label>Dpto.</Form.Label>
-                                        <Form.Control  type='number' placeholder='10' name='dpto' defaultValue={perfilData.direccion?.dpto}/>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridAddress2">
-                                        <Form.Label>Barrio</Form.Label>
-                                        <Form.Control  type='text' placeholder='Oeste 2' name='barrio' defaultValue={perfilData.direccion?.barrio}/>
-                                    </Form.Group>                            
-                                </Row>
-                                <Row className="mb-3">
-                                    <Form.Group as={Col} controlId="formGridCity">
-                                        <Form.Label>Provincia</Form.Label>
-                                        <Form.Control type='text' placeholder='B°. Elias Peres' name='provincia' defaultValue={perfilData.ubicacion?.provincia}/>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridState">
-                                        <Form.Label>Localidad</Form.Label>
-                                        <Form.Control type='text' placeholder='B°. Elias Peres' name='localidad' defaultValue={perfilData.ubicacion?.localidad}/>                            
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridZip">
-                                        <Form.Label>Codigo Postal</Form.Label>
-                                        <Form.Control type='number' placeholder='3123'  name='codigopostal' defaultValue={perfilData.ubicacion?.codigopostal}/>
-                                    </Form.Group>
-                                </Row>                
-                                    <div className="d-flex justify-content-between">
-                                        <Button variant="danger" type="submit">
-                                            <FaSave/>{' '}
-                                            Grabar Datos
-                                        </Button>
-                                        <Button variant="primary" onClick={handleVolver}>
-                                            <FaArrowAltCircleLeft/>{' '}
+                                    <Row className="perfilForm">
+                                        <Form.Group as={Col} controlId="formGridAddress2">
+                                            <Form.Label className="pe-2">Nro.</Form.Label>
+                                            <Form.Control type='number' placeholder="Ej: 320" name='nro' defaultValue={perfilData.direccion?.nro} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridAddress2">
+                                            <Form.Label className="pe-2">Dpto.</Form.Label>
+                                            <Form.Control type='number' placeholder='Ej: 10' name='dpto' defaultValue={perfilData.direccion?.dpto} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridAddress2">
+                                            <Form.Label className="pe-2">Barrio</Form.Label>
+                                            <Form.Control type='text' placeholder='Ej: Oeste 2' name='barrio' defaultValue={perfilData.direccion?.barrio} />
+                                        </Form.Group>
+                                    </Row>
+                                    <Row className="perfilForm mt-3">
+                                        <Form.Group as={Col} controlId="formGridCity">
+                                            <Form.Label className="pe-2">Provincia</Form.Label>
+                                            <Form.Control type='text' placeholder='Ej: Tucumán' name='provincia' defaultValue={perfilData.ubicacion?.provincia} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridState">
+                                            <Form.Label className="pe-2">Localidad</Form.Label>
+                                            <Form.Control type='text' placeholder='Ej: Capital' name='localidad' defaultValue={perfilData.ubicacion?.localidad} />
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridZip">
+                                            <Form.Label className="pe-2">C.P.</Form.Label>
+                                            <Form.Control type='number' placeholder='Ej: 4000' name='codigopostal' defaultValue={perfilData.ubicacion?.codigopostal} />
+                                        </Form.Group>
+                                    </Row>
+                                    <div className="d-flex justify-content-between mt-3">
+                                        <Button onClick={handleVolver} className="btnPerfil">
+                                            <FaArrowAltCircleLeft />{' '}
                                             Volver
                                         </Button>
-                                    </div>        
-                                </Form>                        
-                            </Card.Body>                    
-                        </Card>                 
+                                        <Button type="submit" className="btnPerfil">
+                                            <FaSave />{' '}
+                                            Guardar
+                                        </Button>
+                                    </div>
+                                </Form>
+                            </Card.Body>
+                        </Card>
                     )
-                }                
-            </div>  
+                }
+            </div>
         </>
     )
 }

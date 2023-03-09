@@ -159,8 +159,7 @@
 
 .userMenu {
   color: white;
-  background-color: var(--DEEPBLUE-bs-);
-  margin-right: 1.5rem;
+  margin-right: 3.5rem;
   display: flex;
   align-items: center;
   width: 1.5rem;
@@ -222,7 +221,16 @@ span {
     height: 3rem;
     margin-left: 2.5rem;
   }
+
+  .hNavToggle{
+    border: 1px solid var(--CYAN-bs-);
+  }
+
+  .hNavToggle:focus{
+    color: var(--CYAN-bs-);
+  }
 }
+
 @media (max-width: 1040px) {
   .Header_container {
     display: none;
@@ -241,5 +249,13 @@ span {
     width: 4rem;
     height: 3rem;
     margin-left: 2.5rem;
+  }
+
+  .hNavToggle{
+    border: 1px solid var(--CYAN-bs-);
+  }
+
+  .hNavToggle:focus{
+    color: var(--CYAN-bs-);
   }
 }

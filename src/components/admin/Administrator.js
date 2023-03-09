@@ -18,7 +18,6 @@ const Administrator = () => {
                                 <Usuarios />
                             </Tab>
                             <Tab eventKey="Articulos" title="Articulos">
-
                             </Tab>
                         </Tabs>
                     </Card.Body>
