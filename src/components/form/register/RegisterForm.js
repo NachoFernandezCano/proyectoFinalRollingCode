@@ -2,45 +2,46 @@ import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import Loader from '../../util/loader/Loader'
 import './registerForm.css'
-import {BsFillPersonPlusFill} from 'react-icons/bs'
+import { BsFillPersonPlusFill } from 'react-icons/bs'
 
 const RegisterForm = ({ setloaderRegister, handleRegister }) => {
   return (
     <>
       <Form onSubmit={handleRegister}>
-        <Form.Group className="mb-1" controlId="formBasicNombre">
+        <Form.Group controlId="formBasicNombre">
           <Form.Label className='labelStyles'>Nombre</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="text" name='nombre' placeholder="Nombre" required />
+          <Form.Control className='inputStyles' size='lg' type="text" name='nombre' placeholder="Nombre"
+            minLength={3} maxLength={30} required />
         </Form.Group>
-
-        <Form.Group className="mb-1" controlId="formBasicNombre">
+        <Form.Group controlId="formBasicNombre">
           <Form.Label className='labelStyles'>Apellido</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="text" name='apellido' placeholder="Apellido" required />
+          <Form.Control className='inputStyles' size='lg' type="text" name='apellido'
+            minLength={3} maxLength={30} placeholder="Apellido" required />
         </Form.Group>
-
-        <Form.Group className="mb-1" controlId="formBasicNombre">
+        <Form.Group className="registerFormGroup" controlId="formBasicNombre">
           <Form.Label className='labelStyles'>Dirección</Form.Label>
-            <Form.Control name='direccion[calle]' className='inputStyles' placeholder="Calle" />
-            <Form.Control name='direccion[nro]' className='inputStyles' placeholder="Número" />
-            <Form.Control name='direccion[dpto]' className='inputStyles' placeholder="Departamento" />
-            <Form.Control name='direccion[provincia]' className='inputStyles' placeholder="Provincia" />
-            <Form.Control name='direccion[localidad]' className='inputStyles' placeholder="Localidad" />
-            <Form.Control name='direccion[codigopostal]' className='inputStyles' placeholder="Código postal" />
-          <Form.Label/>
+          <Form.Control name='direccion[calle]' className='inputStyles' size='lg' placeholder="Calle" minLength={3} maxLength={30} />
+          <Form.Control name='direccion[nro]' className='inputStyles' size='lg' placeholder="Número" minLength={1} maxLength={10} />
+          <Form.Control name='direccion[dpto]' className='inputStyles' size='lg' placeholder="Departamento" minLength={1} maxLength={5} />
+          <Form.Control name='direccion[provincia]' className='inputStyles' size='lg' placeholder="Provincia" minLength={3} maxLength={20} />
+          <Form.Control name='direccion[localidad]' className='inputStyles' size='lg' placeholder="Localidad" minLength={3} maxLength={20} />
+          <Form.Control name='direccion[codigopostal]' className='inputStyles' size='lg' placeholder="Código postal" minLength={1} maxLength={8} />
+          <Form.Label />
         </Form.Group>
-
-        <Form.Group className="mb-1" controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail">
           <Form.Label className='labelStyles'>Correo Electronico</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="email" name='email' placeholder="Ingresar correo electrónico" required />
+          <Form.Control className='inputStyles' size='lg' type="email" name='email'
+            minLength={3} maxLength={35} placeholder="Ingresar correo electrónico" required />
         </Form.Group>
-
-        <Form.Group className="mb-1" controlId="formBasicPassword">
+        <Form.Group controlId="formBasicPassword">
           <Form.Label className='labelStyles'>Contraseña</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="password" name='password' placeholder="Contraseña" required />
+          <Form.Control className='inputStyles' size='lg' type="password" name='password'
+            minLength={8} maxLength={30} placeholder="Contraseña" required />
         </Form.Group>
-        <Form.Group className="mb-1" controlId="formBasicRepetirPassword">
+        <Form.Group controlId="formBasicRepetirPassword">
           <Form.Label className='labelStyles'>Repetir Contraseña</Form.Label>
-          <Form.Control className='inputStyles' size='lg' type="password" name='repPassword' placeholder="Repetir Contraseña" required />
+          <Form.Control className='inputStyles' size='lg' type="password" name='repPassword'
+            minLength={3} maxLength={30} placeholder="Repetir Contraseña" required />
         </Form.Group>
         {setloaderRegister ? (
           <Loader />
@@ -50,7 +51,7 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
         }
         <Form.Group className="mb-3 d-flex justify-content-around" controlId="formBasicButton">
           <Button onClick={console.log(handleRegister)} type="submit" id='btnRegister'>
-            <BsFillPersonPlusFill className='btnLogo'/>
+            <BsFillPersonPlusFill className='btnLogo' />
             {' '}Registrarse
           </Button>
         </Form.Group>
@@ -58,6 +59,5 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
     </>
   )
 }
-
 
 export default RegisterForm

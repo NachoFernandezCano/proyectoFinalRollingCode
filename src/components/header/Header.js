@@ -32,7 +32,6 @@ const Header = () => {
   const [userName, setuserName] = useState('');
   const [userType, setuserType] = useState(false);
   const [productCount, setproductCount] = useState(10);
-
   const { cartCount, getCartCount } = useCartContext();
 
   let navigate = useNavigate();
@@ -50,14 +49,11 @@ const Header = () => {
     setproductCount(cartCount);
   }, [cartCount]);
 
-
-
   const handleVerifyJwt = async (token) => {
     try {
       const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
       autoLogin(data.user);
     } catch (error) {
-
       Swal.fire({
         title: 'Leer. Atte.',
         text: error.response.data.message,
@@ -103,9 +99,7 @@ const Header = () => {
       setloaderUser(true);
       setloginUser(true);
       setmodalLogin(false);
-
     } catch (error) {
-      ;
       if (error.code == "ERR_NETWORK") {
         return Swal.fire({
           title: '<strong>Error de Conexión</strong>',
@@ -122,7 +116,6 @@ const Header = () => {
   }
 
   const handleLogout = () => {
-
     Swal.fire({
       title: 'Administracion Usuario',
       text: 'Esta seguro que deseas cerrar sesión?',
@@ -133,7 +126,6 @@ const Header = () => {
       confirmButtonText: 'Cerrar'
     }).then((result) => {
       if (result.isConfirmed) {
-
         setloaderUser(false);
         setloaderRegister(false);
         localStorage.clear('user');
@@ -148,45 +140,51 @@ const Header = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setloaderRegister(true)
+    setloaderRegister(true);
     try {
       const paylaod = {};
+      const direccion = {
+        calle: e.target["direccion[calle]"].value,
+        nro: e.target["direccion[nro]"].value,
+        dpto: e.target["direccion[dpto]"].value,
+        provincia: e.target["direccion[provincia]"].value,
+        localidad: e.target["direccion[localidad]"].value,
+        codigopostal: e.target["direccion[codigopostal]"].value,
+      };
+      paylaod["direccion"] = direccion;
+
       for (const target of e.target) {
         if (target.type !== 'submit') {
           paylaod[target.name] = target.value;
         }
       }
-      paylaod['type'] = 'user';
-      console.log(paylaod);
+      paylaod["type"] = "user";
       const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',
         icon: data.tipoerror
-      })
+      });
       for (const target of e.target) {
         if (target.type !== 'submit') {
           target.value = '';
         }
       }
     } catch (error) {
-      console.log(error.response.data);
       Swal.fire({
         title: '<strong>Error Resgistro de Usuarios</strong>',
         html: '<i>' + error.response.data.message + '</i>',
         icon: error.response.data.tipoerror
-      })
+      });
     }
     setloaderRegister(false);
-  }
+  };
   const handlePerfil = () => {
     navigate("Perfil");
   }
-
   const handleLoadCart = () => {
     getCartCount();
   }
-
   const autoLogin = (user) => {
     setuserName(user.nombre);
     handleLoadCart();
@@ -242,7 +240,6 @@ const Header = () => {
                     </div>
                   </>
                 )
-
               ) : (
                 <Nav.Link className='userName' id='userLogin' onClick={() => setmodalLogin(true)}>Iniciar Sesión</Nav.Link>
               )}
