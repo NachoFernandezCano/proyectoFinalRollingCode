@@ -61,7 +61,6 @@ useEffect(() => {
       });
     }
   };
-
   return (
     <div className="productPageContainer">
       <div className="containerImgProduct">
@@ -133,7 +132,7 @@ useEffect(() => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-            <Button className="btn-agregarAlCarrito" /* onClick={handleAddToCart}  */>Agregar al carrito</Button>
+          <Button className="btn-agregarAlCarrito" /* onClick={handleAddToCart}  */>Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">

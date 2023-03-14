@@ -24,6 +24,7 @@
 
 .inputStyles{
   border: 1px solid var(--HOTPINK-bs-)!important;
+  margin-bottom: 0.8rem;
 }
 
 .inputStyles:active{
