@@ -1,9 +1,11 @@
 import { Link, Navigate } from 'react-router-dom';
-import { Card, Col, Row, Button } from 'react-bootstrap';
-import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { Card, Col, Row, Button, ButtonGroup } from 'react-bootstrap';
+import { FaHeart, FaShoppingCart, FaHeadset } from 'react-icons/fa';
+import { FiMonitor, FiWatch, FiMoreHorizontal } from 'react-icons/fi';
+import { GiSmartphone } from 'react-icons/gi';
+import { BsLaptop } from 'react-icons/bs';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Categories from '../categories/Categories';
 import Loader from '../util/loader/Loader';
 import Swal from 'sweetalert2';
 import { useCartContext } from "../../context/cartContext";
@@ -14,19 +16,19 @@ const Cards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
-
   const { addCartItem } = useCartContext();
+  const [filter, setFilterProduct] = useState(product);
 
   useEffect(() => {
     getProduct();
-  }, [page]);
+  }, [page, filter]);
 
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
-      setPagesCount(info.data.totalPages);
-      setProduct(info.data.docs)
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page, filter } });
+      setPagesCount(info.data);
+      setProduct(info.data)
       setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'Sin productos') {
@@ -100,14 +102,21 @@ const Cards = () => {
 
   }
 
+  const category = (categoryItem) => {
+    const result = product.filter((currentCategory) => {
+      return currentCategory.category === categoryItem;
+    });
+    setFilterProduct(result);
+  }
+
   return (
     <>
-      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={product._id}>
+      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' >
         {
           !isLoading ? (
-            product.length !== 0 ? (
+            product !== 0 ? (
               product?.map((product) => (
-                <Col>
+                <Col key={product._id}>
                   <Card className='cardProduct'>
                     <Card.Img variant='top' className='pCardImg'
                       src={product.image.img1} />
@@ -144,13 +153,42 @@ const Cards = () => {
             <b> Página {page} </b>
             <Button
               onClick={() => setPage(page + 1)}
-              disabled={page === pagesCount}
+              disabled={page === 2}
             >
               {'>'}
             </Button>
           </div>
         </div>
-        <Categories />
+        <div className='categoriesContainer'>
+          <div className='btnGroupContainer'>
+            <ButtonGroup className='btnGroup d-flex justify-content-center'>
+              <Link className='categoriesBtn' onClick={() => category("Notebooks")}>
+                <BsLaptop className='cIcon' />
+                Notebooks
+              </Link>
+              <Link className='categoriesBtn' onClick={() => category("Celulares")}>
+                <GiSmartphone className='cIcon' />
+                Celulares
+              </Link>
+              <Link className='categoriesBtn' onClick={() => category("Monitores")}>
+                <FiMonitor className='cIcon' />
+                Monitores
+              </Link>
+              <Link className='categoriesBtn' onClick={() => category("Auriculares")}>
+                <FaHeadset className='cIcon' />
+                Auriculares
+              </Link>
+              <Link className='categoriesBtn' onClick={() => category("Smartwatch")}>
+                <FiWatch className='cIcon' />
+                Smartwatch
+              </Link>
+              <Link className='categoriesBtn' onClick={() => category("Otros")}>
+                <FiMoreHorizontal className='cIcon' />
+                Otros
+              </Link>
+            </ButtonGroup>
+          </div>
+        </div>
       </Row>
     </>
   )

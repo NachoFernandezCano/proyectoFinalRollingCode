@@ -10,17 +10,14 @@ import axios from 'axios';
 import Loader from '../util/loader/Loader';
 import './categoriesPage.css';
 
-const CategoriesPage = (categoryItem) => {
+const CategoriesPage = () => {
   const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   const products = async () => {
     try {
       setIsLoading(true);
-      const allProducts = await axios.get('http://localhost:4000/products/filteredProducts');
-      setPagesCount(allProducts.data.totalPages);
+      const allProducts = await axios.get('http://localhost:4000/products/products');
       setData(allProducts.data);
       setIsLoading(false);
     } catch (error) {
@@ -43,7 +40,7 @@ const CategoriesPage = (categoryItem) => {
 
   useEffect(() => {
     products();
-  }, [page]);
+  }, []);
 
   return (
     <>
@@ -69,7 +66,7 @@ const CategoriesPage = (categoryItem) => {
                           <FaShoppingCart className='cartIcon favIcon' />
                         </Card.Link>
                       </Card.Body>
-                      <Link className='cardsBtn' to='{/ProductPage/${}}'> Ver más </Link>
+                      <Link className='cardsBtn' to='{/${}}'> Ver más </Link>
                     </Card>
                   </Col>
                 </>
@@ -81,28 +78,11 @@ const CategoriesPage = (categoryItem) => {
             <Loader />
           )
         }
-        <div className="pagination">
-          <div className="paginationButton">
-            <Button
-              onClick={() => setPage(page - 1)}
-              disabled={page === 1}
-            >
-              {'<'}
-            </Button>
-            <b>Página {page}</b>
-            <Button
-              onClick={() => setPage(page + 1)}
-              disabled={page === pagesCount}
-            >
-              {'>'}
-            </Button>
-          </div>
-        </div>
       </Row>
       <div className='categoriesContainer'>
         <div className='btnGroupContainer'>
           <ButtonGroup className='btnGroup d-flex justify-content-center'>
-            <Link className='categoriesBtn'onClick={() => category("Notebooks")}>
+            <Link className='categoriesBtn' onClick={() => category("Notebooks")}>
               <BsLaptop className='cIcon' />
               Notebooks
             </Link>
