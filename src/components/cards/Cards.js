@@ -45,12 +45,10 @@ const Cards = () => {
   }
 
 const handleAddProduct = async (id) => {
-    console.log(id, "Gracias apud")
     try {
       const token = localStorage.getItem('user');
       if (token) {
         const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
-        console.log(data);
         const addItem = {
           "userid": data.user._id,
           "productId": id,
