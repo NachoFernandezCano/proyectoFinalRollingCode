@@ -44,18 +44,17 @@ const Cards = () => {
     Navigate(`/productPage/${id}`)
   }
 
-  const handleAddproduct = async (id) => {
+const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem('user');
       if (token) {
         const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
-        console.log(data);
         const addItem = {
           "userid": data.user._id,
-          "product": id,
+          "productId": id,
           "quantity": 1
         }
-        const cart = await axios.post("http://localhost:4000/cart/createCart", addItem);
+        const cart = await axios.post("http://localhost:4000/cart/addToCart", addItem);
         addCartItem();
         const Toast = Swal.mixin({
           toast: true,
@@ -71,7 +70,7 @@ const Cards = () => {
 
         Toast.fire({
           icon: 'success',
-          title: 'Procduto Agregado al Carrito'
+          title: 'Producto Agregado al Carrito'
         })
 
       } else {
@@ -99,7 +98,6 @@ const Cards = () => {
       }
       console.log(error);
     }
-
   }
 
   const category = (categoryItem) => {
@@ -128,7 +126,7 @@ const Cards = () => {
                         <FaHeart className='favIcon' />
                       </Card.Link>
                       <Card.Link >
-                        <FaShoppingCart className='cartIcon favIcon' onClick={() => handleAddproduct(product._id)} />
+                        <FaShoppingCart className='cartIcon favIcon' onClick={() => handleAddProduct(product._id)} />
                       </Card.Link>
                     </Card.Body>
                     <Link className='cardsBtn' to={`/productPage/${product._id}`}> Ver más </Link>
