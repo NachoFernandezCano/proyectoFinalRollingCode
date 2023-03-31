@@ -8,18 +8,12 @@ export const CartProvider = ({ children }) => {
 
     const [cartCount, setcartCount] = useState(0);
 
-    const getCartCount= async () => {
+    const getCartCount = async () => {
         try {
             const token = localStorage.getItem('user');
             const data = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
-            //console.log(data);
-            /* if(data.data.tipoerror=="si")
-            {
-                setcartCount(data.data.cart.length);
-            }            
-             */
-            //alert(data.data.cart.length);
-            setcartCount(data.data.cart.length);
+            /* console.log(data) */
+            setcartCount(data.cart.length);
         } catch (error) {
             console.log(error);
         }
