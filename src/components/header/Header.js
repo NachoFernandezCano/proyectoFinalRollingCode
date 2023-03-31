@@ -87,7 +87,7 @@ const Header = () => {
           paylaod[target.name] = target.value;
         }
       }
-      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
+      const { data }  = await axios.post('http://localhost:4000/user/auth', paylaod);
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();

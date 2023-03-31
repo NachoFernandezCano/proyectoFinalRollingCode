@@ -5,18 +5,17 @@ import { Button, Table } from 'react-bootstrap'
 import "./cartPage.css"
 
 const CartPage = () => {
+  const [cart, setCart] = useState([]);
+
+    const getCart = async () => {
+    const token = localStorage.getItem('user');
+    const data  = await axios.get('http://localhost:4000/cart/getCart' , { headers: { Authorization: token } });
+    setCart(data.data.cart.products);
+  };
 
   useEffect(() => {
     getCart();
   }, []);
-
-  const [cart, setCart] = useState([]);
-
-    const getCart = async() =>{
-      const token = localStorage.getItem('user');
-      const {data} = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
-      setCart(data.cart);      
-    }
 
   return (
     <>
@@ -26,35 +25,34 @@ const CartPage = () => {
       <div>
         <Table>
           <thead>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+            </tr>
           </thead>
           <tbody>
-            {
-              cart.length !==0 ? (
-                cart?.map((product) => (
-                  <>
+            {cart.length > 0 ? (
+                cart.map((product) => (
                     <tr key={product._id}>
-                      <td>{product.product?.name}</td>
-                      <td>{product.product?.description}</td>
-                      <td>${product.product?.price * product.quantity}</td>
-                      <td>{product.quantity}</td>
+                        <td>{product.product.name}</td>
+                        <td>{product.product.description}</td>
+                        <td>${product.product.price}</td>
+                        <td>{product.quantity}</td>
                     </tr>
-                  </>
-                ))                
-              ):(
-                <>
-                </>
-              )
-            }
-            
+                ))
+            ) : (
+                <tr>
+                    <td colSpan="4">No hay productos en el carrito</td>
+                </tr>
+            )}
           </tbody>
         </Table>
       </div>
     </>
-  )
-}
+  );
+};
+
 
 export default CartPage

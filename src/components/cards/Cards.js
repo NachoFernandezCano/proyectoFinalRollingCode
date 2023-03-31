@@ -50,7 +50,7 @@ const handleAddProduct = async (id) => {
       if (token) {
         const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
         const addItem = {
-          "userid": data.user._id,
+          "userId": data.user._id,
           "productId": id,
           "quantity": 1
         }

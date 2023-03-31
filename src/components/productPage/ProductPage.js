@@ -28,7 +28,6 @@ const ProductPage = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const getProduct = async () => {
     try {
       const info = await axios.get(
@@ -132,7 +131,7 @@ useEffect(() => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-          <Button className="btn-agregarAlCarrito" /* onClick={handleAddToCart}  */>Agregar al carrito</Button>
+          <Button className="btn-agregarAlCarrito">Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">
@@ -162,7 +161,7 @@ useEffect(() => {
               <div className="selectorDeCantidadCompra">
                 <div>
                   <div>
-                    <input type="number" value={quantity} onChange={handleQuantityChange} />
+                    <input type="number" id={quantity} value={quantity} onChange={handleQuantityChange} />
                   </div>
                 </div>
               </div>
