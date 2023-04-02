@@ -1,12 +1,9 @@
 import Featured from "../../components/featured/Featured";
-import Categories from "../../components/categories/Categories"
-
 
 const HotItems = () => {
-  return ( 
+  return (
     <>
-    <Featured/>
-    <Categories/>
+      <Featured />
     </>
   );
 }
