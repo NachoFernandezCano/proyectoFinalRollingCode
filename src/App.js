@@ -12,7 +12,6 @@ import HotItems from './pages/hotItemsPage/hotItemsPage';
 import Error404 from './components/error/Error404';
 import CartPage from './components/cartPage/CartPage';
 import { CartProvider } from './context/cartContext';
-import CategoriesPage from './components/categoriesPage/categoriesPage';
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
             <Route path='/HotItems' element={<HotItems />} />
             <Route path='/Error404' element={<Error404 />} />
             <Route path='/Comprar' element={<CartPage />} />
-            <Route path='/Categories' element={<CategoriesPage />} />
           </Routes>
           <Footer />
         </CartProvider>

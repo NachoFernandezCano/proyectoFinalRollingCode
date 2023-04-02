@@ -10,6 +10,7 @@ import Loader from '../util/loader/Loader';
 import Swal from 'sweetalert2';
 import { useCartContext } from "../../context/cartContext";
 import './cards.css';
+import './buttonGroup.css';
 
 const Cards = () => {
   const [product, setProduct] = useState([]);
@@ -17,16 +18,16 @@ const Cards = () => {
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
   const { addCartItem } = useCartContext();
-  const [filter, setFilterProduct] = useState(product);
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
     getProduct();
-  }, [page, filter]);
+  }, [page, category]);
 
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page, filter } });
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page, category } });
       setPagesCount(info.data);
       setProduct(info.data)
       setIsLoading(false);
@@ -100,13 +101,6 @@ const handleAddProduct = async (id) => {
     }
   }
 
-  const category = (categoryItem) => {
-    const result = product.filter((currentCategory) => {
-      return currentCategory.category === categoryItem;
-    });
-    setFilterProduct(result);
-  }
-
   return (
     <>
       <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' >
@@ -159,29 +153,47 @@ const handleAddProduct = async (id) => {
         </div>
         <div className='categoriesContainer'>
           <div className='btnGroupContainer'>
-            <ButtonGroup className='btnGroup d-flex justify-content-center'>
-              <Link className='categoriesBtn' onClick={() => category("Notebooks")}>
-                <BsLaptop className='cIcon' />
+          <ButtonGroup className="btnGroup d-flex justify-content-center">
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Notebooks")}
+              >
+                <BsLaptop className="cIcon" />
                 Notebooks
               </Link>
-              <Link className='categoriesBtn' onClick={() => category("Celulares")}>
-                <GiSmartphone className='cIcon' />
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Celulares")}
+              >
+                <GiSmartphone className="cIcon" />
                 Celulares
               </Link>
-              <Link className='categoriesBtn' onClick={() => category("Monitores")}>
-                <FiMonitor className='cIcon' />
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Monitores")}
+              >
+                <FiMonitor className="cIcon" />
                 Monitores
               </Link>
-              <Link className='categoriesBtn' onClick={() => category("Auriculares")}>
-                <FaHeadset className='cIcon' />
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Auriculares")}
+              >
+                <FaHeadset className="cIcon" />
                 Auriculares
               </Link>
-              <Link className='categoriesBtn' onClick={() => category("Smartwatch")}>
-                <FiWatch className='cIcon' />
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Smartwatch")}
+              >
+                <FiWatch className="cIcon" />
                 Smartwatch
               </Link>
-              <Link className='categoriesBtn' onClick={() => category("Otros")}>
-                <FiMoreHorizontal className='cIcon' />
+              <Link
+                className="categoriesBtn"
+                onClick={() => setCategory("Otros")}
+              >
+                <FiMoreHorizontal className="cIcon" />
                 Otros
               </Link>
             </ButtonGroup>
