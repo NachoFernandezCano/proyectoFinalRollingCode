@@ -2,12 +2,12 @@ import Cards from "../cards/Cards";
 import Advertisement from "../advertisement/Advertisement";
 import "./home.css"
 
-const Home = () => {
+const Home = ({setProductQuantity}) => {
   return (
     <>
       <h2 className="homePTitle">Productos</h2>
       <section id="main" className="d-flex flex-row">
-        <Cards />
+        <Cards setProductQuantity={setProductQuantity}/>
         <Advertisement />
       </section>
     </>

@@ -11,13 +11,23 @@ import Swal from 'sweetalert2';
 import { useCartContext } from "../../context/cartContext";
 import './cards.css';
 
-const Cards = () => {
+
+
+const Cards = ({setProductQuantity}) => {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
-  const { addCartItem } = useCartContext();
+  const { getCartCount } = useCartContext();
   const [filter, setFilterProduct] = useState(product);
+
+  useEffect(() => {
+    const algoPorAhora = async () => {
+      setProductQuantity(await getCartCount())
+    }
+    algoPorAhora()
+  }, [])
+  
 
   useEffect(() => {
     getProduct();
@@ -55,7 +65,7 @@ const handleAddProduct = async (id) => {
           "quantity": 1
         }
         const cart = await axios.post("http://localhost:4000/cart/addToCart", addItem);
-        addCartItem();
+        setProductQuantity(await getCartCount())
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',

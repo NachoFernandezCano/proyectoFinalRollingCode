@@ -12,15 +12,22 @@ export const CartProvider = ({ children }) => {
         try {
             const token = localStorage.getItem('user');
             const data = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
-            /* console.log(data) */
-            setcartCount(data.cart.length);
+            setcartCount(data.cart);
+            let count = 0 
+            console.log(data)
+            for (const product of data?.data?.cart?.products) {
+                count += product.quantity
+            }
+            return count
         } catch (error) {
             console.log(error);
         }
     }
+
     const addCartItem = () =>{
         getCartCount();
     }
+
     return (        
         <CartContext.Provider
         value={{ cartCount, getCartCount, addCartItem }}

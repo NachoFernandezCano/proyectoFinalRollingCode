@@ -13,15 +13,21 @@ import Error404 from './components/error/Error404';
 import CartPage from './components/cartPage/CartPage';
 import { CartProvider } from './context/cartContext';
 import CategoriesPage from './components/categoriesPage/categoriesPage';
+import { useState } from 'react';
+
 
 function App() {
+  
+  const [productQuantity, setProductQuantity] = useState(0)
+
+  
   return (
     <>
       <BrowserRouter>
         <CartProvider>
-          <Header />
+          <Header productQuantity={productQuantity}/>
           <Routes>
-            <Route path='/' element={<Homepage />} />
+            <Route path='/' element={<Homepage setProductQuantity={setProductQuantity}/>} />
             <Route path='/ProductPage/:id' element={<ProductPage />} />
             <Route path='/CartPage' element={<CartPage/>}/>
             <Route path='/RecoverPassword' element={<RecoverPassword />} />
