@@ -3,11 +3,11 @@ import Home from "../../components/home/Home";
 // import Categories from "../../components/categories/Categories";
 
 
-const Homepage = () => {
+const Homepage = ({setProductQuantity}) => {
   return ( 
     <>
     <Slider/>
-    <Home/>
+    <Home setProductQuantity={setProductQuantity}/>
     {/* <Categories/> */}
     </>
   );

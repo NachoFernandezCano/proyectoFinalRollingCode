@@ -24,7 +24,7 @@ import ModalLogin from '../form/Modal/ModalLogin';
 import Logo from '../../assets/images/logo.jpg';
 import Menu from '../util/menu/Menu';
 
-const Header = () => {
+const Header = ({productQuantity}) => {
   const [modalLogin, setmodalLogin] = useState(false);
   const [loginUser, setloginUser] = useState(false);
   const [loaderUser, setloaderUser] = useState(false);
@@ -272,10 +272,11 @@ const Header = () => {
           </div>
           <div onClick={() => handleComprar()} className='needHoover'>
             <FaShoppingCart className='headerIcons' />
-            {productCount !== 0 ? (<div className='productsNumber'>{productCount}</div>)
+{/*             {productCount !== 0 ? (<div className='productsNumber'>{productCount}</div>)
               : (
                 (<></>)
-              )}
+              )} */}
+              {productQuantity}
           </div>
           <div className='needHoover'>
             <FaRegQuestionCircle className='mainIcons needHoover' />
