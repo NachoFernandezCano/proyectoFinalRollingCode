@@ -87,7 +87,7 @@ const Header = ({productQuantity}) => {
           paylaod[target.name] = target.value;
         }
       }
-      const { data }  = await axios.post('http://localhost:4000/user/auth', paylaod);
+      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();
@@ -248,7 +248,9 @@ const Header = ({productQuantity}) => {
         </div>
         <div>
           <div>
-            <Link to='/'><FaHome className='mainIcons needHoover' /></Link>
+            <Nav.Link href='/'>
+              <FaHome className='mainIcons needHoover' />
+            </Nav.Link>
           </div>
           <div>
             <div className='needHoover'>
@@ -263,8 +265,8 @@ const Header = ({productQuantity}) => {
             </div>
             <div className='needHoover'>
               <Link to='/Error404'>
-              CONTACTANOS
-              <FaPhone className='headerIcons' />
+                CONTACTANOS
+                <FaPhone className='headerIcons' />
               </Link>
             </div>
           </div>
