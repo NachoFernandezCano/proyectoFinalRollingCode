@@ -152,7 +152,6 @@ const Header = ({productQuantity}) => {
         codigopostal: e.target["direccion[codigopostal]"].value,
       };
       paylaod["direccion"] = direccion;
-
       for (const target of e.target) {
         if (target.type !== 'submit') {
           paylaod[target.name] = target.value;
@@ -278,9 +277,9 @@ const Header = ({productQuantity}) => {
               )} */}
               {productQuantity}
           </div>
-          <div className='needHoover'>
-            <FaRegQuestionCircle className='mainIcons needHoover' />
-          </div>
+          <Link className='needHoover' to='/Error404'>
+            <FaRegQuestionCircle className='mainIcons needHoover'/>
+          </Link>
         </div>
       </div>
 

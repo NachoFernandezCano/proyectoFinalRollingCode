@@ -33,19 +33,19 @@ const Featured = () => {
   return (
     <>
       <h2 className='fTitle'>Los más destacados</h2>
-      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer' key={hot._id}>
+      <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer'>
         {
           !isLoading ? (
             hot.length !== 0 ? (
               hot?.map((product) => (
-                <Col>
+                <Col key={hot._id}>
                   <Card className='cardProduct'>
-                    <Card.Img variant='top' className='fCardImg'
+                    <Card.Img variant='top' className='pCardImg'
                       src={product.image.img1} />
-                    <Card.Title className='cardTitle'>{product.brand}</Card.Title>
-                    <Card.Text className='cardTitle text-bolder'>{product.name}</Card.Text>
+                    <Card.Title className='mCardT'>{product.brand}</Card.Title>
+                    <Card.Text className='mCardT text-bolder'>{product.name}</Card.Text>
                     <Card.Body className='cardBody'>
-                      <Card.Text>${product.price}</Card.Text>
+                      <Card.Text className='mCardPrice'>${product.price}</Card.Text>
                       <Card.Link href='#'>
                         <FaHeart className='favIcon' />
                       </Card.Link>
