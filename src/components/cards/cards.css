@@ -1,6 +1,6 @@
 .rowContainer {
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding-inline: 2%;
   align-content: end;
 }
@@ -106,10 +106,10 @@
 
 .pagination {
   width: 100%;
-  height: 5vh;
+  height: 30%;
   display: flex;
   justify-content: center;
-  margin-block: 2rem;
+  margin-block: 5rem;
 }
 
 .pagination b {
@@ -152,7 +152,7 @@
   }
 
   .mCardPrice {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   
   .favIcon {

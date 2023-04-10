@@ -6,7 +6,7 @@ const Home = ({setProductQuantity}) => {
   return (
     <>
       <h2 className="homePTitle">Productos</h2>
-      <section id="main" className="d-flex flex-row">
+      <section id="main" className="d-flex flex-row homeMain">
         <Cards setProductQuantity={setProductQuantity}/>
         <Advertisement />
       </section>

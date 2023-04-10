@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import { Card, Col, Row, Button, ButtonGroup } from "react-bootstrap";
+import { Card, Col, Row, Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { FaHeart, FaShoppingCart, FaHeadset } from "react-icons/fa";
 import { FiMonitor, FiWatch, FiMoreHorizontal } from "react-icons/fi";
 import { GiSmartphone } from "react-icons/gi";
@@ -117,11 +117,7 @@ const Cards = ({ setProductQuantity }) => {
 
   return (
     <>
-      <Row
-        xs={2}
-        sm={3}
-        md={3}
-        lg={5}
+      <Row xs={2} sm={3} md={3} lg={5}
         className="g-0 justify-content-between rowContainer"
       >
         {!isLoading ? (
@@ -175,7 +171,7 @@ const Cards = ({ setProductQuantity }) => {
           </div>
         </div>
         <div className="categoriesContainer">
-          <div className="btnGroupContainer">
+          <div className="btnGroupContainer align-items-end">
             <ButtonGroup className="btnGroup d-flex justify-content-center">
               <Link
                 className="categoriesBtn"
@@ -220,6 +216,51 @@ const Cards = ({ setProductQuantity }) => {
                 Otros
               </Link>
             </ButtonGroup>
+          </div>
+          <div className='dropdownContainer'>
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown-basic">
+                Categorías
+              </Dropdown.Toggle>
+              <Dropdown.Menu className='dropdownM'>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Notebooks")}>
+                    <BsLaptop className='cIcon' />
+                    Notebooks
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Celulares")}>
+                    <GiSmartphone className='cIcon' />
+                    Celulares
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Monitores")}>
+                    <FiMonitor className='cIcon' />
+                    Monitores
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Auriculares")}>
+                    <FaHeadset className='cIcon' />
+                    Auriculares
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Smartwatch")}>
+                    <FiWatch className='cIcon' />
+                    Smartwach
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link className='catLink' onClick={() => setCategory("Otros")}>
+                    <FiMoreHorizontal className='cIcon' />
+                    Otros
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
       </Row>
