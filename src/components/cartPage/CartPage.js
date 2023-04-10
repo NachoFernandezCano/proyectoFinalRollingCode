@@ -1,16 +1,18 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { Button, Table } from 'react-bootstrap'
-import "./cartPage.css"
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import "./cartPage.css";
 
 const CartPage = () => {
   const [cart, setCart] = useState([]);
 
-    const getCart = async () => {
-    const token = localStorage.getItem('user');
-    const data  = await axios.get('http://localhost:4000/cart/getCart' , { headers: { Authorization: token } });
+  const getCart = async () => {
+    const token = localStorage.getItem("user");
+    const data = await axios.get("http://localhost:4000/cart/getCart", {
+      headers: { Authorization: token },
+    });
     setCart(data.data.cart.products);
+    console.log(data.data.cart.products);
   };
 
   useEffect(() => {
@@ -18,41 +20,38 @@ const CartPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="bodyCartPage">
       <div>
         <h2>Carrito de compra</h2>
       </div>
-      <div>
-        <Table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.length > 0 ? (
-                cart.map((product) => (
-                    <tr key={product._id}>
-                        <td>{product.product.name}</td>
-                        <td>{product.product.description}</td>
-                        <td>${product.product.price}</td>
-                        <td>{product.quantity}</td>
-                    </tr>
-                ))
-            ) : (
-                <tr>
-                    <td colSpan="4">No hay productos en el carrito</td>
-                </tr>
-            )}
-          </tbody>
-        </Table>
+      <div className="tableArea">
+        {cart.length > 0 ? (
+          cart.map((product) => (
+            <div key={product._id}>
+              <img
+                alt="Foto del producto"
+                src={product.product.image.img1}
+              ></img>
+              <div className="itemsData">
+                <h3>{product.product.name}</h3>
+                <div className="descriptionArea">
+                  {product.product.description}
+                </div>
+                <div>
+                  <p>Cantidad: {product.quantity}</p>
+                  <p>${product.product.price}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="4">No hay productos en el carrito</td>
+          </tr>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
-
-export default CartPage
+export default CartPage;

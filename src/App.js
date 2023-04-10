@@ -12,7 +12,7 @@ import HotItems from "./pages/hotItemsPage/hotItemsPage";
 import Error404 from "./components/error/Error404";
 import CartPage from "./components/cartPage/CartPage";
 import { CartProvider } from "./context/cartContext";
-import CategoriesPage from "./components/categoriesPage/categoriesPage";
+
 import { useState } from "react";
 
 function App() {
