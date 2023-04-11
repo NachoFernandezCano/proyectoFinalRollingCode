@@ -1,95 +1,58 @@
-.cart .table{
-    margin-bottom: 30px;
-    border-bottom: 1px solid #fff;
+.bodyCartPage > div:first-child {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 4rem;
 }
-.cart .table thead tr th{
-    border-top:0px;
-    font-size:16px;
-    font-weight: bold;
-    border-bottom:0px;
+
+.tableArea {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem;
+  background-color: rgb(228, 228, 228);
+  height: 100%;
+  flex-direction: column;
+  border-radius: 0.5rem;
 }
-.cart .table thead tr td{
-    padding-top:30px;
-    padding-bottom: 30px;
-    vertical-align: middle;
-    align-self: center;
+
+.tableArea > div > img {
+  min-width: 7.5rem;
+  height: 100%;
+  background-color: black;
 }
-.cart .table tbody tr td .main .d-flex{
-    padding-right:30px;
+
+.tableArea > div {
+  background-color: rgb(218, 218, 218);
+  height: 8rem;
+  display: flex;
+  min-width: 75rem;
+  margin: 1rem 2rem 1rem 2rem;
+  border-radius: 1rem;
 }
-.cart .table tbody tr td .main .d-flex img{
-    border: 2px solid #000;
-    border-radius: 3px;
+
+.itemsData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-width: 50rem;
+  max-width: 50rem;
 }
-.cart .table tbody tr td .main .des{
-    vertical-align: middle;
-    align-self: center;
+
+.descriptionArea {
+  max-height: 3rem;
+  margin-right: 1rem;
+  min-width: 60rem;
 }
-.cart .table tbody tr td .main .des p{
-    margin-bottom:0px;
+
+.itemsData > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 100%;
 }
-.cart .table tbody tr td h6{
-    font-size:16px;
-    color:#000;
-    margin-bottom: 0px;
-}
-.cart .table tbody tr td .counter{
-    margin-bottom:0px;
-}
-.counter i{
-    border: 1px solid #000;
-    padding: 7px;
-    display: inline-block;
-    position: relative;
-}
-.cart .table tbody tr td .counter input{
-    width: 100px;
-    padding-left:30px;
-    height: 40px;
-    outline:none;
-    box-shadow: none;
-}
-.checkout ul{
-    border: 2px solid #ebebeb;
-    background: #f3f3f3;
-    padding-left:25px;
-    padding-right:25px;
-    padding-top:16px;
-    padding-bottom: 20px;
-}
-.checkout ul li{
-    list-style: none;
-    font-size:16px;
-    font-weight: bold;
-    color:#252525;
-    text-transform: uppercase;
-    overflow: hidden;
-}
-.checkout ul li.subtotal{
-    font-weight: bold;
-    text-transform: capitalize;
-    border-bottom:1px solid #fff;
-    padding-bottom: 14px;
-}
-.checkout ul li.subtotal span{
-    font-weight: bold;
-}
-.checkout ul li.cart-total{
-    padding-top: 10px
-}
-.checkout ul li.cart-total span{
-    color:#e7ab3c;
-}
-.checkout ul li span{
-    float:right;
-}
-.checkout .proceed-btn{
-    font-size:15px;
-    font-weight: bold;
-    color:#fff;
-    background:#252525;
-    text-transform: uppercase;
-    padding:15px 25px 14px 25px;
-    display: block;
-    text-align: center;
+
+.itemsData > div:nth-child(3) {
+  border-top: 0.2rem solid black;
 }
