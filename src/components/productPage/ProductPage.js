@@ -19,12 +19,14 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
 
-const ProductPage = () => {
+const ProductPage = ({setProductQuantity}) => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [show, setShow] = useState(false);
   const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState([])
-  const [quantity, setQuantity] = useState(1);
+  const [minQuantity, setMinQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(minQuantity);
+  const { getCartCount, addCartItem } = useCartContext();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -36,22 +38,107 @@ const ProductPage = () => {
       setProduct(info.data.product);
       setImagenPrincipalProduct(info.data.product.image?.img1);
     } catch (error) {
-      alert("Algo salió mal, intente más tarde");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Algo salió mal!',
+      })
     }
   };
 
-useEffect(() => {
-    getProduct();
+  useEffect(() => {
+    const algoPorAhora = async () => {
+      setProductQuantity(await getCartCount());
+    };
+    algoPorAhora();
   }, []);
+
+  useEffect(() => {
+      getProduct();
+      
+    }, []);
 
   const imageHandle = (image) => {
   setImagenPrincipalProduct(image)
   }
 
+  const handleAddProduct = async (id) => {
+    try {
+      const token = localStorage.getItem("user");
+      if (token) {
+        const {data}  = await axios.get("http://localhost:4000/user", {
+          headers: { Authorization: token },
+        });
+        console.log("Data",data)
+        console.log("Id",data.user._id)
+        const addItem = {
+          userId: data.user._id,
+          productId: id,
+          quantity: parseInt(quantity),
+        };
+        console.log("Item",addItem)
+        const cart = await axios.post(
+          "http://localhost:4000/cart/addToCart",
+          addItem
+        );
+        console.log("Respuesta de addToCart:", cart);
+        setProductQuantity(await getCartCount());
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Producto Agregado al Carrito",
+        });
+      } else {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>Para usar esta función primero debe iniciar sesión.</i>",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.data.tipoerror == "tokenno") {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>" + error.response.data.message + "</i>",
+          icon: "error",
+        });
+      }
+      if (error.response.data.tipoerror == "tokenepx") {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>" + error.response.data.message + "</i>",
+          icon: "error",
+        });
+      }
+      if (error.response.data.message === "No hay suficiente stock para este producto") {
+        return Swal.fire({
+          title: "<strong>Stock insuficiente</strong>",
+          html: "<i>" + error.response.data.message + "</i>",
+          icon: "warning",
+        });
+      }
+      console.log(error);
+    }
+  };
+
   const handleQuantityChange = (event) => {
     const value = event.target.value;
-    if (value <= product.stock) {
+    if (value >= minQuantity && value <= product.stock) {
       setQuantity(value);
+    } else if (value < minQuantity) {
+      setQuantity(minQuantity);
     } else {
       Swal.fire({
         icon: 'error',
@@ -60,6 +147,7 @@ useEffect(() => {
       });
     }
   };
+
   return (
     <div className="productPageContainer">
       <div className="containerImgProduct">
@@ -131,7 +219,7 @@ useEffect(() => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-          <Button className="btn-agregarAlCarrito">Agregar al carrito</Button>
+          <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">
@@ -161,7 +249,7 @@ useEffect(() => {
               <div className="selectorDeCantidadCompra">
                 <div>
                   <div>
-                    <input type="number" id={quantity} value={quantity} onChange={handleQuantityChange} />
+                    <input type="number" value={quantity} onChange={handleQuantityChange} />
                   </div>
                 </div>
               </div>

@@ -111,6 +111,13 @@ const Cards = ({ setProductQuantity }) => {
           icon: "error",
         });
       }
+      if (error.response.data.message === "No hay suficiente stock para este producto") {
+        return Swal.fire({
+          title: "<strong>Stock insuficiente</strong>",
+          html: "<i>" + error.response.data.message + "</i>",
+          icon: "warning",
+        });
+      }
       console.log(error);
     }
   };
