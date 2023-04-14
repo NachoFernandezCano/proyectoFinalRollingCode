@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./cartPage.css";
@@ -18,6 +18,16 @@ const CartPage = () => {
   useEffect(() => {
     getCart();
   }, []);
+
+  const handleDeleteProduct = async (product) => {
+    try {
+      const token = localStorage.getItem("user");
+      await axios.patch("http://localhost:4000/cart/", { productId: product._id }, { headers: { Authorization: token } })
+      getCart()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="bodyCartPage">
@@ -41,6 +51,9 @@ const CartPage = () => {
                   <p>Cantidad: {product.quantity}</p>
                   <p>${product.product.price}</p>
                 </div>
+              </div>
+              <div>
+                <button onClick={() => handleDeleteProduct(product)}>X</button>
               </div>
             </div>
           ))

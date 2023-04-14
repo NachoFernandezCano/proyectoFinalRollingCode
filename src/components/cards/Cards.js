@@ -22,10 +22,10 @@ const Cards = ({ setProductQuantity }) => {
   const [category, setCategory] = useState("");
 
   useEffect(() => {
-    const algoPorAhora = async () => {
+    const showCartQuantity = async () => {
       setProductQuantity(await getCartCount());
     };
-    algoPorAhora();
+    showCartQuantity();
   }, []);
 
   useEffect(() => {
@@ -117,7 +117,11 @@ const Cards = ({ setProductQuantity }) => {
 
   return (
     <>
-      <Row xs={2} sm={3} md={3} lg={5}
+      <Row
+        xs={2}
+        sm={3}
+        md={3}
+        lg={5}
         className="g-0 justify-content-between rowContainer"
       >
         {!isLoading ? (
@@ -217,45 +221,61 @@ const Cards = ({ setProductQuantity }) => {
               </Link>
             </ButtonGroup>
           </div>
-          <div className='dropdownContainer'>
+          <div className="dropdownContainer">
             <Dropdown>
-              <Dropdown.Toggle id="dropdown-basic">
-                Categorías
-              </Dropdown.Toggle>
-              <Dropdown.Menu className='dropdownM'>
+              <Dropdown.Toggle id="dropdown-basic">Categorías</Dropdown.Toggle>
+              <Dropdown.Menu className="dropdownM">
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Notebooks")}>
-                    <BsLaptop className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Notebooks")}
+                  >
+                    <BsLaptop className="cIcon" />
                     Notebooks
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Celulares")}>
-                    <GiSmartphone className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Celulares")}
+                  >
+                    <GiSmartphone className="cIcon" />
                     Celulares
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Monitores")}>
-                    <FiMonitor className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Monitores")}
+                  >
+                    <FiMonitor className="cIcon" />
                     Monitores
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Auriculares")}>
-                    <FaHeadset className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Auriculares")}
+                  >
+                    <FaHeadset className="cIcon" />
                     Auriculares
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Smartwatch")}>
-                    <FiWatch className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Smartwatch")}
+                  >
+                    <FiWatch className="cIcon" />
                     Smartwach
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link className='catLink' onClick={() => setCategory("Otros")}>
-                    <FiMoreHorizontal className='cIcon' />
+                  <Link
+                    className="catLink"
+                    onClick={() => setCategory("Otros")}
+                  >
+                    <FiMoreHorizontal className="cIcon" />
                     Otros
                   </Link>
                 </Dropdown.Item>
