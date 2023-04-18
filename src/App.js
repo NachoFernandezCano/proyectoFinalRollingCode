@@ -11,6 +11,7 @@ import Table from "./components/table/Table";
 import HotItems from "./pages/hotItemsPage/hotItemsPage";
 import Error404 from "./components/error/Error404";
 import CartPage from "./components/cartPage/CartPage";
+import ProductPageSell from "./components/productPageSell/ProductPageSell";
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/HotItems" element={<HotItems />} />
             <Route path="/Error404" element={<Error404 />} />
             <Route path="/Comprar" element={<CartPage />} />
+            <Route path="/ComprarProductPage" element={<ProductPageSell />} />
           </Routes>
           <Footer />
         </CartProvider>

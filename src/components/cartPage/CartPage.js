@@ -34,6 +34,9 @@ const CartPage = () => {
       <div>
         <h2>Carrito de compra</h2>
       </div>
+      <div className="cartButtonArea">
+        <button>Finalizar compra</button>
+      </div>
       <div className="tableArea">
         {cart.length > 0 ? (
           cart.map((product) => (

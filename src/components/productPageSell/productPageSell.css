@@ -69,25 +69,6 @@
   margin-left: 2rem;
 }
 
-.tableArea > div > div:nth-child(3) > button {
-  font-size: larger;
-  height: 80%;
-  width: 6rem;
-  background-color: rgb(218, 218, 218);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  margin-left: 1.2rem;
-  border-radius: 1rem;
-  border: 0;
-}
-
-.tableArea > div > div:nth-child(3) > button:hover {
-  background-color: rgb(189, 189, 189);
-  transition: 0.2s;
-}
-
 .itemsData {
   display: flex;
   flex-direction: column;

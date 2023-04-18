@@ -15,9 +15,11 @@ import MasterCard from "../../assets/images/mediosDePago/MasterCard.svg";
 import Naranja from "../../assets/images/mediosDePago/Naranja.svg";
 import Visa from "../../assets/images/mediosDePago/visa.svg";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
+
+
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -40,12 +42,12 @@ const ProductPage = () => {
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
     getProduct();
   }, []);
 
   const imageHandle = (image) => {
-  setImagenPrincipalProduct(image)
+    setImagenPrincipalProduct(image)
   }
 
   const handleQuantityChange = (event) => {
@@ -60,6 +62,14 @@ useEffect(() => {
       });
     }
   };
+
+  let navigate = useNavigate();
+  const goToSell = () => {
+    navigate("/ComprarProductPage")
+  }
+
+
+
   return (
     <div className="productPageContainer">
       <div className="containerImgProduct">
@@ -131,7 +141,7 @@ useEffect(() => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-          <Button className="btn-agregarAlCarrito">Agregar al carrito</Button>
+            <Button className="btn-agregarAlCarrito">Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">
