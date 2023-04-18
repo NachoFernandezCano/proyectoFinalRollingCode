@@ -27,8 +27,8 @@ function App() {
               path="/"
               element={<Homepage setProductQuantity={setProductQuantity} />}
             />
-            <Route path="/ProductPage/:id" element={<ProductPage />} />
-            <Route path="/CartPage" element={<CartPage />} />
+            <Route path="/ProductPage/:id" element={<ProductPage setProductQuantity={setProductQuantity} />} />
+            <Route path="/CartPage" element={<CartPage setProductQuantity={setProductQuantity} />} />
             <Route path="/RecoverPassword" element={<RecoverPassword />} />
             <Route path="/EditPassword" element={<EditPassUser />} />
             <Route path="/Perfil" element={<Perfil />} />
