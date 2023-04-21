@@ -2,6 +2,7 @@ import axios, { Axios } from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./cartPage.css";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const [cart, setCart] = useState([]);
@@ -30,43 +31,78 @@ const CartPage = () => {
   }
 
   return (
-    <div className="bodyCartPage">
-      <div>
-        <h2>Carrito de compra</h2>
-      </div>
-      <div className="cartButtonArea">
-        <button>Finalizar compra</button>
-      </div>
-      <div className="tableArea">
-        {cart.length > 0 ? (
-          cart.map((product) => (
-            <div key={product._id}>
-              <img
-                alt="Foto del producto"
-                src={product.product.image.img1}
-              ></img>
-              <div className="itemsData">
-                <h3>{product.product.name}</h3>
-                <div className="descriptionArea">
-                  {product.product.description}
+    <>
+      <div className="bodyCartPage">
+        <div>
+          <h2>Carrito de compra</h2>
+        </div>
+        <div className="cartButtonArea">
+          <Link to={`/FinalizarCompra`}>
+            <button className="cartButton">
+              Finalizar compra
+            </button>
+          </Link>
+        </div>
+        <div className="tableArea">
+          {cart.length > 0 ? (
+            cart.map((product) => (
+              <div key={product._id}>
+                <img
+                  alt="Foto del producto"
+                  src={product.product.image.img1}
+                ></img>
+                <div className="itemsData">
+                  <h3>{product.product.name}</h3>
+                  <div className="descriptionArea">
+                    {product.product.description}
+                  </div>
+                  <div>
+                    <p>Cantidad: {product.quantity}</p>
+                    <p>${product.product.price}</p>
+                  </div>
                 </div>
                 <div>
-                  <p>Cantidad: {product.quantity}</p>
-                  <p>${product.product.price}</p>
+                  <button onClick={() => handleDeleteProduct(product)}>X</button>
                 </div>
               </div>
-              <div>
-                <button onClick={() => handleDeleteProduct(product)}>X</button>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No hay productos en el carrito</td>
+            </tr>
+          )}
+        </div>
+        <div className="tableAreaMobile">
+          {cart.length > 0 ? (
+            cart.map((product) => (
+              <div key={product._id}>
+                <img
+                  alt="Foto del producto"
+                  src={product.product.image.img1}
+                ></img>
+                <div className="itemsDataMobile">
+                  <h3>{product.product.name}</h3>
+                  <div>
+                    {product.product.description}
+                  </div>
+                  <div>
+                    <div>Cantidad: {product.quantity}</div>
+                    <div>${product.product.price}</div>
+                  </div>
+                </div>
+                <div>
+                  <button onClick={() => handleDeleteProduct(product)}>Quitar producto</button>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <tr>
-            <td colSpan="4">No hay productos en el carrito</td>
-          </tr>
-        )}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No hay productos en el carrito</td>
+            </tr>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
