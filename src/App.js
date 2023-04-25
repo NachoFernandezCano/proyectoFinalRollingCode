@@ -12,6 +12,8 @@ import UserTable from "./components/admin/table/UsersTable";
 import HotItems from "./pages/hotItemsPage/hotItemsPage";
 import Error404 from "./components/error/Error404";
 import CartPage from "./components/cartPage/CartPage";
+import ProductPageSell from "./components/productPageSell/ProductPageSell";
+import SellPage from "./components/sellPage/SellPage"
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
 
@@ -38,6 +40,8 @@ function App() {
             <Route path="/HotItems" element={<HotItems />} />
             <Route path="/Error404" element={<Error404 />} />
             <Route path="/Comprar" element={<CartPage />} />
+            <Route path="/ComprarProductPage" element={<ProductPageSell />} />
+            <Route path="/FinalizarCompra" element={<SellPage />} />
           </Routes>
           <Footer />
         </CartProvider>

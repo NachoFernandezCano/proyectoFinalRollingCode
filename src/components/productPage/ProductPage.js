@@ -15,9 +15,10 @@ import MasterCard from "../../assets/images/mediosDePago/MasterCard.svg";
 import Naranja from "../../assets/images/mediosDePago/Naranja.svg";
 import Visa from "../../assets/images/mediosDePago/visa.svg";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
+
 
 const ProductPage = ({setProductQuantity}) => {
   const { id } = useParams();
@@ -59,7 +60,7 @@ const ProductPage = ({setProductQuantity}) => {
     }, []);
 
   const imageHandle = (image) => {
-  setImagenPrincipalProduct(image)
+    setImagenPrincipalProduct(image)
   }
 
   const handleAddProduct = async (id) => {
@@ -143,6 +144,12 @@ const ProductPage = ({setProductQuantity}) => {
       });
     }
   };
+
+
+  let navigate = useNavigate();
+  const goToSell = () => {
+    navigate("/ComprarProductPage")
+  }
 
   return (
     <div className="productPageContainer">
