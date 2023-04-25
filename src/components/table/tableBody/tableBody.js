@@ -32,7 +32,7 @@ const TableBody = (props) => {
       <tbody>
         {
           dataForTable?.map((product) => (
-            <tr key={product.id}>
+            <tr key={product._id}>
               <td>{product.category}</td>              
               <td>{product.name}</td>
               <td>{product.brand}</td>

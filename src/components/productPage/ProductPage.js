@@ -47,10 +47,10 @@ const ProductPage = ({setProductQuantity}) => {
   };
 
   useEffect(() => {
-    const algoPorAhora = async () => {
+    const showCartQuantity = async () => {
       setProductQuantity(await getCartCount());
     };
-    algoPorAhora();
+    showCartQuantity();
   }, []);
 
   useEffect(() => {
@@ -69,19 +69,15 @@ const ProductPage = ({setProductQuantity}) => {
         const {data}  = await axios.get("http://localhost:4000/user", {
           headers: { Authorization: token },
         });
-        console.log("Data",data)
-        console.log("Id",data.user._id)
         const addItem = {
           userId: data.user._id,
           productId: id,
           quantity: parseInt(quantity),
         };
-        console.log("Item",addItem)
         const cart = await axios.post(
           "http://localhost:4000/cart/addToCart",
           addItem
         );
-        console.log("Respuesta de addToCart:", cart);
         setProductQuantity(await getCartCount());
         const Toast = Swal.mixin({
           toast: true,

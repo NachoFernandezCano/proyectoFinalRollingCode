@@ -4,14 +4,13 @@ import CreateModal from "./modals/createModal";
 import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
-import "./table.css";
+import "./UsersTable.css";
 import axios from "axios";
 
-const Table = () => {
-  const [products, setProducts] = useState([]);
-  const [productToEdit, setProductToEdit] = useState({});
-  const [productToEditId, setProductToEditId] = useState({});
-  const [deleteProduct, setDeleteProduct] = useState({});
+const UsersTable = () => {
+  const [users, setUsers] = useState([]);
+  const [userToEdit, setUserToEdit] = useState({});
+  const [deleteUser, setDeleteUser] = useState({});
 
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
@@ -22,19 +21,21 @@ const Table = () => {
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
-    getProduct();
+    getUsers();
   }, [page]);
-
-  const getProduct = async () => {
+  
+  
+  const getUsers = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
+      const info = await axios.get('http://localhost:4000/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
-      setProducts(info.data)
+      setUsers(info.data.user)
+      console.log(info)
       setIsLoading(false);
     } catch (error) {
-      if (error?.response?.data?.error === 'No se encontraron productos') {
-        setProducts([]);
+      if (error?.response?.data?.error === 'No se encontraron usuarios') {
+        setUsers([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
@@ -42,55 +43,50 @@ const Table = () => {
     }
   };
 
+
   const generateId = function () {
     return "_" + Math.random().toString(36).substr(2, 9);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const product = { id: generateId() };
+    const user = { id: generateId() };
     for (const target of e.target) {
       if (target.type !== "submit") {
-        product[target.name] = target.value;
+        user[target.name] = target.value;
         target.value = "";
       };
     };
-    setProducts([...products, product]);
+    setUsers([...user, user]);
     setCreateModalShow(false);
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
+    const newProduct = { id: userToEdit.id };
     for (const target of e.target) {
       if (target.type !== "submit") {
-        setProductToEdit({
-          ...productToEdit,
-          [target.name]: target.value
-        });
+        newProduct[target.name] = target.value;
         target.value = "";
       }
     }
-    const newProducts = products.map((product) => {
-      if (product._id === productToEdit._id) {
-        return productToEdit;
-      } else {
-        return product;
-      }
+    const newUsers = users.map((user) => {
+      if (user.id === newUsers.id) return newUsers;
+      return newUsers;
     });
-    setProducts(newProducts);
+    setUsers(newUsers);
     setEditModalShow(false);
   };
-  
-  const handleDelete = (product) => {
-    setDeleteProduct(product._id);
+  const handleDelete = (user) => {
+    setDeleteUser(user._id);
     setDModalShow(true);
   };
-  
-  const confirmDelete = (deleteProduct) => {
-    const id = deleteProduct
-    axios.delete(`http://localhost:4000/products/deleteProduct/${id}`)
+
+  const confirmDelete = (deleteUser) => {
+    const id = deleteUser
+    axios.delete(`http://localhost:4000/user/deleteUser/${id}`)
       .then((response) => {
-        const filteredProducts = products.filter((product) => product._id !== deleteProduct);
-        setProducts(filteredProducts);
+        const filteredUsers = users.filter((user) => user._id !== deleteUser);
+        setUsers(filteredUsers);
         setDModalShow(false);
       })
       .catch((error) => {
@@ -98,18 +94,21 @@ const Table = () => {
       });
   };
 
-  const editTrigger = (product) => {
-    setProductToEdit(product);
-    setProductToEditId(product._id);
+  const editTrigger = (editingUser) => {
+    console.log(editingUser)
+    setUserToEdit(editingUser);
     setEditModalShow(true);
   };
 
+  const changeInputValue = (e) => {
+    setUserToEdit({ ...userToEdit, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="homeContainer">
       <div className="tableContainer">
         <TableBody
-          data={products}
+          data={users}
           deleteModalShow={deleteModalShow}
           setDModalShow={setDModalShow}
           handleDelete={handleDelete}
@@ -122,7 +121,7 @@ const Table = () => {
           variant="success"
           onClick={() => setCreateModalShow(true)}
         >
-          Crear producto
+          Crear usuario
         </Button>
       </div>
       <div className="tablePagination">
@@ -153,17 +152,18 @@ const Table = () => {
         setEditModalShow={setEditModalShow}
         handleSubmit={handleEdit}
         isEditingForm={true}
-        productToEdit={productToEdit}
-        productToEditId={productToEditId}
+        userToEdit={userToEdit}
+        userToEditId={userToEdit._id}
+        changeInputValue={changeInputValue}
       />
       <DeleteModal
         deleteModalShow={deleteModalShow}
         setDModalShow={setDModalShow}
         handleDelete={handleDelete}
         confirmDelete={confirmDelete}
-        deleteProductId={deleteProduct}
+        deleteUserId={deleteUser}
       />
     </div>
   );
 };
-export default Table;
+export default UsersTable;
