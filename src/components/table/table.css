@@ -1,5 +1,5 @@
 .homeContainer {
-  height: 80vh;
+  height: 100vh;
   background-image: url(../../assets/images/extras/tableBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,7 +26,7 @@
   color: var(--DEEPBLUE-bs-);
 }
 
-.createBtnContainer{
+.createBtnContainer {
   width: 90%;
 }
 
@@ -36,7 +36,12 @@
   cursor: pointer;
   width: auto;
   height: 50px;
-  background-image: linear-gradient(to top, #a5bff3 0%, #fcfdff 80%, #fcfcfc 100%);
+  background-image: linear-gradient(
+    to top,
+    #a5bff3 0%,
+    #fcfdff 80%,
+    #fcfcfc 100%
+  );
   border-radius: 30px;
   border: 2px solid #666769;
   transition: all 0.2s ease;
@@ -86,15 +91,15 @@
   border: none;
 }
 
-.tablePaginationBtn  button:hover {
+.tablePaginationBtn button:hover {
   background-color: var(--CYAN-bs-);
 }
 
-.tablePaginationBtn  button:active {
+.tablePaginationBtn button:active {
   background-color: var(--CYAN-bs-);
 }
 
-.tablePaginationBtn  button:disabled {
+.tablePaginationBtn button:disabled {
   background-color: rgba(12, 77, 95, 0.885);
 }
 
