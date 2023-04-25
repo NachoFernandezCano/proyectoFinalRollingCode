@@ -55,6 +55,40 @@ const Cards = ({ setProductQuantity }) => {
     Navigate(`/productPage/${id}`);
   };
 
+  const favItem = async () =>{
+    try {
+      const token = localStorage.getItem("user");
+      if (token) {
+        const { data } = await axios.get("http://localhost:4000/user", {
+          headers: { Authorization: token },
+        });
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "info",
+          title: "Esta caracteristica aún no se encuentra disponible",
+        });
+      } else {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>Para usar esta función primero debe iniciar sesión.</i>",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem("user");
@@ -111,6 +145,13 @@ const Cards = ({ setProductQuantity }) => {
           icon: "error",
         });
       }
+      if (error.response.data.message === "No hay suficiente stock para este producto") {
+        return Swal.fire({
+          title: "<strong>Stock insuficiente</strong>",
+          html: "<i>" + error.response.data.message + "</i>",
+          icon: "warning",
+        });
+      }
       console.log(error);
     }
   };
@@ -141,7 +182,9 @@ const Cards = ({ setProductQuantity }) => {
                       ${product.price}
                     </Card.Text>
                     <Card.Link href="#">
-                      <FaHeart className="favIcon" />
+                      <FaHeart className="favIcon" 
+                        onClick={() =>favItem()}
+                      />
                     </Card.Link>
                     <Card.Link>
                       <FaShoppingCart

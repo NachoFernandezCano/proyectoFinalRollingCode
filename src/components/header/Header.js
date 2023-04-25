@@ -224,7 +224,8 @@ const Header = ({productQuantity}) => {
                     <div className='userMenu'>
                       <NavDropdown title={userName} id='navbarUsuario' bg='light'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
-                        <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
+                        <NavDropdown.Item href='/UsersTable' onClick={() => handlePerfil()}>Tabla de usuarios</NavDropdown.Item>
+                        <NavDropdown.Item href='/ProductsTable' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>
                     </div>
@@ -259,7 +260,9 @@ const Header = ({productQuantity}) => {
               </Link>
             </div>
             <div className='needHoover'>
-              FAVORITOS
+              <Link to='/Error404'>
+                FAVORITOS
+              </Link>
               <FaRegHeart className='headerIcons' />
             </div>
             <div className='needHoover'>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import './modals.css';
 
-const deleteModal = ({ deleteModalShow, setDModalShow, handleDelete, confirmDelete, deleteProductId }) => {
+const deleteModal = ({ deleteModalShow, setDModalShow, handleDelete, confirmDelete, deleteUserId }) => {
 
   return (
     <Modal id="deletModal" show={deleteModalShow} onHide={() => setDModalShow(false)} >
@@ -15,7 +15,7 @@ const deleteModal = ({ deleteModalShow, setDModalShow, handleDelete, confirmDele
           <Button
             id='confirmBtnModal'
             onClick={() => {
-              confirmDelete(deleteProductId);
+              confirmDelete(deleteUserId);
             }}>
             Eliminar
           </Button>

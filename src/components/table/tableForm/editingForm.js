@@ -1,115 +1,190 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import './editingForm.css';
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const EditingForm = (props) => {
   const {
-    handleSubmit,
     isEditingForm,
-    userToEdit: productToEdit,
-    changeInputValue,
+    productToEdit,
+    productToEditId
   } = props;
+
+  const [formData, setFormData] = useState({
+    category: productToEdit?.category || '',
+    type: productToEdit?.type || '',
+    image: {
+      img1: productToEdit?.image?.img1 || '',
+      img2: productToEdit?.image?.img2 || '',
+      img3: productToEdit?.image?.img3 || ''
+    },
+    name: productToEdit?.name || '',
+    brand: productToEdit?.brand || '',
+    description: productToEdit?.description || '',
+    price: productToEdit?.price || '',
+    stock: productToEdit?.stock || '',
+  });
+  
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name.startsWith("image.")) {
+      setFormData({
+        ...formData,
+        image: {
+          ...formData.image,
+          [name]: value,
+        },
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+  
+
+  const handleImageChange = (event) => {
+    const { name, value } = event.target;
+  
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        image: {
+          ...prevState.image,
+          [name]: value,
+        },
+      };
+    });
+  };
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const id = productToEditId
+    try {
+      if (isEditingForm) {
+        await axios.put(`http://localhost:4000/products/editProducts/${id}`, formData);
+          return Swal.fire({
+            title: "<strong>Felicidades</strong>",
+            html: "<i>Producto editado correctamente</i>",
+            icon: "success",
+          });
+      } else {
+        await axios.post("http://localhost:4000/products/addProducts", formData);
+      }
+        return Swal.fire({
+          title: "<strong>Felicidades</strong>",
+          html: "<i>Producto creado correctamente</i>",
+          icon: "success",
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   return (
     <div className="formContainer">
       <form onSubmit={handleSubmit}>
         <div>
           <b>Categoría:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="category"
-                value={productToEdit?.category || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="category" />)
-          }
+          <input
+            className="inputArea"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <b>Insertar imagen:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="image"
-                value={productToEdit?.image || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="image" />)
-          }
+          <b>Tipo:</b>
+          <input
+            className="inputArea"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 1:</b>
+          <input
+            className="inputArea"
+            name="img1"
+            defaultValue={formData.image.img1}
+            onBlur={handleImageChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 2:</b>
+          <input
+            className="inputArea"
+            name="img2"
+            defaultValue={formData.image.img2}
+            onBlur={handleImageChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 3:</b>
+          <input
+            className="inputArea"
+            name="img3"
+            defaultValue={formData.image.img3}
+            onBlur={handleImageChange}
+          />
         </div>
         <div>
           <b>Nombre del producto:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="name"
-                value={productToEdit?.name || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="name" />)
-          }
+          <input
+            className="inputArea"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Marca:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="brand"
-                value={productToEdit?.brand || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="brand" />)
-          }
+          <input
+            className="inputArea"
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Descripción:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="description"
-                value={productToEdit?.description || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="description" />)
-          }
+          <input
+            className="inputArea"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Precio:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="price"
-                value={productToEdit?.price || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="price" />)
-          }
+          <input
+            className="inputArea"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Stock</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="stock"
-                value={productToEdit?.stock || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="stock" />)
-          }
+          <input
+            className="inputArea"
+            name="stock"
+            value={formData.stock}
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <Button id="modalsButtons" type="submit"> {
-            isEditingForm ? 'Editar producto' : 'Crear'
-          }
-          </Button>
+          <button id="modalsButtons" type="submit">
+            {isEditingForm ? 'Editar producto' : 'Crear'}
+          </button>
         </div>
-      </form >
+      </form>
     </div>
   );
 };

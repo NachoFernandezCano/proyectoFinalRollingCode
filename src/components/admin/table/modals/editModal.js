@@ -9,8 +9,8 @@ const editModal = (props) => {
     setEditModalShow,
     handleSubmit,
     isEditingForm,
-    productToEdit,
-    productToEditId,
+    userToEdit,
+    userToEditId,
     changeInputValue,
   } = props;
 
@@ -23,8 +23,8 @@ const editModal = (props) => {
         <Form
           handleSubmit={handleSubmit}
           isEditingForm={isEditingForm}
-          productToEdit={productToEdit}
-          productToEditId={productToEditId}
+          userToEdit={userToEdit}
+          userToEditId={userToEditId}
           changeInputValue={changeInputValue}
         />
       </Modal.Body>
