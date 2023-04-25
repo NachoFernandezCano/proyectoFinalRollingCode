@@ -1,0 +1,90 @@
+.bodyCartPage > div:first-child {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+
+.tableArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  background-color: rgb(228, 228, 228);
+  height: 100%;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.tableArea > div > img {
+  min-width: 7.5rem;
+  height: 100%;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+.tableArea > div {
+  background-color: rgb(218, 218, 218);
+  height: 8rem;
+  display: flex;
+  min-width: 75rem;
+  margin: 1rem 2rem 1rem 2rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.tableArea > div > div:nth-child(3) {
+  border-left: 0.1rem solid rgb(61, 61, 61);
+  width: 10rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.tableArea > div > div:nth-child(3) > button {
+  font-size: larger;
+  height: 80%;
+  width: 6rem;
+  background-color: rgb(218, 218, 218);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-left: 1.2rem;
+  border-radius: 1rem;
+  border: 0;
+}
+
+.tableArea > div > div:nth-child(3) > button:hover {
+  background-color: rgb(189, 189, 189);
+  transition: 0.2s;
+}
+
+.itemsData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-width: 50rem;
+  max-width: 50rem;
+}
+
+.descriptionArea {
+  max-height: 3rem;
+  margin-right: 1rem;
+  min-width: 60rem;
+}
+
+.itemsData > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 100%;
+}
+
+.itemsData > div:nth-child(3) {
+  border-top: 0.2rem solid black;
+}

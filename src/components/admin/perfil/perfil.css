@@ -1,0 +1,42 @@
+.upContainer{
+    height: 100%;
+    width: 100%;
+}
+
+.container-titulo{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tituloimg{    
+    width: 3rem;
+    height: 3rem;
+    color: white;
+}
+
+.titulo{
+    color: var(--HOTPINK-bs-);
+    padding-left: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+.perfilForm > div{
+    display: flex;
+    align-items: baseline;
+}
+
+.btnPerfil {
+    background-color: white;
+    border: 3px solid var(--CYAN-bs-);
+    color: var(--DEEPBLUE-bs-);
+  }
+
+.btnPerfil:hover {
+    background-color: var(--CYAN-bs-);
+    color: white;
+    border: none;
+  }
+
+.perfilCardH{
+    background-color: var(--DEEPBLUE-bs-);
+  }

@@ -1,0 +1,105 @@
+.homeContainer {
+  height: 80vh;
+  background-image: url(../../assets/images/extras/tableBackground.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.homeContainer > Button {
+  width: 50%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.tableContainer {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+  color: var(--DEEPBLUE-bs-);
+}
+
+.createBtnContainer{
+  width: 90%;
+}
+
+#createBtn {
+  margin: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  width: auto;
+  height: 50px;
+  background-image: linear-gradient(to top, #a5bff3 0%, #fcfdff 80%, #fcfcfc 100%);
+  border-radius: 30px;
+  border: 2px solid #666769;
+  transition: all 0.2s ease;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--DEEPBLUE-bs-);
+  text-shadow: 0 1px rgb(99, 103, 164);
+}
+
+#createBtn:hover {
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
+}
+
+#createBtn:active {
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
+}
+
+#createBtn:focus {
+  box-shadow: 0 4px 3px 1px #444c72, 0 6px 8px #131e36, 0 -4px 4px #22294f,
+    0 -6px 4px #4c567f, inset 0 0 3px 3px #93a7d0;
+}
+
+.tablePagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-block: 1rem;
+}
+
+.tablePagination b {
+  color: var(--CYAN-bs-);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.tablePaginationBtn {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.tablePaginationBtn button {
+  background-color: var(--CYAN-bs-);
+  border: none;
+}
+
+.tablePaginationBtn  button:hover {
+  background-color: var(--CYAN-bs-);
+}
+
+.tablePaginationBtn  button:active {
+  background-color: var(--CYAN-bs-);
+}
+
+.tablePaginationBtn  button:disabled {
+  background-color: rgba(12, 77, 95, 0.885);
+}
+
+@media (max-width: 576px) {
+  .tablePagination b {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,261 @@
+:root {
+---WHITE-bs-:#eaeaea;
+--DEEPBLUE-bs-: #0F1A37;
+--HOTPINK-bs-: #E31474;
+--CYAN-bs-: #00C9EE;
+}
+
+.navbarMobile {
+  display: none;
+}
+
+.Header_container {
+  height: 8rem;
+  background-color: var(--DEEPBLUE-bs-);
+  overflow-x: hidden;
+  position: sticky; 
+  top: 0;
+  z-index: 2;
+}
+
+.Header_container > div:first-child {
+  height: 5rem;
+}
+
+.Header_container > div:first-child > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0.7rem;
+}
+
+.Header_container > div > div > h1 {
+  color: var(--CYAN-bs-);
+}
+
+.Header_container > div > div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.Header_container > div > div > div > input {
+  height: 2.5rem;
+  width: 25rem;
+}
+
+.Header_container > div:nth-child(2) {
+  height: 3rem;
+  background-color: #142248;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(2) > div > div {
+  margin-left: 1rem;
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(3) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(3) > div {
+  margin-left: 1rem;
+}
+
+.Header_container > div:nth-child(2) > div:nth-child(3) {
+  margin-left: 25rem;
+}
+
+.logo {
+  height: 4rem;
+  width: 10rem;
+  background-image: url(../../assets//images/logo.jpg);
+  background-size:90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.searchIcon{
+  color: white;
+}
+
+#schIconContainer{
+  background-color: var(--CYAN-bs-);
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#schIconContainer:hover{
+  transform: scale(105%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#schIconContainer:active{
+  transform: scale(100%);
+}
+
+.socialIcons{
+  height: 1.8rem;
+  width: 1.8rem;
+  color: white;
+  cursor: pointer;
+  margin-inline: 0.5rem;
+}
+
+.socialIcons:hover{
+  color: var(--HOTPINK-bs-);
+  transform: scale(110%);
+}
+
+.needHoover a{
+  color: white;
+  text-decoration: none;
+}
+
+.needHoover:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(95%);
+}
+
+.headerIcons{
+  padding-left: 0.5rem;
+  height: 1.4rem;
+  width: 1.6rem;
+  color: var(--HOTPINK-bs-);
+}
+
+.mainIcons:hover{
+  color: var(--HOTPINK-bs-);
+}
+
+.mainIcons{
+  height: 1.6rem;
+  width: 1.8rem;
+  padding-right: 0.2rem;
+  color: white;
+}
+
+.userName {
+  color: white !important;
+}
+
+.userMenu {
+  color: white;
+  margin-right: 3.5rem;
+  display: flex;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.8rem;
+  padding: 1.1rem 3.1rem;
+  background-image: url(../../assets/images/user_icon.png);
+  background-repeat: no-repeat;
+  background-size: 50px auto;
+  background-position-x: 0rem;
+}
+
+#userLogin:hover{
+  color: var(--HOTPINK-bs-)!important;
+  transform: scale(110%);
+  transition: 0.3s;
+}
+
+.img-avatar {
+  border-radius: 50em;
+}
+
+.btnCard {
+  margin-right: 1.5rem;
+}
+
+span {
+  color: white;
+}
+
+.navbar-ico {
+  display: inline-block;
+  width: 80px;
+  height: 50px;
+  padding: 0.1rem 0.1rem;
+  margin-right: 0;
+  background-image: url("../../assets/images/user_icon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50px auto;
+  white-space: nowwrap;
+}
+
+@media (max-width: 576px) {
+  .Header_container {
+    display: none;
+  }
+
+  .navbarMobile {
+    display: block;
+    background-color: var(--DEEPBLUE-bs-);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .logoMobile {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 2.5rem;
+  }
+
+  .hNavToggle{
+    border: 1px solid var(--CYAN-bs-);
+  }
+
+  .hNavToggle:focus{
+    color: var(--CYAN-bs-);
+  }
+}
+
+@media (max-width: 1040px) {
+  .Header_container {
+    display: none;
+  }
+
+  .navbarMobile {
+    display: block;
+    background-color: var(--DEEPBLUE-bs-);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+    .logoMobile {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 2.5rem;
+  }
+
+  .hNavToggle{
+    border: 1px solid var(--CYAN-bs-);
+  }
+
+  .hNavToggle:focus{
+    color: var(--CYAN-bs-);
+  }
+}

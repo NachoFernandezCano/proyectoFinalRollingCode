@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+.productPageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  height: 38.5em;
+  padding-top: 4em;
+}
+
+.productName{
+  display: flex;
+  justify-content: center;
+}
+
+.precioMediosDePago{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-comprasCarrito {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20em;
+  
+}
+
+.btn-comprarYa {
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-comprarYa:hover {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+.containerBtnAgregarAlcarrito {
+  padding-top: 2em;
+  cursor: pointer;
+}
+
+.btn-agregarAlCarrito {
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-agregarAlCarrito:hover {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+
+.containerImgProduct {
+  display: flex;
+  flex-direction: row;
+  padding-top: 4em;
+}
+
+.imagenPrincipalProduct {
+  width: 35em;
+  height: 35em;
+}
+
+.miniaturasProductContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.miniaturaProducto {
+  border: solid;
+  border-color: var(--DEEPBLUE-bs-);
+  border-width: 2px;
+  margin: 11px;
+  border-radius: 4px;
+}
+
+.miniaturaProducto:hover {
+  transition: 0.4s;
+  cursor: pointer;
+  border-color: var(--CYAN-bs-);
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+}
+
+.Envios_mantenimiento {
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
+.Info_card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.infoStockCompra {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selectorDeCantidadCompra {
+  padding-top: 2em;
+}
+
+.selectorDeCantidadCompra > div > div > input {
+  border-radius: 0.25rem;
+  border: 0.2rem solid var(--DEEPBLUE-bs-);
+  height: 2.5rem;
+  font-family: 'Merriweather', serif;
+}
+
+.selectorDeCantidadCompra > div > div > input:focus{
+  border: 0.2rem solid var(--CYAN-bs-);
+  transition: 0.3s;
+  transform:scale(1.05);
+}
+
+.Botones_card_utiles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: auto;
+  height: 12em;
+  align-content: center;
+  align-items: center;
+}
+
+.btn-verMasVendedor {
+  cursor: pointer;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 80%;
+  height: 4rem;
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+}
+
+.btn-reembolso {
+  cursor: pointer;
+  width: 80%;
+  height: 4rem;
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-reembolso > a {
+  text-decoration: none;
+  color: var(--CYAN-bs-);
+  font-family: 'Merriweather', serif;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+}
+
+.btn-reembolso > a:hover {
+    color: var(--DEEPBLUE-bs-);
+}
+
+.btn-reembolso:hover {
+  background-color: var(--CYAN-bs-);
+}
+
+.btn-verMasVendedor:hover {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+.containerMasCaracteristicas {
+  width: 18rem;
+  height: 10rem;
+  min-width: 18rem;
+  min-height: 10rem;
+
+}
+
+.masCaracteristicasCard {
+  width: 18rem;
+  height: 100%;
+  min-width: 18rem;
+  min-height: 100%;
+
+}
+
+.masCaracteristicasText {
+  background-color: var(--DEEPBLUE-bs-);
+  color: var(--CYAN-bs-);
+  border-radius: 5px;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-family: 'Merriweather', serif;
+}
+
+.infoGarantiaDevoluciones {
+  height: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.containerProductosInteresantes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10em;
+  justify-content: space-around;
+}
+
+.btn-verMediosDePago {
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+  height: 3rem;
+  width: 13rem;
+  min-height: 3rem;
+  min-width: 13rem;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-verMediosDePago:hover {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+.cardsProductosInteresantes {
+  width: auto;
+  height: 10em;
+}
+
+.btn-seleccionarCantidad {
+  color: var(--CYAN-bs-);
+  background-color: var(--DEEPBLUE-bs-);
+  border-radius: 10px;
+  transition: 0.7s;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-seleccionarCantidad:hover {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+.btn-seleccionarCantidad:active {
+  color: var(--DEEPBLUE-bs-);
+  background-color: var(--CYAN-bs-);
+}
+
+.containerBtnMediosDePago {
+  padding-top: 2rem;
+}
+
+.containerMedioDePagos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+@media (max-width:768px){
+  .productPageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+  }
+
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .productInfo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
+
+  .precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .btn-comprasCarrito{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 40px;
+  }
+
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+
+  .containerCardProduct{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+    flex-wrap: wrap;
+    padding-bottom: 3em;
+  }
+
+  .cardProductPage{
+    height: 34rem;
+  }
+
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+
+  .btn-seleccionarCantidad{
+    width: 13em;
+    padding-right: 2px;
+  }
+
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }  
+
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }  
+
+  .containerImagenPrincipal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+  }
+
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .btn-comprasCarrito{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 40px;
+  }
+
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+
+  .cardProductPage{
+    height: 34rem;
+  }
+
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+
+  .btn-seleccionarCantidad{
+    width: 13em;
+    padding-right: 2px;
+  }
+
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerImgProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerImagenPrincipal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imagenPrincipalProduct{
+    width: 20em;
+    height: 20em;
+  }
+
+  .miniaturasProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+.precioMediosDePago{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .btn-comprasCarrito{
+    width: auto;
+  }
+
+  .containerBtnComprarYa{
+    width: 100%;
+  }
+
+  .containerBtnAgregarAlcarrito{
+    width: 100%;
+  }
+
+  .containerMasCaracteristicas{
+    width: 80%;
+    display: flex;
+    padding-top: 15px;
+    margin-right: 0px;
+  }
+
+  .masCaracteristicasCard{
+    width: 100%;
+  }
+
+  .cardProductPage{
+    height: 34rem;
+  }
+
+  .selectorDeCantidadCompra{
+    width: 100%;
+  }
+
+  .miniaturasProductContainer{
+    padding-top: 8em;
+  }
+}

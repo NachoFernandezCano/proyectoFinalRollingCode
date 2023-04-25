@@ -37,6 +37,7 @@
 .footerLg > div > div a {
   text-decoration: none;
   color: white;
+  font-size: 1rem;
 }
 
 .footerLg > div > div a:hover {
@@ -46,6 +47,20 @@
 .fotterIcon {
   color: var(--HOTPINK-bs-);
   padding-right: 0.3rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .footerLg > div > div a {
+    font-size: 0.8rem;
+  }
+
+  .footerLg > div > div {
+    font-size: 0.9rem;
+  }
+  .fotterIcon {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 576px) {

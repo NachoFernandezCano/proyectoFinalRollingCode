@@ -1,0 +1,8 @@
+.homePTitle {
+  color: var(--DEEPBLUE-bs-);
+  padding-left: 0.8rem;
+}
+
+.homeMain{
+  height: 100%;
+}
