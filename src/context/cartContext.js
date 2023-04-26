@@ -14,7 +14,6 @@ export const CartProvider = ({ children }) => {
             const data = await axios.get("http://localhost:4000/api/cart/getCart", { headers: { Authorization: token } });
             setcartCount(data.cart);
             let count = 0
-            console.log(data)
             for (const product of data?.data?.cart?.products) {
                 count += product.quantity
             }
