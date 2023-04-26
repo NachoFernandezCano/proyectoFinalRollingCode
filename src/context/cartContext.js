@@ -1,4 +1,4 @@
-import React ,{  useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 const CartContext = React.createContext();
 
@@ -11,9 +11,9 @@ export const CartProvider = ({ children }) => {
     const getCartCount = async () => {
         try {
             const token = localStorage.getItem('user');
-            const data = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
+            const data = await axios.get("http://localhost:4000/api/cart/getCart", { headers: { Authorization: token } });
             setcartCount(data.cart);
-            let count = 0 
+            let count = 0
             console.log(data)
             for (const product of data?.data?.cart?.products) {
                 count += product.quantity
@@ -24,15 +24,15 @@ export const CartProvider = ({ children }) => {
         }
     }
 
-    const addCartItem = () =>{
+    const addCartItem = () => {
         getCartCount();
     }
 
-    return (        
+    return (
         <CartContext.Provider
-        value={{ cartCount, getCartCount, addCartItem }}
+            value={{ cartCount, getCartCount, addCartItem }}
         >
-        {children}
+            {children}
         </CartContext.Provider>
     );
 };

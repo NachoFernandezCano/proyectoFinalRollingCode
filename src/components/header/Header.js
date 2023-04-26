@@ -51,7 +51,7 @@ const Header = ({ productQuantity }) => {
 
   const handleVerifyJwt = async (token) => {
     try {
-      const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
+      const { data } = await axios.get("http://localhost:4000/api/user", { headers: { Authorization: token } });
       autoLogin(data.user);
     } catch (error) {
       Swal.fire({
@@ -87,7 +87,7 @@ const Header = ({ productQuantity }) => {
           paylaod[target.name] = target.value;
         }
       }
-      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
+      const { data } = await axios.post('http://localhost:4000/api/user/auth', paylaod);
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();
@@ -158,7 +158,7 @@ const Header = ({ productQuantity }) => {
         }
       }
       paylaod["type"] = "user";
-      const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
+      const { data } = await axios.post('http://localhost:4000/api/user/register', paylaod);
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',

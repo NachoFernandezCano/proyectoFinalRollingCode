@@ -20,7 +20,7 @@ import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
 
 
-const ProductPage = ({setProductQuantity}) => {
+const ProductPage = ({ setProductQuantity }) => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [show, setShow] = useState(false);
@@ -34,7 +34,7 @@ const ProductPage = ({setProductQuantity}) => {
   const getProduct = async () => {
     try {
       const info = await axios.get(
-        `http://localhost:4000/products/getProduct/` + id
+        `http://localhost:4000/api/products/getProduct/` + id
       );
       setProduct(info.data.product);
       setImagenPrincipalProduct(info.data.product.image?.img1);
@@ -55,9 +55,9 @@ const ProductPage = ({setProductQuantity}) => {
   }, []);
 
   useEffect(() => {
-      getProduct();
-      
-    }, []);
+    getProduct();
+
+  }, []);
 
   const imageHandle = (image) => {
     setImagenPrincipalProduct(image)
@@ -67,7 +67,7 @@ const ProductPage = ({setProductQuantity}) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        const {data}  = await axios.get("http://localhost:4000/user", {
+        const { data } = await axios.get("http://localhost:4000/api/user", {
           headers: { Authorization: token },
         });
         const addItem = {
@@ -76,7 +76,7 @@ const ProductPage = ({setProductQuantity}) => {
           quantity: parseInt(quantity),
         };
         const cart = await axios.post(
-          "http://localhost:4000/cart/addToCart",
+          "http://localhost:4000/api/cart/addToCart",
           addItem
         );
         setProductQuantity(await getCartCount());
@@ -222,7 +222,7 @@ const ProductPage = ({setProductQuantity}) => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-          <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
+            <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">

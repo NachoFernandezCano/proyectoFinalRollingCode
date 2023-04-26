@@ -7,13 +7,13 @@ import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
 
 
-const CartPage = ({setProductQuantity}) => {
+const CartPage = ({ setProductQuantity }) => {
   const [cart, setCart] = useState([]);
-  const { getCartCount, deleteCartItem} = useCartContext();
+  const { getCartCount, deleteCartItem } = useCartContext();
 
   const getCart = async () => {
     const token = localStorage.getItem("user");
-    const data = await axios.get("http://localhost:4000/cart/getCart", {
+    const data = await axios.get("http://localhost:4000/api/cart/getCart", {
       headers: { Authorization: token },
     });
     setCart(data.data.cart.products);
@@ -22,7 +22,7 @@ const CartPage = ({setProductQuantity}) => {
   useEffect(() => {
     getCart();
   }, []);
-  
+
   useEffect(() => {
     const showCartQuantity = async () => {
       setProductQuantity(await getCartCount());
@@ -31,12 +31,12 @@ const CartPage = ({setProductQuantity}) => {
   }, []);
 
 
-    const handleDeleteProduct = async (product) => {
+  const handleDeleteProduct = async (product) => {
     try {
       const token = localStorage.getItem("user");
-      if (token){
-      await axios.patch("http://localhost:4000/cart/", { productId: product._id }, { headers: { Authorization: token } })
-      const Toast = Swal.mixin({
+      if (token) {
+        await axios.patch("http://localhost:4000/api/cart/", { productId: product._id }, { headers: { Authorization: token } })
+        const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
           showConfirmButton: false,
@@ -47,7 +47,7 @@ const CartPage = ({setProductQuantity}) => {
             toast.addEventListener("mouseleave", Swal.resumeTimer);
           },
         });
-  
+
         Toast.fire({
           icon: "success",
           title: "Producto eliminado del Carrito",

@@ -26,7 +26,7 @@ const EditingForm = (props) => {
     email: userToEdit?.email || '',
     repPassword: userToEdit?.stock || '',
   });
-  
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -45,11 +45,11 @@ const EditingForm = (props) => {
       });
     }
   };
-  
+
 
   const handleDirectionChange = (event) => {
     const { name, value } = event.target;
-  
+
     setFormData((prevState) => {
       return {
         ...prevState,
@@ -60,32 +60,32 @@ const EditingForm = (props) => {
       };
     });
   };
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = userToEditId
     try {
       if (isEditingForm) {
-        await axios.put(`http://localhost:4000/user/editUser/${id}`, formData);
-          return Swal.fire({
-            title: "<strong>Felicidades</strong>",
-            html: "<i>Usuario editado correctamente</i>",
-            icon: "success",
-          });
-      } else {
-        await axios.post("http://localhost:4000/user/register", formData);
-      }
+        await axios.put(`http://localhost:4000/api/user/editUser/${id}`, formData);
         return Swal.fire({
           title: "<strong>Felicidades</strong>",
-          html: "<i>Usario creado correctamente</i>",
+          html: "<i>Usuario editado correctamente</i>",
           icon: "success",
         });
+      } else {
+        await axios.post("http://localhost:4000/api/user/register", formData);
+      }
+      return Swal.fire({
+        title: "<strong>Felicidades</strong>",
+        html: "<i>Usario creado correctamente</i>",
+        icon: "success",
+      });
     } catch (error) {
       console.error(error);
     }
   };
-  
+
 
   return (
     <div className="formContainer">
@@ -93,7 +93,7 @@ const EditingForm = (props) => {
         <div>
           <b>Tipo:</b>
           <input
-            minLength={3} 
+            minLength={3}
             maxLength={30}
             className="inputArea"
             name="type"
@@ -105,7 +105,7 @@ const EditingForm = (props) => {
           <b>Nombre:</b>
           <input
             className="inputArea"
-            minLength={3} 
+            minLength={3}
             maxLength={30}
             name="nombre"
             value={formData.nombre}
@@ -116,7 +116,7 @@ const EditingForm = (props) => {
           <b>Apellido:</b>
           <input
             className="inputArea"
-            minLength={3} 
+            minLength={3}
             maxLength={30}
             name="apellido"
             value={formData.apellido}
@@ -127,10 +127,10 @@ const EditingForm = (props) => {
           <b>Calle:</b>
           <input
             className="inputArea"
-              minLength={3} 
-              maxLength={30}
-              name="calle"
-              defaultValue={formData.direccion.calle} 
+            minLength={3}
+            maxLength={30}
+            name="calle"
+            defaultValue={formData.direccion.calle}
             onBlur={handleDirectionChange}
           />
         </div>
@@ -138,10 +138,10 @@ const EditingForm = (props) => {
           <b>Número:</b>
           <input
             className="inputArea"
-              minLength={3} 
-              maxLength={30}
-              name="nro"
-              defaultValue={formData.direccion.nro}
+            minLength={3}
+            maxLength={30}
+            name="nro"
+            defaultValue={formData.direccion.nro}
             onBlur={handleDirectionChange}
           />
         </div>
@@ -149,21 +149,21 @@ const EditingForm = (props) => {
           <b>Departamento:</b>
           <input
             className="inputArea"
-              minLength={3} 
-              maxLength={30}
-              name="dpto"
-              defaultValue={formData.direccion.dpto}
+            minLength={3}
+            maxLength={30}
+            name="dpto"
+            defaultValue={formData.direccion.dpto}
             onBlur={handleDirectionChange}
           />
         </div>
         <div>
           <b>Provincia:</b>
           <input
-            minLength={3} 
+            minLength={3}
             maxLength={30}
             className="inputArea"
-              name="provincia"
-              defaultValue={formData.direccion.provincia}
+            name="provincia"
+            defaultValue={formData.direccion.provincia}
             onBlur={handleDirectionChange}
           />
         </div>
@@ -171,15 +171,15 @@ const EditingForm = (props) => {
           <b>Localidad:</b>
           <input
             className="inputArea"
-              name="localidad"
-              defaultValue={formData.direccion.localidad}
+            name="localidad"
+            defaultValue={formData.direccion.localidad}
             onBlur={handleDirectionChange}
           />
         </div>
         <div>
           <b>Código Postal:</b>
           <input
-            minLength={3} 
+            minLength={3}
             maxLength={30}
             className="inputArea"
             name="codigopostal"
@@ -204,7 +204,7 @@ const EditingForm = (props) => {
               <b>Contraseña:</b>
               <input
                 type="password"
-                minLength={3} 
+                minLength={3}
                 maxLength={30}
                 className="inputArea"
                 name="password"
@@ -216,7 +216,7 @@ const EditingForm = (props) => {
               <b>Repetir Contraseña:</b>
               <input
                 type="password"
-                minLength={3} 
+                minLength={3}
                 maxLength={30}
                 className="inputArea"
                 name="repPassword"

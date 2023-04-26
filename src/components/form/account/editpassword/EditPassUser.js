@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Button, Container, Form, Image } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import {BsSave} from 'react-icons/bs'
+import { BsSave } from 'react-icons/bs'
 import Swal from 'sweetalert2';
 import Loader from '../editpassword/EditPassUser'
 import './editpassword.css';
@@ -25,7 +25,6 @@ const EditPassUser = () => {
                 }
             }
             paylaod['token'] = window.location.hash.substr(1);
-            console.log(paylaod);
             const { data } = await axios.post('http://localhost:4000/api/user/editpass', paylaod);
             Swal.fire({
                 title: '<strong>Recuperar Clave</strong>',
@@ -72,8 +71,8 @@ const EditPassUser = () => {
                 )
                 }
                 <Form.Group className="mb-3 d-flex justify-content-around mt-2 btn-conteiner">
-                    <Button className= "btnRP" type="submit">
-                        <BsSave className='btnIcon'/>
+                    <Button className="btnRP" type="submit">
+                        <BsSave className='btnIcon' />
                         {' '}Cambiar Clave
                     </Button>
                 </Form.Group>
