@@ -1,5 +1,5 @@
 .homeContainer {
-  height: 100vh;
+  height: fit-content;
   background-image: url(../../assets/images/extras/tableBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,7 +22,6 @@
   width: 100%;
   height: 100%;
   padding: 1rem;
-  overflow-y: auto;
   color: var(--DEEPBLUE-bs-);
 }
 

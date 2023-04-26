@@ -1,5 +1,5 @@
 .homeContainer {
-  height: 100vh;
+  height: fit-content;
   background-image: url(../../../assets/images/extras/tableBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;

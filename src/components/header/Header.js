@@ -24,7 +24,7 @@ import ModalLogin from '../form/Modal/ModalLogin';
 import Logo from '../../assets/images/logo.jpg';
 import Menu from '../util/menu/Menu';
 
-const Header = ({productQuantity}) => {
+const Header = ({ productQuantity }) => {
   const [modalLogin, setmodalLogin] = useState(false);
   const [loginUser, setloginUser] = useState(false);
   const [loaderUser, setloaderUser] = useState(false);
@@ -274,14 +274,10 @@ const Header = ({productQuantity}) => {
           </div>
           <div onClick={() => handleComprar()} className='needHoover'>
             <FaShoppingCart className='headerIcons' />
-{/*             {productCount !== 0 ? (<div className='productsNumber'>{productCount}</div>)
-              : (
-                (<></>)
-              )} */}
-              {productQuantity}
+            {productQuantity}
           </div>
           <Link className='needHoover' to='/Error404'>
-            <FaRegQuestionCircle className='mainIcons needHoover'/>
+            <FaRegQuestionCircle className='mainIcons needHoover' />
           </Link>
         </div>
       </div>
@@ -295,7 +291,7 @@ const Header = ({productQuantity}) => {
                 userType ? (
                   <>
                     <div className="userMenu">
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
@@ -305,7 +301,7 @@ const Header = ({productQuantity}) => {
                 ) : (
                   <>
                     <div className='userMenu'>
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href="#" onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>

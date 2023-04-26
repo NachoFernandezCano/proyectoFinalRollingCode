@@ -1,8 +1,8 @@
 :root {
----WHITE-bs-:#eaeaea;
---DEEPBLUE-bs-: #0F1A37;
---HOTPINK-bs-: #E31474;
---CYAN-bs-: #00C9EE;
+  ---WHITE-bs-: #eaeaea;
+  --DEEPBLUE-bs-: #0f1a37;
+  --HOTPINK-bs-: #e31474;
+  --CYAN-bs-: #00c9ee;
 }
 
 .navbarMobile {
@@ -12,8 +12,7 @@
 .Header_container {
   height: 8rem;
   background-color: var(--DEEPBLUE-bs-);
-  overflow-x: hidden;
-  position: sticky; 
+  position: sticky;
   top: 0;
   z-index: 2;
 }
@@ -84,16 +83,16 @@
   height: 4rem;
   width: 10rem;
   background-image: url(../../assets//images/logo.jpg);
-  background-size:90%;
+  background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.searchIcon{
+.searchIcon {
   color: white;
 }
 
-#schIconContainer{
+#schIconContainer {
   background-color: var(--CYAN-bs-);
   width: 2.5rem;
   display: flex;
@@ -101,17 +100,17 @@
   justify-content: center;
 }
 
-#schIconContainer:hover{
+#schIconContainer:hover {
   transform: scale(105%);
   transition: 0.3s;
   cursor: pointer;
 }
 
-#schIconContainer:active{
+#schIconContainer:active {
   transform: scale(100%);
 }
 
-.socialIcons{
+.socialIcons {
   height: 1.8rem;
   width: 1.8rem;
   color: white;
@@ -119,12 +118,12 @@
   margin-inline: 0.5rem;
 }
 
-.socialIcons:hover{
+.socialIcons:hover {
   color: var(--HOTPINK-bs-);
   transform: scale(110%);
 }
 
-.needHoover a{
+.needHoover a {
   color: white;
   text-decoration: none;
 }
@@ -135,18 +134,18 @@
   transform: scale(95%);
 }
 
-.headerIcons{
+.headerIcons {
   padding-left: 0.5rem;
   height: 1.4rem;
   width: 1.6rem;
   color: var(--HOTPINK-bs-);
 }
 
-.mainIcons:hover{
+.mainIcons:hover {
   color: var(--HOTPINK-bs-);
 }
 
-.mainIcons{
+.mainIcons {
   height: 1.6rem;
   width: 1.8rem;
   padding-right: 0.2rem;
@@ -159,20 +158,18 @@
 
 .userMenu {
   color: white;
-  margin-right: 3.5rem;
   display: flex;
+  width: 7.5rem;
+  height: 3.8rem;
   align-items: center;
-  width: 1.5rem;
-  height: 1.8rem;
-  padding: 1.1rem 3.1rem;
   background-image: url(../../assets/images/user_icon.png);
   background-repeat: no-repeat;
   background-size: 50px auto;
-  background-position-x: 0rem;
+  background-position-x: 100%;
 }
 
-#userLogin:hover{
-  color: var(--HOTPINK-bs-)!important;
+#userLogin:hover {
+  color: var(--HOTPINK-bs-) !important;
   transform: scale(110%);
   transition: 0.3s;
 }
@@ -222,11 +219,11 @@ span {
     margin-left: 2.5rem;
   }
 
-  .hNavToggle{
+  .hNavToggle {
     border: 1px solid var(--CYAN-bs-);
   }
 
-  .hNavToggle:focus{
+  .hNavToggle:focus {
     color: var(--CYAN-bs-);
   }
 }
@@ -245,17 +242,21 @@ span {
     z-index: 2;
   }
 
-    .logoMobile {
+  .logoMobile {
     width: 4rem;
     height: 3rem;
     margin-left: 2.5rem;
   }
 
-  .hNavToggle{
+  .hNavToggle {
     border: 1px solid var(--CYAN-bs-);
   }
 
-  .hNavToggle:focus{
+  .hNavToggle:focus {
     color: var(--CYAN-bs-);
   }
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
 }
