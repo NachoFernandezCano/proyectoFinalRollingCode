@@ -21,41 +21,47 @@ const TableBody = (props) => {
     <Table responsive id="mainTable">
       <thead>
         <tr>
-          <th>TIPO</th>          
-          <th>NOMBRE</th>
-          <th>APELLIDO</th>
-          <th>MAIL</th>
-          <th>CALLE</th>
-          <th>NÚMERO</th>
-          <th>DEPARTAMENTO</th>
-          <th>PROVINCIA</th>
-          <th>LOCALIDAD</th>
-          <th>CÓDIGO POSTAL</th>
-          <th>ACCIONES</th>
+          <th className="align-middle">TIPO</th>
+          <th className="align-middle">NOMBRE</th>
+          <th className="align-middle">APELLIDO</th>
+          <th className="align-middle">MAIL</th>
+          <th className="align-middle">CALLE</th>
+          <th className="align-middle">NÚMERO</th>
+          <th className="align-middle">PROVINCIA</th>
+          <th className="align-middle">LOCALIDAD</th>
+          <th className="align-middle">CÓDIGO POSTAL</th>
+          <th className="align-middle">ACCIONES</th>
         </tr>
       </thead>
       <tbody>
         {
           dataForTable?.map((user) => (
             <tr key={user.id}>
-              <td>{user.type}</td>              
-              <td>{user.nombre}</td>
-              <td>{user.apellido}</td>
-              <td>{user.email}</td>
-              <td>
-                {user.direccion.calle}
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">
+                  {user.type}
+                </div>
               </td>
-              <td>
-                {user.direccion.nro}
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.nombre}</div>
               </td>
-              <td>
-                {user.direccion.dpto}
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.apellido}</div>
               </td>
-              <td>
-                {user.direccion.provincia} 
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.email}</div>
               </td>
-              <td>
-                {user.direccion.localidad} 
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.direccion.calle}</div>
+              </td>
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.direccion.nro}</div>
+              </td>
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.direccion.provincia}</div>
+              </td>
+              <td className="align-middle">
+                <div className="w-100 d-flex justify-content-center">{user.direccion.localidad}</div>
               </td>
               <th>
                 {user.direccion.codigopostal}

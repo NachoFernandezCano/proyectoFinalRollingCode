@@ -35,7 +35,7 @@ const Cards = ({ setProductQuantity }) => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get("http://localhost:4000/products/products", {
+      const info = await axios.get("http://localhost:4000/api/products/products", {
         params: { page, category },
       });
       setPagesCount(info.data);
@@ -55,11 +55,11 @@ const Cards = ({ setProductQuantity }) => {
     Navigate(`/productPage/${id}`);
   };
 
-  const favItem = async () =>{
+  const favItem = async () => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        const { data } = await axios.get("http://localhost:4000/user", {
+        const { data } = await axios.get("http://localhost:4000/api/user", {
           headers: { Authorization: token },
         });
         const Toast = Swal.mixin({
@@ -93,7 +93,7 @@ const Cards = ({ setProductQuantity }) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        const { data } = await axios.get("http://localhost:4000/user", {
+        const { data } = await axios.get("http://localhost:4000/api/user", {
           headers: { Authorization: token },
         });
         const addItem = {
@@ -102,7 +102,7 @@ const Cards = ({ setProductQuantity }) => {
           quantity: 1,
         };
         const cart = await axios.post(
-          "http://localhost:4000/cart/addToCart",
+          "http://localhost:4000/api/cart/addToCart",
           addItem
         );
         setProductQuantity(await getCartCount());
@@ -182,8 +182,8 @@ const Cards = ({ setProductQuantity }) => {
                       ${product.price}
                     </Card.Text>
                     <Card.Link href="#">
-                      <FaHeart className="favIcon" 
-                        onClick={() =>favItem()}
+                      <FaHeart className="favIcon"
+                        onClick={() => favItem()}
                       />
                     </Card.Link>
                     <Card.Link>

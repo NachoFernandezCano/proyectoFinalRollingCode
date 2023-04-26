@@ -23,12 +23,12 @@ const UsersTable = () => {
   useEffect(() => {
     getUsers();
   }, [page]);
-  
-  
+
+
   const getUsers = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/user/all', { params: { page } });
+      const info = await axios.get('http://localhost:4000/api/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
       setUsers(info.data.user)
       console.log(info)
@@ -83,7 +83,7 @@ const UsersTable = () => {
 
   const confirmDelete = (deleteUser) => {
     const id = deleteUser
-    axios.delete(`http://localhost:4000/user/deleteUser/${id}`)
+    axios.delete(`http://localhost:4000/api/user/deleteUser/${id}`)
       .then((response) => {
         const filteredUsers = users.filter((user) => user._id !== deleteUser);
         setUsers(filteredUsers);

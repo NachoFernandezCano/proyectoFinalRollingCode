@@ -28,7 +28,7 @@ const Table = () => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
+      const info = await axios.get('http://localhost:4000/api/products/products', { params: { page } });
       setPagesCount(info.data.totalPages);
       setProducts(info.data)
       setIsLoading(false);
@@ -79,15 +79,15 @@ const Table = () => {
     setProducts(newProducts);
     setEditModalShow(false);
   };
-  
+
   const handleDelete = (product) => {
     setDeleteProduct(product._id);
     setDModalShow(true);
   };
-  
+
   const confirmDelete = (deleteProduct) => {
     const id = deleteProduct
-    axios.delete(`http://localhost:4000/products/deleteProduct/${id}`)
+    axios.delete(`http://localhost:4000/api/products/deleteProduct/${id}`)
       .then((response) => {
         const filteredProducts = products.filter((product) => product._id !== deleteProduct);
         setProducts(filteredProducts);

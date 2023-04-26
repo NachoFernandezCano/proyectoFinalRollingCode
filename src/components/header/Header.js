@@ -24,7 +24,7 @@ import ModalLogin from '../form/Modal/ModalLogin';
 import Logo from '../../assets/images/logo.jpg';
 import Menu from '../util/menu/Menu';
 
-const Header = ({productQuantity}) => {
+const Header = ({ productQuantity }) => {
   const [modalLogin, setmodalLogin] = useState(false);
   const [loginUser, setloginUser] = useState(false);
   const [loaderUser, setloaderUser] = useState(false);
@@ -51,7 +51,7 @@ const Header = ({productQuantity}) => {
 
   const handleVerifyJwt = async (token) => {
     try {
-      const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
+      const { data } = await axios.get("http://localhost:4000/api/user", { headers: { Authorization: token } });
       autoLogin(data.user);
     } catch (error) {
       Swal.fire({
@@ -87,7 +87,7 @@ const Header = ({productQuantity}) => {
           paylaod[target.name] = target.value;
         }
       }
-      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
+      const { data } = await axios.post('http://localhost:4000/api/user/auth', paylaod);
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();
@@ -158,7 +158,7 @@ const Header = ({productQuantity}) => {
         }
       }
       paylaod["type"] = "user";
-      const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
+      const { data } = await axios.post('http://localhost:4000/api/user/register', paylaod);
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',
@@ -274,14 +274,10 @@ const Header = ({productQuantity}) => {
           </div>
           <div onClick={() => handleComprar()} className='needHoover'>
             <FaShoppingCart className='headerIcons' />
-{/*             {productCount !== 0 ? (<div className='productsNumber'>{productCount}</div>)
-              : (
-                (<></>)
-              )} */}
-              {productQuantity}
+            {productQuantity}
           </div>
           <Link className='needHoover' to='/Error404'>
-            <FaRegQuestionCircle className='mainIcons needHoover'/>
+            <FaRegQuestionCircle className='mainIcons needHoover' />
           </Link>
         </div>
       </div>
@@ -295,7 +291,7 @@ const Header = ({productQuantity}) => {
                 userType ? (
                   <>
                     <div className="userMenu">
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
@@ -305,7 +301,7 @@ const Header = ({productQuantity}) => {
                 ) : (
                   <>
                     <div className='userMenu'>
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href="#" onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>

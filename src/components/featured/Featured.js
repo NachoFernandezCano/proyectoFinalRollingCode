@@ -17,7 +17,7 @@ const Featured = () => {
   const getHotItem = async () => {
     try {
       setIsLoading(true);
-      const hotItem = await axios.get('http://localhost:4000/products/hotItem');
+      const hotItem = await axios.get('http://localhost:4000/api/products/hotItem');
       setHot(hotItem.data.hotItem)
       setIsLoading(false);
     } catch (error) {

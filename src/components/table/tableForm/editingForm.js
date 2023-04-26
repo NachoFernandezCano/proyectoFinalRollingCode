@@ -25,7 +25,7 @@ const EditingForm = (props) => {
     price: productToEdit?.price || '',
     stock: productToEdit?.stock || '',
   });
-  
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -44,11 +44,11 @@ const EditingForm = (props) => {
       });
     }
   };
-  
+
 
   const handleImageChange = (event) => {
     const { name, value } = event.target;
-  
+
     setFormData((prevState) => {
       return {
         ...prevState,
@@ -59,32 +59,32 @@ const EditingForm = (props) => {
       };
     });
   };
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = productToEditId
     try {
       if (isEditingForm) {
-        await axios.put(`http://localhost:4000/products/editProducts/${id}`, formData);
-          return Swal.fire({
-            title: "<strong>Felicidades</strong>",
-            html: "<i>Producto editado correctamente</i>",
-            icon: "success",
-          });
-      } else {
-        await axios.post("http://localhost:4000/products/addProducts", formData);
-      }
+        await axios.put(`http://localhost:4000/api/products/editProducts/${id}`, formData);
         return Swal.fire({
           title: "<strong>Felicidades</strong>",
-          html: "<i>Producto creado correctamente</i>",
+          html: "<i>Producto editado correctamente</i>",
           icon: "success",
         });
+      } else {
+        await axios.post("http://localhost:4000/api/products/addProducts", formData);
+      }
+      return Swal.fire({
+        title: "<strong>Felicidades</strong>",
+        html: "<i>Producto creado correctamente</i>",
+        icon: "success",
+      });
     } catch (error) {
       console.error(error);
     }
   };
-  
+
 
   return (
     <div className="formContainer">
