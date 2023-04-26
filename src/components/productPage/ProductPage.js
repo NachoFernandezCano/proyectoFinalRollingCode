@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import {
   Card,
+  Col,
   Dropdown,
   DropdownButton,
   Form,
   Modal,
+  Row,
 } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
+import { FaHeart, FaShieldAlt, FaShippingFast, FaShoppingCart } from "react-icons/fa";
 import "./productPage.css";
 import Amex from "../../assets/images/mediosDePago/Amex.svg";
 import MasterCard from "../../assets/images/mediosDePago/MasterCard.svg";
@@ -56,7 +58,6 @@ const ProductPage = ({ setProductQuantity }) => {
 
   useEffect(() => {
     getProduct();
-
   }, []);
 
   const imageHandle = (image) => {
@@ -273,9 +274,6 @@ const ProductPage = ({ setProductQuantity }) => {
             </Card.Subtitle>
           </Card.Body>
         </Card>
-      </div>
-      <h6>Productos que podrían interesarte</h6>
-      <div className="containerProductosInteresantes">
       </div>
     </div>
   );

@@ -30,12 +30,28 @@ const CartPage = ({ setProductQuantity }) => {
     showCartQuantity();
   }, []);
 
+  const handleBuy = async (userId) => {
+    try {
+      const token = localStorage.getItem("user");
+      const {data} = await axios.get("http://localhost:4000/api/cart/getCart", {headers: { Authorization: token },});
+      if(token){
+        const response = await axios.patch("http://localhost:4000/api/cart/buyCart", { userId: data.cart.user },  { headers: { Authorization: token } });
+        if(response.data.tipoerror === "si") {
+          setCart([])
+        } else {
+          alert(response.data.message);        
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    };
+  };
 
   const handleDeleteProduct = async (product) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        await axios.patch("http://localhost:4000/api/cart/", { productId: product._id }, { headers: { Authorization: token } })
+        await axios.delete("http://localhost:4000/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id } })
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -88,7 +104,7 @@ const CartPage = ({ setProductQuantity }) => {
         </div>
         <div className="cartButtonArea">
           <Link to={`/FinalizarCompra`}>
-            <button className="cartButton">
+            <button onClick={handleBuy} className="cartButton">
               Finalizar compra
             </button>
           </Link>

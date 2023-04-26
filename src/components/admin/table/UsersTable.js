@@ -31,7 +31,6 @@ const UsersTable = () => {
       const info = await axios.get('http://localhost:4000/api/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
       setUsers(info.data.user)
-      console.log(info)
       setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'No se encontraron usuarios') {
@@ -95,7 +94,6 @@ const UsersTable = () => {
   };
 
   const editTrigger = (editingUser) => {
-    console.log(editingUser)
     setUserToEdit(editingUser);
     setEditModalShow(true);
   };

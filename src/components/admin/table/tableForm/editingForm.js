@@ -66,6 +66,13 @@ const EditingForm = (props) => {
     e.preventDefault();
     const id = userToEditId
     try {
+      if (formData.password !== formData.repPassword) {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>Las contraseñas no coinciden</i>",
+          icon: "error",
+        });
+      }
       if (isEditingForm) {
         await axios.put(`http://localhost:4000/api/user/editUser/${id}`, formData);
         return Swal.fire({
@@ -85,7 +92,7 @@ const EditingForm = (props) => {
       console.error(error);
     }
   };
-
+  
 
   return (
     <div className="formContainer">

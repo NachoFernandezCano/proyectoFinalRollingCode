@@ -13,7 +13,6 @@ const ProductPageSell = () => {
             headers: { Authorization: token },
         });
         setCart(data.data.cart.products);
-        console.log(data.data.cart.products);
     };
 
     useEffect(() => {

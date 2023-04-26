@@ -68,14 +68,12 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
         const formControl = input.current.parentElement;
         formControl.classList.remove("form__error");
         formControl.classList.add("form__success");
-        console.log(input.current.name);
         if (input.current.name === "email") {
             setvalueMail(true);
         }
         if (input.current.name === "password") {
             setvaluePass(true);
         }
-        console.log(valueMail + " - " + valuePass);
     }
 
     function setErrorFor(input, message, small) {
@@ -89,7 +87,6 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
         if (input.current.name === "password") {
             setvaluePass(false);
         }
-        console.log(valueMail + " - " + valuePass);
     }
 
     function isEmail(email) {
@@ -123,10 +120,6 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
             isPass(password)
             valuepass = true;
         }
-
-        console.log(valueemail + " - " + valuepass);
-
-
     }
 
     return (
