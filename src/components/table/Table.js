@@ -10,39 +10,31 @@ import axios from "axios";
 const Table = () => {
   const [products, setProducts] = useState([]);
   const [productToEdit, setProductToEdit] = useState({});
+  const [productToEditId, setProductToEditId] = useState({});
   const [deleteProduct, setDeleteProduct] = useState({});
 
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
     getProduct();
-  }, [page]);
+  }, [page]);  // eslint-disable-line
 
   const getProduct = async () => {
     try {
-<<<<<<< Updated upstream
-      setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
-      console.log(info);
-=======
       const info = await axios.get('/api/products/products', { params: { page } });
->>>>>>> Stashed changes
       setPagesCount(info.data.totalPages);
-      setProducts(info.data.docs)
-      setIsLoading(false);
+      setProducts(info.data)
     } catch (error) {
       if (error?.response?.data?.error === 'No se encontraron productos') {
         setProducts([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
-      setIsLoading(false);
     }
   };
 
@@ -64,32 +56,31 @@ const Table = () => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    const newProduct = { id: productToEdit.id };
     for (const target of e.target) {
       if (target.type !== "submit") {
-        newProduct[target.name] = target.value;
+        setProductToEdit({
+          ...productToEdit,
+          [target.name]: target.value
+        });
         target.value = "";
       }
     }
     const newProducts = products.map((product) => {
-      if (product.id === newProduct.id) return newProduct;
-      return product;
+      if (product._id === productToEdit._id) {
+        return productToEdit;
+      } else {
+        return product;
+      }
     });
     setProducts(newProducts);
     setEditModalShow(false);
   };
+
   const handleDelete = (product) => {
-    setDeleteProduct(product);
+    setDeleteProduct(product._id);
     setDModalShow(true);
   };
 
-<<<<<<< Updated upstream
-  const confirmDelete = (id) => {
-    const filteredProducts = products.filter((product) => product.id !== deleteProduct.id);
-    setProducts(filteredProducts);
-    setDModalShow(false);
-  }
-=======
   const confirmDelete = (deleteProduct) => {
     const id = deleteProduct
     axios.delete(`/api/products/deleteProduct/${id}`)
@@ -102,16 +93,13 @@ const Table = () => {
         console.error(error);
       });
   };
->>>>>>> Stashed changes
 
-  const editTrigger = (editingProduct) => {
-    setProductToEdit(editingProduct);
+  const editTrigger = (product) => {
+    setProductToEdit(product);
+    setProductToEditId(product._id);
     setEditModalShow(true);
   };
 
-  const changeInputValue = (e) => {
-    setProductToEdit({ ...productToEdit, [e.target.name]: e.target.value });
-  };
 
   return (
     <div className="homeContainer">
@@ -161,14 +149,15 @@ const Table = () => {
         setEditModalShow={setEditModalShow}
         handleSubmit={handleEdit}
         isEditingForm={true}
-        userToEdit={productToEdit}
-        changeInputValue={changeInputValue}
+        productToEdit={productToEdit}
+        productToEditId={productToEditId}
       />
       <DeleteModal
         deleteModalShow={deleteModalShow}
         setDModalShow={setDModalShow}
         handleDelete={handleDelete}
         confirmDelete={confirmDelete}
+        deleteProductId={deleteProduct}
       />
     </div>
   );

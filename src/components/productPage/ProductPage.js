@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Dropdown,
-  DropdownButton,
-  Form,
-  Modal,
-} from "react-bootstrap";
+import { Card, Modal } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
@@ -19,25 +13,21 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
 
-const ProductPage = ({setProductQuantity}) => {
+
+const ProductPage = ({ setProductQuantity }) => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [show, setShow] = useState(false);
   const [imagenPrincipalProduct, setImagenPrincipalProduct] = useState([])
-  const [minQuantity, setMinQuantity] = useState(1);
-  const [quantity, setQuantity] = useState(minQuantity);
-  const { getCartCount, addCartItem } = useCartContext();
+  const [quantity, setQuantity] = useState(1);
+  const { getCartCount } = useCartContext();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const getProduct = async () => {
     try {
       const info = await axios.get(
-<<<<<<< Updated upstream
-        `http://localhost:4000/products/getProduct/` + id
-=======
         `/api/products/getProduct/` + id
->>>>>>> Stashed changes
       );
       setProduct(info.data.product);
       setImagenPrincipalProduct(info.data.product.image?.img1);
@@ -51,50 +41,36 @@ const ProductPage = ({setProductQuantity}) => {
   };
 
   useEffect(() => {
-    const algoPorAhora = async () => {
+    const showCartQuantity = async () => {
       setProductQuantity(await getCartCount());
     };
-    algoPorAhora();
-  }, []);
+    showCartQuantity();
+  }, []); // eslint-disable-line
 
   useEffect(() => {
-      getProduct();
-      
-    }, []);
+    getProduct();
+  }, []); // eslint-disable-line
 
   const imageHandle = (image) => {
-  setImagenPrincipalProduct(image)
+    setImagenPrincipalProduct(image)
   }
 
   const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-<<<<<<< Updated upstream
-        const {data}  = await axios.get("http://localhost:4000/user", {
-=======
         const { data } = await axios.get("/api/user", {
->>>>>>> Stashed changes
           headers: { Authorization: token },
         });
-        console.log("Data",data)
-        console.log("Id",data.user._id)
         const addItem = {
           userId: data.user._id,
           productId: id,
           quantity: parseInt(quantity),
         };
-<<<<<<< Updated upstream
-        console.log("Item",addItem)
-        const cart = await axios.post(
-          "http://localhost:4000/cart/addToCart",
-=======
         await axios.post(
           "/api/cart/addToCart",
->>>>>>> Stashed changes
           addItem
         );
-        console.log("Respuesta de addToCart:", cart);
         setProductQuantity(await getCartCount());
         const Toast = Swal.mixin({
           toast: true,
@@ -121,14 +97,14 @@ const ProductPage = ({setProductQuantity}) => {
       }
     } catch (error) {
       console.log(error);
-      if (error.response.data.tipoerror == "tokenno") {
+      if (error.response.data.tipoerror === "tokenno") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",
           icon: "error",
         });
       }
-      if (error.response.data.tipoerror == "tokenepx") {
+      if (error.response.data.tipoerror === "tokenepx") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",
@@ -148,10 +124,8 @@ const ProductPage = ({setProductQuantity}) => {
 
   const handleQuantityChange = (event) => {
     const value = event.target.value;
-    if (value >= minQuantity && value <= product.stock) {
+    if (value <= product.stock) {
       setQuantity(value);
-    } else if (value < minQuantity) {
-      setQuantity(minQuantity);
     } else {
       Swal.fire({
         icon: 'error',
@@ -165,23 +139,23 @@ const ProductPage = ({setProductQuantity}) => {
     <div className="productPageContainer">
       <div className="containerImgProduct">
         <div className="containerImagenPrincipal">
-          <img
+          <img alt='' 
             className="imagenPrincipalProduct" src={imagenPrincipalProduct}>
           </img>
         </div>
         <div className="miniaturasProductContainer">
           <div className="miniaturaProducto">
-            <img
+            <img alt='' 
               className="thumbnail" onClick={() => imageHandle(product.image?.img1)} src={product.image?.img1}
             ></img>
           </div>
           <div className="miniaturaProducto">
-            <img
+            <img alt='' 
               className="thumbnail" onClick={() => imageHandle(product.image?.img2)} src={product.image?.img2}
             ></img>
           </div>
           <div className="miniaturaProducto">
-            <img
+            <img alt='' 
               className="thumbnail" onClick={() => imageHandle(product.image?.img3)} src={product.image?.img3}
             ></img>
           </div>
@@ -206,16 +180,16 @@ const ProductPage = ({setProductQuantity}) => {
               <Modal.Body>
                 <div className="containerMedioDePagos">
                   <div>
-                    <img src={Visa}></img>
+                    <img alt=''  src={Visa}></img>
                   </div>
                   <div>
-                    <img src={Amex}></img>
+                    <img alt=''  src={Amex}></img>
                   </div>
                   <div>
-                    <img src={MasterCard}></img>
+                    <img alt=''  src={MasterCard}></img>
                   </div>
                   <div>
-                    <img src={Naranja}></img>
+                    <img alt=''  src={Naranja}></img>
                   </div>
                 </div>
               </Modal.Body>
@@ -232,7 +206,7 @@ const ProductPage = ({setProductQuantity}) => {
             <Button className="btn-comprarYa">Comprar</Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
-          <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
+            <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
           </div>
         </div>
         <div className="containerMasCaracteristicas">
@@ -283,9 +257,6 @@ const ProductPage = ({setProductQuantity}) => {
             </Card.Subtitle>
           </Card.Body>
         </Card>
-      </div>
-      <h6>Productos que podrían interesarte</h6>
-      <div className="containerProductosInteresantes">
       </div>
     </div>
   );

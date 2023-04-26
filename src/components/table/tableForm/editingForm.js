@@ -1,16 +1,15 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import './editingForm.css';
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const EditingForm = (props) => {
   const {
-    handleSubmit,
     isEditingForm,
-    userToEdit: productToEdit,
-    changeInputValue,
+    productToEdit,
+    productToEditId
   } = props;
-<<<<<<< Updated upstream
-=======
 
   const [formData, setFormData] = useState({
     category: productToEdit?.category || '',
@@ -87,108 +86,106 @@ const EditingForm = (props) => {
   };
 
 
->>>>>>> Stashed changes
+
   return (
     <div className="formContainer">
       <form onSubmit={handleSubmit}>
         <div>
           <b>Categoría:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="category"
-                value={productToEdit?.category || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="category" />)
-          }
+          <input
+            className="inputArea"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <b>Insertar imagen:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="image"
-                value={productToEdit?.image || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="image" />)
-          }
+          <b>Tipo:</b>
+          <input
+            className="inputArea"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 1:</b>
+          <input
+            className="inputArea"
+            name="img1"
+            defaultValue={formData.image.img1}
+            onBlur={handleImageChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 2:</b>
+          <input
+            className="inputArea"
+            name="img2"
+            defaultValue={formData.image.img2}
+            onBlur={handleImageChange}
+          />
+        </div>
+        <div>
+          <b>Imagen 3:</b>
+          <input
+            className="inputArea"
+            name="img3"
+            defaultValue={formData.image.img3}
+            onBlur={handleImageChange}
+          />
         </div>
         <div>
           <b>Nombre del producto:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="name"
-                value={productToEdit?.name || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="name" />)
-          }
+          <input
+            className="inputArea"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Marca:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="brand"
-                value={productToEdit?.brand || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="brand" />)
-          }
+          <input
+            className="inputArea"
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Descripción:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="description"
-                value={productToEdit?.description || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="description" />)
-          }
+          <input
+            className="inputArea"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Precio:</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="price"
-                value={productToEdit?.price || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="price" />)
-          }
+          <input
+            className="inputArea"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <b>Stock</b>
-          {
-            isEditingForm ? (
-              <input
-                className="inputArea"
-                name="stock"
-                value={productToEdit?.stock || ''}
-                onChange={(e) => changeInputValue(e)}
-              />
-            ) : (<input className="inputArea" name="stock" />)
-          }
+          <input
+            className="inputArea"
+            name="stock"
+            value={formData.stock}
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <Button id="modalsButtons" type="submit"> {
-            isEditingForm ? 'Editar producto' : 'Crear'
-          }
-          </Button>
+          <button id="modalsButtons" type="submit">
+            {isEditingForm ? 'Editar producto' : 'Crear'}
+          </button>
         </div>
-      </form >
+      </form>
     </div>
   );
 };

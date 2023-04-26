@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, Col, Row, Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { FaHeart, FaShoppingCart, FaHeadset } from "react-icons/fa";
 import { FiMonitor, FiWatch, FiMoreHorizontal } from "react-icons/fi";
@@ -16,9 +16,8 @@ const Cards = ({ setProductQuantity }) => {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(1);
-  const { getCartCount, addCartItem } = useCartContext();
-  const [filter, setFilterProduct] = useState(product);
+  const [pagesCount, setPagesCount] = useState(1); // eslint-disable-line
+  const { getCartCount } = useCartContext();
   const [category, setCategory] = useState("");
 
   useEffect(() => {
@@ -26,20 +25,16 @@ const Cards = ({ setProductQuantity }) => {
       setProductQuantity(await getCartCount());
     };
     showCartQuantity();
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     getProduct();
-  }, [page, category]);
+  }, [page, category]); // eslint-disable-line
 
   const getProduct = async () => {
     try {
       setIsLoading(true);
-<<<<<<< Updated upstream
-      const info = await axios.get("http://localhost:4000/products/products", {
-=======
       const info = await axios.get("/api/products/products", {
->>>>>>> Stashed changes
         params: { page, category },
       });
       setPagesCount(info.data);
@@ -54,13 +49,6 @@ const Cards = ({ setProductQuantity }) => {
       setIsLoading(false);
     }
   };
-
-<<<<<<< Updated upstream
-  const handleGetOneProduct = (id) => {
-    Navigate(`/productPage/${id}`);
-  };
-=======
-
   const favItem = async () => {
     try {
       const token = localStorage.getItem("user");
@@ -94,17 +82,11 @@ const Cards = ({ setProductQuantity }) => {
       console.log(error)
     }
   }
->>>>>>> Stashed changes
-
   const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-<<<<<<< Updated upstream
-        const { data } = await axios.get("http://localhost:4000/user", {
-=======
         const { data } = await axios.get("/api/user", {
->>>>>>> Stashed changes
           headers: { Authorization: token },
         });
         const addItem = {
@@ -112,13 +94,8 @@ const Cards = ({ setProductQuantity }) => {
           productId: id,
           quantity: 1,
         };
-<<<<<<< Updated upstream
-        const cart = await axios.post(
-          "http://localhost:4000/cart/addToCart",
-=======
         await axios.post(
           "/api/cart/addToCart",
->>>>>>> Stashed changes
           addItem
         );
         setProductQuantity(await getCartCount());
@@ -147,14 +124,14 @@ const Cards = ({ setProductQuantity }) => {
       }
     } catch (error) {
       console.log(error);
-      if (error.response.data.tipoerror == "tokenno") {
+      if (error.response.data.tipoerror === "tokenno") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",
           icon: "error",
         });
       }
-      if (error.response.data.tipoerror == "tokenepx") {
+      if (error.response.data.tipoerror === "tokenepx") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",
@@ -198,7 +175,9 @@ const Cards = ({ setProductQuantity }) => {
                       ${product.price}
                     </Card.Text>
                     <Card.Link href="#">
-                      <FaHeart className="favIcon" />
+                      <FaHeart className="favIcon"
+                        onClick={() => favItem()}
+                      />
                     </Card.Link>
                     <Card.Link>
                       <FaShoppingCart

@@ -21,18 +21,15 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from '../form/Modal/ModalLogin';
-import Logo from '../../assets/images/logo.jpg';
-import Menu from '../util/menu/Menu';
 
-const Header = ({productQuantity}) => {
+const Header = ({ productQuantity }) => {
   const [modalLogin, setmodalLogin] = useState(false);
   const [loginUser, setloginUser] = useState(false);
   const [loaderUser, setloaderUser] = useState(false);
   const [loaderRegister, setloaderRegister] = useState(false);
   const [userName, setuserName] = useState('');
   const [userType, setuserType] = useState(false);
-  const [productCount, setproductCount] = useState(10);
-  const { cartCount, getCartCount } = useCartContext();
+  const { getCartCount } = useCartContext();
 
   let navigate = useNavigate();
 
@@ -40,22 +37,12 @@ const Header = ({productQuantity}) => {
     const token = localStorage.getItem('user');
     if (token) {
       handleVerifyJwt(token);
-    } else {
-      //navigate("/");
     }
-  }, [navigate]);
-
-  useEffect(() => {
-    setproductCount(cartCount);
-  }, [cartCount]);
+  }, [navigate]); // eslint-disable-line
 
   const handleVerifyJwt = async (token) => {
     try {
-<<<<<<< Updated upstream
-      const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
-=======
       const { data } = await axios.get("/api/user", { headers: { Authorization: token } });
->>>>>>> Stashed changes
       autoLogin(data.user);
     } catch (error) {
       Swal.fire({
@@ -76,7 +63,6 @@ const Header = ({productQuantity}) => {
           setloginUser(false);
           navigate('/');
           setloginUser(false);
-          setproductCount(0);
         }
       })
     }
@@ -91,11 +77,7 @@ const Header = ({productQuantity}) => {
           paylaod[target.name] = target.value;
         }
       }
-<<<<<<< Updated upstream
-      const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
-=======
       const { data } = await axios.post('/api/user/auth', paylaod);
->>>>>>> Stashed changes
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();
@@ -108,7 +90,7 @@ const Header = ({productQuantity}) => {
       setloginUser(true);
       setmodalLogin(false);
     } catch (error) {
-      if (error.code == "ERR_NETWORK") {
+      if (error.code === "ERR_NETWORK") {
         return Swal.fire({
           title: '<strong>Error de Conexión</strong>',
           html: '<i>No se puede conectar con el Servidor de Datos. Por favor intente de nuevo más tarde.</i>',
@@ -141,7 +123,6 @@ const Header = ({productQuantity}) => {
         setuserType(false);
         navigate('/');
         setloginUser(false);
-        setproductCount(0);
       }
     })
   }
@@ -166,11 +147,7 @@ const Header = ({productQuantity}) => {
         }
       }
       paylaod["type"] = "user";
-<<<<<<< Updated upstream
-      const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
-=======
       const { data } = await axios.post('/api/user/register', paylaod);
->>>>>>> Stashed changes
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',
@@ -236,7 +213,8 @@ const Header = ({productQuantity}) => {
                     <div className='userMenu'>
                       <NavDropdown title={userName} id='navbarUsuario' bg='light'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
-                        <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
+                        <NavDropdown.Item href='/UsersTable' onClick={() => handlePerfil()}>Tabla de usuarios</NavDropdown.Item>
+                        <NavDropdown.Item href='/ProductsTable' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>
                     </div>
@@ -271,7 +249,9 @@ const Header = ({productQuantity}) => {
               </Link>
             </div>
             <div className='needHoover'>
-              FAVORITOS
+              <Link to='/Error404'>
+                FAVORITOS
+              </Link>
               <FaRegHeart className='headerIcons' />
             </div>
             <div className='needHoover'>
@@ -283,14 +263,10 @@ const Header = ({productQuantity}) => {
           </div>
           <div onClick={() => handleComprar()} className='needHoover'>
             <FaShoppingCart className='headerIcons' />
-{/*             {productCount !== 0 ? (<div className='productsNumber'>{productCount}</div>)
-              : (
-                (<></>)
-              )} */}
-              {productQuantity}
+            {productQuantity}
           </div>
           <Link className='needHoover' to='/Error404'>
-            <FaRegQuestionCircle className='mainIcons needHoover'/>
+            <FaRegQuestionCircle className='mainIcons needHoover' />
           </Link>
         </div>
       </div>
@@ -304,7 +280,7 @@ const Header = ({productQuantity}) => {
                 userType ? (
                   <>
                     <div className="userMenu">
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
@@ -314,7 +290,7 @@ const Header = ({productQuantity}) => {
                 ) : (
                   <>
                     <div className='userMenu'>
-                      <NavDropdown title={userName} id='navbarUsuario' bg='light'>
+                      <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href="#" onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
                         <NavDropdown.Item href="#" onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>

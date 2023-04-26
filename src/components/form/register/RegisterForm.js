@@ -50,7 +50,7 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
         )
         }
         <Form.Group className="mb-3 d-flex justify-content-around" controlId="formBasicButton">
-          <Button onClick={console.log(handleRegister)} type="submit" id='btnRegister'>
+          <Button type="submit" id='btnRegister'>
             <BsFillPersonPlusFill className='btnLogo' />
             {' '}Registrarse
           </Button>

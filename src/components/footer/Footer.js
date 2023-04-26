@@ -35,7 +35,7 @@ const Footer = () => {
             <div><a href='./Error404'>- Reporta un bug</a></div>
           </div>
           <div>
-            <img src={qrCode} />
+            <img alt=''  src={qrCode} />
           </div>
         </div>
         <div>

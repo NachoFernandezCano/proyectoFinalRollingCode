@@ -7,17 +7,17 @@ import adPicture3 from "../../assets/images/advertisement/Advertisement1.png"
 const Advertisement = () => {
   return ( 
     <div className="advertisement d-none d-lg-flex align-items-center flex-column col-md-2 col-lg-2 p-0">
-          <img
+          <img 
             className="publicity"
             alt="Publicidad"
             src={adPicture}
           />
-          <img
+          <img 
             className="publicity"
             alt="Publicidad"
             src={adPicture2}
           />
-          <img
+          <img 
             className="publicity"
             alt="Publicidad"
             src={adPicture3}
