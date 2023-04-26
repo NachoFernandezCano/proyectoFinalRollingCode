@@ -15,30 +15,25 @@ const UsersTable = () => {
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
     getUsers();
-  }, [page]);
+  }, [page]); // eslint-disable-line
 
 
   const getUsers = async () => {
     try {
-      setIsLoading(true);
       const info = await axios.get('http://localhost:4000/api/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
       setUsers(info.data.user)
-      setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'No se encontraron usuarios') {
         setUsers([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
-      setIsLoading(false);
     }
   };
 

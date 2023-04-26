@@ -17,28 +17,24 @@ const Table = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
     getProduct();
-  }, [page]);
+  }, [page]);  // eslint-disable-line
 
   const getProduct = async () => {
     try {
-      setIsLoading(true);
       const info = await axios.get('http://localhost:4000/api/products/products', { params: { page } });
       setPagesCount(info.data.totalPages);
       setProducts(info.data)
-      setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'No se encontraron productos') {
         setProducts([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
-      setIsLoading(false);
     }
   };
 

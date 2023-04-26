@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
 import { Button } from "react-bootstrap";
 import './tableBody.css';
-import axios from "axios";
 
 const TableBody = (props) => {
   const {
@@ -15,7 +14,7 @@ const TableBody = (props) => {
 
   useEffect(() => {
     setDataForTable(data);
-  }, [data])
+  }, [data]) // eslint-disable-line
 
   return (
     <Table responsive id="mainTable">

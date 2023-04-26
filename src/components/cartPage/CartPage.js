@@ -1,5 +1,5 @@
-import axios, { Axios } from "axios";
-import React, { useEffect, useContext } from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./cartPage.css";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import { useCartContext } from "../../context/cartContext";
 
 const CartPage = ({ setProductQuantity }) => {
   const [cart, setCart] = useState([]);
-  const { getCartCount, deleteCartItem } = useCartContext();
+  const { getCartCount} = useCartContext();
 
   const getCart = async () => {
     const token = localStorage.getItem("user");
@@ -21,14 +21,14 @@ const CartPage = ({ setProductQuantity }) => {
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     const showCartQuantity = async () => {
       setProductQuantity(await getCartCount());
     };
     showCartQuantity();
-  }, []);
+  }, []); // eslint-disable-line
 
   const handleBuy = async (userId) => {
     try {
@@ -78,14 +78,14 @@ const CartPage = ({ setProductQuantity }) => {
       getCart()
       setProductQuantity(await getCartCount());
     } catch (error) {
-      if (error.response.data.tipoerror == "tokenno") {
+      if (error.response.data.tipoerror === "tokenno") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",
           icon: "error",
         });
       }
-      if (error.response.data.tipoerror == "tokenepx") {
+      if (error.response.data.tipoerror === "tokenepx") {
         return Swal.fire({
           title: "<strong>Error</strong>",
           html: "<i>" + error.response.data.message + "</i>",

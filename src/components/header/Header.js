@@ -21,8 +21,6 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from '../form/Modal/ModalLogin';
-import Logo from '../../assets/images/logo.jpg';
-import Menu from '../util/menu/Menu';
 
 const Header = ({ productQuantity }) => {
   const [modalLogin, setmodalLogin] = useState(false);
@@ -31,8 +29,7 @@ const Header = ({ productQuantity }) => {
   const [loaderRegister, setloaderRegister] = useState(false);
   const [userName, setuserName] = useState('');
   const [userType, setuserType] = useState(false);
-  const [productCount, setproductCount] = useState(10);
-  const { cartCount, getCartCount } = useCartContext();
+  const { getCartCount } = useCartContext();
 
   let navigate = useNavigate();
 
@@ -40,14 +37,8 @@ const Header = ({ productQuantity }) => {
     const token = localStorage.getItem('user');
     if (token) {
       handleVerifyJwt(token);
-    } else {
-      //navigate("/");
     }
-  }, [navigate]);
-
-  useEffect(() => {
-    setproductCount(cartCount);
-  }, [cartCount]);
+  }, [navigate]); // eslint-disable-line
 
   const handleVerifyJwt = async (token) => {
     try {
@@ -72,7 +63,6 @@ const Header = ({ productQuantity }) => {
           setloginUser(false);
           navigate('/');
           setloginUser(false);
-          setproductCount(0);
         }
       })
     }
@@ -100,7 +90,7 @@ const Header = ({ productQuantity }) => {
       setloginUser(true);
       setmodalLogin(false);
     } catch (error) {
-      if (error.code == "ERR_NETWORK") {
+      if (error.code === "ERR_NETWORK") {
         return Swal.fire({
           title: '<strong>Error de Conexión</strong>',
           html: '<i>No se puede conectar con el Servidor de Datos. Por favor intente de nuevo más tarde.</i>',
@@ -133,7 +123,6 @@ const Header = ({ productQuantity }) => {
         setuserType(false);
         navigate('/');
         setloginUser(false);
-        setproductCount(0);
       }
     })
   }
