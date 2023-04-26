@@ -34,7 +34,7 @@ const Cards = ({ setProductQuantity }) => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
-      const info = await axios.get("http://localhost:4000/api/products/products", {
+      const info = await axios.get("/api/products/products", {
         params: { page, category },
       });
       setPagesCount(info.data);
@@ -49,13 +49,11 @@ const Cards = ({ setProductQuantity }) => {
       setIsLoading(false);
     }
   };
-
-
   const favItem = async () => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        await axios.get("http://localhost:4000/api/user", {
+        await axios.get("/api/user", {
           headers: { Authorization: token },
         });
         const Toast = Swal.mixin({
@@ -84,12 +82,11 @@ const Cards = ({ setProductQuantity }) => {
       console.log(error)
     }
   }
-
   const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        const { data } = await axios.get("http://localhost:4000/api/user", {
+        const { data } = await axios.get("/api/user", {
           headers: { Authorization: token },
         });
         const addItem = {
@@ -98,7 +95,7 @@ const Cards = ({ setProductQuantity }) => {
           quantity: 1,
         };
         await axios.post(
-          "http://localhost:4000/api/cart/addToCart",
+          "/api/cart/addToCart",
           addItem
         );
         setProductQuantity(await getCartCount());

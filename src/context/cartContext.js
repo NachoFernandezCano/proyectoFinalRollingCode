@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     const getCartCount = async () => {
         try {
             const token = localStorage.getItem('user');
-            const data = await axios.get("http://localhost:4000/api/cart/getCart", { headers: { Authorization: token } });
+            const data = await axios.get("/api/cart/getCart", { headers: { Authorization: token } });
             setcartCount(data.cart);
             let count = 0
             for (const product of data?.data?.cart?.products) {

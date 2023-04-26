@@ -13,7 +13,7 @@ const CartPage = ({ setProductQuantity }) => {
 
   const getCart = async () => {
     const token = localStorage.getItem("user");
-    const data = await axios.get("http://localhost:4000/api/cart/getCart", {
+    const data = await axios.get("/api/cart/getCart", {
       headers: { Authorization: token },
     });
     setCart(data.data.cart.products);
@@ -33,9 +33,9 @@ const CartPage = ({ setProductQuantity }) => {
   const handleBuy = async (userId) => {
     try {
       const token = localStorage.getItem("user");
-      const {data} = await axios.get("http://localhost:4000/api/cart/getCart", {headers: { Authorization: token },});
+      const {data} = await axios.get("/api/cart/getCart", {headers: { Authorization: token },});
       if(token){
-        const response = await axios.patch("http://localhost:4000/api/cart/buyCart", { userId: data.cart.user },  { headers: { Authorization: token } });
+        const response = await axios.patch("/api/cart/buyCart", { userId: data.cart.user },  { headers: { Authorization: token } });
         if(response.data.tipoerror === "si") {
           setCart([])
         } else {
@@ -51,7 +51,7 @@ const CartPage = ({ setProductQuantity }) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        await axios.delete("http://localhost:4000/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id } })
+        await axios.delete("/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id } })
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",

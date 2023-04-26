@@ -19,7 +19,7 @@ const Slider = () => {
 
   const getSliderItem = async () => {
     try {
-      const hotItem = await axios.get('http://localhost:4000/api/products/hotItem');
+      const hotItem = await axios.get('/api/products/hotItem');
       setsHotItem(hotItem.data.hotItem)
     } catch (error) {
       if (error?.response?.data?.error === 'There is nothing here') {

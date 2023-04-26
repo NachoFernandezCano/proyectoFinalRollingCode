@@ -23,7 +23,7 @@ const RecoverPassword = () => {
                     paylaod[target.name] = target.value;
                 }
             }
-            const { data } = await axios.post('http://localhost:4000/api/user/recovery', paylaod);
+            const { data } = await axios.post('/api/user/recovery', paylaod);
             Swal.fire({
                 title: '<strong>Recuperar Clave</strong>',
                 text: data.message,

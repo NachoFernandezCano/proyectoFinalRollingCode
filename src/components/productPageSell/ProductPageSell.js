@@ -9,7 +9,7 @@ const ProductPageSell = () => {
 
     const getCart = async () => {
         const token = localStorage.getItem("user");
-        const data = await axios.get("http://localhost:4000/api/cart/getCart", {
+        const data = await axios.get("/api/cart/getCart", {
             headers: { Authorization: token },
         });
         setCart(data.data.cart.products);

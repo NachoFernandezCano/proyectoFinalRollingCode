@@ -25,7 +25,7 @@ const Perfiluser = () => {
     const handleGetUserData = async (token) => {
         setloder(true);
         try {
-            const { data } = await axios.get("http://localhost:4000/api/user", { headers: { Authorization: token } });
+            const { data } = await axios.get("/api/user", { headers: { Authorization: token } });
             setperfilData(data.user);
             setloder(false);
         } catch (error) {
@@ -46,7 +46,7 @@ const Perfiluser = () => {
                     //target.value='';
                 }
             }
-            const { data } = await axios.patch("http://localhost:4000/api/user/update", paylaod, { headers: { Authorization: token } });
+            const { data } = await axios.patch("/api/user/update", paylaod, { headers: { Authorization: token } });
             Swal.fire({
                 title: '<strong>Leer Atte.</strong>',
                 html: '<i>' + data.message + '</i>',

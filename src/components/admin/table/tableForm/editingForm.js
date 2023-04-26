@@ -74,14 +74,14 @@ const EditingForm = (props) => {
         });
       }
       if (isEditingForm) {
-        await axios.put(`http://localhost:4000/api/user/editUser/${id}`, formData);
+        await axios.put(`/api/user/editUser/${id}`, formData);
         return Swal.fire({
           title: "<strong>Felicidades</strong>",
           html: "<i>Usuario editado correctamente</i>",
           icon: "success",
         });
       } else {
-        await axios.post("http://localhost:4000/api/user/register", formData);
+        await axios.post("/api/user/register", formData);
       }
       return Swal.fire({
         title: "<strong>Felicidades</strong>",

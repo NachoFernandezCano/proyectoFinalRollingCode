@@ -66,14 +66,14 @@ const EditingForm = (props) => {
     const id = productToEditId
     try {
       if (isEditingForm) {
-        await axios.put(`http://localhost:4000/api/products/editProducts/${id}`, formData);
+        await axios.put(`/api/products/editProducts/${id}`, formData);
         return Swal.fire({
           title: "<strong>Felicidades</strong>",
           html: "<i>Producto editado correctamente</i>",
           icon: "success",
         });
       } else {
-        await axios.post("http://localhost:4000/api/products/addProducts", formData);
+        await axios.post("/api/products/addProducts", formData);
       }
       return Swal.fire({
         title: "<strong>Felicidades</strong>",
@@ -84,6 +84,7 @@ const EditingForm = (props) => {
       console.error(error);
     }
   };
+
 
 
   return (

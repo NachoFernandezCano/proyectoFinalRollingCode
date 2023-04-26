@@ -25,7 +25,7 @@ const UsersTable = () => {
 
   const getUsers = async () => {
     try {
-      const info = await axios.get('http://localhost:4000/api/user/all', { params: { page } });
+      const info = await axios.get('/api/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
       setUsers(info.data.user)
     } catch (error) {
@@ -77,7 +77,7 @@ const UsersTable = () => {
 
   const confirmDelete = (deleteUser) => {
     const id = deleteUser
-    axios.delete(`http://localhost:4000/api/user/deleteUser/${id}`)
+    axios.delete(`/api/user/deleteUser/${id}`)
       .then((response) => {
         const filteredUsers = users.filter((user) => user._id !== deleteUser);
         setUsers(filteredUsers);

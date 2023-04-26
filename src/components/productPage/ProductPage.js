@@ -27,7 +27,7 @@ const ProductPage = ({ setProductQuantity }) => {
   const getProduct = async () => {
     try {
       const info = await axios.get(
-        `http://localhost:4000/api/products/getProduct/` + id
+        `/api/products/getProduct/` + id
       );
       setProduct(info.data.product);
       setImagenPrincipalProduct(info.data.product.image?.img1);
@@ -59,7 +59,7 @@ const ProductPage = ({ setProductQuantity }) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        const { data } = await axios.get("http://localhost:4000/api/user", {
+        const { data } = await axios.get("/api/user", {
           headers: { Authorization: token },
         });
         const addItem = {
@@ -68,7 +68,7 @@ const ProductPage = ({ setProductQuantity }) => {
           quantity: parseInt(quantity),
         };
         await axios.post(
-          "http://localhost:4000/api/cart/addToCart",
+          "/api/cart/addToCart",
           addItem
         );
         setProductQuantity(await getCartCount());
