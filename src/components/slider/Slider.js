@@ -19,7 +19,11 @@ const Slider = () => {
 
   const getSliderItem = async () => {
     try {
+<<<<<<< Updated upstream
       const hotItem = await axios.get('http://localhost:4000/products/hotItem');
+=======
+      const hotItem = await axios.get('/api/products/hotItem');
+>>>>>>> Stashed changes
       setsHotItem(hotItem.data.hotItem)
     } catch (error) {
       if (error?.response?.data?.error === 'There is nothing here') {

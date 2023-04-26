@@ -8,7 +8,11 @@ const CartPage = () => {
 
   const getCart = async () => {
     const token = localStorage.getItem("user");
+<<<<<<< Updated upstream
     const data = await axios.get("http://localhost:4000/cart/getCart", {
+=======
+    const data = await axios.get("/api/cart/getCart", {
+>>>>>>> Stashed changes
       headers: { Authorization: token },
     });
     setCart(data.data.cart.products);
@@ -17,12 +21,68 @@ const CartPage = () => {
 
   useEffect(() => {
     getCart();
+<<<<<<< Updated upstream
   }, []);
+=======
+  }, []); // eslint-disable-line
+
+  useEffect(() => {
+    const showCartQuantity = async () => {
+      setProductQuantity(await getCartCount());
+    };
+    showCartQuantity();
+  }, []); // eslint-disable-line
+
+  const handleBuy = async (userId) => {
+    try {
+      const token = localStorage.getItem("user");
+      const {data} = await axios.get("/api/cart/getCart", {headers: { Authorization: token },});
+      if(token){
+        const response = await axios.patch("/api/cart/buyCart", { userId: data.cart.user },  { headers: { Authorization: token } });
+        if(response.data.tipoerror === "si") {
+          setCart([])
+        } else {
+          alert(response.data.message);        
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    };
+  };
+>>>>>>> Stashed changes
 
   const handleDeleteProduct = async (product) => {
     try {
       const token = localStorage.getItem("user");
+<<<<<<< Updated upstream
       await axios.patch("http://localhost:4000/cart/", { productId: product._id }, { headers: { Authorization: token } })
+=======
+      if (token) {
+        await axios.delete("/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id } })
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Producto eliminado del Carrito",
+        });
+      } else {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>Para usar esta función primero debe iniciar sesión.</i>",
+          icon: "error",
+        });
+      }
+>>>>>>> Stashed changes
       getCart()
     } catch (error) {
       console.log(error)

@@ -11,7 +11,11 @@ export const CartProvider = ({ children }) => {
     const getCartCount = async () => {
         try {
             const token = localStorage.getItem('user');
+<<<<<<< Updated upstream
             const data = await axios.get("http://localhost:4000/cart/getCart", {headers:{Authorization: token}}); 
+=======
+            const data = await axios.get("/api/cart/getCart", { headers: { Authorization: token } });
+>>>>>>> Stashed changes
             setcartCount(data.cart);
             let count = 0 
             console.log(data)

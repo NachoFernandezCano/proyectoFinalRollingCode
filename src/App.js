@@ -13,6 +13,8 @@ import Error404 from "./components/error/Error404";
 import CartPage from "./components/cartPage/CartPage";
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
+import axios from "axios";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [productQuantity, setProductQuantity] = useState(0);

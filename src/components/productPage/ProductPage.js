@@ -33,7 +33,11 @@ const ProductPage = ({setProductQuantity}) => {
   const getProduct = async () => {
     try {
       const info = await axios.get(
+<<<<<<< Updated upstream
         `http://localhost:4000/products/getProduct/` + id
+=======
+        `/api/products/getProduct/` + id
+>>>>>>> Stashed changes
       );
       setProduct(info.data.product);
       setImagenPrincipalProduct(info.data.product.image?.img1);
@@ -66,7 +70,11 @@ const ProductPage = ({setProductQuantity}) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
+<<<<<<< Updated upstream
         const {data}  = await axios.get("http://localhost:4000/user", {
+=======
+        const { data } = await axios.get("/api/user", {
+>>>>>>> Stashed changes
           headers: { Authorization: token },
         });
         console.log("Data",data)
@@ -76,9 +84,14 @@ const ProductPage = ({setProductQuantity}) => {
           productId: id,
           quantity: parseInt(quantity),
         };
+<<<<<<< Updated upstream
         console.log("Item",addItem)
         const cart = await axios.post(
           "http://localhost:4000/cart/addToCart",
+=======
+        await axios.post(
+          "/api/cart/addToCart",
+>>>>>>> Stashed changes
           addItem
         );
         console.log("Respuesta de addToCart:", cart);

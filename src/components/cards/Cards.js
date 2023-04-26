@@ -35,7 +35,11 @@ const Cards = ({ setProductQuantity }) => {
   const getProduct = async () => {
     try {
       setIsLoading(true);
+<<<<<<< Updated upstream
       const info = await axios.get("http://localhost:4000/products/products", {
+=======
+      const info = await axios.get("/api/products/products", {
+>>>>>>> Stashed changes
         params: { page, category },
       });
       setPagesCount(info.data);
@@ -51,15 +55,56 @@ const Cards = ({ setProductQuantity }) => {
     }
   };
 
+<<<<<<< Updated upstream
   const handleGetOneProduct = (id) => {
     Navigate(`/productPage/${id}`);
   };
+=======
+
+  const favItem = async () => {
+    try {
+      const token = localStorage.getItem("user");
+      if (token) {
+        await axios.get("/api/user", {
+          headers: { Authorization: token },
+        });
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "info",
+          title: "Esta caracteristica aún no se encuentra disponible",
+        });
+      } else {
+        return Swal.fire({
+          title: "<strong>Error</strong>",
+          html: "<i>Para usar esta función primero debe iniciar sesión.</i>",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+>>>>>>> Stashed changes
 
   const handleAddProduct = async (id) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
+<<<<<<< Updated upstream
         const { data } = await axios.get("http://localhost:4000/user", {
+=======
+        const { data } = await axios.get("/api/user", {
+>>>>>>> Stashed changes
           headers: { Authorization: token },
         });
         const addItem = {
@@ -67,8 +112,13 @@ const Cards = ({ setProductQuantity }) => {
           productId: id,
           quantity: 1,
         };
+<<<<<<< Updated upstream
         const cart = await axios.post(
           "http://localhost:4000/cart/addToCart",
+=======
+        await axios.post(
+          "/api/cart/addToCart",
+>>>>>>> Stashed changes
           addItem
         );
         setProductQuantity(await getCartCount());

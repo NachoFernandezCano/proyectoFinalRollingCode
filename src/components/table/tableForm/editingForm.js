@@ -9,6 +9,85 @@ const EditingForm = (props) => {
     userToEdit: productToEdit,
     changeInputValue,
   } = props;
+<<<<<<< Updated upstream
+=======
+
+  const [formData, setFormData] = useState({
+    category: productToEdit?.category || '',
+    type: productToEdit?.type || '',
+    image: {
+      img1: productToEdit?.image?.img1 || '',
+      img2: productToEdit?.image?.img2 || '',
+      img3: productToEdit?.image?.img3 || ''
+    },
+    name: productToEdit?.name || '',
+    brand: productToEdit?.brand || '',
+    description: productToEdit?.description || '',
+    price: productToEdit?.price || '',
+    stock: productToEdit?.stock || '',
+  });
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name.startsWith("image.")) {
+      setFormData({
+        ...formData,
+        image: {
+          ...formData.image,
+          [name]: value,
+        },
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+
+  const handleImageChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        image: {
+          ...prevState.image,
+          [name]: value,
+        },
+      };
+    });
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const id = productToEditId
+    try {
+      if (isEditingForm) {
+        await axios.put(`/api/products/editProducts/${id}`, formData);
+        return Swal.fire({
+          title: "<strong>Felicidades</strong>",
+          html: "<i>Producto editado correctamente</i>",
+          icon: "success",
+        });
+      } else {
+        await axios.post("/api/products/addProducts", formData);
+      }
+      return Swal.fire({
+        title: "<strong>Felicidades</strong>",
+        html: "<i>Producto creado correctamente</i>",
+        icon: "success",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+>>>>>>> Stashed changes
   return (
     <div className="formContainer">
       <form onSubmit={handleSubmit}>

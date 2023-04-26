@@ -51,7 +51,11 @@ const Header = ({productQuantity}) => {
 
   const handleVerifyJwt = async (token) => {
     try {
+<<<<<<< Updated upstream
       const { data } = await axios.get("http://localhost:4000/user", { headers: { Authorization: token } });
+=======
+      const { data } = await axios.get("/api/user", { headers: { Authorization: token } });
+>>>>>>> Stashed changes
       autoLogin(data.user);
     } catch (error) {
       Swal.fire({
@@ -87,7 +91,11 @@ const Header = ({productQuantity}) => {
           paylaod[target.name] = target.value;
         }
       }
+<<<<<<< Updated upstream
       const { data } = await axios.post('http://localhost:4000/user/auth', paylaod);
+=======
+      const { data } = await axios.post('/api/user/auth', paylaod);
+>>>>>>> Stashed changes
       setuserName(data.dataUser.nombre);
       localStorage.setItem('user', data.token);
       handleLoadCart();
@@ -158,7 +166,11 @@ const Header = ({productQuantity}) => {
         }
       }
       paylaod["type"] = "user";
+<<<<<<< Updated upstream
       const { data } = await axios.post('http://localhost:4000/user/register', paylaod);
+=======
+      const { data } = await axios.post('/api/user/register', paylaod);
+>>>>>>> Stashed changes
       Swal.fire({
         title: '<strong>Resgistro de Usuarios</strong>',
         html: '<i>' + data.message + '</i>',

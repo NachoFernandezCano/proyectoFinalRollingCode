@@ -17,7 +17,11 @@ const Featured = () => {
   const getHotItem = async () => {
     try {
       setIsLoading(true);
+<<<<<<< Updated upstream
       const hotItem = await axios.get('http://localhost:4000/products/hotItem');
+=======
+      const hotItem = await axios.get('/api/products/hotItem');
+>>>>>>> Stashed changes
       setHot(hotItem.data.hotItem)
       setIsLoading(false);
     } catch (error) {

@@ -4,120 +4,104 @@ import CreateModal from "./modals/createModal";
 import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
-import "./table.css";
+import "./UsersTable.css";
 import axios from "axios";
 
-const Table = () => {
-  const [products, setProducts] = useState([]);
-  const [productToEdit, setProductToEdit] = useState({});
-  const [deleteProduct, setDeleteProduct] = useState({});
+const UsersTable = () => {
+  const [users, setUsers] = useState([]);
+  const [userToEdit, setUserToEdit] = useState({});
+  const [deleteUser, setDeleteUser] = useState({});
 
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
-    getProduct();
-  }, [page]);
+    getUsers();
+  }, [page]); // eslint-disable-line
 
-  const getProduct = async () => {
+
+  const getUsers = async () => {
     try {
-<<<<<<< Updated upstream
-      setIsLoading(true);
-      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
-      console.log(info);
-=======
-      const info = await axios.get('/api/products/products', { params: { page } });
->>>>>>> Stashed changes
+      const info = await axios.get('/api/user/all', { params: { page } });
       setPagesCount(info.data.totalPages);
-      setProducts(info.data.docs)
-      setIsLoading(false);
+      setUsers(info.data.user)
     } catch (error) {
-      if (error?.response?.data?.error === 'No se encontraron productos') {
-        setProducts([]);
+      if (error?.response?.data?.error === 'No se encontraron usuarios') {
+        setUsers([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
-      setIsLoading(false);
     }
   };
+
 
   const generateId = function () {
     return "_" + Math.random().toString(36).substr(2, 9);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const product = { id: generateId() };
+    const user = { id: generateId() };
     for (const target of e.target) {
       if (target.type !== "submit") {
-        product[target.name] = target.value;
+        user[target.name] = target.value;
         target.value = "";
       };
     };
-    setProducts([...products, product]);
+    setUsers([...user, user]);
     setCreateModalShow(false);
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
-    const newProduct = { id: productToEdit.id };
+    const newProduct = { id: userToEdit.id };
     for (const target of e.target) {
       if (target.type !== "submit") {
         newProduct[target.name] = target.value;
         target.value = "";
       }
     }
-    const newProducts = products.map((product) => {
-      if (product.id === newProduct.id) return newProduct;
-      return product;
+    const newUsers = users.map((user) => {
+      if (user.id === newUsers.id) return newUsers;
+      return newUsers;
     });
-    setProducts(newProducts);
+    setUsers(newUsers);
     setEditModalShow(false);
   };
-  const handleDelete = (product) => {
-    setDeleteProduct(product);
+  const handleDelete = (user) => {
+    setDeleteUser(user._id);
     setDModalShow(true);
   };
 
-<<<<<<< Updated upstream
-  const confirmDelete = (id) => {
-    const filteredProducts = products.filter((product) => product.id !== deleteProduct.id);
-    setProducts(filteredProducts);
-    setDModalShow(false);
-  }
-=======
-  const confirmDelete = (deleteProduct) => {
-    const id = deleteProduct
-    axios.delete(`/api/products/deleteProduct/${id}`)
+  const confirmDelete = (deleteUser) => {
+    const id = deleteUser
+    axios.delete(`/api/user/deleteUser/${id}`)
       .then((response) => {
-        const filteredProducts = products.filter((product) => product._id !== deleteProduct);
-        setProducts(filteredProducts);
+        const filteredUsers = users.filter((user) => user._id !== deleteUser);
+        setUsers(filteredUsers);
         setDModalShow(false);
       })
       .catch((error) => {
         console.error(error);
       });
   };
->>>>>>> Stashed changes
 
-  const editTrigger = (editingProduct) => {
-    setProductToEdit(editingProduct);
+  const editTrigger = (editingUser) => {
+    setUserToEdit(editingUser);
     setEditModalShow(true);
   };
 
   const changeInputValue = (e) => {
-    setProductToEdit({ ...productToEdit, [e.target.name]: e.target.value });
+    setUserToEdit({ ...userToEdit, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="homeContainer">
       <div className="tableContainer">
         <TableBody
-          data={products}
+          data={users}
           deleteModalShow={deleteModalShow}
           setDModalShow={setDModalShow}
           handleDelete={handleDelete}
@@ -130,7 +114,7 @@ const Table = () => {
           variant="success"
           onClick={() => setCreateModalShow(true)}
         >
-          Crear producto
+          Crear usuario
         </Button>
       </div>
       <div className="tablePagination">
@@ -161,7 +145,8 @@ const Table = () => {
         setEditModalShow={setEditModalShow}
         handleSubmit={handleEdit}
         isEditingForm={true}
-        userToEdit={productToEdit}
+        userToEdit={userToEdit}
+        userToEditId={userToEdit._id}
         changeInputValue={changeInputValue}
       />
       <DeleteModal
@@ -169,8 +154,9 @@ const Table = () => {
         setDModalShow={setDModalShow}
         handleDelete={handleDelete}
         confirmDelete={confirmDelete}
+        deleteUserId={deleteUser}
       />
     </div>
   );
 };
-export default Table;
+export default UsersTable;

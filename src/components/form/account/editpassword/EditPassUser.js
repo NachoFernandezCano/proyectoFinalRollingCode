@@ -25,8 +25,12 @@ const EditPassUser = () => {
                 }
             }
             paylaod['token'] = window.location.hash.substr(1);
+<<<<<<< Updated upstream
             console.log(paylaod);
             const { data } = await axios.post('http://localhost:4000/api/user/editpass', paylaod);
+=======
+            const { data } = await axios.post('/api/user/editpass', paylaod);
+>>>>>>> Stashed changes
             Swal.fire({
                 title: '<strong>Recuperar Clave</strong>',
                 text: data.message,
