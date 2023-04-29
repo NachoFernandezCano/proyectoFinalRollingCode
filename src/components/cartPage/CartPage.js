@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'config/axiosInit';
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./cartPage.css";

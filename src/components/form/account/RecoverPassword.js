@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'config/axiosInit';
 import React, { useState } from 'react'
 import { Button, Form, Image } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';

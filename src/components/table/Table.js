@@ -5,7 +5,7 @@ import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
 import "./table.css";
-import axios from "axios";
+import axios from 'config/axiosInit';
 
 const Table = () => {
   const [products, setProducts] = useState([]);

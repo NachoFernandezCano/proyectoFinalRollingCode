@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import axios from 'axios';
+import axios from 'config/axiosInit';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -52,7 +52,7 @@ const Slider = () => {
       >
         {
           (
-            sHotItem.length !== 0 ? (
+            sHotItem?.length !== 0 ? (
               sHotItem?.map((product) => (
                 <SwiperSlide>
                   <Card className='cardP'>

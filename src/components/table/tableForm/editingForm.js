@@ -1,6 +1,6 @@
 import React from "react";
 import './editingForm.css';
-import axios from "axios";
+import axios from 'config/axiosInit';
 import { useState } from "react";
 import Swal from "sweetalert2";
 

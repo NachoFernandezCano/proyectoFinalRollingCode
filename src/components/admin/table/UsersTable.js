@@ -5,7 +5,7 @@ import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
 import "./UsersTable.css";
-import axios from "axios";
+import axios from 'config/axiosInit';
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);

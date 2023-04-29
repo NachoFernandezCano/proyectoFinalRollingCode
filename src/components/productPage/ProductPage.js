@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Modal } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+import axios from 'config/axiosInit';
 import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 import "./productPage.css";
 import Amex from "../../assets/images/mediosDePago/Amex.svg";
