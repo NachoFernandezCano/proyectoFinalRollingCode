@@ -1,6 +1,6 @@
 import React from "react";
 import './editingForm.css';
-import axios from "axios";
+import axios from 'config/axiosInit';
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -66,13 +66,6 @@ const EditingForm = (props) => {
     e.preventDefault();
     const id = userToEditId
     try {
-      if (formData.password !== formData.repPassword) {
-        return Swal.fire({
-          title: "<strong>Error</strong>",
-          html: "<i>Las contraseñas no coinciden</i>",
-          icon: "error",
-        });
-      }
       if (isEditingForm) {
         await axios.put(`/api/user/editUser/${id}`, formData);
         return Swal.fire({

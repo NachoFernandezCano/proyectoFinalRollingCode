@@ -16,8 +16,6 @@ import ProductPageSell from "./components/productPageSell/ProductPageSell";
 import SellPage from "./components/sellPage/SellPage"
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
-import axios from "axios";
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [productQuantity, setProductQuantity] = useState(0);

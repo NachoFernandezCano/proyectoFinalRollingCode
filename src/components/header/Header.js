@@ -18,7 +18,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Swal from 'sweetalert2';
-import axios from 'axios';
+import axios from 'config/axiosInit';
 import { useNavigate, Link } from 'react-router-dom';
 import ModalLogin from '../form/Modal/ModalLogin';
 

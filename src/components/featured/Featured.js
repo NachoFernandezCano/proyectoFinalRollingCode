@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Col, Row } from 'react-bootstrap';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-import axios from 'axios';
+import axios from 'config/axiosInit';
 import { useState, useEffect } from 'react';
 import '../cards/cards.css';
 import './featured.css';

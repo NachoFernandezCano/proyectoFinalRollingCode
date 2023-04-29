@@ -4,7 +4,7 @@ import { FaHeart, FaShoppingCart, FaHeadset } from "react-icons/fa";
 import { FiMonitor, FiWatch, FiMoreHorizontal } from "react-icons/fi";
 import { GiSmartphone } from "react-icons/gi";
 import { BsLaptop } from "react-icons/bs";
-import axios from "axios";
+import axios from 'config/axiosInit';
 import { useState, useEffect } from "react";
 import Loader from "../util/loader/Loader";
 import Swal from "sweetalert2";
