@@ -36,7 +36,7 @@ const Featured = () => {
       <Row xs={2} sm={3} md={3} lg={5} className='g-0 justify-content-between rowContainer'>
         {
           !isLoading ? (
-            hot.length !== 0 ? (
+            hot?.length !== 0 ? (
               hot?.map((product) => (
                 <Col key={hot._id}>
                   <Card className='cardProduct'>
