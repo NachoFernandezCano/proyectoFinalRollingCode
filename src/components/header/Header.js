@@ -306,6 +306,7 @@ const Header = ({ productQuantity }) => {
                 <Nav.Link href='/'>Home</Nav.Link>
                 <Nav.Link href='/hotItems'>Destacados</Nav.Link>
                 <Nav.Link href='/Error404'>Contactanos</Nav.Link>
+                <Nav.Link href="/Comprar">Carrito de Compras</Nav.Link>
                 <Nav.Item>
                   <div>
                     <input placeholder='Buscar producto' className='ps-1' />
