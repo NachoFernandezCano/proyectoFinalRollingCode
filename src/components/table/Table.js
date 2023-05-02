@@ -5,36 +5,40 @@ import EditModal from "./modals/editModal";
 import DeleteModal from "./modals/deleteModal";
 import TableBody from "./tableBody/tableBody";
 import "./table.css";
-import axios from 'config/axiosInit';
+import axios from "axios";
 
 const Table = () => {
   const [products, setProducts] = useState([]);
   const [productToEdit, setProductToEdit] = useState({});
-  const [productToEditId, setProductToEditId] = useState({});
   const [deleteProduct, setDeleteProduct] = useState({});
 
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
     getProduct();
-  }, [page]);  // eslint-disable-line
+  }, [page]);
 
   const getProduct = async () => {
     try {
-      const info = await axios.get('/api/products/products', { params: { page } });
+      setIsLoading(true);
+      const info = await axios.get('http://localhost:4000/products/products', { params: { page } });
+      console.log(info);
       setPagesCount(info.data.totalPages);
-      setProducts(info.data)
+      setProducts(info.data.docs)
+      setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.error === 'No se encontraron productos') {
         setProducts([]);
       } else {
         alert('Algo salio mal intente mas tarde');
       }
+      setIsLoading(false);
     }
   };
 
@@ -56,110 +60,104 @@ const Table = () => {
 
   const handleEdit = (e) => {
     e.preventDefault();
+    const newProduct = { id: productToEdit.id };
     for (const target of e.target) {
       if (target.type !== "submit") {
-        setProductToEdit({
-          ...productToEdit,
-          [target.name]: target.value
-        });
+        newProduct[target.name] = target.value;
         target.value = "";
       }
     }
     const newProducts = products.map((product) => {
-      if (product._id === productToEdit._id) {
-        return productToEdit;
-      } else {
-        return product;
-      }
+      if (product.id === newProduct.id) return newProduct;
+      return product;
     });
     setProducts(newProducts);
     setEditModalShow(false);
   };
-
   const handleDelete = (product) => {
-    setDeleteProduct(product._id);
+    setDeleteProduct(product);
     setDModalShow(true);
   };
 
-  const confirmDelete = (deleteProduct) => {
-    const id = deleteProduct
-    axios.delete(`/api/products/deleteProduct/${id}`)
-      .then((response) => {
-        const filteredProducts = products.filter((product) => product._id !== deleteProduct);
-        setProducts(filteredProducts);
-        setDModalShow(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  const confirmDelete = (id) => {
+    const filteredProducts = products.filter((product) => product.id !== deleteProduct.id);
+    setProducts(filteredProducts);
+    setDModalShow(false);
+  }
 
-  const editTrigger = (product) => {
-    setProductToEdit(product);
-    setProductToEditId(product._id);
+  const editTrigger = (editingProduct) => {
+    setProductToEdit(editingProduct);
     setEditModalShow(true);
   };
 
+  const changeInputValue = (e) => {
+    setProductToEdit({ ...productToEdit, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div className="homeContainer">
-      <div className="tableContainer">
-        <TableBody
-          data={products}
+    <>
+      <div className="homeContainer">
+        <div className="tableContainer">
+          <TableBody
+            data={products}
+            deleteModalShow={deleteModalShow}
+            setDModalShow={setDModalShow}
+            handleDelete={handleDelete}
+            editTrigger={editTrigger}
+          />
+        </div>
+        <div className="createBtnContainer d-flex justify-content-end align-items-center">
+          <Button
+            id="createBtn"
+            variant="success"
+            onClick={() => setCreateModalShow(true)}
+          >
+            Crear producto
+          </Button>
+        </div>
+        <div className="tablePagination">
+          <div className="tablePaginationBtn">
+            <Button
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              {'<'}
+            </Button>
+            <b>Página {page}</b>
+            <Button
+              onClick={() => setPage(page + 1)}
+              disabled={page === pagesCount}
+            >
+              {'>'}
+            </Button>
+          </div>
+        </div>
+        <div className="mobileContainer">
+          <h2>Tabla no disponible para dispositivos moviles</h2>
+        </div>
+
+
+        <CreateModal
+          createModalShow={createModalShow}
+          setCreateModalShow={setCreateModalShow}
+          handleSubmit={handleSubmit}
+        />
+        <EditModal
+          editModalShow={editModalShow}
+          setEditModalShow={setEditModalShow}
+          handleSubmit={handleEdit}
+          isEditingForm={true}
+          userToEdit={productToEdit}
+          changeInputValue={changeInputValue}
+        />
+        <DeleteModal
           deleteModalShow={deleteModalShow}
           setDModalShow={setDModalShow}
           handleDelete={handleDelete}
-          editTrigger={editTrigger}
+          confirmDelete={confirmDelete}
         />
       </div>
-      <div className="createBtnContainer d-flex justify-content-end align-items-center">
-        <Button
-          id="createBtn"
-          variant="success"
-          onClick={() => setCreateModalShow(true)}
-        >
-          Crear producto
-        </Button>
-      </div>
-      <div className="tablePagination">
-        <div className="tablePaginationBtn">
-          <Button
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            {'<'}
-          </Button>
-          <b>Página {page}</b>
-          <Button
-            onClick={() => setPage(page + 1)}
-            disabled={page === pagesCount}
-          >
-            {'>'}
-          </Button>
-        </div>
-      </div>
-
-      <CreateModal
-        createModalShow={createModalShow}
-        setCreateModalShow={setCreateModalShow}
-        handleSubmit={handleSubmit}
-      />
-      <EditModal
-        editModalShow={editModalShow}
-        setEditModalShow={setEditModalShow}
-        handleSubmit={handleEdit}
-        isEditingForm={true}
-        productToEdit={productToEdit}
-        productToEditId={productToEditId}
-      />
-      <DeleteModal
-        deleteModalShow={deleteModalShow}
-        setDModalShow={setDModalShow}
-        handleDelete={handleDelete}
-        confirmDelete={confirmDelete}
-        deleteProductId={deleteProduct}
-      />
-    </div>
+    </>
   );
 };
 export default Table;

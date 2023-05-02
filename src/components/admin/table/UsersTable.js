@@ -134,6 +134,9 @@ const UsersTable = () => {
           </Button>
         </div>
       </div>
+      <div className="mobileContainer">
+        <h2>Tabla no disponible para dispositivos moviles</h2>
+      </div>
 
       <CreateModal
         createModalShow={createModalShow}
