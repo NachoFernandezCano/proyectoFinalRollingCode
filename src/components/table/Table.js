@@ -16,13 +16,13 @@ const Table = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [deleteModalShow, setDModalShow] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [ setIsLoading ] = useState(false);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
     getProduct();
-  }, [page]);
+  }, [page]); // eslint-disable-line
 
   const getProduct = async () => {
     try {
