@@ -120,7 +120,7 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
           <div className="form__erroricon">
             <FiAlertCircle className='alertIcon'/>
           </div>
-          <p ref={smallsEmail} class="form__message"></p>
+          <p ref={smallsEmail} className="form__message"></p>
         </Form.Group>
         <Form.Group className="form__group" controlId="formBasicPassword">
           <Form.Label className='form__label'>Password</Form.Label>
@@ -141,7 +141,7 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
           <div className="form__erroricon">
             <FiAlertCircle className='alertIcon'/>
           </div>
-          <p ref={smallsPass} class="form__message"></p>
+          <p ref={smallsPass} className="form__message"></p>
         </Form.Group>
         <Form.Group className="d-flex justify-content-between" controlId="formBasicCheckbox">
           <Form.Check className="checkBx" type="checkbox" label="Recuérdame" />
@@ -154,7 +154,7 @@ const LoginForm = ({ handleLogin, setloaderUser, setShow }) => {
         )
         }
         <Form.Group className="mb-3 d-flex justify-content-center mt-2" controlId="formBasicButton">
-          <Button id='btnLogin' type="submit" controlId="btingresar" disabled={disableBtn}>
+          <Button id='btnLogin' type="submit" disabled={disableBtn}>
             < FiLogIn id='btnLogo' />
             {' '}Ingresar
           </Button>

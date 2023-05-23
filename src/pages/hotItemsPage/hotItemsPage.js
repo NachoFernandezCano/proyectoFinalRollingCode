@@ -6,6 +6,6 @@ const HotItems = () => {
       <Featured />
     </>
   );
-}
+};
 
 export default HotItems;

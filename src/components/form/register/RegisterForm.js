@@ -8,17 +8,17 @@ const RegisterForm = ({ setloaderRegister, handleRegister }) => {
   return (
     <>
       <Form onSubmit={handleRegister}>
-        <Form.Group controlId="formBasicNombre">
+        <Form.Group controlId="formRegNombre">
           <Form.Label className='labelStyles'>Nombre</Form.Label>
           <Form.Control className='inputStyles' size='lg' type="text" name='nombre' placeholder="Nombre"
             minLength={3} maxLength={30} required />
         </Form.Group>
-        <Form.Group controlId="formBasicNombre">
+        <Form.Group controlId="formRegApellido">
           <Form.Label className='labelStyles'>Apellido</Form.Label>
           <Form.Control className='inputStyles' size='lg' type="text" name='apellido'
             minLength={3} maxLength={30} placeholder="Apellido" required />
         </Form.Group>
-        <Form.Group className="registerFormGroup" controlId="formBasicNombre">
+        <Form.Group className="registerFormGroup" controlId="formRegDir">
           <Form.Label className='labelStyles'>Dirección</Form.Label>
           <Form.Control name='direccion[calle]' className='inputStyles' size='lg' placeholder="Calle" minLength={3} maxLength={30} />
           <Form.Control name='direccion[nro]' className='inputStyles' size='lg' placeholder="Número" minLength={1} maxLength={10} />

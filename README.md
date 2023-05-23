@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+QUANTUM TECNO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Descripción:
+    Proyecto final del cursado correspondiente al curso de Fullstack developer de la academia Rolling Code School.
+    Este proyecto es un e-commerce desarrollado con React que permite a los usuarios explorar productos, agregarlos al carrito de compras y realizar pedidos.
 
-## Available Scripts
+Características:
+    Registrarse como usuario e ingresar con cuenta propia.
+    Explorar productos por categorías.
+    Ver productos destacados.
+    Ver detalles de un producto específico.
+    Agregar productos al carrito de compras.
+    Realizar pedidos y finalizar la compra.
+    Administrar el inventario de productos al loguearse como administrador.
+    Administrar la lista de usuarios registrados al loguearse como administrador.
 
-In the project directory, you can run:
+Instalación:
+    1-Clona este repositorio en tu máquina local.
+        bash: git clone https://github.com/tu-usuario/tu-repositorio.git
+    2-Navega al directorio del proyecto.
+        bash: cd ecommerce-react
+    3-Instala las dependencias del proyecto.
+        npm install
+    4-Inicia la aplicación.
+        npm start
 
-### `npm start`
+Tecnologías utilizadas:
+    React
+    HTML
+    CSS
+    JavaScript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Estructura de archivos:
+|── public
+│   ├── index.html
+│   └── logo.jpg
+├── src
+|   |__ assets
+|   |   ├──images
+|   |   ├──advertisement
+|   |   ├──extras
+|   |   ├──ediosDePago
+|   |   ├──products
+|   |   ├──logo.jpg
+|   |   ├──logo.png 
+|   |   ├──qrcode.npg
+|   |   └─user_icon.png
+|   |
+│   ├── components
+│   │   ├── admin
+|   |   |   ├──perfil
+|   |   |   |   ├─ perfil.css
+|   |   |   |   └─ Perfiluser.js
+|   |   |   ├──table
+|   |   |   |   ├─ modals
+|   |   |   |   |   ├─createModal.js
+|   |   |   |   |   ├─deleteModal.js
+|   |   |   |   |   ├─editModal.js
+|   |   |   |   |   └─modals.css
+|   |   |   |   ├─ tableBody
+|   |   |   |   |   ├─tableBody.css
+|   |   |   |   |   └─ tableBody.js
+|   |   |   |   ├─ tableForm
+|   |   |   |   |   ├─editingForm.css
+|   |   |   |   |   └─editingForm.js
+|   |   |   |   ├─ UsersTable.css
+|   |   |   |   └─ UsersTable.js
+|   |   |   ├──user
+|   |   |   |   └─Usuarios.js
+|   |   |   └─Administrator.js
+│   │   ├─ advertisement
+|   |   |   ├─ advertisement.css
+|   |   |   └─ Advertisement.js
+│   │   ├── cards
+|   |   |   ├─ buttonGroup.css
+|   |   |   ├─ cards.css
+|   |   |   └─ Cards.js
+|   |   ├── cartPage
+|   |   |   ├─ cartPage.css
+|   |   |   └─ CartPage.js
+|   |   ├── error
+|   |   |   ├─ error404.css
+|   |   |   └─ Error404.js
+|   |   ├── featured
+|   |   |   ├─ featured.css
+|   |   |   └─ Featured.js
+|   |   ├── footer
+|   |   |   ├─ footer.css
+|   |   |   └─ Footer.js
+|   |   ├── form
+|   |   |   ├─ account
+|   |   |   |   ├─ editpassword
+|   |   |   |   |   ├─EditPassUser.js
+|   |   |   |   |   └─editpassword.css
+|   |   |   |   ├─  recoveri.css
+|   |   |   |   └─  RecoverPassword.js
+|   |   |   ├─ login
+|   |   |   |   ├─ login.css
+|   |   |   |   └─LoginForm.js
+|   |   |   ├─ Modal
+|   |   |   |   ├─ modallogin.css
+|   |   |   |   └─ ModalLogin.js
+|   |   |   └─ register
+|   |   |      ├─ registerForm.css
+|   |   |      └─ RegisterForm.js
+|   |   ├── header
+|   |   |   ├─ header.css
+|   |   |   └─ Header.js
+|   |   ├── home
+|   |   |   ├─ home.css
+|   |   |   └─ Home.js
+|   |   ├── productPage
+|   |   |   ├─ productPage.css
+|   |   |   └─ ProductPage.js
+|   |   ├──productPageSell
+|   |   |   ├─ productPageSell.css
+|   |   |   └─ ProductPageSell.js
+|   |   ├──sellPage
+|   |   |   ├─ sellPage.css
+|   |   |   └─ SellPage.js
+|   |   ├──slider
+|   |   |   ├─ Slider.css
+|   |   |   └─ Slider.js
+|   |   ├──table
+|   |   |   ├─ modals
+|   |   |   |   ├─ createModal.js
+|   |   |   |   ├─ deleteModal.js
+|   |   |   |   ├─ editModal.js
+|   |   |   |   └─ modals.js
+|   |   |   ├─ tableBody
+|   |   |   |   ├─ tableBody.css
+|   |   |   |   └─ tableBody.js
+|   |   |   ├─ tableForm
+|   |   |   |   ├─ editingForm.css
+|   |   |   |   └─ editingForm.js
+|   |   |   ├─ table.css
+|   |   |   └─ Table.js
+|   |   └─ util
+|   |       ├─ loader
+|   |       |   ├─ loader.css
+|   |       |   └─ Loader.js
+|   |       ├─ menu
+|   |       |   ├─ menu.css
+|   |       |   └─ Menu.js
+|   |       └─ searchbar
+|   |           ├─ searchbar.css
+|   |           └─ Searchbar.js
+|   ├── config
+|   |    └─ axiosInit.js
+|   ├── context
+|   |    └─ cartContext.js
+│   ├── pages
+│   │   ├─ homePage
+|   |   |   └─ homePage.js
+│   │   └─ hotItemsPage
+|   |       └─ hotItemsPage.js
+│   ├── App.js
+|   ├── index.css
+│   └── index.js
+└── READE.md
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Autores:
+    -José Ignacio Fernández Cano
+    -Ariel David Gomez
+    -Martin Gomez
+    -Cintya Alexia Tonin Elias 
 
-### `npm test`
+Licencia:
+    Todos los derechos de autor de los recursos utilizados en este proyecto, como imágenes, logotipos y marcas registradas, pertenecen a sus respectivos dueños. Estos recursos se utilizan únicamente con fines ilustrativos y para mejorar la experiencia del usuario. Si crees que se han infringido tus derechos de autor, por favor contáctanos y tomaremos las medidas correspondientes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Recursos adicionales:
+    Repositorio Backend: https://github.com/arieldg39/proyectofinalbackend

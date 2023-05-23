@@ -54,7 +54,7 @@ const Slider = () => {
           (
             sHotItem?.length !== 0 ? (
               sHotItem?.map((product) => (
-                <SwiperSlide>
+                <SwiperSlide key={product._id}>
                   <Card className='cardP'>
                     <div className='sImgContainer'>
                       <Card.Img variant='top'
