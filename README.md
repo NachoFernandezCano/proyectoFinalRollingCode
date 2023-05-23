@@ -169,4 +169,4 @@ Licencia:
     Todos los derechos de autor de los recursos utilizados en este proyecto, como imágenes, logotipos y marcas registradas, pertenecen a sus respectivos dueños. Estos recursos se utilizan únicamente con fines ilustrativos y para mejorar la experiencia del usuario. Si crees que se han infringido tus derechos de autor, por favor contáctanos y tomaremos las medidas correspondientes.
 
 Recursos adicionales:
-    Repositorio Backend: https://github.com/arieldg39/proyectofinalbackend
+    Repositorio Backend: https://github.com/NachoFernandezCano/backProyectofinal

@@ -3,7 +3,6 @@ import "./footer.css";
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 import Logo from "../../assets/images/logo.jpg";
 import qrCode from "../../assets/images/qrcode.png";
-import Loader from "components/util/loader/Loader";
 
 const Footer = () => {
   return (
