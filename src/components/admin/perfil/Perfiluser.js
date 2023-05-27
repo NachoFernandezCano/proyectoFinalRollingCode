@@ -1,5 +1,5 @@
 import { FaIdCardAlt, FaSave, FaArrowAltCircleLeft } from "react-icons/fa";
-import axios from "axios";
+import axios from "../../../config/axiosInit";
 import React, { useEffect, useState } from "react";
 import { Form, Card, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,8 @@ import "./perfil.css";
 import Loader from "../../util/loader/Loader";
 
 const Perfiluser = () => {
-  const [perfilData, setperfilData] = useState([]);
-  const [loder, setloder] = useState(false);
+  const [perfilData, setPerfilData] = useState({});
+  const [loader, setLoader] = useState(false);
 
   let navitage = useNavigate();
 
@@ -19,19 +19,28 @@ const Perfiluser = () => {
   }, []);
 
   const handleGetUserData = async (token) => {
-    setloder(true);
+    setLoader(true);
     try {
       const { data } = await axios.get("/api/user", {
         headers: { Authorization: token },
       });
-      setperfilData(data.user);
-      setloder(false);
+      setPerfilData(data.user);
+      setLoader(false);
     } catch (error) {
       if (error.response.data.tipoerror === "tokenexp") {
       }
       console.log(error);
     }
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPerfilData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const handleGrabar = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("user");
@@ -40,7 +49,6 @@ const Perfiluser = () => {
       for (const target of e.target) {
         if (target.type !== "submit") {
           paylaod[target.name] = target.value;
-          //target.value='';
         }
       }
       const { data } = await axios.patch("/api/user/update", paylaod, {
@@ -66,7 +74,7 @@ const Perfiluser = () => {
   return (
     <>
       <div className="upContainer container-fluid col-8 mt-4 mb-4">
-        {loder ? (
+        {loader ? (
           <Loader />
         ) : (
           <Card>
@@ -86,6 +94,7 @@ const Perfiluser = () => {
                       name="nombre"
                       placeholder="Nombre"
                       defaultValue={perfilData?.nombre}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridApellido">
@@ -95,6 +104,7 @@ const Perfiluser = () => {
                       placeholder="Apellido"
                       name="apellido"
                       defaultValue={perfilData?.apellido}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridEmail">
@@ -102,18 +112,20 @@ const Perfiluser = () => {
                     <Form.Control
                       type="email"
                       placeholder="Email"
-                      name="txtemail"
-                      value={perfilData?.email}
+                      name="email"
+                      defaultValue={perfilData?.email}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                 </Row>
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                   <Form.Label>Calle</Form.Label>
                   <Form.Control
-                    type=""
+                    type="text"
                     placeholder="Ej: San Martin"
                     name="calle"
-                    defaultValue={perfilData.direccion?.calle}
+                    defaultValue={perfilData?.direccion?.calle}
+                    onChange={handleInputChange}
                   />
                 </Form.Group>
                 <Row className="perfilForm">
@@ -123,25 +135,18 @@ const Perfiluser = () => {
                       type="number"
                       placeholder="Ej: 320"
                       name="nro"
-                      defaultValue={perfilData.direccion?.nro}
+                      defaultValue={perfilData?.direccion?.nro}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridAddress2">
                     <Form.Label className="pe-2">Dpto.</Form.Label>
                     <Form.Control
-                      type="number"
+                      type="text"
                       placeholder="Ej: 10"
                       name="dpto"
-                      defaultValue={perfilData.direccion?.dpto}
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} controlId="formGridAddress2">
-                    <Form.Label className="pe-2">Barrio</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ej: Oeste 2"
-                      name="barrio"
-                      defaultValue={perfilData.direccion?.barrio}
+                      defaultValue={perfilData?.direccion?.dpto}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                 </Row>
@@ -152,7 +157,8 @@ const Perfiluser = () => {
                       type="text"
                       placeholder="Ej: Tucumán"
                       name="provincia"
-                      defaultValue={perfilData.ubicacion?.provincia}
+                      defaultValue={perfilData?.direccion?.provincia}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridState">
@@ -161,7 +167,8 @@ const Perfiluser = () => {
                       type="text"
                       placeholder="Ej: Capital"
                       name="localidad"
-                      defaultValue={perfilData.ubicacion?.localidad}
+                      defaultValue={perfilData?.direccion?.localidad}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridZip">
@@ -170,7 +177,8 @@ const Perfiluser = () => {
                       type="number"
                       placeholder="Ej: 4000"
                       name="codigopostal"
-                      defaultValue={perfilData.ubicacion?.codigopostal}
+                      defaultValue={perfilData?.direccion?.codigopostal}
+                      onChange={handleInputChange}
                     />
                   </Form.Group>
                 </Row>

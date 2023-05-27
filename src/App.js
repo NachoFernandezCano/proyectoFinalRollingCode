@@ -5,7 +5,6 @@ import Header from "./components/header/Header";
 import Homepage from "./pages/homePage/homePage";
 import RecoverPassword from "./components/form/account/RecoverPassword";
 import EditPassUser from "./components/form/account/editpassword/EditPassUser";
-import Perfil from "./components/admin/perfil/Perfiluser";
 import ProductPage from "./components/productPage/ProductPage";
 import Table from "./components/table/Table";
 import UserTable from "./components/admin/table/UsersTable";
@@ -16,6 +15,7 @@ import ProductPageSell from "./components/productPageSell/ProductPageSell";
 import SellPage from "./components/sellPage/SellPage"
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
+import Perfiluser from "./components/admin/perfil/Perfiluser";
 
 function App() {
   const [productQuantity, setProductQuantity] = useState(0);
@@ -34,7 +34,7 @@ function App() {
             <Route path="/CartPage" element={<CartPage setProductQuantity={setProductQuantity} />} />
             <Route path="/RecoverPassword" element={<RecoverPassword />} />
             <Route path="/EditPassword" element={<EditPassUser />} />
-            <Route path="/Perfil" element={<Perfil />} />
+            <Route path="/Perfil" element={<Perfiluser />} />
             <Route path="/ProductsTable" element={<Table />} />
             <Route path="/UsersTable" element={<UserTable />} />
             <Route path="/HotItems" element={<HotItems />} />
