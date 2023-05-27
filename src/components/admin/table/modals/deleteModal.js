@@ -7,10 +7,10 @@ const deleteModal = ({ deleteModalShow, setDModalShow, handleDelete, confirmDele
   return (
     <Modal id="deletModal" show={deleteModalShow} onHide={() => setDModalShow(false)} >
       <Modal.Header closeButton>
-        <Modal.Title>Borrar producto</Modal.Title>
+        <Modal.Title>Borrar Usuario</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h5 className='d-flex justify-content-center mb-4'>¿Seguro desea borrar el producto?</h5>
+        <h5 className='d-flex justify-content-center mb-4'>¿Seguro desea borrar el usuario?</h5>
         <div className='d-flex justify-content-evenly'>
           <Button
             id='confirmBtnModal'
