@@ -26,7 +26,7 @@ const EditingForm = (props) => {
     email: userToEdit?.email || '',
     repPassword: userToEdit?.stock || '',
   });
-  const [isFormEmpty, setIsFormEmpty] = useState(false);
+  const [setIsFormEmpty] = useState(false);
 
   
   const handleChange = (event) => {
