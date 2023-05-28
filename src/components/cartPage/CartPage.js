@@ -5,11 +5,11 @@ import "./cartPage.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCartContext } from "../../context/cartContext";
-
+import { FaShoppingCart } from 'react-icons/fa';
 
 const CartPage = ({ setProductQuantity }) => {
   const [cart, setCart] = useState([]);
-  const { getCartCount} = useCartContext();
+  const { getCartCount } = useCartContext();
 
   const getCart = async () => {
     const token = localStorage.getItem("user");
@@ -26,13 +26,13 @@ const CartPage = ({ setProductQuantity }) => {
   const handleBuy = async (userId) => {
     try {
       const token = localStorage.getItem("user");
-      const {data} = await axios.get("/api/cart/getCart", {headers: { Authorization: token },});
-      if(token){
-        const response = await axios.patch("/api/cart/buyCart", { userId: data.cart.user },  { headers: { Authorization: token } });
-        if(response.data.tipoerror === "si") {
+      const { data } = await axios.get("/api/cart/getCart", { headers: { Authorization: token }, });
+      if (token) {
+        const response = await axios.patch("/api/cart/buyCart", { userId: data.cart.user }, { headers: { Authorization: token } });
+        if (response.data.tipoerror === "si") {
           setCart([])
         } else {
-          alert(response.data.message);        
+          alert(response.data.message);
         }
       }
     } catch (error) {
@@ -94,6 +94,9 @@ const CartPage = ({ setProductQuantity }) => {
       <div className="bodyCartPage">
         <div>
           <h2>Carrito de compra</h2>
+          <div className='shoppingCartPage'>
+            <FaShoppingCart size={25} />
+          </div>
         </div>
         <div className="cartButtonArea">
           {cart.length > 0 && (
@@ -104,7 +107,7 @@ const CartPage = ({ setProductQuantity }) => {
             </Link>
           )}
         </div>
-        <div className="tableArea">
+        <div className="cartTableArea">
           {cart.length > 0 ? (
             cart.map((product) => (
               <div key={product._id}>
@@ -128,7 +131,7 @@ const CartPage = ({ setProductQuantity }) => {
               </div>
             ))
           ) : (
-            <div>
+            <div className='noItemsDiv'>
               <div colSpan="4">No hay productos en el carrito</div>
             </div>
           )}
@@ -157,7 +160,7 @@ const CartPage = ({ setProductQuantity }) => {
               </div>
             ))
           ) : (
-            <div>
+            <div className='noItemsMobile'>
               <div colSpan="4">No hay productos en el carrito</div>
             </div>
           )}
