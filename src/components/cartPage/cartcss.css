@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-
 .bodyCartPage {
   width: 100%;
   min-height: calc(100vh - 19rem);
@@ -192,4 +189,3 @@
     font-size: large;
   }
 }
-
