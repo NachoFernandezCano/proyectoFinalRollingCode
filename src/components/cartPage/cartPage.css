@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
+.bodyCartPage {
+  height: 100vh;
+}
+
 .bodyCartPage > div:first-child {
   display: flex;
   margin-top: 2rem;
@@ -36,7 +40,7 @@
   font-size: 1.1rem;
 }
 
-.cartTableArea {
+.tableAreaCartPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,14 +51,14 @@
   border-radius: 0.5rem;
 }
 
-.cartTableArea > div > img {
+.tableAreaCartPage > div > img {
   min-width: 7.5rem;
   height: 100%;
   background-color: black;
   border-radius: 1rem;
 }
 
-.cartTableArea > div {
+.tableAreaCartPage > div {
   background-color: rgb(218, 218, 218);
   height: 8rem;
   display: flex;
@@ -65,7 +69,7 @@
   align-items: center;
 }
 
-.cartTableArea > div > div:nth-child(3) {
+.tableAreaCartPage > div > div:nth-child(3) {
   border-left: 0.1rem solid rgb(61, 61, 61);
   width: 10rem;
   height: 100%;
@@ -75,7 +79,7 @@
   margin-left: 2rem;
 }
 
-.cartTableArea > div > div:nth-child(3) > button {
+.tableAreaCartPage > div > div:nth-child(3) > button {
   font-size: larger;
   height: 80%;
   width: 6rem;
@@ -89,7 +93,7 @@
   border: 0;
 }
 
-.cartTableArea > div > div:nth-child(3) > button:hover {
+.tableAreaCartPage > div > div:nth-child(3) > button:hover {
   background-color: rgb(189, 189, 189);
   transition: 0.2s;
 }
@@ -149,7 +153,7 @@
     margin: 0;
   }
 
-  .bodyCartPage > .cartTableArea {
+  .bodyCartPage > .tableAreaCartPage {
     display: none;
   }
 

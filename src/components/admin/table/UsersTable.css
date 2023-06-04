@@ -25,33 +25,6 @@
   color: var(--DEEPBLUE-bs-);
 }
 
-.createBtnContainer {
-  width: 90%;
-}
-.mobileContainer {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobileContainer {
-    display: block;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-  }
-  .homeContainer > .tableContainer {
-    display: none;
-  }
-  .homeContainer > .createBtnContainer > button {
-    display: none;
-  }
-  .homeContainer > .tablePagination {
-    display: none;
-  }
-}
 #createBtn {
   margin: 0.5rem;
   outline: none;
