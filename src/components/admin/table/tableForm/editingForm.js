@@ -26,8 +26,9 @@ const EditingForm = (props) => {
     email: userToEdit?.email || '',
     repPassword: userToEdit?.stock || '',
   });
+  const [setIsFormEmpty] = useState(false);
 
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name.startsWith("direccion.")) {
@@ -64,28 +65,49 @@ const EditingForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = userToEditId
+    const formValues = Object.values(formData);
+    const emptyFields = formValues.filter(value => value === '');
+    const areAllFieldsEmpty = emptyFields.length === formValues.length;
+    if (areAllFieldsEmpty) {
+      Swal.fire({
+        title: '<strong>Error</strong>',
+        html: '<i>Por favor completar todos los campos</i>',
+        icon: 'error',
+      });
+      setIsFormEmpty(true);
+      return;
+    }
+    const id = userToEditId;
     try {
       if (isEditingForm) {
         await axios.put(`/api/user/editUser/${id}`, formData);
+        setIsFormEmpty(false);
         return Swal.fire({
-          title: "<strong>Felicidades</strong>",
-          html: "<i>Usuario editado correctamente</i>",
-          icon: "success",
+          title: '<strong>Felicidades</strong>',
+          html: '<i>Usuario editado correctamente</i>',
+          icon: 'success',
         });
       } else {
-        await axios.post("/api/user/register", formData);
+        if (!isEditingForm && formData.password !== formData.repPassword) {
+          Swal.fire({
+            title: '<strong>Error</strong>',
+            html: '<i>Las contraseñas no coinciden</i>',
+            icon: 'error',
+          });
+          return;
+        }
+        await axios.post('/api/user/register', formData);
       }
+      setIsFormEmpty(false);
       return Swal.fire({
-        title: "<strong>Felicidades</strong>",
-        html: "<i>Usario creado correctamente</i>",
-        icon: "success",
+        title: '<strong>Felicidades</strong>',
+        html: '<i>Usuario creado correctamente</i>',
+        icon: 'success',
       });
     } catch (error) {
       console.error(error);
     }
-  };
-  
+  }; 
 
   return (
     <div className="formContainer">
@@ -93,61 +115,72 @@ const EditingForm = (props) => {
         <div>
           <b>Tipo:</b>
           <input
+            type="text"
             minLength={3}
             maxLength={30}
             className="inputArea"
             name="type"
             value={formData.type}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
           <b>Nombre:</b>
           <input
+            type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="nombre"
             value={formData.nombre}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
           <b>Apellido:</b>
           <input
+            type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="apellido"
             value={formData.apellido}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
           <b>Calle:</b>
           <input
+            type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="calle"
             defaultValue={formData.direccion.calle}
             onBlur={handleDirectionChange}
+            required
           />
         </div>
         <div>
           <b>Número:</b>
           <input
+            type="number"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="nro"
             defaultValue={formData.direccion.nro}
             onBlur={handleDirectionChange}
+            required
           />
         </div>
         <div>
           <b>Departamento:</b>
           <input
+            type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
@@ -159,41 +192,49 @@ const EditingForm = (props) => {
         <div>
           <b>Provincia:</b>
           <input
+            type="text"
             minLength={3}
             maxLength={30}
             className="inputArea"
             name="provincia"
             defaultValue={formData.direccion.provincia}
             onBlur={handleDirectionChange}
+            required
           />
         </div>
         <div>
           <b>Localidad:</b>
           <input
+            type="text"
             className="inputArea"
             name="localidad"
             defaultValue={formData.direccion.localidad}
             onBlur={handleDirectionChange}
+            required
           />
         </div>
         <div>
           <b>Código Postal:</b>
           <input
+            type="number"
             minLength={3}
             maxLength={30}
             className="inputArea"
             name="codigopostal"
             defaultValue={formData.direccion.codigopostal}
             onBlur={handleDirectionChange}
+            required
           />
         </div>
         <div>
           <b>Email:</b>
           <input
+            type="email"
             className="inputArea"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
         </div>
         {isEditingForm ? (
@@ -210,6 +251,7 @@ const EditingForm = (props) => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                required
               />
             </div>
             <div>
@@ -222,6 +264,7 @@ const EditingForm = (props) => {
                 name="repPassword"
                 value={formData.repPassword}
                 onChange={handleChange}
+                required
               />
             </div>
           </>

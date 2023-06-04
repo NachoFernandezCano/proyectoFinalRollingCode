@@ -101,28 +101,3 @@
 .tablePaginationBtn button:disabled {
   background-color: rgba(12, 77, 95, 0.885);
 }
-
-.mobileContainer {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobileContainer {
-    display: block;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-  }
-  .homeContainer > .tableContainer {
-    display: none;
-  }
-  .homeContainer > .createBtnContainer > button {
-    display: none;
-  }
-  .homeContainer > .tablePagination {
-    display: none;
-  }
-}

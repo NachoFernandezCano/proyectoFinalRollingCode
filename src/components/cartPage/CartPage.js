@@ -23,13 +23,6 @@ const CartPage = ({ setProductQuantity }) => {
     getCart();
   }, []); // eslint-disable-line
 
-  useEffect(() => {
-    const showCartQuantity = async () => {
-      setProductQuantity(await getCartCount());
-    };
-    showCartQuantity();
-  }, []); // eslint-disable-line
-
   const handleBuy = async (userId) => {
     try {
       const token = localStorage.getItem("user");
@@ -51,7 +44,7 @@ const CartPage = ({ setProductQuantity }) => {
     try {
       const token = localStorage.getItem("user");
       if (token) {
-        await axios.delete("/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id } })
+        await axios.delete("/api/cart/delete", { headers: { Authorization: token }, data: { productId: product._id }, })
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -103,11 +96,13 @@ const CartPage = ({ setProductQuantity }) => {
           <h2>Carrito de compra</h2>
         </div>
         <div className="cartButtonArea">
-          <Link to={`/FinalizarCompra`}>
-            <button onClick={handleBuy} className="cartButton">
-              Finalizar compra
-            </button>
-          </Link>
+          {cart.length > 0 && (
+            <Link to={`/FinalizarCompra`}>
+              <button onClick={handleBuy} className="cartButton">
+                Finalizar compra
+              </button>
+            </Link>
+          )}
         </div>
         <div className="tableArea">
           {cart.length > 0 ? (
@@ -133,9 +128,9 @@ const CartPage = ({ setProductQuantity }) => {
               </div>
             ))
           ) : (
-            <tr>
-              <td colSpan="4">No hay productos en el carrito</td>
-            </tr>
+            <div>
+              <div colSpan="4">No hay productos en el carrito</div>
+            </div>
           )}
         </div>
         <div className="tableAreaMobile">
@@ -162,9 +157,9 @@ const CartPage = ({ setProductQuantity }) => {
               </div>
             ))
           ) : (
-            <tr>
-              <td colSpan="4">No hay productos en el carrito</td>
-            </tr>
+            <div>
+              <div colSpan="4">No hay productos en el carrito</div>
+            </div>
           )}
         </div>
       </div>
