@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 .bodyCartPage {
-  /* height: calc(100vh - 16rem); */
   height: 100vh;
 }
 
@@ -129,6 +129,19 @@
   display: none;
 }
 
+.noItemsDiv {
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.shoppingCartPage {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
 @media (max-width: 320px) {
   .bodyCartPage > .cartButtonArea {
     display: flex;
@@ -225,5 +238,17 @@
     background-color: rgb(189, 189, 189);
     transition: 0.2s;
     font-size: larger;
+  }
+
+  .noItemsMobile {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .noItemsMobile > div {
+    margin-top: 3rem;
+  }
+
+  .bodyCartPage > div:first-child > div:nth-child(2) {
+    display: none;
   }
 }
