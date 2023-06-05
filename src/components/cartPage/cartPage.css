@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-.bodyCartPage {
+/* .bodyCartPage {
   height: 100vh;
-}
+} */
 
 .bodyCartPage > div:first-child {
   display: flex;
