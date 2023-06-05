@@ -26,7 +26,6 @@ const EditingForm = (props) => {
     email: userToEdit?.email || '',
     repPassword: userToEdit?.stock || '',
   });
-  const [setIsFormEmpty] = useState(false);
 
   
   const handleChange = (event) => {
@@ -65,23 +64,10 @@ const EditingForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formValues = Object.values(formData);
-    const emptyFields = formValues.filter(value => value === '');
-    const areAllFieldsEmpty = emptyFields.length === formValues.length;
-    if (areAllFieldsEmpty) {
-      Swal.fire({
-        title: '<strong>Error</strong>',
-        html: '<i>Por favor completar todos los campos</i>',
-        icon: 'error',
-      });
-      setIsFormEmpty(true);
-      return;
-    }
     const id = userToEditId;
     try {
       if (isEditingForm) {
         await axios.put(`/api/user/editUser/${id}`, formData);
-        setIsFormEmpty(false);
         return Swal.fire({
           title: '<strong>Felicidades</strong>',
           html: '<i>Usuario editado correctamente</i>',
@@ -96,19 +82,36 @@ const EditingForm = (props) => {
           });
           return;
         }
-        await axios.post('/api/user/register', formData);
-      }
-      setIsFormEmpty(false);
-      return Swal.fire({
-        title: '<strong>Felicidades</strong>',
-        html: '<i>Usuario creado correctamente</i>',
-        icon: 'success',
-      });
+        const response = await axios.post('/api/user/register', formData);
+          if (response) {
+            return Swal.fire({
+              title: '<strong>Felicidades</strong>',
+              html: '<i>Usuario creado correctamente</i>',
+              icon: 'success',
+            });
+          }
+        }
     } catch (error) {
       console.error(error);
+      if (error.response.data.message === 'El email ingresado ya se encuentra en uso'){
+        Swal.fire({
+          title: '<strong>Error</strong>',
+          html: '<i>El correo electrónico ya está en uso</i>',
+          icon: 'error',
+        });
+        return;
     }
-  }; 
-
+    else if (error.response.data.message === "Por favor complete todos los campos") {
+      Swal.fire({
+        title: '<strong>Error</strong>',
+        html: '<i>Por favor completar todos los campos</i>',
+        icon: 'error',
+      });
+      return;
+    }}
+  };
+  
+  
   return (
     <div className="formContainer">
       <form onSubmit={handleSubmit}>
@@ -120,35 +123,34 @@ const EditingForm = (props) => {
             maxLength={30}
             className="inputArea"
             name="type"
-            value={formData.type}
+            defaultValue={formData.type}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
           <b>Nombre:</b>
           <input
+            placeholder="Requerido"
             type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="nombre"
-            value={formData.nombre}
+            defaultValue={formData.nombre}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
           <b>Apellido:</b>
           <input
+            placeholder="Requerido"
             type="text"
             className="inputArea"
             minLength={3}
             maxLength={30}
             name="apellido"
-            value={formData.apellido}
+            defaultValue={formData.apellido}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
@@ -161,7 +163,6 @@ const EditingForm = (props) => {
             name="calle"
             defaultValue={formData.direccion.calle}
             onBlur={handleDirectionChange}
-            required
           />
         </div>
         <div>
@@ -174,7 +175,6 @@ const EditingForm = (props) => {
             name="nro"
             defaultValue={formData.direccion.nro}
             onBlur={handleDirectionChange}
-            required
           />
         </div>
         <div>
@@ -199,7 +199,6 @@ const EditingForm = (props) => {
             name="provincia"
             defaultValue={formData.direccion.provincia}
             onBlur={handleDirectionChange}
-            required
           />
         </div>
         <div>
@@ -210,7 +209,6 @@ const EditingForm = (props) => {
             name="localidad"
             defaultValue={formData.direccion.localidad}
             onBlur={handleDirectionChange}
-            required
           />
         </div>
         <div>
@@ -223,18 +221,17 @@ const EditingForm = (props) => {
             name="codigopostal"
             defaultValue={formData.direccion.codigopostal}
             onBlur={handleDirectionChange}
-            required
           />
         </div>
         <div>
           <b>Email:</b>
           <input
+            placeholder="Requerido"
             type="email"
             className="inputArea"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
           />
         </div>
         {isEditingForm ? (
@@ -244,27 +241,27 @@ const EditingForm = (props) => {
             <div>
               <b>Contraseña:</b>
               <input
+                placeholder="Requerido"
                 type="password"
                 minLength={3}
                 maxLength={30}
                 className="inputArea"
                 name="password"
-                value={formData.password}
+                defaultValue={formData.password}
                 onChange={handleChange}
-                required
               />
             </div>
             <div>
               <b>Repetir Contraseña:</b>
               <input
+                placeholder="Requerido"
                 type="password"
                 minLength={3}
                 maxLength={30}
                 className="inputArea"
                 name="repPassword"
-                value={formData.repPassword}
+                defaultValue={formData.repPassword}
                 onChange={handleChange}
-                required
               />
             </div>
           </>
