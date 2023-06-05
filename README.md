@@ -7,9 +7,15 @@ Descripción:
 
 
 Características:
+    Registrarse como usuario e ingresar con cuenta propia.
+    Explorar productos por categorías.
+    Ver productos destacados.
+    Ver detalles de un producto específico.
+    Agregar productos al carrito de compras.
+    Realizar pedidos y finalizar la compra.
+    Administrar el inventario de productos al loguearse como administrador.
+    Administrar la lista de usuarios registrados al loguearse como administrador.
 
-Expand All
-	@@ -17,10 +17,13 @@ Características:
 Instalación:
     1-Clona este repositorio en tu máquina local.
         bash: git clone https://github.com/tu-usuario/tu-repositorio.git
