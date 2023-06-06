@@ -63,7 +63,8 @@ const EditingForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = productToEditId
+    const id = productToEditId;
+    const existingTypes = ["Celulares", "Notebook", "Monitores", "Auriculares", "SmartWatch", "Otros"];
     try {
       if (isEditingForm) {
         await axios.put(`/api/products/editProducts/${id}`, formData);
@@ -74,16 +75,32 @@ const EditingForm = (props) => {
         });
       } else {
         await axios.post("/api/products/addProducts", formData);
+        return Swal.fire({
+          title: "<strong>Felicidades</strong>",
+          html: "<i>Producto creado correctamente</i>",
+          icon: "success",
+        });
       }
-      return Swal.fire({
-        title: "<strong>Felicidades</strong>",
-        html: "<i>Producto creado correctamente</i>",
-        icon: "success",
-      });
     } catch (error) {
       console.error(error);
-    }
+      if (!existingTypes.includes(formData.type)) {
+        const errorMessage = `Tipos existentes: ${existingTypes.join(", ")}`;
+        Swal.fire({
+          title: "<strong>Error, el tipo no es válido.</strong>",
+          html: `<i>${errorMessage}</i>`,
+          icon: "error",
+        });
+      }
+      else if (error.response.data.message === "El campo name es requerido" || "El campo type es requerido" || "El campo stock es requerido" || "El campo image es requerido" || "El campo price es requerido" || "El campo brand es requerido" ) {
+        Swal.fire({
+          title: '<strong>Error</strong>',
+          html: '<i>Por favor completar todos los campos</i>',
+          icon: 'error',
+        });
+        return;
+    }}
   };
+  
 
 
 
@@ -93,6 +110,7 @@ const EditingForm = (props) => {
         <div>
           <b>Categoría:</b>
           <input
+            placeholder="Requerido"
             className="inputArea"
             name="category"
             value={formData.category}
@@ -102,6 +120,7 @@ const EditingForm = (props) => {
         <div>
           <b>Tipo:</b>
           <input
+            placeholder="Requerido"
             className="inputArea"
             name="type"
             value={formData.type}
@@ -111,6 +130,7 @@ const EditingForm = (props) => {
         <div>
           <b>Imagen 1:</b>
           <input
+            placeholder="Requerido"
             className="inputArea"
             name="img1"
             defaultValue={formData.image.img1}
@@ -138,6 +158,8 @@ const EditingForm = (props) => {
         <div>
           <b>Nombre del producto:</b>
           <input
+            type="text"
+            placeholder="Requerido"
             className="inputArea"
             name="name"
             value={formData.name}
@@ -147,6 +169,8 @@ const EditingForm = (props) => {
         <div>
           <b>Marca:</b>
           <input
+            type="text"
+            placeholder="Requerido"
             className="inputArea"
             name="brand"
             value={formData.brand}
@@ -156,6 +180,7 @@ const EditingForm = (props) => {
         <div>
           <b>Descripción:</b>
           <input
+            placeholder="Requerido"
             className="inputArea"
             name="description"
             value={formData.description}
@@ -165,6 +190,8 @@ const EditingForm = (props) => {
         <div>
           <b>Precio:</b>
           <input
+            type="number"
+            placeholder="Requerido"
             className="inputArea"
             name="price"
             value={formData.price}
@@ -174,6 +201,8 @@ const EditingForm = (props) => {
         <div>
           <b>Stock</b>
           <input
+            type="number"
+            placeholder="Requerido"
             className="inputArea"
             name="stock"
             value={formData.stock}
