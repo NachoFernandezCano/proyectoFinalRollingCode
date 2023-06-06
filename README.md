@@ -17,13 +17,13 @@ Características:
 Instalación:
     1-Clona este repositorio en tu máquina local.
         bash: git clone https://github.com/tu-usuario/tu-repositorio.git
-
+    
     2-Navega al directorio del proyecto.
         bash: cd ecommerce-react
-
+    
     3-Instala las dependencias del proyecto.
         npm install
-
+    
     4-Inicia la aplicación.
         npm start
 
@@ -72,7 +72,7 @@ Estructura de archivos:
 
             user
                 Usuarios.js
-
+            
             Administrator.js
 
         advertisement
