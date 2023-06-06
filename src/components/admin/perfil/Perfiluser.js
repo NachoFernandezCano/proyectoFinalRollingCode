@@ -1,5 +1,5 @@
 import { FaIdCardAlt, FaSave, FaArrowAltCircleLeft } from "react-icons/fa";
-import axios from "../../../config/axiosInit";
+import axios from "config/axiosInit";
 import React, { useEffect, useState } from "react";
 import { Form, Card, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";

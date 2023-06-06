@@ -107,7 +107,7 @@ const CartPage = ({ setProductQuantity }) => {
             </Link>
           )}
         </div>
-        <div className="cartTableArea">
+        <div className="tableAreaCartPage">
           {cart.length > 0 ? (
             cart.map((product) => (
               <div key={product._id}>

@@ -282,7 +282,8 @@ const Header = ({ productQuantity }) => {
                     <div className="userMenu">
                       <NavDropdown title={userName} id='navbarUsuario' bg='light' drop='start'>
                         <NavDropdown.Item href='#' onClick={() => handlePerfil()}>Perfil</NavDropdown.Item>
-                        <NavDropdown.Item href='/Table' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
+                        <NavDropdown.Item href='/UsersTable' onClick={() => handlePerfil()}>Tabla de usuarios</NavDropdown.Item>
+                        <NavDropdown.Item href='/ProductsTable' onClick={() => handlePerfil()}>Tabla de productos</NavDropdown.Item>
                         <NavDropdown.Item href='#' onClick={() => handleLogout()}>Cerrar Sesión</NavDropdown.Item>
                       </NavDropdown>
                     </div>

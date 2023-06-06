@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
+/* .bodyCartPage {
+  height: 100vh;
+} */
+
 .bodyCartPage > div:first-child {
   display: flex;
   margin-top: 2rem;
@@ -36,7 +40,7 @@
   font-size: 1.1rem;
 }
 
-.cartTableArea {
+.tableAreaCartPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,14 +51,14 @@
   border-radius: 0.5rem;
 }
 
-.cartTableArea > div > img {
+.tableAreaCartPage > div > img {
   min-width: 7.5rem;
   height: 100%;
   background-color: black;
   border-radius: 1rem;
 }
 
-.cartTableArea > div {
+.tableAreaCartPage > div {
   background-color: rgb(218, 218, 218);
   height: 8rem;
   display: flex;
@@ -65,7 +69,7 @@
   align-items: center;
 }
 
-.cartTableArea > div > div:nth-child(3) {
+.tableAreaCartPage > div > div:nth-child(3) {
   border-left: 0.1rem solid rgb(61, 61, 61);
   width: 10rem;
   height: 100%;
@@ -75,7 +79,7 @@
   margin-left: 2rem;
 }
 
-.cartTableArea > div > div:nth-child(3) > button {
+.tableAreaCartPage > div > div:nth-child(3) > button {
   font-size: larger;
   height: 80%;
   width: 6rem;
@@ -89,7 +93,7 @@
   border: 0;
 }
 
-.cartTableArea > div > div:nth-child(3) > button:hover {
+.tableAreaCartPage > div > div:nth-child(3) > button:hover {
   background-color: rgb(189, 189, 189);
   transition: 0.2s;
 }
@@ -149,7 +153,7 @@
     margin: 0;
   }
 
-  .bodyCartPage > .cartTableArea {
+  .bodyCartPage > .tableAreaCartPage {
     display: none;
   }
 
@@ -163,6 +167,119 @@
 
   .tableAreaMobile > div {
     width: 90%;
+    height: 30rem;
+    min-height: 25rem;
+    background-color: rgb(218, 218, 218);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tableAreaMobile > div > img {
+    height: 8rem;
+    width: 8rem;
+    margin-top: 1rem;
+  }
+
+  .itemsDataMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itemsDataMobile > h3 {
+    text-decoration: underline;
+    margin-top: 0.5rem;
+  }
+
+  .itemsDataMobile > div:nth-child(2) {
+    margin: 1rem 0.4rem 1rem 1rem;
+    max-height: 6rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .itemsDataMobile > div:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+    border-top: 1px solid black;
+    width: 100%;
+    align-items: center;
+  }
+
+  .itemsDataMobile > div:nth-child(3) > div:first-child {
+    margin: 0.7rem 0 0 1rem;
+  }
+
+  .itemsDataMobile > div:nth-child(3) > div:nth-child(2) {
+    margin: 0.7rem 1rem 0 0;
+  }
+
+  .tableAreaMobile > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .tableAreaMobile > div > div > button {
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    height: 4rem;
+    font-size: large;
+  }
+
+  .tableAreaMobile > div > div > button:hover {
+    background-color: rgb(189, 189, 189);
+    transition: 0.2s;
+    font-size: larger;
+  }
+
+  .noItemsMobile {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .noItemsMobile > div {
+    margin-top: 3rem;
+  }
+
+  .bodyCartPage > div:first-child > div:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .bodyCartPage > .cartButtonArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .bodyCartPage > .cartButtonArea > a {
+    margin: 0;
+  }
+
+  .bodyCartPage > .tableAreaCartPage {
+    display: none;
+  }
+
+  .tableAreaMobile {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    margin: 3rem 0 3rem 0;
+    background-color: rgb(228, 228, 228);
+    flex-wrap: wrap;
+  }
+
+  .tableAreaMobile > div {
+    width: 40%;
     height: 30rem;
     min-height: 25rem;
     background-color: rgb(218, 218, 218);
