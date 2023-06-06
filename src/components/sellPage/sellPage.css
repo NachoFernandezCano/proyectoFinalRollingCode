@@ -36,3 +36,25 @@
   transform: scale(1.01);
   font-size: large;
 }
+
+@media (max-width: 320px) {
+  .containerDiv {
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 2rem 0 2rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerDiv {
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 2rem 0 2rem;
+    width: auto;
+  }
+}
