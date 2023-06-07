@@ -40,7 +40,6 @@ function App() {
             <Route path="/HotItems" element={<HotItems />} />
             <Route path="/Error404" element={<Error404 />} />
             <Route path="/Comprar" element={<CartPage />} />
-            <Route path="/ComprarProductPage" element={<ProductPageSell />} />
             <Route path="/FinalizarCompra" element={<SellPage />} />
           </Routes>
           <Footer />

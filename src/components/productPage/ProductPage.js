@@ -139,23 +139,23 @@ const ProductPage = ({ setProductQuantity }) => {
     <div className="productPageContainer">
       <div className="containerImgProduct">
         <div className="containerImagenPrincipal">
-          <img alt='' 
+          <img alt=''
             className="imagenPrincipalProduct" src={imagenPrincipalProduct}>
           </img>
         </div>
         <div className="miniaturasProductContainer">
           <div className="miniaturaProducto">
-            <img alt='' 
+            <img alt=''
               className="thumbnail" onClick={() => imageHandle(product.image?.img1)} src={product.image?.img1}
             ></img>
           </div>
           <div className="miniaturaProducto">
-            <img alt='' 
+            <img alt=''
               className="thumbnail" onClick={() => imageHandle(product.image?.img2)} src={product.image?.img2}
             ></img>
           </div>
           <div className="miniaturaProducto">
-            <img alt='' 
+            <img alt=''
               className="thumbnail" onClick={() => imageHandle(product.image?.img3)} src={product.image?.img3}
             ></img>
           </div>
@@ -180,16 +180,16 @@ const ProductPage = ({ setProductQuantity }) => {
               <Modal.Body>
                 <div className="containerMedioDePagos">
                   <div>
-                    <img alt=''  src={Visa}></img>
+                    <img alt='' src={Visa}></img>
                   </div>
                   <div>
-                    <img alt=''  src={Amex}></img>
+                    <img alt='' src={Amex}></img>
                   </div>
                   <div>
-                    <img alt=''  src={MasterCard}></img>
+                    <img alt='' src={MasterCard}></img>
                   </div>
                   <div>
-                    <img alt=''  src={Naranja}></img>
+                    <img alt='' src={Naranja}></img>
                   </div>
                 </div>
               </Modal.Body>
@@ -203,7 +203,11 @@ const ProductPage = ({ setProductQuantity }) => {
         </div>
         <div className="btn-comprasCarrito">
           <div className="containerBtnComprarYa">
-            <Button className="btn-comprarYa">Comprar</Button>
+            <Button className="btn-comprarYa">
+              <Link to='/Error404'>
+                Comprar
+              </Link>
+            </Button>
           </div>
           <div className="containerBtnAgregarAlcarrito">
             <Button onClick={() => handleAddProduct(id)} className="btn-agregarAlCarrito">Agregar al carrito</Button>
