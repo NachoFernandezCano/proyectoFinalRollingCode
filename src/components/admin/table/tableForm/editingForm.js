@@ -170,8 +170,8 @@ const EditingForm = (props) => {
           <input
             type="number"
             className="inputArea"
-            minLength={3}
-            maxLength={30}
+            minLength={1}
+            maxLength={5}
             name="nro"
             defaultValue={formData.direccion.nro}
             onBlur={handleDirectionChange}
@@ -215,8 +215,8 @@ const EditingForm = (props) => {
           <b>Código Postal:</b>
           <input
             type="number"
-            minLength={3}
-            maxLength={30}
+            minLength={1}
+            maxLength={5}
             className="inputArea"
             name="codigopostal"
             defaultValue={formData.direccion.codigopostal}
