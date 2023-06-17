@@ -123,7 +123,7 @@ const EditingForm = (props) => {
             placeholder="Requerido"
             className="inputArea"
             name="type"
-            value={formData.type}
+            value={formData.type.type}
             onChange={handleChange}
           />
         </div>
@@ -210,6 +210,7 @@ const EditingForm = (props) => {
           />
         </div>
         <div>
+          <button onClick={() => {console.log(productToEdit)}}></button>
           <button id="modalsButtons" type="submit">
             {isEditingForm ? 'Editar producto' : 'Crear'}
           </button>
