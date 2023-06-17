@@ -123,7 +123,7 @@ const EditingForm = (props) => {
             placeholder="Requerido"
             className="inputArea"
             name="type"
-            value={formData.type}
+            value={formData.type.type}
             onChange={handleChange}
           />
         </div>
