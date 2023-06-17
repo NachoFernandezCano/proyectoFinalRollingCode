@@ -210,7 +210,6 @@ const EditingForm = (props) => {
           />
         </div>
         <div>
-          <button onClick={() => {console.log(productToEdit)}}></button>
           <button id="modalsButtons" type="submit">
             {isEditingForm ? 'Editar producto' : 'Crear'}
           </button>
