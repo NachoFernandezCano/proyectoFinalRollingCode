@@ -15,12 +15,13 @@ import SellPage from "./components/sellPage/SellPage"
 import { CartProvider } from "./context/cartContext";
 import { useState } from "react";
 import Perfiluser from "./components/admin/perfil/Perfiluser";
+import "./app.css";
 
 function App() {
   const [productQuantity, setProductQuantity] = useState(0);
 
   return (
-    <>
+    <div className="divApp">
       <BrowserRouter>
         <CartProvider>
           <Header productQuantity={productQuantity} />
@@ -44,7 +45,7 @@ function App() {
           <Footer />
         </CartProvider>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

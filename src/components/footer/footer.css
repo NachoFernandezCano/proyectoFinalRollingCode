@@ -2,6 +2,11 @@
 
 .footerContainer > .footerMobile {
   display: none;
+  width: 100%;
+}
+
+.footerLg {
+  width: 100%;
 }
 
 .footerLg > div {

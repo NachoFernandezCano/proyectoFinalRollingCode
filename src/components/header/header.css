@@ -228,13 +228,38 @@ span {
   }
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 768px) {
   .Header_container {
     display: none;
   }
 
   .navbarMobile {
     display: block;
+    background-color: var(--DEEPBLUE-bs-);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .logoMobile {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 2.5rem;
+  }
+
+  .hNavToggle {
+    border: 1px solid var(--CYAN-bs-);
+  }
+
+  .hNavToggle:focus {
+    color: var(--CYAN-bs-);
+  }
+}
+
+@media (min-width: 1040px) {
+  .navbarMobile {
+    display: none;
     background-color: var(--DEEPBLUE-bs-);
     color: white;
     position: sticky;

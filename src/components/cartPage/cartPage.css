@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anuphan&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-/* .bodyCartPage {
-  height: 100vh;
-} */
-
 .bodyCartPage > div:first-child {
   display: flex;
   margin-top: 2rem;
@@ -142,7 +138,7 @@
   margin-left: 1rem;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 425px) {
   .bodyCartPage > .cartButtonArea {
     display: flex;
     justify-content: center;
@@ -165,7 +161,7 @@
     background-color: rgb(228, 228, 228);
   }
 
-  .tableAreaMobile > div {
+  .bodyCartPage > .tableAreaMobile > div {
     width: 90%;
     height: 30rem;
     min-height: 25rem;
@@ -253,7 +249,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .bodyCartPage > .cartButtonArea {
     display: flex;
     justify-content: center;
