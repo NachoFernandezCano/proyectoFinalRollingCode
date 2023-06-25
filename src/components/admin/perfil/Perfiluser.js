@@ -73,11 +73,11 @@ const Perfiluser = () => {
 
   return (
     <>
-      <div className="upContainer container-fluid col-8 mt-4 mb-4">
+      <div className="upContainer container-fluid mt-4 mb-4">
         {loader ? (
           <Loader />
         ) : (
-          <Card>
+          <Card className="perfilCard">
             <Card.Header className="perfilCardH">
               <div className="container-titulo">
                 <FaIdCardAlt className="tituloimg" />
