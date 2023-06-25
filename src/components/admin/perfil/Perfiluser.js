@@ -92,6 +92,9 @@ const Perfiluser = () => {
                     <Form.Control
                       type="text"
                       name="nombre"
+                      required
+                      minLength={3}
+                      maxLength={30}
                       placeholder="Nombre"
                       defaultValue={perfilData?.nombre}
                       onChange={handleInputChange}
@@ -102,6 +105,9 @@ const Perfiluser = () => {
                     <Form.Control
                       type="text"
                       placeholder="Apellido"
+                      required
+                      minLength={3}
+                      maxLength={30}
                       name="apellido"
                       defaultValue={perfilData?.apellido}
                       onChange={handleInputChange}
@@ -112,6 +118,9 @@ const Perfiluser = () => {
                     <Form.Control
                       type="email"
                       placeholder="Email"
+                      required
+                      minLength={3}
+                      maxLength={30}
                       name="email"
                       defaultValue={perfilData?.email}
                       onChange={handleInputChange}
@@ -123,6 +132,8 @@ const Perfiluser = () => {
                   <Form.Control
                     type="text"
                     placeholder="Ej: San Martin"
+                    minLength={3}
+                    maxLength={30}
                     name="calle"
                     defaultValue={perfilData?.direccion?.calle}
                     onChange={handleInputChange}
@@ -134,6 +145,8 @@ const Perfiluser = () => {
                     <Form.Control
                       type="number"
                       placeholder="Ej: 320"
+                      min={1}
+                      max={99999}
                       name="nro"
                       defaultValue={perfilData?.direccion?.nro}
                       onChange={handleInputChange}
@@ -144,6 +157,8 @@ const Perfiluser = () => {
                     <Form.Control
                       type="text"
                       placeholder="Ej: 10"
+                      minLength={3}
+                      maxLength={30}
                       name="dpto"
                       defaultValue={perfilData?.direccion?.dpto}
                       onChange={handleInputChange}
@@ -156,6 +171,8 @@ const Perfiluser = () => {
                     <Form.Control
                       type="text"
                       placeholder="Ej: Tucumán"
+                      minLength={3}
+                      maxLength={30}
                       name="provincia"
                       defaultValue={perfilData?.direccion?.provincia}
                       onChange={handleInputChange}
@@ -166,6 +183,8 @@ const Perfiluser = () => {
                     <Form.Control
                       type="text"
                       placeholder="Ej: Capital"
+                      minLength={3}
+                      maxLength={30}
                       name="localidad"
                       defaultValue={perfilData?.direccion?.localidad}
                       onChange={handleInputChange}
@@ -176,6 +195,8 @@ const Perfiluser = () => {
                     <Form.Control
                       type="number"
                       placeholder="Ej: 4000"
+                      min={1}
+                      max={99999}
                       name="codigopostal"
                       defaultValue={perfilData?.direccion?.codigopostal}
                       onChange={handleInputChange}

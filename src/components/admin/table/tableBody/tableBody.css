@@ -8,6 +8,7 @@ td {
   background-color: rgb(247, 252, 253);
   border: 3px solid var(--CYAN-bs-);
   color: var(--DEEPBLUE-bs-);
+  min-height: 100vh;
 }
 
 #deleteBtn,
