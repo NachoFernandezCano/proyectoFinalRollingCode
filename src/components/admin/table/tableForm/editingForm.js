@@ -68,7 +68,7 @@ const EditingForm = (props) => {
     try {
       if (isEditingForm) {
         await axios.put(`/api/user/editUser/${id}`, formData);
-        return Swal.fire({
+        Swal.fire({
           title: '<strong>Felicidades</strong>',
           html: '<i>Usuario editado correctamente</i>',
           icon: 'success',
@@ -83,33 +83,35 @@ const EditingForm = (props) => {
           return;
         }
         const response = await axios.post('/api/user/register', formData);
-          if (response) {
-            return Swal.fire({
-              title: '<strong>Felicidades</strong>',
-              html: '<i>Usuario creado correctamente</i>',
-              icon: 'success',
-            });
-          }
+        if (response) {
+          Swal.fire({
+            title: '<strong>Felicidades</strong>',
+            html: '<i>Usuario creado correctamente</i>',
+            icon: 'success',
+          });
         }
+      }
+      window.location.reload();
     } catch (error) {
       console.error(error);
-      if (error.response.data.message === 'El email ingresado ya se encuentra en uso'){
+      if (error.response.data.message === 'El email ingresado ya se encuentra en uso') {
         Swal.fire({
           title: '<strong>Error</strong>',
           html: '<i>El correo electrónico ya está en uso</i>',
           icon: 'error',
         });
         return;
+      } else if (error.response.data.message === "Por favor complete todos los campos") {
+        Swal.fire({
+          title: '<strong>Error</strong>',
+          html: '<i>Por favor completar todos los campos</i>',
+          icon: 'error',
+        });
+        return;
+      }
     }
-    else if (error.response.data.message === "Por favor complete todos los campos") {
-      Swal.fire({
-        title: '<strong>Error</strong>',
-        html: '<i>Por favor completar todos los campos</i>',
-        icon: 'error',
-      });
-      return;
-    }}
   };
+  
   
   
   return (
@@ -170,8 +172,8 @@ const EditingForm = (props) => {
           <input
             type="number"
             className="inputArea"
-            minLength={1}
-            maxLength={5}
+            min={1}
+            max={99999}
             name="nro"
             defaultValue={formData.direccion.nro}
             onBlur={handleDirectionChange}
@@ -206,6 +208,8 @@ const EditingForm = (props) => {
           <input
             type="text"
             className="inputArea"
+            minLength={3}
+            maxLength={30}
             name="localidad"
             defaultValue={formData.direccion.localidad}
             onBlur={handleDirectionChange}
@@ -215,8 +219,8 @@ const EditingForm = (props) => {
           <b>Código Postal:</b>
           <input
             type="number"
-            minLength={1}
-            maxLength={5}
+            min={1}
+            max={99999}
             className="inputArea"
             name="codigopostal"
             defaultValue={formData.direccion.codigopostal}
@@ -229,6 +233,8 @@ const EditingForm = (props) => {
             placeholder="Requerido"
             type="email"
             className="inputArea"
+            minLength={3}
+            maxLength={30}
             name="email"
             value={formData.email}
             onChange={handleChange}

@@ -68,19 +68,20 @@ const EditingForm = (props) => {
     try {
       if (isEditingForm) {
         await axios.put(`/api/products/editProducts/${id}`, formData);
-        return Swal.fire({
+        Swal.fire({
           title: "<strong>Felicidades</strong>",
           html: "<i>Producto editado correctamente</i>",
           icon: "success",
         });
       } else {
         await axios.post("/api/products/addProducts", formData);
-        return Swal.fire({
+        Swal.fire({
           title: "<strong>Felicidades</strong>",
           html: "<i>Producto creado correctamente</i>",
           icon: "success",
         });
       }
+      window.location.reload();
     } catch (error) {
       console.error(error);
       if (!existingTypes.includes(formData.type)) {
@@ -90,17 +91,23 @@ const EditingForm = (props) => {
           html: `<i>${errorMessage}</i>`,
           icon: "error",
         });
-      }
-      else if (error.response.data.message === "El campo name es requerido" || "El campo type es requerido" || "El campo stock es requerido" || "El campo image es requerido" || "El campo price es requerido" || "El campo brand es requerido" ) {
+      } else if (
+        error.response.data.message === "El campo name es requerido" ||
+        error.response.data.message === "El campo type es requerido" ||
+        error.response.data.message === "El campo stock es requerido" ||
+        error.response.data.message === "El campo image es requerido" ||
+        error.response.data.message === "El campo price es requerido" ||
+        error.response.data.message === "El campo brand es requerido"
+      ) {
         Swal.fire({
-          title: '<strong>Error</strong>',
-          html: '<i>Por favor completar todos los campos</i>',
-          icon: 'error',
+          title: "<strong>Error</strong>",
+          html: "<i>Por favor completar todos los campos</i>",
+          icon: "error",
         });
         return;
-    }}
+      }
+    }
   };
-  
 
 
 
